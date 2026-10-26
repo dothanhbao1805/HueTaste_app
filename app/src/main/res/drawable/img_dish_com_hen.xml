@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/_260dp"
+    android:height="@dimen/_144dp"
+    android:viewportWidth="260"
+    android:viewportHeight="144">
+    <!-- Rustic wood table -->
+    <path
+        android:fillColor="#EFE8DE"
+        android:pathData="M0,0h260v144H0z" />
+    <path
+        android:fillColor="#E3D7C7"
+        android:pathData="M16,10h228c7.7,0 14,6.3 14,14v96c0,7.7 -6.3,14 -14,14H16c-7.7,0 -14,-6.3 -14,-14V24c0,-7.7 6.3,-14 14,-14z" />
+    <!-- Main Rustic Clam Rice Bowl (Left) -->
+    <path
+        android:fillColor="#B76543"
+        android:pathData="M110,22c-42,0 -76,23.5 -76,52.5s34,52.5 76,52.5 76,-23.5 76,-52.5 -34,-52.5 -76,-52.5z" />
+    <path
+        android:fillColor="#8C4223"
+        android:pathData="M110,26c-38.6,0 -70,21.5 -70,48s31.4,48 70,48 70,-21.5 70,-48 -31.4,-48 -70,-48z" />
+    <!-- Steamed rice base -->
+    <path
+        android:fillColor="#F7F4EC"
+        android:pathData="M110,32c-33,0 -60,18 -60,40s27,40 60,40 60,-18 60,-40 -27,-40 -60,-40z" />
+    <!-- Baby Clams (Hến xào sả ớt) -->
+    <path
+        android:fillColor="#68574B"
+        android:pathData="M88,58c-5.5,0 -10,3.6 -10,8s4.5,8 10,8 10,-3.6 10,-8 -4.5,-8 -10,-8zM102,68c-4.4,0 -8,3 -8,6.5s3.6,6.5 8,6.5 8,-3 8,-6.5 -3.6,-6.5 -8,-6.5z" />
+    <!-- Roasted golden peanuts (đậu phộng) -->
+    <path
+        android:fillColor="#C68032"
+        android:pathData="M125,55c0,-3 4,-5 8,-3s4,6 1,8 -9,-2 -9,-5zM136,66c0,-3 4,-5 8,-3s3,6 1,8 -9,-2 -9,-5zM118,78c0,-3 4,-5 8,-3s4,6 1,8 -9,-2 -9,-5z" />
+    <!-- Crispy pork rinds (bóng bì / tóp mỡ chiên giòn) -->
+    <path
+        android:fillColor="#E5AA52"
+        android:pathData="M90,78h8v6h-8zM82,72h7v5h-7zM100,50h7v6h-7z" />
+    <!-- Shredded banana blossom and mint (hoa chuối, rau thơm) -->
+    <path
+        android:fillColor="#8A415A"
+        android:pathData="M130,46c5,-3 12,-1 15,3s-2,8 -7,7 -10,-6 -8,-10z" />
+    <path
+        android:fillColor="#4E8D42"
+        android:pathData="M106,44c3,-2 7,0 7,3s-3,5 -6,4 -3,-5 -1,-7zM128,82c3,-2 6,0 6,3s-2,5 -5,4 -3,-5 -1,-7z" />
+
+    <!-- Small side bowl of steaming hot spicy clam broth (Chén nước hến) -->
+    <path
+        android:fillColor="#DFC7AE"
+        android:pathData="M210,38c-20,0 -36,12 -36,27s16,27 36,27 36,-12 36,-27 -16,-27 -36,-27z" />
+    <path
+        android:fillColor="#D89243"
+        android:pathData="M210,42c-16.5,0 -30,10 -30,22.5s13.5,22.5 30,22.5 30,-10 30,-22.5 -13.5,-22.5 -30,-22.5z" />
+    <!-- Chili and ginger floaters -->
+    <path
+        android:fillColor="#BA1A1A"
+        android:pathData="M208,58c0,-2 2,-3 3,-1s0,3 -2,3 -1,-1 -1,-2zM216,64c0,-2 2,-3 3,-1s0,3 -2,3 -1,-1 -1,-2z" />
+    <!-- Fragrant steam -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.65"
+        android:pathData="M208,34c-1,-4 1,-8 3,-11s-1,-4 -2,-6h1c2,2 3,6 1,9s-2,6 -2,8h-1z" />
+</vector>

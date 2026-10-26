@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/_32dp"
+    android:height="@dimen/_32dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Citadel Gate Roof / Imperial Silhouette -->
+    <path
+        android:fillColor="@color/hue_primary"
+        android:pathData="M24,4L4,14h40L24,4zM10,16v8h4v-8h20v8h4v-8h2v10H8V16H10z" />
+    <!-- Culinary bowl with chopsticks and warm sun -->
+    <path
+        android:fillColor="@color/hue_secondary_container"
+        android:pathData="M24,20c-3.3,0 -6,2.7 -6,6h12C30,22.7 27.3,20 24,20z" />
+    <path
+        android:fillColor="@color/hue_primary"
+        android:pathData="M14,28c0,5.52 4.48,10 10,10s10,-4.48 10,-10H14z" />
+    <path
+        android:fillColor="@color/hue_secondary"
+        android:pathData="M22,40h4v4h-4z" />
+</vector>

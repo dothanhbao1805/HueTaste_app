@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/_80dp"
+    android:height="@dimen/_80dp"
+    android:viewportWidth="80"
+    android:viewportHeight="80">
+    <!-- Classic Citadel yellow wall background -->
+    <path
+        android:fillColor="#F6DEB4"
+        android:pathData="M0,0h80v80H0z" />
+    <!-- Tiled roof top / eaves -->
+    <path
+        android:fillColor="#8C4223"
+        android:pathData="M0,0h80v14L70,22H10L0,14V0z" />
+    <path
+        android:fillColor="#682E16"
+        android:pathData="M0,0h80v6H0z" />
+    <!-- Wooden door frame & sign -->
+    <path
+        android:fillColor="#543A2E"
+        android:pathData="M22,22h36v58H22z" />
+    <path
+        android:fillColor="#FDC254"
+        android:pathData="M26,26h28v12H26z" />
+    <path
+        android:fillColor="#C8452B"
+        android:pathData="M29,30h10v5H29zM42,30h9v5h-9z" />
+    <!-- Trays of Hue cakes on display counter -->
+    <path
+        android:fillColor="#D89243"
+        android:pathData="M8,54h64v22c0,2.2 -1.8,4 -4,4H12c-2.2,0 -4,-1.8 -4,-4V54z" />
+    <!-- Ceramic plates with cakes -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M20,50c0,-3.3 5.4,-6 12,-6s12,2.7 12,6 -5.4,6 -12,6 -12,-2.7 -12,-6zM46,52c0,-3.3 5.4,-6 12,-6s12,2.7 12,6 -5.4,6 -12,6 -12,-2.7 -12,-6z" />
+    <!-- Garnishes -->
+    <path
+        android:fillColor="#DE623F"
+        android:pathData="M28,49c0,-1.5 2,-2.5 4,-2.5s4,1 4,2.5 -2,2.5 -4,2.5 -4,-1 -4,-2.5z" />
+    <path
+        android:fillColor="#4E8D42"
+        android:pathData="M54,51c0,-1.5 2,-2.5 4,-2.5s4,1 4,2.5 -2,2.5 -4,2.5 -4,-1 -4,-2.5z" />
+</vector>

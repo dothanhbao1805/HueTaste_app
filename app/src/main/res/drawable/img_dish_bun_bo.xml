@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/_260dp"
+    android:height="@dimen/_144dp"
+    android:viewportWidth="260"
+    android:viewportHeight="144">
+    <!-- Background table surface -->
+    <path
+        android:fillColor="#F6F1EA"
+        android:pathData="M0,0h260v144H0z" />
+    <!-- Placemat / cloth accent -->
+    <path
+        android:fillColor="#EDE3D5"
+        android:pathData="M15,10h230c8.8,0 16,7.2 16,16v108c0,8.8 -7.2,16 -16,16H15c-8.8,0 -16,-7.2 -16,-16V26c0,-8.8 7.2,-16 16,-16z" />
+    <!-- Large Ceramic Bowl rim -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M130,16c-48.6,0 -88,25.1 -88,56s39.4,56 88,56 88,-25.1 88,-56 -39.4,-56 -88,-56z" />
+    <!-- Bowl rim decoration -->
+    <path
+        android:fillColor="#DFC7AE"
+        android:pathData="M130,20c-45.3,0 -82,23.3 -82,52s36.7,52 82,52 82,-23.3 82,-52 -36.7,-52 -82,-52z" />
+    <!-- Rich Spicy Beef Broth -->
+    <path
+        android:fillColor="#C8452B"
+        android:pathData="M130,24c-42,0 -76,21.5 -76,48s34,48 76,48 76,-21.5 76,-48 -34,-48 -76,-48z" />
+    <!-- Chili oil layer / golden sheen -->
+    <path
+        android:fillColor="#DE623F"
+        android:pathData="M130,30c-35.3,0 -64,18 -64,40s28.7,40 64,40 64,-18 64,-40 -28.7,-40 -64,-40z" />
+    <!-- Thick rice noodles -->
+    <path
+        android:fillColor="#FFF6EB"
+        android:pathData="M100,55c15,-8 35,-6 48,4s-10,18 -25,20 -28,-14 -23,-24z" />
+    <path
+        android:fillColor="#FFF6EB"
+        android:pathData="M125,60c20,-5 32,8 30,18s-22,12 -34,4 4,-22 4,-22z" />
+    <!-- Tender beef shank slices -->
+    <path
+        android:fillColor="#6A271B"
+        android:pathData="M92,62c0,-9 12,-16 26,-16s24,7 24,15 -10,16 -24,16 -26,-6 -26,-15z" />
+    <path
+        android:fillColor="#8C3524"
+        android:pathData="M98,64c0,-6 8,-11 18,-11s16,5 16,10 -7,11 -16,11 -18,-4 -18,-10z" />
+    <!-- Golden Crab ball (chả cua) -->
+    <path
+        android:fillColor="#FDC254"
+        android:pathData="M148,68c-4.4,0 -8,3.6 -8,8s3.6,8 8,8 8,-3.6 8,-8 -3.6,-8 -8,-8z" />
+    <path
+        android:fillColor="#F7A71B"
+        android:pathData="M165,72c-3.3,0 -6,2.7 -6,6s2.7,6 6,6 6,-2.7 6,-6 -2.7,-6 -6,-6z" />
+    <!-- Fresh herbs, scallions, chili rings -->
+    <path
+        android:fillColor="#4E8D42"
+        android:pathData="M110,48c2,-3 6,-2 8,1s-1,6 -4,5 -5,-3 -4,-6zM136,52c3,-2 7,0 7,3s-3,5 -6,4 -3,-5 -1,-7zM120,78c3,-2 6,0 6,3s-2,5 -5,4 -3,-5 -1,-7z" />
+    <path
+        android:fillColor="#BA1A1A"
+        android:pathData="M138,82c0,-2 2,-4 5,-4s4,2 4,4 -2,4 -4,4 -5,-2 -5,-4z" />
+    <!-- Rising fragrant steam lines -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.6"
+        android:pathData="M115,22c-2,-5 1,-10 3,-14s-1,-6 -2,-8h1c2,3 4,7 2,12s-3,7 -3,10h-1zM140,24c-2,-6 2,-11 4,-16s-1,-6 -2,-8h1c2,3 4,8 2,13s-3,8 -4,11h-1z" />
+</vector>

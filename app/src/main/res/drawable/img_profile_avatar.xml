@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/_36dp"
+    android:height="@dimen/_36dp"
+    android:viewportWidth="36"
+    android:viewportHeight="36">
+    <!-- Warm skin tone base -->
+    <path
+        android:fillColor="#F6DDD1"
+        android:pathData="M0,0h36v36H0z" />
+    <!-- Hair back -->
+    <path
+        android:fillColor="#34221D"
+        android:pathData="M18,4c-6.6,0 -12,5.4 -12,12v12h24V16c0,-6.6 -5.4,-12 -12,-12z" />
+    <!-- Face / neck -->
+    <path
+        android:fillColor="#FCEAE0"
+        android:pathData="M18,9c-4.4,0 -8,3.6 -8,8s3.6,8 8,8 8,-3.6 8,-8 -3.6,-8 -8,-8z" />
+    <path
+        android:fillColor="#FCEAE0"
+        android:pathData="M16,22h4v5h-4z" />
+    <!-- Hair front / bangs -->
+    <path
+        android:fillColor="#34221D"
+        android:pathData="M10,13c2,-3 6,-5 10,-5s8,2 9,5c-2,-2 -5,-3 -8,-3s-8,1 -11,3z" />
+    <!-- Soft blush -->
+    <path
+        android:fillColor="#F2A69B"
+        android:fillAlpha="0.6"
+        android:pathData="M13,18a2,1.5 0,1 0,4 0a2,1.5 0,1 0,-4 0zM21,18a2,1.5 0,1 0,4 0a2,1.5 0,1 0,-4 0z" />
+    <!-- Eyes and smile -->
+    <path
+        android:fillColor="#34221D"
+        android:pathData="M14,16c0,-0.6 0.6,-1 1.2,-1s1.2,0.4 1.2,1 -0.6,1 -1.2,1 -1.2,-0.4 -1.2,-1zM20,16c0,-0.6 0.6,-1 1.2,-1s1.2,0.4 1.2,1 -0.6,1 -1.2,1 -1.2,-0.4 -1.2,-1z" />
+    <path
+        android:fillColor="#C8452B"
+        android:pathData="M16.5,20c0,1 0.7,1.5 1.5,1.5s1.5,-0.5 1.5,-1.5H16.5z" />
+    <!-- Outfit (Áo dài collar / warm imperial red) -->
+    <path
+        android:fillColor="#C8452B"
+        android:pathData="M11,27c-3,0 -6,2.2 -6,5.5V36h26v-3.5c0,-3.3 -3,-5.5 -6,-5.5H11z" />
+</vector>

@@ -1,0 +1,9 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/rippleLight"> <!-- Màu ripple đen nhạt cho light mode -->
+
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" /> <!-- Nền trắng -->
+        </shape>
+    </item>
+</ripple>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="backgroundLight">#F0F6FF</color>
+    <color name="cardBackgroundLight">#FFFFFF</color>
+    <color name="white_70">#B2FFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="white_16">#29FFFFFF</color>
+    <color name="white_20">#33FFFFFF</color>
+    <color name="white_25">#40FFFFFF</color>
+    <color name="black_60">#99000000</color>
+    <color name="black_50">#80000000</color>
+    <color name="backgroundDark">#181A20</color>
+    <color name="cardBackgroundDark">#1F222A</color>
+
+    <color name="textPrimaryLight">#0F172A</color>
+    <color name="textSecondaryLight">#94A3B8</color>
+    <color name="textTertiaryLight">#B0B0B0</color>
+
+    <color name="textPrimaryDark">#FFFFFF</color>
+    <color name="textSecondaryDark">#A3A9BF</color>
+    <color name="textTertiaryDark">#80ffffff</color>
+
+    <color name="primaryLight">#E4EBE4</color>
+    <color name="secondaryLight">#E0B35E</color>
+    <color name="tertiaryLight">#FFEBEC</color>
+
+    <color name="primaryDark">#3D6FF7</color>
+    <color name="secondaryDark">#DFE9FF</color>
+    <color name="tertiaryDark">#FFD1D4</color>
+
+    <color name="onPrimaryLight">#FFFFFF</color>
+    <color name="onSecondaryLight">#E1E1E1</color>
+    <color name="onTertiaryLight">#AFAFAF</color>
+
+    <color name="onPrimaryDark">#0B0B0B</color>
+    <color name="onSecondaryDark">#0B0B0B</color>
+    <color name="onTertiaryDark">#0B0B0B</color>
+
+    <color name="dividerLight">#EBF2F0</color>
+    <color name="dividerDark">#33363D</color>
+
+    <color name="rippleLight">#22000000</color>
+    <color name="rippleDark">#44000000</color>
+
+    <color name="toolsThemeLight">#1449F4</color>
+    <color name="onToolsThemeLight">#FFFFFF</color>
+    <color name="toolsThemeDark">#1449F4</color>
+    <color name="onToolsThemeDark">#FFFFFF</color>
+    <color name="switchLight">#EDEDED</color>
+    <color name="switchDark">#303540</color>
+
+    <color name="shadowLight">#1A1B21BB</color>
+    <color name="shadowDark">#1A1B21BB</color>
+
+    <color name="blueGray800Light">#F1F4FE</color>
+    <color name="blueGray800Dark">#F1F4FE</color>
+    <color name="color_button">#181518</color>
+    <color name="bg_home">#F2F7FF</color>
+    <color name="bg_line">#F2F2F2</color>
+    <color name="bg_gay">#94A3B8</color>
+    <color name="bg_primary">#00692A</color>
+    <color name="bg_primary_16">#291449F4</color>
+    <color name="text_main">#111626</color>
+    <color name="bg_pro">#FFC445</color>
+    <color name="test_yellow">#EAAF0C</color>
+    <color name="color_orange">#F45414</color>
+    <color name="color_gray">#6C7B8F</color>
+    <color name="color_yellow">#FF8800</color>
+    <color name="card_yellow">#14FF8800</color>
+    <color name="card_gray">#E8F0FA</color>
+    <color name="card_black">#0B132C</color>
+    <color name="text_gray">#64748B</color>
+    <color name="card_gray_light">#F1F5F9</color>
+    <color name="card_blue_light">#EFF6FF</color>
+    <color name="text_black">#334155</color>
+    <color name="color_red">#FF5454</color>
+    <color name="color_shimmer">#E2E2E2</color>
+    <color name="color_pos_1">#FF3A3A</color>
+    <color name="color_pos_2">#FE6E00</color>
+    <color name="color_pos_3">#FEC300</color>
+    <color name="color_pos_4">#94A3B8</color>
+    <color name="bg_button_gray">#CBD5E1</color>
+    <color name="bg_light">#F4F8FC</color>
+    <color name="bg_dark">#1E1E1E</color>
+    <color name="bg_combined">#F2E8D1</color>
+    <color name="border_light">#80CDDAF6</color>
+    <color name="bg_dark_sheet">#3C3C3C</color>
+    <color name="bg_combined_sheet">#F7EFDE</color>
+    <color name="bg_card_light">#F7EFDE</color>
+    <color name="bg_card_dark">#1F5E0A0A</color>
+    <color name="bg_card_combined">#14F15F5F</color>
+    <color name="text_gray_600">#4B5563</color>
+    <color name="text_gray_500">#6B7280</color>
+    <color name="text_gray_300">#D1D5DB</color>
+    <color name="bg_photo_view">#D3E0F2</color>
+    <color name="colorAccent">#6D4CFF</color>
+    <color name="colorAccent2">#A5AFFD</color>
+    <color name="tools_theme">#5054EC</color>
+    <color name="colorAccentLight">#E4F1FF</color>
+    <color name="textColor">#18181B</color>
+    <color name="bg_actor">#565454</color>
+    <color name="bg_image">#E0EDFF</color>
+    <color name="bg_ads">#F2F5FA</color>
+    <color name="background_main">#F9FBFF</color>
+    <color name="bg_card_result">#EBF2F0</color>
+
+
+
+
+
+
+
+</resources>

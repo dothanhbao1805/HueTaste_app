@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary">#C8452B</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="navigation_item_ripple">#24C8452B</color>
+
+    <!-- Hue Taste palette taken from the Stitch design system (light only). -->
+    <color name="hue_surface">#FCF9F8</color>
+    <color name="hue_surface_lowest">#FFFFFF</color>
+    <color name="hue_surface_container_low">#F6F3F2</color>
+    <color name="hue_surface_container">#F0EDED</color>
+    <color name="hue_surface_container_high">#EAE7E7</color>
+    <color name="hue_primary">#C8452B</color>
+    <color name="hue_primary_90">#E6C8452B</color>
+    <color name="hue_primary_20">#33C8452B</color>
+    <color name="hue_primary_fixed_40">#66FFDAD3</color>
+    <color name="hue_on_primary">#FFFFFF</color>
+    <color name="hue_on_surface">#1B1C1C</color>
+    <color name="hue_on_surface_variant">#59413C</color>
+    <color name="hue_secondary">#7D5700</color>
+    <color name="hue_secondary_container">#FDC254</color>
+    <color name="hue_secondary_container_40">#66FDC254</color>
+    <color name="hue_on_secondary_container">#725000</color>
+    <color name="hue_secondary_fixed">#FFDEAA</color>
+    <color name="hue_secondary_fixed_40">#66FFDEAA</color>
+    <color name="hue_on_secondary_fixed">#271900</color>
+    <color name="hue_outline_hairline">#F0E5D8</color>
+    <color name="hue_surface_80">#CCFCF9F8</color>
+    <color name="hue_card_shadow">#1AC8452B</color>
+</resources>

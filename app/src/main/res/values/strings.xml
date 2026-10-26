@@ -1,0 +1,92 @@
+<resources>
+    <string name="app_name">HueTaste</string>
+    <string name="tab_home">Trang chủ</string>
+    <string name="tab_search">Tìm kiếm</string>
+    <string name="tab_ai_assistant">AI</string>
+    <string name="tab_favorites">Yêu thích</string>
+    <string name="tab_profile">Cá nhân</string>
+
+    <!-- Home: header -->
+    <string name="home_location">Huế, Việt Nam</string>
+    <string name="home_location_subtitle">Trang Chủ</string>
+    <string name="home_notifications">Thông báo</string>
+    <string name="home_profile_photo">Hồ sơ cá nhân</string>
+    <string name="home_change_location">Chọn địa điểm</string>
+
+    <!-- Home: greeting -->
+    <string name="home_greeting_label">Khám phá cố đô</string>
+    <string name="home_greeting_title">Chào buổi sáng, Mai Linh! ☀️</string>
+    <string name="home_context_summary"><b>Sáng nay</b> • 24°C se lạnh, nắng nhẹ • Gần Cầu Tràng Tiền</string>
+
+    <!-- Home: dining matcher -->
+    <string name="home_matcher_title">Hôm nay bạn muốn ăn gì?</string>
+    <string name="home_matcher_badge">Tự động gợi ý</string>
+    <string name="home_meal_breakfast">Bữa sáng</string>
+    <string name="home_meal_lunch">Bữa trưa</string>
+    <string name="home_meal_dinner">Bữa tối</string>
+    <string name="home_meal_snacks">Ăn vặt</string>
+    <string name="home_budget_label">Ngân sách mong muốn:</string>
+    <string name="home_budget_min">20k</string>
+    <string name="home_budget_mid">50k</string>
+    <string name="home_budget_max">100k+</string>
+    <string name="home_budget_slider">Ngân sách</string>
+    <string name="home_notes_hint">Ít cay, có nước dùng ấm nóng, nhiều rau...</string>
+    <string name="home_suggest_button">Gợi ý món ăn ngay</string>
+
+    <!-- Home: suggested dishes -->
+    <string name="home_suggested_title">Món ăn gợi ý cho bạn</string>
+    <string name="home_suggested_subtitle">Dựa trên thời tiết se lạnh &amp; khẩu vị</string>
+    <string name="home_see_all">Xem tất cả</string>
+    <string name="home_add_favorite">Thêm vào yêu thích</string>
+    <string name="home_match_98">98% hợp vị</string>
+    <string name="home_match_92">92% hợp vị</string>
+    <string name="home_match_89">89% hợp vị</string>
+    <string name="home_dish_beef_tag">Hợp sáng se lạnh, cay ấm</string>
+    <string name="home_dish_beef_name">Bún bò Huế đặc biệt</string>
+    <string name="home_dish_beef_desc">Nước dùng hầm xương sả, chả cua giòn</string>
+    <string name="home_dish_beef_price">45.000 ₫</string>
+    <string name="home_dish_beef_rating">4.9</string>
+    <string name="home_dish_banhbeo_tag">Ăn nhẹ buổi sáng</string>
+    <string name="home_dish_banhbeo_name">Bánh bèo chén tôm cháy</string>
+    <string name="home_dish_banhbeo_desc">Khay 10 chén nóng hổi, tóp mỡ da heo</string>
+    <string name="home_dish_banhbeo_price">30.000 ₫</string>
+    <string name="home_dish_banhbeo_rating">4.8</string>
+    <string name="home_dish_comhen_tag">Đậm đà sông Hương</string>
+    <string name="home_dish_comhen_name">Cơm hến Cồn Hến</string>
+    <string name="home_dish_comhen_desc">Kèm chén nước hến bốc khói cay nồng</string>
+    <string name="home_dish_comhen_price">25.000 ₫</string>
+    <string name="home_dish_comhen_rating">4.7</string>
+
+    <!-- Home: categories -->
+    <string name="home_categories_title">Danh mục đặc sản</string>
+    <string name="home_categories_caption">5 nét tinh hoa</string>
+    <string name="home_category_noodles">Bún &amp; Mì</string>
+    <string name="home_category_cakes">Bánh Huế</string>
+    <string name="home_category_clam_rice">Cơm hến</string>
+    <string name="home_category_desserts">Chè cung đình</string>
+    <string name="home_category_snacks">Ăn vặt</string>
+
+    <!-- Home: nearby -->
+    <string name="home_nearby_title">Địa điểm gần bạn</string>
+    <string name="home_nearby_subtitle">Bán kính dưới 1km quanh Tràng Tiền</string>
+    <string name="home_map_link">Bản đồ</string>
+    <string name="home_open_now">Đang mở cửa</string>
+    <string name="home_place_photo">Hình ảnh quán</string>
+    <string name="home_place_tuyet_name">Bún bò Bà Tuyết</string>
+    <string name="home_place_tuyet_address">47 Nguyễn Công Trứ, P. Phú Hội</string>
+    <string name="home_place_tuyet_distance">350m</string>
+    <string name="home_place_tuyet_price">₫₫ (35k - 60k)</string>
+    <string name="home_place_tuyet_rating">4.9</string>
+    <string name="home_place_hanh_name">Quán Hạnh - Bánh Huế</string>
+    <string name="home_place_hanh_address">11 Phố Phó Đức Chính, Phú Hội</string>
+    <string name="home_place_hanh_distance">800m</string>
+    <string name="home_place_hanh_price">₫₫ (20k - 50k)</string>
+    <string name="home_place_hanh_rating">4.8</string>
+
+    <!-- Home: scan -->
+    <string name="home_scan_dish">Quét món</string>
+    <string name="home_scan_dish_description">Quét nhận diện món ăn</string>
+
+    <string name="home_budget_format">%1$s ₫</string>
+    <string name="home_food_photo">Hình ảnh món ăn</string>
+</resources>

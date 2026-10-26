@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FFB59D</color>
+    <color name="on_primary">#57200F</color>
+    <color name="navigation_item_ripple">#33FFB59D</color>
+</resources>

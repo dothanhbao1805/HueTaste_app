@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="circle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="corner_7dp">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_7sdp</item>
+    </style>
+
+    <style name="corner_10dp">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_10sdp</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomSheetFragmentStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/background_main</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="colorAccent">@color/toolsThemeDark</item>
+        <item name="colorPrimary">@color/primaryLight</item>
+    </style>
+
+    <style name="BottomSheetFragmentStyleWhite" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:navigationBarColor">@color/background_main</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="colorAccent">@color/toolsThemeDark</item>
+        <item name="colorPrimary">@color/background_main</item>
+    </style>
+
+    <style name="BottomSheetFragmentStyleBgLight" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/background_main</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="colorAccent">@color/toolsThemeDark</item>
+        <item name="colorPrimary">@color/primaryLight</item>
+    </style>
+
+    <style name="BottomSheetFragmentStyleAdjustResize" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize|stateVisible</item>
+        <item name="android:navigationBarColor">@color/background_main</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+        <item name="colorAccent">@color/toolsThemeDark</item>
+        <item name="colorPrimary">@color/primaryLight</item>
+    </style>
+
+<!--    <style name="BottomSheetFragmentStyleAdjustResize" parent="Theme.Design.Light.BottomSheetDialog">-->
+<!--        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>-->
+<!--        <item name="android:windowIsFloating">false</item>-->
+<!--        <item name="android:windowBackground">@android:color/transparent</item>-->
+<!--        <item name="android:windowSoftInputMode">adjustResize|stateVisible</item>-->
+<!--        <item name="android:navigationBarColor">@android:color/transparent</item>-->
+
+<!--        <item name="android:backgroundDimEnabled">false</item>-->
+<!--&lt;!&ndash;        <item name="android:windowDimAmount">0</item>&ndash;&gt;-->
+
+<!--        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>-->
+<!--        <item name="colorAccent">@color/toolsThemeDark</item>-->
+<!--        <item name="colorPrimary">@color/primaryLight</item>-->
+<!--    </style>-->
+
+    <style name="CardCornerTop.15dp" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeCardCornerTop.15dp</item>
+    </style>
+
+    <style name="ShapeCardCornerTop.15dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/_15sdp</item>
+        <item name="cornerSizeTopLeft">@dimen/_15sdp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="CardCornerBottom.15dp" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeCardCornerBottom.15dp</item>
+    </style>
+
+    <style name="ShapeCardCornerBottom.15dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">@dimen/_15sdp</item>
+        <item name="cornerSizeBottomLeft">@dimen/_15sdp</item>
+    </style>
+
+    <style name="CardCorner.50Percent" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeCardCorner.50Percent</item>
+    </style>
+
+    <style name="ShapeCardCorner.50Percent" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="CardCorner.OnlyLeftBottom.25dp" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="shapeAppearanceOverlay">@style/ShapeCardCorner.OnlyLeftBottom.25dp</item>
+    </style>
+
+    <style name="ShapeCardCorner.OnlyLeftBottom.25dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">@dimen/_25sdp</item>
+    </style>
+
+    <style name="FullScreenDialogStyle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@color/backgroundLight</item>
+    </style>
+
+</resources>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/_260dp"
+    android:height="@dimen/_144dp"
+    android:viewportWidth="260"
+    android:viewportHeight="144">
+    <!-- Bamboo tray / table surface -->
+    <path
+        android:fillColor="#F4EDE4"
+        android:pathData="M0,0h260v144H0z" />
+    <path
+        android:fillColor="#E8DAC8"
+        android:pathData="M18,12h224c6.6,0 12,5.4 12,12v96c0,6.6 -5.4,12 -12,12H18c-6.6,0 -12,-5.4 -12,-12V24c0,-6.6 5.4,-12 12,-12z" />
+    <!-- Dish 1 (Left) -->
+    <path
+        android:fillColor="#DFCAC0"
+        android:pathData="M75,32c-22,0 -40,14 -40,32s18,32 40,32 40,-14 40,-32 -18,-32 -40,-32z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M75,36c-18.8,0 -34,12 -34,27s15.2,27 34,27 34,-12 34,-27 -15.2,-27 -34,-27z" />
+    <!-- White rice cake surface -->
+    <path
+        android:fillColor="#F6F3EE"
+        android:pathData="M75,40c-15.5,0 -28,10 -28,22.5s12.5,22.5 28,22.5 28,-10 28,-22.5 -12.5,-22.5 -28,-22.5z" />
+    <!-- Orange shrimp floss (tôm cháy) -->
+    <path
+        android:fillColor="#DE623F"
+        android:pathData="M75,48c-7.7,0 -14,5.4 -14,12s6.3,12 14,12 14,-5.4 14,-12 -6.3,-12 -14,-12z" />
+    <!-- Crispy pork crackling (tóp mỡ da heo) & scallion oil -->
+    <path
+        android:fillColor="#E59C39"
+        android:pathData="M70,56h6v5h-6zM77,54h5v5h-5zM69,63h5v4h-5z" />
+    <path
+        android:fillColor="#3D7E31"
+        android:pathData="M66,54c0,-2 3,-3 5,-1s1,4 -2,4 -3,-1 -3,-3zM78,64c0,-2 3,-3 4,-1s0,3 -2,3 -2,-1 -2,-2z" />
+
+    <!-- Dish 2 (Center-Right) -->
+    <path
+        android:fillColor="#DFCAC0"
+        android:pathData="M165,42c-26,0 -47,16 -47,36s21,36 47,36 47,-16 47,-36 -21,-36 -47,-36z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M165,46c-22,0 -40,13.8 -40,31s18,31 40,31 40,-13.8 40,-31 -18,-31 -40,-31z" />
+    <path
+        android:fillColor="#F6F3EE"
+        android:pathData="M165,51c-18,0 -33,11.5 -33,25.5s15,25.5 33,25.5 33,-11.5 33,-25.5 -15,-25.5 -33,-25.5z" />
+    <!-- Orange shrimp floss -->
+    <path
+        android:fillColor="#DE623F"
+        android:pathData="M165,60c-9.9,0 -18,6.7 -18,15s8.1,15 18,15 18,-6.7 18,-15 -8.1,-15 -18,-15z" />
+    <path
+        android:fillColor="#E59C39"
+        android:pathData="M158,68h7v6h-7zM167,66h6v6h-6zM160,78h6v5h-6z" />
+    <path
+        android:fillColor="#3D7E31"
+        android:pathData="M154,66c0,-2 3,-3 5,-1s1,4 -2,4 -3,-1 -3,-3zM172,78c0,-2 3,-3 4,-1s0,4 -2,4 -2,-1 -2,-3z" />
+
+    <!-- Sauce bowl (Chén nước mắm ớt) -->
+    <path
+        android:fillColor="#E2CFBA"
+        android:pathData="M225,24c-13,0 -24,8.5 -24,19s11,19 24,19 24,-8.5 24,-19 -11,-19 -24,-19z" />
+    <path
+        android:fillColor="#C67026"
+        android:pathData="M225,28c-10,0 -18,6.5 -18,14.5s8,14.5 18,14.5 18,-6.5 18,-14.5 -8,-14.5 -18,-14.5z" />
+    <!-- Red chili slices -->
+    <path
+        android:fillColor="#BA1A1A"
+        android:pathData="M222,38c0,-2 2,-3 4,-1s0,3 -2,3 -2,-1 -2,-2zM228,44c0,-2 2,-3 3,-1s0,3 -2,3 -1,-1 -1,-2z" />
+</vector>

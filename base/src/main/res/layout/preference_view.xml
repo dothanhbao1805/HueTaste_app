@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.base.common.widget.LsCardView
+        android:id="@+id/viewClicks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bgColor="cardBackground"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="0dp">
+
+        <com.base.common.widget.LsConstraintView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingVertical="@dimen/_12sdp">
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/preview"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:padding="@dimen/_1sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tertiary"
+                app:layout_constraintStart_toEndOf="@id/preview"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    app:textColor="textPrimary"
+                    app:textSize="primary"
+                    tools:text="@tools:sample/full_names" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    app:textColor="textSecondary"
+                    app:textSize="secondary"
+                    tools:text="@tools:sample/full_names" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/tertiary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:ellipsize="end"
+                android:maxLength="20"
+                android:singleLine="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/widgetFrame"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textColor="textTertiary"
+                app:textSize="tertiary"
+                tools:text="@tools:sample/full_names" />
+
+            <com.base.common.widget.LsFrameView
+                android:id="@+id/widgetFrame"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.base.common.widget.LsConstraintView>
+
+    </com.base.common.widget.LsCardView>
+
+</com.base.common.widget.LsLinearView>

@@ -1,0 +1,1728 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/homeRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hue_surface">
+
+    <com.base.common.widget.LsConstraintView
+        android:id="@+id/headerBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_64dp"
+        android:background="@color/hue_surface"
+        android:elevation="@dimen/_2dp"
+        android:paddingHorizontal="@dimen/_10dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.base.common.widget.LsLinearView
+            android:id="@+id/headerBrandGroup"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/notificationsButton">
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/headerLogo"
+                android:layout_width="@dimen/_32dp"
+                android:layout_height="@dimen/_32dp"
+                android:src="@drawable/ic_huetaste_logo"
+                android:contentDescription="@string/app_name" />
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/locationGroup"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/_8dp"
+                android:orientation="vertical">
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/locationRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/home_change_location"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_18dp"
+                        android:layout_height="@dimen/_18dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_location"
+                        android:tint="@color/hue_primary" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/home_location"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="semi" />
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_16dp"
+                        android:layout_height="@dimen/_16dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_expand_more"
+                        android:tint="@color/hue_on_surface_variant" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_location_subtitle"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="regular" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/notificationsButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:contentDescription="@string/home_notifications"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_notifications"
+            android:tint="@color/hue_on_surface_variant"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/profileAvatar"
+            app:rippleBackground="rippleBorderless" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/profileAvatar"
+            android:layout_width="@dimen/_36dp"
+            android:layout_height="@dimen/_36dp"
+            android:layout_marginStart="@dimen/_4dp"
+            android:contentDescription="@string/home_profile_photo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_profile_avatar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Circle"
+            app:strokeColor="@color/hue_primary_20"
+            app:strokeWidth="@dimen/_2dp" />
+
+    </com.base.common.widget.LsConstraintView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/homeScroll"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingBottom="@dimen/_80dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/headerBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_24dp"
+            android:paddingTop="@dimen/_4dp">
+
+            <!-- 1. Context & Greeting Banner -->
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:orientation="vertical">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:letterSpacing="0.08"
+                            android:textAllCaps="true"
+                            android:text="@string/home_greeting_label"
+                            android:textColor="@color/hue_primary"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="semi" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2dp"
+                            android:text="@string/home_greeting_title"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_20sp"
+                            app:textFont="semi" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsFrameView
+                        android:layout_width="@dimen/_40dp"
+                        android:layout_height="@dimen/_40dp"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:background="@drawable/bg_home_sun">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_22dp"
+                            android:layout_height="@dimen/_22dp"
+                            android:layout_gravity="center"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_wb_sunny"
+                            android:tint="@color/hue_secondary" />
+
+                    </com.base.common.widget.LsFrameView>
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:background="@drawable/bg_home_context"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_12dp"
+                    android:paddingVertical="@dimen/_8dp">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_18dp"
+                        android:layout_height="@dimen/_18dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_schedule"
+                        android:tint="@color/hue_primary" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="@string/home_context_summary"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="medium" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <!-- 2. Interactive Dining Matcher Card -->
+            <com.base.common.widget.LsCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_20dp"
+                android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                android:outlineSpotShadowColor="@color/hue_card_shadow"
+                app:cardBackgroundColor="@color/hue_surface_lowest"
+                app:cardCornerRadius="@dimen/_16dp"
+                app:cardElevation="@dimen/_2dp"
+                app:strokeColor="@color/hue_outline_hairline"
+                app:strokeWidth="@dimen/_1dp">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_16dp">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsFrameView
+                            android:layout_width="@dimen/_28dp"
+                            android:layout_height="@dimen/_28dp"
+                            android:background="@drawable/bg_home_icon_tile">
+
+                            <com.base.common.widget.LsImageView
+                                android:layout_width="@dimen/_18dp"
+                                android:layout_height="@dimen/_18dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_restaurant"
+                                android:tint="@color/hue_on_primary" />
+
+                        </com.base.common.widget.LsFrameView>
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:layout_weight="1"
+                            android:text="@string/home_matcher_title"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_16sp"
+                            app:textFont="semi" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:background="@drawable/bg_home_pill_gold"
+                            android:paddingHorizontal="@dimen/_8dp"
+                            android:paddingVertical="@dimen/_2dp"
+                            android:text="@string/home_matcher_badge"
+                            android:textColor="@color/hue_on_secondary_fixed"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="semi" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:overScrollMode="never"
+                        android:scrollbars="none">
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/mealBreakfast"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_home_chip"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_36dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:text="@string/home_meal_breakfast"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/mealLunch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_home_chip"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_36dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:text="@string/home_meal_lunch"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/mealDinner"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_home_chip"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_36dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:text="@string/home_meal_dinner"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/mealSnacks"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_home_chip"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_36dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:text="@string/home_meal_snacks"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </HorizontalScrollView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:background="@drawable/bg_home_panel"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_12dp">
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="@dimen/_0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/home_budget_label"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/budgetValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/home_dish_beef_price"
+                                android:textColor="@color/hue_primary"
+                                android:textSize="@dimen/text_16sp"
+                                app:textFont="bold" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.google.android.material.slider.Slider
+                            android:id="@+id/budgetSlider"
+                            style="@style/Widget.HueTaste.BudgetSlider"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:contentDescription="@string/home_budget_slider"
+                            android:stepSize="5000"
+                            android:value="45000"
+                            android:valueFrom="20000"
+                            android:valueTo="100000" />
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/home_budget_min"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="regular" />
+
+                            <com.base.common.widget.LsView
+                                android:layout_width="@dimen/_0dp"
+                                android:layout_height="@dimen/_0dp"
+                                android:layout_weight="1" />
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/home_budget_mid"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="regular" />
+
+                            <com.base.common.widget.LsView
+                                android:layout_width="@dimen/_0dp"
+                                android:layout_height="@dimen/_0dp"
+                                android:layout_weight="1" />
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/home_budget_max"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="regular" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsEditText
+                        android:id="@+id/notesInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:background="@drawable/bg_home_panel"
+                        android:drawableStart="@drawable/ic_edit"
+                        android:drawablePadding="@dimen/_8dp"
+                        android:drawableTint="@color/hue_on_surface_variant"
+                        android:hint="@string/home_notes_hint"
+                        android:imeOptions="actionDone"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:minHeight="@dimen/_48dp"
+                        android:paddingHorizontal="@dimen/_12dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textColorHint="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="regular" />
+
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/suggestButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:background="@drawable/bg_home_button_primary"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_48dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_24dp">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_20dp"
+                            android:layout_height="@dimen/_20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_auto_awesome"
+                            android:tint="@color/hue_on_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:text="@string/home_suggest_button"
+                            android:textColor="@color/hue_on_primary"
+                            android:textSize="@dimen/text_16sp"
+                            app:textFont="semi" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsCardView>
+
+            <!-- 3. Món ăn gợi ý cho bạn -->
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24dp"
+                android:orientation="vertical">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/home_suggested_title"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_18sp"
+                            app:textFont="semi" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2dp"
+                            android:text="@string/home_suggested_subtitle"
+                            android:textColor="@color/hue_on_surface_variant"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="regular" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/seeAllDishes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/_48dp"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/home_see_all"
+                            android:textColor="@color/hue_primary"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="semi" />
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_16dp"
+                            android:layout_height="@dimen/_16dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_chevron_right"
+                            android:tint="@color/hue_primary" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    android:paddingHorizontal="@dimen/_10dp"
+                    android:scrollbars="none">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <!-- Card 1: Bún bò Huế đặc biệt -->
+                        <com.base.common.widget.LsCardView
+                            android:layout_width="@dimen/_260dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_14dp"
+                            android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                            android:outlineSpotShadowColor="@color/hue_card_shadow"
+                            app:cardBackgroundColor="@color/hue_surface_lowest"
+                            app:cardCornerRadius="@dimen/_16dp"
+                            app:cardElevation="@dimen/_2dp"
+                            app:strokeColor="@color/hue_outline_hairline"
+                            app:strokeWidth="@dimen/_1dp">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <com.base.common.widget.LsFrameView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_144dp">
+
+                                    <com.base.common.widget.LsImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:contentDescription="@string/home_dish_beef_name"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/img_dish_bun_bo" />
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="top|start"
+                                        android:layout_margin="@dimen/_10dp"
+                                        android:background="@drawable/bg_home_badge_match"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:paddingHorizontal="@dimen/_8dp"
+                                        android:paddingVertical="@dimen/_2dp">
+
+                                        <com.base.common.widget.LsImageView
+                                            android:layout_width="@dimen/_14dp"
+                                            android:layout_height="@dimen/_14dp"
+                                            android:importantForAccessibility="no"
+                                            android:src="@drawable/ic_fire"
+                                            android:tint="@color/hue_on_primary" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_4dp"
+                                            android:text="@string/home_match_98"
+                                            android:textColor="@color/hue_on_primary"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="semi" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                    <com.base.common.widget.LsImageView
+                                        android:id="@+id/heartBeef"
+                                        android:layout_width="@dimen/_32dp"
+                                        android:layout_height="@dimen/_32dp"
+                                        android:layout_gravity="top|end"
+                                        android:layout_margin="@dimen/_10dp"
+                                        android:background="@drawable/bg_home_heart"
+                                        android:contentDescription="@string/home_add_favorite"
+                                        android:padding="@dimen/_8dp"
+                                        android:src="@drawable/ic_favorite"
+                                        android:tint="@color/home_heart_tint" />
+
+                                </com.base.common.widget.LsFrameView>
+
+                                <com.base.common.widget.LsLinearView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/_14dp">
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/bg_home_badge_gold"
+                                        android:paddingHorizontal="@dimen/_8dp"
+                                        android:paddingVertical="@dimen/_2dp"
+                                        android:text="@string/home_dish_beef_tag"
+                                        android:textColor="@color/hue_on_secondary_fixed"
+                                        android:textSize="@dimen/text_10sp"
+                                        app:textFont="semi" />
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_4dp"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/home_dish_beef_name"
+                                        android:textColor="@color/hue_on_surface"
+                                        android:textSize="@dimen/text_16sp"
+                                        app:textFont="semi" />
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_2dp"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/home_dish_beef_desc"
+                                        android:textColor="@color/hue_on_surface_variant"
+                                        android:textSize="@dimen/text_12sp"
+                                        app:textFont="regular" />
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_10dp"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal">
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/home_dish_beef_price"
+                                            android:textColor="@color/hue_primary"
+                                            android:textSize="@dimen/text_16sp"
+                                            app:textFont="bold" />
+
+                                        <com.base.common.widget.LsView
+                                            android:layout_width="@dimen/_0dp"
+                                            android:layout_height="@dimen/_0dp"
+                                            android:layout_weight="1" />
+
+                                        <com.base.common.widget.LsImageView
+                                            android:layout_width="@dimen/_16dp"
+                                            android:layout_height="@dimen/_16dp"
+                                            android:importantForAccessibility="no"
+                                            android:src="@drawable/ic_star"
+                                            android:tint="@color/hue_secondary_container" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_4dp"
+                                            android:text="@string/home_dish_beef_rating"
+                                            android:textColor="@color/hue_on_surface"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="semi" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                </com.base.common.widget.LsLinearView>
+
+                            </com.base.common.widget.LsLinearView>
+
+                        </com.base.common.widget.LsCardView>
+
+                        <!-- Card 2: Bánh bèo chén tôm cháy -->
+                        <com.base.common.widget.LsCardView
+                            android:layout_width="@dimen/_260dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_14dp"
+                            android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                            android:outlineSpotShadowColor="@color/hue_card_shadow"
+                            app:cardBackgroundColor="@color/hue_surface_lowest"
+                            app:cardCornerRadius="@dimen/_16dp"
+                            app:cardElevation="@dimen/_2dp"
+                            app:strokeColor="@color/hue_outline_hairline"
+                            app:strokeWidth="@dimen/_1dp">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <com.base.common.widget.LsFrameView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_144dp">
+
+                                    <com.base.common.widget.LsImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:contentDescription="@string/home_dish_banhbeo_name"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/img_dish_banh_beo" />
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="top|start"
+                                        android:layout_margin="@dimen/_10dp"
+                                        android:background="@drawable/bg_home_badge_match"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:paddingHorizontal="@dimen/_8dp"
+                                        android:paddingVertical="@dimen/_2dp">
+
+                                        <com.base.common.widget.LsImageView
+                                            android:layout_width="@dimen/_14dp"
+                                            android:layout_height="@dimen/_14dp"
+                                            android:importantForAccessibility="no"
+                                            android:src="@drawable/ic_thumb_up"
+                                            android:tint="@color/hue_on_primary" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_4dp"
+                                            android:text="@string/home_match_92"
+                                            android:textColor="@color/hue_on_primary"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="semi" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                    <com.base.common.widget.LsImageView
+                                        android:id="@+id/heartBanhBeo"
+                                        android:layout_width="@dimen/_32dp"
+                                        android:layout_height="@dimen/_32dp"
+                                        android:layout_gravity="top|end"
+                                        android:layout_margin="@dimen/_10dp"
+                                        android:background="@drawable/bg_home_heart"
+                                        android:contentDescription="@string/home_add_favorite"
+                                        android:padding="@dimen/_8dp"
+                                        android:src="@drawable/ic_favorite"
+                                        android:tint="@color/home_heart_tint" />
+
+                                </com.base.common.widget.LsFrameView>
+
+                                <com.base.common.widget.LsLinearView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/_14dp">
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/bg_home_badge_neutral"
+                                        android:paddingHorizontal="@dimen/_8dp"
+                                        android:paddingVertical="@dimen/_2dp"
+                                        android:text="@string/home_dish_banhbeo_tag"
+                                        android:textColor="@color/hue_on_surface_variant"
+                                        android:textSize="@dimen/text_10sp"
+                                        app:textFont="semi" />
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_4dp"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/home_dish_banhbeo_name"
+                                        android:textColor="@color/hue_on_surface"
+                                        android:textSize="@dimen/text_16sp"
+                                        app:textFont="semi" />
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_2dp"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/home_dish_banhbeo_desc"
+                                        android:textColor="@color/hue_on_surface_variant"
+                                        android:textSize="@dimen/text_12sp"
+                                        app:textFont="regular" />
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_10dp"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal">
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/home_dish_banhbeo_price"
+                                            android:textColor="@color/hue_primary"
+                                            android:textSize="@dimen/text_16sp"
+                                            app:textFont="bold" />
+
+                                        <com.base.common.widget.LsView
+                                            android:layout_width="@dimen/_0dp"
+                                            android:layout_height="@dimen/_0dp"
+                                            android:layout_weight="1" />
+
+                                        <com.base.common.widget.LsImageView
+                                            android:layout_width="@dimen/_16dp"
+                                            android:layout_height="@dimen/_16dp"
+                                            android:importantForAccessibility="no"
+                                            android:src="@drawable/ic_star"
+                                            android:tint="@color/hue_secondary_container" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_4dp"
+                                            android:text="@string/home_dish_banhbeo_rating"
+                                            android:textColor="@color/hue_on_surface"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="semi" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                </com.base.common.widget.LsLinearView>
+
+                            </com.base.common.widget.LsLinearView>
+
+                        </com.base.common.widget.LsCardView>
+
+                        <!-- Card 3: Cơm hến Cồn Hến -->
+                        <com.base.common.widget.LsCardView
+                            android:layout_width="@dimen/_260dp"
+                            android:layout_height="wrap_content"
+                            android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                            android:outlineSpotShadowColor="@color/hue_card_shadow"
+                            app:cardBackgroundColor="@color/hue_surface_lowest"
+                            app:cardCornerRadius="@dimen/_16dp"
+                            app:cardElevation="@dimen/_2dp"
+                            app:strokeColor="@color/hue_outline_hairline"
+                            app:strokeWidth="@dimen/_1dp">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <com.base.common.widget.LsFrameView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_144dp">
+
+                                    <com.base.common.widget.LsImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:contentDescription="@string/home_dish_comhen_name"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/img_dish_com_hen" />
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="top|start"
+                                        android:layout_margin="@dimen/_10dp"
+                                        android:background="@drawable/bg_home_badge_match"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:paddingHorizontal="@dimen/_8dp"
+                                        android:paddingVertical="@dimen/_2dp">
+
+                                        <com.base.common.widget.LsImageView
+                                            android:layout_width="@dimen/_14dp"
+                                            android:layout_height="@dimen/_14dp"
+                                            android:importantForAccessibility="no"
+                                            android:src="@drawable/ic_auto_awesome"
+                                            android:tint="@color/hue_on_primary" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_4dp"
+                                            android:text="@string/home_match_89"
+                                            android:textColor="@color/hue_on_primary"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="semi" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                    <com.base.common.widget.LsImageView
+                                        android:id="@+id/heartComHen"
+                                        android:layout_width="@dimen/_32dp"
+                                        android:layout_height="@dimen/_32dp"
+                                        android:layout_gravity="top|end"
+                                        android:layout_margin="@dimen/_10dp"
+                                        android:background="@drawable/bg_home_heart"
+                                        android:contentDescription="@string/home_add_favorite"
+                                        android:padding="@dimen/_8dp"
+                                        android:src="@drawable/ic_favorite"
+                                        android:tint="@color/home_heart_tint" />
+
+                                </com.base.common.widget.LsFrameView>
+
+                                <com.base.common.widget.LsLinearView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/_14dp">
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/bg_home_badge_neutral"
+                                        android:paddingHorizontal="@dimen/_8dp"
+                                        android:paddingVertical="@dimen/_2dp"
+                                        android:text="@string/home_dish_comhen_tag"
+                                        android:textColor="@color/hue_on_surface_variant"
+                                        android:textSize="@dimen/text_10sp"
+                                        app:textFont="semi" />
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_4dp"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/home_dish_comhen_name"
+                                        android:textColor="@color/hue_on_surface"
+                                        android:textSize="@dimen/text_16sp"
+                                        app:textFont="semi" />
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_2dp"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/home_dish_comhen_desc"
+                                        android:textColor="@color/hue_on_surface_variant"
+                                        android:textSize="@dimen/text_12sp"
+                                        app:textFont="regular" />
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_10dp"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal">
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/home_dish_comhen_price"
+                                            android:textColor="@color/hue_primary"
+                                            android:textSize="@dimen/text_16sp"
+                                            app:textFont="bold" />
+
+                                        <com.base.common.widget.LsView
+                                            android:layout_width="@dimen/_0dp"
+                                            android:layout_height="@dimen/_0dp"
+                                            android:layout_weight="1" />
+
+                                        <com.base.common.widget.LsImageView
+                                            android:layout_width="@dimen/_16dp"
+                                            android:layout_height="@dimen/_16dp"
+                                            android:importantForAccessibility="no"
+                                            android:src="@drawable/ic_star"
+                                            android:tint="@color/hue_secondary_container" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_4dp"
+                                            android:text="@string/home_dish_comhen_rating"
+                                            android:textColor="@color/hue_on_surface"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="semi" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                </com.base.common.widget.LsLinearView>
+
+                            </com.base.common.widget.LsLinearView>
+
+                        </com.base.common.widget.LsCardView>
+
+                    </com.base.common.widget.LsLinearView>
+
+                </HorizontalScrollView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <!-- 4. Danh mục đặc sản -->
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_24dp"
+                android:orientation="vertical">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/home_categories_title"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_18sp"
+                        app:textFont="semi" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_categories_caption"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="regular" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:orientation="horizontal">
+
+                    <!-- Cat 1: Bún & Mì -->
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/categoryNoodles"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_horizontal"
+                        android:minHeight="@dimen/_48dp"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsFrameView
+                            android:layout_width="@dimen/_52dp"
+                            android:layout_height="@dimen/_52dp"
+                            android:background="@drawable/bg_home_category_gold">
+
+                            <com.base.common.widget.LsImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_ramen_dining"
+                                android:tint="@color/hue_secondary" />
+
+                        </com.base.common.widget.LsFrameView>
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_6dp"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:text="@string/home_category_noodles"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="medium" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <!-- Cat 2: Bánh Huế -->
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/categoryCakes"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_horizontal"
+                        android:minHeight="@dimen/_48dp"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsFrameView
+                            android:layout_width="@dimen/_52dp"
+                            android:layout_height="@dimen/_52dp"
+                            android:background="@drawable/bg_home_category_primary">
+
+                            <com.base.common.widget.LsImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_bakery_dining"
+                                android:tint="@color/hue_primary" />
+
+                        </com.base.common.widget.LsFrameView>
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_6dp"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:text="@string/home_category_cakes"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="medium" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <!-- Cat 3: Cơm hến -->
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/categoryClamRice"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_horizontal"
+                        android:minHeight="@dimen/_48dp"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsFrameView
+                            android:layout_width="@dimen/_52dp"
+                            android:layout_height="@dimen/_52dp"
+                            android:background="@drawable/bg_home_category_gold">
+
+                            <com.base.common.widget.LsImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_rice_bowl"
+                                android:tint="@color/hue_secondary" />
+
+                        </com.base.common.widget.LsFrameView>
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_6dp"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:text="@string/home_category_clam_rice"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="medium" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <!-- Cat 4: Chè cung đình -->
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/categoryDesserts"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_horizontal"
+                        android:minHeight="@dimen/_48dp"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsFrameView
+                            android:layout_width="@dimen/_52dp"
+                            android:layout_height="@dimen/_52dp"
+                            android:background="@drawable/bg_home_category_primary">
+
+                            <com.base.common.widget.LsImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_icecream"
+                                android:tint="@color/hue_primary" />
+
+                        </com.base.common.widget.LsFrameView>
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_6dp"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:text="@string/home_category_desserts"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="medium" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <!-- Cat 5: Ăn vặt -->
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/categorySnacks"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_horizontal"
+                        android:minHeight="@dimen/_48dp"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsFrameView
+                            android:layout_width="@dimen/_52dp"
+                            android:layout_height="@dimen/_52dp"
+                            android:background="@drawable/bg_home_category_neutral">
+
+                            <com.base.common.widget.LsImageView
+                                android:layout_width="@dimen/_24dp"
+                                android:layout_height="@dimen/_24dp"
+                                android:layout_gravity="center"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_tapas"
+                                android:tint="@color/hue_on_surface_variant" />
+
+                        </com.base.common.widget.LsFrameView>
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_6dp"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:text="@string/home_category_snacks"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="medium" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <!-- 5. Địa điểm gần bạn -->
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_24dp"
+                android:orientation="vertical">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@string/home_nearby_title"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_18sp"
+                            app:textFont="semi" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_2dp"
+                            android:text="@string/home_nearby_subtitle"
+                            android:textColor="@color/hue_on_surface_variant"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="regular" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/mapLink"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/_48dp"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/home_map_link"
+                            android:textColor="@color/hue_primary"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="semi" />
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_16dp"
+                            android:layout_height="@dimen/_16dp"
+                            android:layout_marginStart="@dimen/_2dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_map_folded"
+                            android:tint="@color/hue_primary" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+                <!-- Spot 1: Bún bò Bà Tuyết -->
+                <com.base.common.widget.LsCardView
+                    android:id="@+id/placeTuyet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                    android:outlineSpotShadowColor="@color/hue_card_shadow"
+                    app:cardBackgroundColor="@color/hue_surface_lowest"
+                    app:cardCornerRadius="@dimen/_16dp"
+                    app:cardElevation="@dimen/_2dp"
+                    app:strokeColor="@color/hue_outline_hairline"
+                    app:strokeWidth="@dimen/_1dp">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_12dp">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_80dp"
+                            android:layout_height="@dimen/_80dp"
+                            android:contentDescription="@string/home_place_tuyet_name"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/img_place_tuyet"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Rounded12" />
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsView
+                                    android:layout_width="@dimen/_6dp"
+                                    android:layout_height="@dimen/_6dp"
+                                    android:background="@drawable/bg_home_dot" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_4dp"
+                                    android:text="@string/home_open_now"
+                                    android:textColor="@color/hue_primary"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="semi" />
+
+                                <com.base.common.widget.LsView
+                                    android:layout_width="@dimen/_0dp"
+                                    android:layout_height="@dimen/_0dp"
+                                    android:layout_weight="1" />
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_16dp"
+                                    android:layout_height="@dimen/_16dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_star"
+                                    android:tint="@color/hue_secondary_container" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_2dp"
+                                    android:text="@string/home_place_tuyet_rating"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_12sp"
+                                    app:textFont="semi" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@string/home_place_tuyet_name"
+                                android:textColor="@color/hue_on_surface"
+                                android:textSize="@dimen/text_16sp"
+                                app:textFont="semi" />
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@string/home_place_tuyet_address"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="regular" />
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_14dp"
+                                    android:layout_height="@dimen/_14dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_near_me"
+                                    android:tint="@color/hue_on_surface_variant" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_2dp"
+                                    android:text="@string/home_place_tuyet_distance"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="regular" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_4dp"
+                                    android:text="•"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_11sp" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/home_place_tuyet_price"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsCardView>
+
+                <!-- Spot 2: Quán Hạnh - Bánh Huế -->
+                <com.base.common.widget.LsCardView
+                    android:id="@+id/placeHanh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                    android:outlineSpotShadowColor="@color/hue_card_shadow"
+                    app:cardBackgroundColor="@color/hue_surface_lowest"
+                    app:cardCornerRadius="@dimen/_16dp"
+                    app:cardElevation="@dimen/_2dp"
+                    app:strokeColor="@color/hue_outline_hairline"
+                    app:strokeWidth="@dimen/_1dp">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_12dp">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_80dp"
+                            android:layout_height="@dimen/_80dp"
+                            android:contentDescription="@string/home_place_hanh_name"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/img_place_hanh"
+                            app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Rounded12" />
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsView
+                                    android:layout_width="@dimen/_6dp"
+                                    android:layout_height="@dimen/_6dp"
+                                    android:background="@drawable/bg_home_dot" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_4dp"
+                                    android:text="@string/home_open_now"
+                                    android:textColor="@color/hue_primary"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="semi" />
+
+                                <com.base.common.widget.LsView
+                                    android:layout_width="@dimen/_0dp"
+                                    android:layout_height="@dimen/_0dp"
+                                    android:layout_weight="1" />
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_16dp"
+                                    android:layout_height="@dimen/_16dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_star"
+                                    android:tint="@color/hue_secondary_container" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_2dp"
+                                    android:text="@string/home_place_hanh_rating"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_12sp"
+                                    app:textFont="semi" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@string/home_place_hanh_name"
+                                android:textColor="@color/hue_on_surface"
+                                android:textSize="@dimen/text_16sp"
+                                app:textFont="semi" />
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@string/home_place_hanh_address"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="regular" />
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_14dp"
+                                    android:layout_height="@dimen/_14dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_near_me"
+                                    android:tint="@color/hue_on_surface_variant" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_2dp"
+                                    android:text="@string/home_place_hanh_distance"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="regular" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginHorizontal="@dimen/_4dp"
+                                    android:text="•"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_11sp" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/home_place_hanh_price"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsCardView>
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- 6. Floating Action Button: Quét món -->
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/scanDishButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_16dp"
+        android:layout_marginBottom="@dimen/_16dp"
+        android:background="@drawable/bg_home_fab"
+        android:clickable="true"
+        android:contentDescription="@string/home_scan_dish_description"
+        android:elevation="@dimen/_6dp"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/_48dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.base.common.widget.LsImageView
+            android:layout_width="@dimen/_20dp"
+            android:layout_height="@dimen/_20dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_photo_camera"
+            android:tint="@color/hue_on_secondary_container" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:text="@string/home_scan_dish"
+            android:textColor="@color/hue_on_secondary_container"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="bold" />
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsConstraintView>

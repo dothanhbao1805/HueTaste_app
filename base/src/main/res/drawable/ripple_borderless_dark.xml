@@ -1,0 +1,5 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/rippleDark"> <!-- Ripple trắng nhạt cho dark mode -->
+
+    <!-- Không có item background, nên sẽ trong suốt -->
+</ripple>

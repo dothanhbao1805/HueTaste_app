@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.HueTaste.BottomNavigation" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">@dimen/main_navigation_text_size</item>
+    </style>
+
+    <style name="ShapeAppearance.HueTaste.Circle" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearance.HueTaste.Rounded12" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_12dp</item>
+    </style>
+
+    <style name="Widget.HueTaste.BudgetSlider" parent="Widget.Material3.Slider">
+        <item name="trackColorActive">@color/hue_primary</item>
+        <item name="trackColorInactive">@color/hue_surface_container_high</item>
+        <item name="thumbColor">@color/hue_primary</item>
+        <item name="haloColor">@color/hue_primary_20</item>
+        <item name="trackHeight">@dimen/_8dp</item>
+        <item name="thumbRadius">@dimen/_10dp</item>
+    </style>
+</resources>

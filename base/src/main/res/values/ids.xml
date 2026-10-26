@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="statusBar" type="id" />
+    <item name="navigationBar" type="id" />
+    <item name="tag_push_down_attached" type="id" />
+</resources>
