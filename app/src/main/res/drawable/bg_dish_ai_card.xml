@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Stitch AI prompt card: from-primary/10 via-secondary/10 to-primary/5, left to right. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="0"
+        android:centerColor="@color/hue_secondary_10"
+        android:endColor="@color/hue_primary_5"
+        android:startColor="@color/hue_primary_10" />
+    <corners android:radius="@dimen/_16dp" />
+</shape>

@@ -6,6 +6,7 @@ import com.base.common.base.LsFragment
 import com.base.common.extension.clicks
 import com.example.huetaste.R
 import com.example.huetaste.databinding.FragmentHomeBinding
+import com.example.huetaste.feature.context_suggestion.ContextSuggestionActivity
 import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.NumberFormat
@@ -54,7 +55,7 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         binding.budgetSlider.addOnChangeListener(budgetListener)
 
         binding.suggestButton.clicks {
-            // Action to request suggestions based on selected preferences
+            startActivity(ContextSuggestionActivity.newIntent(requireContext()))
         }
 
         binding.scanDishButton.clicks {

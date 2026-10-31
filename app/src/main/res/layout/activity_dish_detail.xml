@@ -1,0 +1,2088 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsConstraintView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dishRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hue_surface"
+    tools:context=".feature.dish_detail.DishDetailActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statusBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/navigationBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <com.base.common.widget.LsConstraintView
+        android:id="@+id/headerBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_64dp"
+        android:background="@color/hue_surface"
+        android:elevation="@dimen/_2dp"
+        android:paddingHorizontal="@dimen/_10dp"
+        app:layout_constraintTop_toTopOf="@id/statusBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/backButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:contentDescription="@string/context_back"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/hue_on_surface"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:rippleBackground="rippleBorderless" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/backButton"
+            app:layout_constraintEnd_toStartOf="@id/headerFavoriteButton"
+            android:text="@string/dish_screen_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_18sp"
+            app:textFont="semi" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/headerFavoriteButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:contentDescription="@string/home_add_favorite"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_dish_favorite_toggle"
+            android:tint="@color/context_heart_tint"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/shareButton"
+            app:rippleBackground="rippleBorderless" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/shareButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:contentDescription="@string/dish_share"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_share"
+            android:tint="@color/hue_on_surface_variant"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:rippleBackground="rippleBorderless" />
+
+    </com.base.common.widget.LsConstraintView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/dishScroll"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/headerBar"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_16dp"
+            android:paddingBottom="@dimen/_16dp"
+            android:orientation="vertical">
+
+            <!-- 1. Hero photo -->
+            <com.base.common.widget.LsCardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_320dp"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                app:cardBackgroundColor="@color/hue_surface_container_low"
+                app:cardCornerRadius="@dimen/_24dp"
+                app:cardElevation="@dimen/_4dp">
+
+                <com.base.common.widget.LsConstraintView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/dish_name"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img_dish_bun_bo" />
+
+                    <com.base.common.widget.LsView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/bg_dish_scrim" />
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_secondary_container"
+                        android:paddingHorizontal="@dimen/_12dp"
+                        android:paddingVertical="@dimen/_6dp"
+                        android:layout_margin="@dimen/_16dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_16dp"
+                            android:layout_height="@dimen/_16dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_workspace_premium"
+                            android:tint="@color/hue_on_secondary_container" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_6dp"
+                            android:text="@string/dish_hero_badge"
+                            android:textColor="@color/hue_on_secondary_container"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="bold" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsImageView
+                        android:id="@+id/heroFavoriteButton"
+                        android:layout_width="@dimen/_40dp"
+                        android:layout_height="@dimen/_40dp"
+                        android:layout_margin="@dimen/_16dp"
+                        android:background="@drawable/bg_shape_circle"
+                        android:backgroundTint="@color/hue_surface_lowest_80"
+                        android:contentDescription="@string/home_add_favorite"
+                        android:padding="@dimen/_10dp"
+                        android:src="@drawable/ic_favorite"
+                        android:tint="@color/context_heart_tint"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/heroTagTime"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_surface_lowest_90"
+                        android:paddingHorizontal="@dimen/_10dp"
+                        android:paddingVertical="@dimen/_4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_14dp"
+                            android:layout_height="@dimen/_14dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_wb_sunny"
+                            android:tint="@color/hue_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4dp"
+                            android:text="@string/dish_tag_time"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="medium" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/heroTagSpicy"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_surface_lowest_90"
+                        android:paddingHorizontal="@dimen/_10dp"
+                        android:paddingVertical="@dimen/_4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_14dp"
+                            android:layout_height="@dimen/_14dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_local_fire_department"
+                            android:tint="@color/hue_tertiary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4dp"
+                            android:text="@string/dish_tag_spicy"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="medium" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/heroTagHeritage"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_primary"
+                        android:paddingHorizontal="@dimen/_10dp"
+                        android:paddingVertical="@dimen/_4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_14dp"
+                            android:layout_height="@dimen/_14dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_restaurant_menu"
+                            android:tint="@color/hue_on_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4dp"
+                            android:text="@string/dish_tag_heritage"
+                            android:textColor="@color/hue_on_primary"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="medium" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <androidx.constraintlayout.helper.widget.Flow
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_16dp"
+                        android:layout_marginBottom="@dimen/_16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:constraint_referenced_ids="heroTagTime,heroTagSpicy,heroTagHeritage"
+                        app:flow_horizontalBias="0"
+                        app:flow_horizontalGap="@dimen/_8dp"
+                        app:flow_horizontalStyle="packed"
+                        app:flow_verticalGap="@dimen/_8dp"
+                        app:flow_wrapMode="chain"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+
+                </com.base.common.widget.LsConstraintView>
+
+            </com.base.common.widget.LsCardView>
+
+            <!-- 2. Name, rating and price -->
+            <com.base.common.widget.LsCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_24dp"
+                android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                android:outlineSpotShadowColor="@color/hue_card_shadow"
+                app:cardBackgroundColor="@color/hue_surface_lowest"
+                app:cardCornerRadius="@dimen/_16dp"
+                app:cardElevation="@dimen/_1dp">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_16dp"
+                    android:orientation="vertical">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/dish_name"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_20sp"
+                            app:textFont="bold" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:background="@drawable/bg_shape_pill"
+                            android:backgroundTint="@color/hue_secondary_fixed"
+                            android:paddingHorizontal="@dimen/_10dp"
+                            android:paddingVertical="@dimen/_4dp"
+                            android:maxLines="1"
+                            android:text="@string/dish_authentic_badge"
+                            android:textColor="@color/hue_on_secondary_fixed"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="semi" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4dp"
+                        android:textStyle="italic"
+                        android:text="@string/dish_english_name"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="regular" />
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8dp"
+                        android:background="@drawable/bg_shape_round_12"
+                        android:backgroundTint="@color/hue_surface_container_low"
+                        android:paddingHorizontal="@dimen/_16dp"
+                        android:paddingVertical="@dimen/_8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.base.common.widget.LsImageView
+                                android:layout_width="@dimen/_20dp"
+                                android:layout_height="@dimen/_20dp"
+                                android:importantForAccessibility="no"
+                                android:src="@drawable/ic_star"
+                                android:tint="@color/hue_secondary" />
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_4dp"
+                                android:text="@string/dish_rating"
+                                android:textColor="@color/hue_on_surface"
+                                android:textSize="@dimen/text_16sp"
+                                app:textFont="bold" />
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="@dimen/_0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:text="@string/dish_rating_count"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="regular" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:gravity="end"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/dish_price_label"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="regular" />
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="@string/dish_price"
+                                android:textColor="@color/hue_primary"
+                                android:textSize="@dimen/text_16sp"
+                                app:textFont="bold" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsConstraintView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12dp">
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/pillNoodles"
+                            android:background="@drawable/bg_shape_pill"
+                            android:backgroundTint="@color/hue_surface_container"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_4dp"
+                            android:text="@string/dish_pill_noodles"
+                            android:textColor="@color/hue_on_surface_variant"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="medium" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/pillBroth"
+                            android:background="@drawable/bg_shape_pill"
+                            android:backgroundTint="@color/hue_surface_container"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_4dp"
+                            android:text="@string/dish_pill_broth"
+                            android:textColor="@color/hue_on_surface_variant"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="medium" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/pillPaste"
+                            android:background="@drawable/bg_shape_pill"
+                            android:backgroundTint="@color/hue_surface_container"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_4dp"
+                            android:text="@string/dish_pill_paste"
+                            android:textColor="@color/hue_on_surface_variant"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="medium" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/pillOptions"
+                            android:background="@drawable/bg_shape_pill"
+                            android:backgroundTint="@color/hue_surface_container"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_4dp"
+                            android:text="@string/dish_pill_options"
+                            android:textColor="@color/hue_on_surface_variant"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="medium" />
+
+                        <androidx.constraintlayout.helper.widget.Flow
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:constraint_referenced_ids="pillNoodles,pillBroth,pillPaste,pillOptions"
+                            app:flow_horizontalBias="0"
+                            app:flow_horizontalGap="@dimen/_8dp"
+                            app:flow_horizontalStyle="packed"
+                            app:flow_verticalGap="@dimen/_8dp"
+                            app:flow_wrapMode="chain"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
+                    </com.base.common.widget.LsConstraintView>
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsCardView>
+
+            <!-- 3. Culinary story -->
+            <com.base.common.widget.LsCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                android:outlineSpotShadowColor="@color/hue_card_shadow"
+                app:cardBackgroundColor="@color/hue_surface_lowest"
+                app:cardCornerRadius="@dimen/_16dp"
+                app:cardElevation="@dimen/_1dp">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_16dp"
+                    android:orientation="vertical">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_22dp"
+                            android:layout_height="@dimen/_22dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_auto_stories"
+                            android:tint="@color/hue_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:text="@string/dish_story_title"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_16sp"
+                            app:textFont="bold" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8dp"
+                        android:lineSpacingMultiplier="1.3"
+                        android:text="@string/dish_story_body"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="regular" />
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12dp"
+                        android:background="@drawable/bg_shape_round_12"
+                        android:backgroundTint="@color/hue_primary_fixed"
+                        android:padding="@dimen/_10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_20dp"
+                            android:layout_height="@dimen/_20dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_tips_and_updates"
+                            android:tint="@color/hue_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:text="@string/dish_story_tip"
+                            android:textColor="@color/hue_on_primary_fixed"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="regular" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsCardView>
+
+            <!-- 4. Ingredients -->
+            <com.base.common.widget.LsCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                android:outlineSpotShadowColor="@color/hue_card_shadow"
+                app:cardBackgroundColor="@color/hue_surface_lowest"
+                app:cardCornerRadius="@dimen/_16dp"
+                app:cardElevation="@dimen/_1dp">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_16dp"
+                    android:orientation="vertical">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_22dp"
+                            android:layout_height="@dimen/_22dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_grocery"
+                            android:tint="@color/hue_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:text="@string/dish_ingredients_title"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_16sp"
+                            app:textFont="bold" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:background="@drawable/bg_shape_round_6"
+                            android:backgroundTint="@color/hue_secondary_fixed_50"
+                            android:paddingHorizontal="@dimen/_8dp"
+                            android:paddingVertical="@dimen/_2dp"
+                            android:text="@string/dish_nutrition"
+                            android:textColor="@color/hue_on_secondary_fixed_variant"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="semi" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12dp"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_shape_round_12"
+                            android:backgroundTint="@color/hue_surface_container_low"
+                            android:padding="@dimen/_10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.base.common.widget.LsFrameView
+                                android:layout_width="@dimen/_32dp"
+                                android:layout_height="@dimen/_32dp"
+                                android:background="@drawable/bg_shape_circle"
+                                android:backgroundTint="@color/hue_primary_fixed">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_18dp"
+                                    android:layout_height="@dimen/_18dp"
+                                    android:layout_gravity="center"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_kettle"
+                                    android:tint="@color/hue_primary" />
+
+                            </com.base.common.widget.LsFrameView>
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="@dimen/_0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_12dp"
+                                android:orientation="vertical">
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_ingredient_beef"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_14sp"
+                                    app:textFont="semi" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_ingredient_beef_desc"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_12sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_shape_round_6"
+                                android:backgroundTint="@color/hue_primary"
+                                android:paddingHorizontal="@dimen/_8dp"
+                                android:paddingVertical="@dimen/_2dp"
+                                android:text="@string/dish_role_main"
+                                android:textColor="@color/hue_on_primary"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8dp"
+                            android:background="@drawable/bg_shape_round_12"
+                            android:backgroundTint="@color/hue_surface_container_low"
+                            android:padding="@dimen/_10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.base.common.widget.LsFrameView
+                                android:layout_width="@dimen/_32dp"
+                                android:layout_height="@dimen/_32dp"
+                                android:background="@drawable/bg_shape_circle"
+                                android:backgroundTint="@color/hue_secondary_fixed">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_18dp"
+                                    android:layout_height="@dimen/_18dp"
+                                    android:layout_gravity="center"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_set_meal"
+                                    android:tint="@color/hue_secondary" />
+
+                            </com.base.common.widget.LsFrameView>
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="@dimen/_0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_12dp"
+                                android:orientation="vertical">
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_ingredient_crab"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_14sp"
+                                    app:textFont="semi" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_ingredient_crab_desc"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_12sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_shape_round_6"
+                                android:backgroundTint="@color/hue_primary"
+                                android:paddingHorizontal="@dimen/_8dp"
+                                android:paddingVertical="@dimen/_2dp"
+                                android:text="@string/dish_role_main"
+                                android:textColor="@color/hue_on_primary"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8dp"
+                            android:background="@drawable/bg_shape_round_12"
+                            android:backgroundTint="@color/hue_surface_container_low"
+                            android:padding="@dimen/_10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.base.common.widget.LsFrameView
+                                android:layout_width="@dimen/_32dp"
+                                android:layout_height="@dimen/_32dp"
+                                android:background="@drawable/bg_shape_circle"
+                                android:backgroundTint="@color/hue_tertiary_fixed">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_18dp"
+                                    android:layout_height="@dimen/_18dp"
+                                    android:layout_gravity="center"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_restaurant"
+                                    android:tint="@color/hue_tertiary" />
+
+                            </com.base.common.widget.LsFrameView>
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="@dimen/_0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_12dp"
+                                android:orientation="vertical">
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_ingredient_pork"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_14sp"
+                                    app:textFont="semi" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_ingredient_pork_desc"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_12sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_shape_round_6"
+                                android:backgroundTint="@color/hue_primary"
+                                android:paddingHorizontal="@dimen/_8dp"
+                                android:paddingVertical="@dimen/_2dp"
+                                android:text="@string/dish_role_main"
+                                android:textColor="@color/hue_on_primary"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8dp"
+                            android:background="@drawable/bg_shape_round_12"
+                            android:backgroundTint="@color/hue_surface_container_low"
+                            android:padding="@dimen/_10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.base.common.widget.LsFrameView
+                                android:layout_width="@dimen/_32dp"
+                                android:layout_height="@dimen/_32dp"
+                                android:background="@drawable/bg_shape_circle"
+                                android:backgroundTint="@color/hue_surface_container_high">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_18dp"
+                                    android:layout_height="@dimen/_18dp"
+                                    android:layout_gravity="center"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_soup_kitchen"
+                                    android:tint="@color/hue_on_surface_variant" />
+
+                            </com.base.common.widget.LsFrameView>
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="@dimen/_0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_12dp"
+                                android:orientation="vertical">
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_ingredient_paste"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_14sp"
+                                    app:textFont="semi" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_ingredient_paste_desc"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_12sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_shape_round_6"
+                                android:backgroundTint="@color/hue_secondary_container"
+                                android:paddingHorizontal="@dimen/_8dp"
+                                android:paddingVertical="@dimen/_2dp"
+                                android:text="@string/dish_role_core"
+                                android:textColor="@color/hue_on_secondary_container"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8dp"
+                            android:background="@drawable/bg_shape_round_12"
+                            android:backgroundTint="@color/hue_surface_container_low"
+                            android:padding="@dimen/_10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.base.common.widget.LsFrameView
+                                android:layout_width="@dimen/_32dp"
+                                android:layout_height="@dimen/_32dp"
+                                android:background="@drawable/bg_shape_circle"
+                                android:backgroundTint="@color/hue_surface_container_high">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_18dp"
+                                    android:layout_height="@dimen/_18dp"
+                                    android:layout_gravity="center"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_eco"
+                                    android:tint="@color/hue_on_surface_variant" />
+
+                            </com.base.common.widget.LsFrameView>
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="@dimen/_0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/_12dp"
+                                android:orientation="vertical">
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_ingredient_herbs"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_14sp"
+                                    app:textFont="semi" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_ingredient_herbs_desc"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_12sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_shape_round_6"
+                                android:backgroundTint="@color/hue_surface_container_highest"
+                                android:paddingHorizontal="@dimen/_8dp"
+                                android:paddingVertical="@dimen/_2dp"
+                                android:text="@string/dish_role_side"
+                                android:textColor="@color/hue_on_surface"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsCardView>
+
+            <!-- 5. Places serving this dish -->
+            <com.base.common.widget.LsCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                android:outlineSpotShadowColor="@color/hue_card_shadow"
+                app:cardBackgroundColor="@color/hue_surface_lowest"
+                app:cardCornerRadius="@dimen/_16dp"
+                app:cardElevation="@dimen/_1dp">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_16dp"
+                    android:orientation="vertical">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_22dp"
+                            android:layout_height="@dimen/_22dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_storefront"
+                            android:tint="@color/hue_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:text="@string/dish_places_title"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_16sp"
+                            app:textFont="bold" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/viewMapButton"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:paddingVertical="@dimen/_4dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:text="@string/dish_view_map"
+                            android:textColor="@color/hue_primary"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="semi" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_shape_round_12"
+                            android:backgroundTint="@color/hue_surface_container_low"
+                            android:padding="@dimen/_8dp"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="top"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_64dp"
+                                    android:layout_height="@dimen/_64dp"
+                                    android:contentDescription="@string/dish_place_photo"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/img_place_tuyet"
+                                    app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Rounded12" />
+
+                                <com.base.common.widget.LsLinearView
+                                    android:layout_width="@dimen/_0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="@dimen/_12dp"
+                                    android:orientation="vertical">
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal">
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="@dimen/_0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:ellipsize="end"
+                                            android:maxLines="1"
+                                            android:text="@string/dish_place_tuyet_name"
+                                            android:textColor="@color/hue_on_surface"
+                                            android:textSize="@dimen/text_14sp"
+                                            app:textFont="bold" />
+
+                                        <com.base.common.widget.LsImageView
+                                            android:layout_width="@dimen/_16dp"
+                                            android:layout_height="@dimen/_16dp"
+                                            android:layout_marginStart="@dimen/_4dp"
+                                            android:importantForAccessibility="no"
+                                            android:src="@drawable/ic_star"
+                                            android:tint="@color/hue_secondary" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_2dp"
+                                            android:text="@string/dish_place_tuyet_rating"
+                                            android:textColor="@color/hue_secondary"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="bold" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/dish_place_tuyet_address"
+                                        android:textColor="@color/hue_on_surface_variant"
+                                        android:textSize="@dimen/text_12sp"
+                                        app:textFont="regular" />
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_4dp"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal">
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/dish_place_tuyet_distance"
+                                            android:textColor="@color/hue_primary"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="medium" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:text="@string/dish_separator"
+                                            android:textColor="@color/hue_on_surface_variant"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="regular" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:text="@string/dish_place_tuyet_price"
+                                            android:textColor="@color/hue_on_surface_variant"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="regular" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:text="@string/dish_separator"
+                                            android:textColor="@color/hue_on_surface_variant"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="regular" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:background="@drawable/bg_shape_round_4"
+                                            android:backgroundTint="@color/hue_secondary_fixed_60"
+                                            android:paddingHorizontal="@dimen/_6dp"
+                                            android:text="@string/dish_place_open"
+                                            android:textColor="@color/hue_on_secondary_fixed_variant"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="semi" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                </com.base.common.widget.LsLinearView>
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/placeMenuButton"
+                                android:layout_gravity="end"
+                                android:layout_marginTop="@dimen/_8dp"
+                                android:background="@drawable/bg_shape_pill"
+                                android:backgroundTint="@color/hue_primary"
+                                android:paddingHorizontal="@dimen/_12dp"
+                                android:paddingVertical="@dimen/_6dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:text="@string/dish_place_menu"
+                                android:textColor="@color/hue_on_primary"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_12dp"
+                            android:background="@drawable/bg_shape_round_12"
+                            android:backgroundTint="@color/hue_surface_container_low"
+                            android:padding="@dimen/_8dp"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="top"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_64dp"
+                                    android:layout_height="@dimen/_64dp"
+                                    android:contentDescription="@string/dish_place_photo"
+                                    android:background="@drawable/bg_shape_round_12"
+                                    android:backgroundTint="@color/hue_outline_hairline"
+                                    android:scaleType="center"
+                                    android:src="@drawable/ic_food_placeholder" />
+
+                                <com.base.common.widget.LsLinearView
+                                    android:layout_width="@dimen/_0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="@dimen/_12dp"
+                                    android:orientation="vertical">
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal">
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="@dimen/_0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:ellipsize="end"
+                                            android:maxLines="1"
+                                            android:text="@string/dish_place_muroi_name"
+                                            android:textColor="@color/hue_on_surface"
+                                            android:textSize="@dimen/text_14sp"
+                                            app:textFont="bold" />
+
+                                        <com.base.common.widget.LsImageView
+                                            android:layout_width="@dimen/_16dp"
+                                            android:layout_height="@dimen/_16dp"
+                                            android:layout_marginStart="@dimen/_4dp"
+                                            android:importantForAccessibility="no"
+                                            android:src="@drawable/ic_star"
+                                            android:tint="@color/hue_secondary" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_2dp"
+                                            android:text="@string/dish_place_muroi_rating"
+                                            android:textColor="@color/hue_secondary"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="bold" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/dish_place_muroi_address"
+                                        android:textColor="@color/hue_on_surface_variant"
+                                        android:textSize="@dimen/text_12sp"
+                                        app:textFont="regular" />
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_4dp"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal">
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/dish_place_muroi_distance"
+                                            android:textColor="@color/hue_primary"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="medium" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:text="@string/dish_separator"
+                                            android:textColor="@color/hue_on_surface_variant"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="regular" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:text="@string/dish_place_muroi_price"
+                                            android:textColor="@color/hue_on_surface_variant"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="regular" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:text="@string/dish_separator"
+                                            android:textColor="@color/hue_on_surface_variant"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="regular" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:text="@string/dish_place_muroi_note"
+                                            android:textColor="@color/hue_on_surface_variant"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="regular" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                </com.base.common.widget.LsLinearView>
+
+                            </com.base.common.widget.LsLinearView>
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_12dp"
+                            android:background="@drawable/bg_shape_round_12"
+                            android:backgroundTint="@color/hue_surface_container_low"
+                            android:padding="@dimen/_8dp"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="top"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_64dp"
+                                    android:layout_height="@dimen/_64dp"
+                                    android:contentDescription="@string/dish_place_photo"
+                                    android:background="@drawable/bg_shape_round_12"
+                                    android:backgroundTint="@color/hue_outline_hairline"
+                                    android:scaleType="center"
+                                    android:src="@drawable/ic_food_placeholder" />
+
+                                <com.base.common.widget.LsLinearView
+                                    android:layout_width="@dimen/_0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="@dimen/_12dp"
+                                    android:orientation="vertical">
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal">
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="@dimen/_0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:ellipsize="end"
+                                            android:maxLines="1"
+                                            android:text="@string/dish_place_diep_name"
+                                            android:textColor="@color/hue_on_surface"
+                                            android:textSize="@dimen/text_14sp"
+                                            app:textFont="bold" />
+
+                                        <com.base.common.widget.LsImageView
+                                            android:layout_width="@dimen/_16dp"
+                                            android:layout_height="@dimen/_16dp"
+                                            android:layout_marginStart="@dimen/_4dp"
+                                            android:importantForAccessibility="no"
+                                            android:src="@drawable/ic_star"
+                                            android:tint="@color/hue_secondary" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_2dp"
+                                            android:text="@string/dish_place_diep_rating"
+                                            android:textColor="@color/hue_secondary"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="bold" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/dish_place_diep_address"
+                                        android:textColor="@color/hue_on_surface_variant"
+                                        android:textSize="@dimen/text_12sp"
+                                        app:textFont="regular" />
+
+                                    <com.base.common.widget.LsLinearView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_4dp"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal">
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/dish_place_diep_distance"
+                                            android:textColor="@color/hue_primary"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="medium" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:text="@string/dish_separator"
+                                            android:textColor="@color/hue_on_surface_variant"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="regular" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:text="@string/dish_place_diep_price"
+                                            android:textColor="@color/hue_on_surface_variant"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="regular" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:text="@string/dish_separator"
+                                            android:textColor="@color/hue_on_surface_variant"
+                                            android:textSize="@dimen/text_12sp"
+                                            app:textFont="regular" />
+
+                                        <com.base.common.widget.LsTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="@dimen/_6dp"
+                                            android:text="@string/dish_place_diep_note"
+                                            android:textColor="@color/hue_primary"
+                                            android:textSize="@dimen/text_11sp"
+                                            app:textFont="medium" />
+
+                                    </com.base.common.widget.LsLinearView>
+
+                                </com.base.common.widget.LsLinearView>
+
+                            </com.base.common.widget.LsLinearView>
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsCardView>
+
+            <!-- 6. Reviews -->
+            <com.base.common.widget.LsCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                android:outlineSpotShadowColor="@color/hue_card_shadow"
+                app:cardBackgroundColor="@color/hue_surface_lowest"
+                app:cardCornerRadius="@dimen/_16dp"
+                app:cardElevation="@dimen/_1dp">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_16dp"
+                    android:orientation="vertical">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_22dp"
+                            android:layout_height="@dimen/_22dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_rate_review"
+                            android:tint="@color/hue_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:text="@string/dish_reviews_title"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_16sp"
+                            app:textFont="bold" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/writeReviewButton"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:background="@drawable/bg_shape_pill"
+                            android:backgroundTint="@color/hue_secondary_fixed_50"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_4dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:text="@string/dish_write_review"
+                            android:textColor="@color/hue_on_secondary_fixed_variant"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="semi" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12dp"
+                        android:background="@drawable/bg_shape_round_12"
+                        android:backgroundTint="@color/hue_surface_container_low"
+                        android:padding="@dimen/_12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:paddingEnd="@dimen/_8dp"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/dish_rating"
+                                android:textColor="@color/hue_on_surface"
+                                android:textSize="@dimen/text_32sp"
+                                app:textFont="bold" />
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/_4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_16dp"
+                                    android:layout_height="@dimen/_16dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_star"
+                                    android:tint="@color/hue_secondary" />
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_16dp"
+                                    android:layout_height="@dimen/_16dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_star"
+                                    android:tint="@color/hue_secondary" />
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_16dp"
+                                    android:layout_height="@dimen/_16dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_star"
+                                    android:tint="@color/hue_secondary" />
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_16dp"
+                                    android:layout_height="@dimen/_16dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_star"
+                                    android:tint="@color/hue_secondary" />
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_16dp"
+                                    android:layout_height="@dimen/_16dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_star"
+                                    android:tint="@color/hue_secondary" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/dish_review_total"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="regular" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="@dimen/_16dp"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="@dimen/_8dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_stars_5"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="medium" />
+
+                                <com.base.common.widget.LsLinearView
+                                    android:layout_width="@dimen/_0dp"
+                                    android:layout_height="@dimen/_8dp"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="@dimen/_8dp"
+                                    android:background="@drawable/bg_shape_pill"
+                                    android:backgroundTint="@color/hue_surface_container_highest"
+                                    android:orientation="horizontal"
+                                    android:weightSum="100">
+
+                                    <com.base.common.widget.LsView
+                                        android:layout_width="@dimen/_0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="92"
+                                        android:background="@drawable/bg_shape_pill"
+                                        android:backgroundTint="@color/hue_secondary_container" />
+
+                                </com.base.common.widget.LsLinearView>
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="@dimen/_28dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8dp"
+                                    android:gravity="end"
+                                    android:text="@string/dish_stars_5_share"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="@dimen/_8dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_stars_4"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="medium" />
+
+                                <com.base.common.widget.LsLinearView
+                                    android:layout_width="@dimen/_0dp"
+                                    android:layout_height="@dimen/_8dp"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="@dimen/_8dp"
+                                    android:background="@drawable/bg_shape_pill"
+                                    android:backgroundTint="@color/hue_surface_container_highest"
+                                    android:orientation="horizontal"
+                                    android:weightSum="100">
+
+                                    <com.base.common.widget.LsView
+                                        android:layout_width="@dimen/_0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="6"
+                                        android:background="@drawable/bg_shape_pill"
+                                        android:backgroundTint="@color/hue_secondary_container" />
+
+                                </com.base.common.widget.LsLinearView>
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="@dimen/_28dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8dp"
+                                    android:gravity="end"
+                                    android:text="@string/dish_stars_4_share"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="@dimen/_8dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/dish_stars_3"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="medium" />
+
+                                <com.base.common.widget.LsLinearView
+                                    android:layout_width="@dimen/_0dp"
+                                    android:layout_height="@dimen/_8dp"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="@dimen/_8dp"
+                                    android:background="@drawable/bg_shape_pill"
+                                    android:backgroundTint="@color/hue_surface_container_highest"
+                                    android:orientation="horizontal"
+                                    android:weightSum="100">
+
+                                    <com.base.common.widget.LsView
+                                        android:layout_width="@dimen/_0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2"
+                                        android:background="@drawable/bg_shape_pill"
+                                        android:backgroundTint="@color/hue_secondary_container" />
+
+                                </com.base.common.widget.LsLinearView>
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="@dimen/_28dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8dp"
+                                    android:gravity="end"
+                                    android:text="@string/dish_stars_3_share"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_shape_round_12"
+                            android:backgroundTint="@color/hue_surface_container_low"
+                            android:padding="@dimen/_12dp"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="@dimen/_32dp"
+                                    android:layout_height="@dimen/_32dp"
+                                    android:background="@drawable/bg_shape_circle"
+                                    android:backgroundTint="@color/hue_primary_fixed"
+                                    android:gravity="center"
+                                    android:text="@string/dish_review_1_initials"
+                                    android:textColor="@color/hue_primary"
+                                    android:textSize="@dimen/text_12sp"
+                                    app:textFont="bold" />
+
+                                <com.base.common.widget.LsLinearView
+                                    android:layout_width="@dimen/_0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="@dimen/_8dp"
+                                    android:orientation="vertical">
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/dish_review_1_name"
+                                        android:textColor="@color/hue_on_surface"
+                                        android:textSize="@dimen/text_14sp"
+                                        app:textFont="semi" />
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/dish_review_1_role"
+                                        android:textColor="@color/hue_primary"
+                                        android:textSize="@dimen/text_11sp"
+                                        app:textFont="medium" />
+
+                                </com.base.common.widget.LsLinearView>
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8dp"
+                                    android:text="@string/dish_review_1_date"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_6dp"
+                                android:lineSpacingMultiplier="1.3"
+                                android:text="@string/dish_review_1_body"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_14sp"
+                                app:textFont="regular" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_12dp"
+                            android:background="@drawable/bg_shape_round_12"
+                            android:backgroundTint="@color/hue_surface_container_low"
+                            android:padding="@dimen/_12dp"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="@dimen/_32dp"
+                                    android:layout_height="@dimen/_32dp"
+                                    android:background="@drawable/bg_shape_circle"
+                                    android:backgroundTint="@color/hue_secondary_fixed"
+                                    android:gravity="center"
+                                    android:text="@string/dish_review_2_initials"
+                                    android:textColor="@color/hue_secondary"
+                                    android:textSize="@dimen/text_12sp"
+                                    app:textFont="bold" />
+
+                                <com.base.common.widget.LsLinearView
+                                    android:layout_width="@dimen/_0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="@dimen/_8dp"
+                                    android:orientation="vertical">
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/dish_review_2_name"
+                                        android:textColor="@color/hue_on_surface"
+                                        android:textSize="@dimen/text_14sp"
+                                        app:textFont="semi" />
+
+                                    <com.base.common.widget.LsTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="@string/dish_review_2_role"
+                                        android:textColor="@color/hue_on_surface_variant"
+                                        android:textSize="@dimen/text_11sp"
+                                        app:textFont="regular" />
+
+                                </com.base.common.widget.LsLinearView>
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_8dp"
+                                    android:text="@string/dish_review_2_date"
+                                    android:textColor="@color/hue_on_surface_variant"
+                                    android:textSize="@dimen/text_11sp"
+                                    app:textFont="regular" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_6dp"
+                                android:lineSpacingMultiplier="1.3"
+                                android:text="@string/dish_review_2_body"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_14sp"
+                                app:textFont="regular" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsCardView>
+
+            <!-- 7. Food assistant prompt -->
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:background="@drawable/bg_dish_ai_card"
+                android:padding="@dimen/_16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsFrameView
+                    android:layout_width="@dimen/_40dp"
+                    android:layout_height="@dimen/_40dp"
+                    android:background="@drawable/bg_shape_circle"
+                    android:backgroundTint="@color/hue_primary">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_20dp"
+                        android:layout_height="@dimen/_20dp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_smart_toy"
+                        android:tint="@color/hue_on_primary" />
+
+                </com.base.common.widget.LsFrameView>
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/_12dp"
+                    android:orientation="vertical">
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dish_ai_title"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="bold" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dish_ai_body"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="regular" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/aiChatButton"
+                    android:layout_marginStart="@dimen/_12dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_surface_lowest"
+                    android:paddingHorizontal="@dimen/_12dp"
+                    android:paddingVertical="@dimen/_6dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:text="@string/dish_ai_chat"
+                    android:textColor="@color/hue_primary"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="semi" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.base.common.widget.LsView
+        android:id="@+id/bottomBarBackground"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:background="@color/hue_surface_lowest_95"
+        android:elevation="@dimen/_8dp"
+        app:layout_constraintTop_toTopOf="@id/bottomBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_80dp"
+        android:id="@+id/bottomBar"
+        android:elevation="@dimen/_8dp"
+        android:paddingHorizontal="@dimen/_10dp"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/dish_bottom_label"
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_11sp"
+                app:textFont="regular" />
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/dish_bottom_title"
+                android:textColor="@color/hue_primary"
+                android:textSize="@dimen/text_16sp"
+                app:textFont="bold" />
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_48dp"
+            android:id="@+id/directionsButton"
+            android:layout_marginStart="@dimen/_16dp"
+            android:background="@drawable/bg_shape_pill"
+            android:backgroundTint="@color/hue_primary"
+            android:elevation="@dimen/_4dp"
+            android:paddingHorizontal="@dimen/_24dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsImageView
+                android:layout_width="@dimen/_20dp"
+                android:layout_height="@dimen/_20dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_near_me"
+                android:tint="@color/hue_on_primary" />
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/dish_directions"
+                android:textColor="@color/hue_on_primary"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="semi" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsConstraintView>

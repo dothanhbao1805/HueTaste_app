@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Stitch hero overlay: from-black/80 via-black/25 to-transparent, bottom to top. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="90"
+        android:centerColor="@color/hue_black_25"
+        android:endColor="@android:color/transparent"
+        android:startColor="@color/hue_black_80" />
+</shape>

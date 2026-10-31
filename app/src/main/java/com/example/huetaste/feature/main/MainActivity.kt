@@ -6,8 +6,6 @@ import androidx.core.view.WindowCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.base.common.base.LsActivity
 import com.base.common.base.LsPageAdapter
-import com.base.common.extension.clicks
-import com.example.huetaste.R
 import com.example.huetaste.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,6 +25,8 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
             addFragments(*MainTab.entries.map { it.createFragment() }.toTypedArray())
         }
         binding.viewPager.offscreenPageLimit = MainTab.entries.size - 1
+        // Tabs change only through the bottom navigation, not by horizontal swipe.
+        binding.viewPager.isUserInputEnabled = false
         binding.viewPager.registerOnPageChangeCallback(pageCallback)
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             val tab = MainTab.entries.firstOrNull { it.menuItemId == item.itemId }
@@ -35,13 +35,6 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
                 binding.viewPager.setCurrentItem(tab.ordinal, true)
             }
             true
-        }
-        binding.centerAiButton.clicks {
-            val aiTab = MainTab.AI_ASSISTANT
-            if (binding.viewPager.currentItem != aiTab.ordinal) {
-                binding.viewPager.setCurrentItem(aiTab.ordinal, true)
-            }
-            selectMenuItem(aiTab.ordinal)
         }
         selectMenuItem(binding.viewPager.currentItem)
     }
@@ -56,7 +49,6 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
         if (binding.bottomNavigation.selectedItemId != itemId) {
             binding.bottomNavigation.selectedItemId = itemId
         }
-        binding.centerAiButton.isSelected = (position == MainTab.AI_ASSISTANT.ordinal)
     }
 
     override fun onDestroy() {

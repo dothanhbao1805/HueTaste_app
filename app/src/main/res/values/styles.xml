@@ -15,12 +15,27 @@
         <item name="cornerSize">@dimen/_12dp</item>
     </style>
 
+    <style name="ShapeAppearance.HueTaste.Rounded8" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_8dp</item>
+    </style>
+
+    <!-- Stitch budget range: flat 8dp surface-container track with a round 16dp primary thumb. -->
     <style name="Widget.HueTaste.BudgetSlider" parent="Widget.Material3.Slider">
-        <item name="trackColorActive">@color/hue_primary</item>
-        <item name="trackColorInactive">@color/hue_surface_container_high</item>
-        <item name="thumbColor">@color/hue_primary</item>
-        <item name="haloColor">@color/hue_primary_20</item>
+        <item name="labelBehavior">gone</item>
+        <item name="tickVisible">false</item>
+        <item name="trackColorActive">@color/hue_surface_container</item>
+        <item name="trackColorInactive">@color/hue_surface_container</item>
         <item name="trackHeight">@dimen/_8dp</item>
-        <item name="thumbRadius">@dimen/_10dp</item>
+        <item name="trackInsideCornerSize">@dimen/_4dp</item>
+        <item name="trackStopIndicatorSize">@dimen/_0dp</item>
+        <item name="thumbTrackGapSize">@dimen/_0dp</item>
+        <item name="thumbColor">@color/hue_primary</item>
+        <item name="thumbWidth">@dimen/_16dp</item>
+        <item name="thumbHeight">@dimen/_16dp</item>
+        <item name="thumbElevation">@dimen/_0dp</item>
+        <!-- The halo is the slider's circular touch ripple; keep it tight around the thumb. -->
+        <item name="haloColor">@color/hue_primary_20</item>
+        <item name="haloRadius">@dimen/_16dp</item>
     </style>
 </resources>

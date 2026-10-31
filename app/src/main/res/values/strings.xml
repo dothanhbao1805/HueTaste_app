@@ -89,4 +89,173 @@
 
     <string name="home_budget_format">%1$s ₫</string>
     <string name="home_food_photo">Hình ảnh món ăn</string>
+
+    <!-- Context suggestion screen (Stitch: Gợi Ý Theo Ngữ Cảnh) -->
+    <string name="context_back">Quay lại</string>
+    <string name="context_screen_title">Gợi ý theo ngữ cảnh</string>
+    <string name="context_header_title">Ngữ cảnh đề xuất</string>
+    <string name="context_change">Đổi ngữ cảnh</string>
+    <string name="context_tag_breakfast">Bữa sáng</string>
+    <string name="context_tag_budget">&lt; 50.000đ</string>
+    <string name="context_tag_nearby">Gần bạn (&lt;2km)</string>
+    <string name="context_tag_weather">24°C se lạnh</string>
+    <string name="context_tab_dishes">Món ăn (12)</string>
+    <string name="context_tab_places">Quán ăn (8)</string>
+    <string name="context_filter_relevance">Độ phù hợp cao</string>
+    <string name="context_filter_distance">Khoảng cách &lt; 2km</string>
+    <string name="context_filter_open">Đang mở cửa</string>
+    <string name="context_filter_rating">Đánh giá 4.5+</string>
+
+    <string name="context_rank_top">#1 GỢI Ý HÀNG ĐẦU</string>
+    <string name="context_match_98">98% Phù hợp</string>
+    <string name="context_dish_bunbo_name">Bún bò gân giò Huế</string>
+    <string name="context_dish_bunbo_desc">Đặc sản truyền thống Cố đô</string>
+    <string name="context_dish_bunbo_price">40k - 55k</string>
+    <string name="context_reason_title">Vì sao gợi ý cho bạn?</string>
+    <string name="context_dish_bunbo_reason">Trời 24°C se lạnh rất hợp nước dùng cay ấm sả ớt; quán cách bạn chỉ 350m đang ninh nồi nước dùng nóng hổi thơm nức.</string>
+    <string name="context_top_spots">3 quán gần &amp; ngon nhất lúc này:</string>
+    <string name="context_view_map">Xem bản đồ</string>
+    <string name="context_rank_1">1</string>
+    <string name="context_rank_2">2</string>
+    <string name="context_rank_3">3</string>
+    <string name="context_spot_1_name">Bún Bò Mụ Rơi - Nguyễn Du</string>
+    <string name="context_spot_1_rating">★ 4.9</string>
+    <string name="context_spot_1_distance">•  Cách 350m  •</string>
+    <string name="context_spot_1_open">Mở từ 05:30</string>
+    <string name="context_spot_2_name">Bún Bò Bà Tuyết - 47 Nguyễn Công Trứ</string>
+    <string name="context_spot_2_rating">★ 4.8</string>
+    <string name="context_spot_2_distance">•  Cách 700m</string>
+    <string name="context_spot_3_name">Bún Bò O Cương Điệp - Trần Thúc Nhẫn</string>
+    <string name="context_spot_3_rating">★ 4.7</string>
+    <string name="context_spot_3_distance">•  Cách 1.2km</string>
+    <string name="context_go">Đi tới</string>
+    <string name="context_details">Chi tiết</string>
+    <string name="context_dish_details">Xem chi tiết món &amp; cách ăn</string>
+
+    <string name="context_rank_light">#2 GỢI Ý THANH ĐẠM</string>
+    <string name="context_match_94">94% Phù hợp</string>
+    <string name="context_dish_banhbeo_name">Bánh bèo chén tôm cháy</string>
+    <string name="context_dish_banhbeo_desc">Bánh cung đình thanh nhẹ buổi sáng</string>
+    <string name="context_dish_banhbeo_price">25k - 40k</string>
+    <string name="context_dish_banhbeo_rating">4.8</string>
+    <string name="context_dish_banhbeo_reviews">(310)</string>
+    <string name="context_dish_banhbeo_reason">Tiết kiệm hoàn hảo với mức chi 35.000đ. Phù hợp nếu bạn muốn bữa sáng nhẹ bụng, tinh tế chuẩn vị Huế xưa.</string>
+    <string name="context_dish_banhbeo_place">Bánh Bèo Bà Đỏ - 08 Nguyễn Bỉnh Khiêm (Cách 850m)</string>
+
+    <string name="context_rank_rustic">#3 ĐẬM VỊ DÂN DÃ</string>
+    <string name="context_match_90">90% Phù hợp</string>
+    <string name="context_dish_comhen_name">Cơm hến &amp; Mì hến cay</string>
+    <string name="context_dish_comhen_desc">Đặc sản Cồn Hến cay tê kích thích vị giác</string>
+    <string name="context_dish_comhen_price">20k - 30k</string>
+    <string name="context_dish_comhen_rating">4.7</string>
+    <string name="context_dish_comhen_reviews">(580)</string>
+    <string name="context_dish_comhen_reason">Mức giá siêu tiết kiệm chỉ từ 20.000đ/tô; nước canh hến nghi ngút khói làm ấm người tức thì trong buổi sáng gió mát.</string>
+    <string name="context_dish_comhen_place">Cơm Hến Hoa Đông - Ưng Bình, Vỹ Dạ (Cách 1.4km)</string>
+
+    <string name="context_rank_warm">#4 MỀM MỊN NÓNG HỔI</string>
+    <string name="context_match_86">86% Phù hợp</string>
+    <string name="context_dish_nampho_name">Bánh canh Nam Phổ</string>
+    <string name="context_dish_nampho_desc">Hương vị làng cổ Nam Phổ trăm năm</string>
+    <string name="context_dish_nampho_price">25k - 35k</string>
+    <string name="context_dish_nampho_rating">4.6</string>
+    <string name="context_dish_nampho_reviews">(185)</string>
+    <string name="context_dish_nampho_place">Bánh canh Nam Phổ O Thu - Phạm Hồng Thái (Cách 1.8km)</string>
+    <string name="context_view_place">Xem quán</string>
+
+    <string name="context_refine_title">Chưa tìm thấy món ưng ý?</string>
+    <string name="context_refine_body">Bạn có thể tinh chỉnh lại ngân sách, khẩu vị cay hoặc đổi sang bữa trưa/bữa xế để AI quét lại.</string>
+    <string name="context_refine_button">Tinh chỉnh tiêu chí</string>
+    <string name="context_random_button">Chọn ngẫu nhiên</string>
+
+    <!-- Dish detail screen (Stitch: Chi Tiết Món Ăn - Bún Bò Huế) -->
+    <string name="dish_screen_title">Chi tiết món ăn</string>
+    <string name="dish_share">Chia sẻ</string>
+    <string name="dish_share_chooser">Chia sẻ món ăn</string>
+    <string name="dish_share_text">%1$s – %2$s</string>
+    <string name="dish_hero_badge">Đặc sản Cố Đô #1</string>
+    <string name="dish_tag_time">Sáng &amp; Trưa</string>
+    <string name="dish_tag_spicy">Vị cay nồng ấm</string>
+    <string name="dish_tag_heritage">Hương vị Di Sản</string>
+    <string name="dish_name">Bún Bò Huế Đặc Biệt</string>
+    <string name="dish_authentic_badge">Chuẩn vị Cố Đô</string>
+    <string name="dish_english_name">Imperial Spicy Beef Noodle Soup</string>
+    <string name="dish_rating">4.9</string>
+    <string name="dish_rating_count">(1.850+ đánh giá)</string>
+    <string name="dish_price_label">Mức giá tham khảo</string>
+    <string name="dish_price">35.000đ - 65.000đ</string>
+    <string name="dish_pill_noodles">Bún &amp; Mì nước</string>
+    <string name="dish_pill_broth">Thanh ngọt tủy xương</string>
+    <string name="dish_pill_paste">Cay thơm mắm ruốc</string>
+    <string name="dish_pill_options">Tùy chọn bắp / giò</string>
+
+    <string name="dish_story_title">Linh Hồn Ẩm Thực Cố Đô</string>
+    <string name="dish_story_body">Linh hồn của bún bò xứ Huế nằm ở nồi nước dùng ngọt thanh từ xương tủy bò hầm kỹ nhiều giờ, quyện cùng hương sả giã giập và mắm ruốc Cố Đô hạ thổ dậy mùi nồng ấm mà không ngậy. Từng sợi bún tươi to tròn trơn bóng, cắn cùng miếng bắp hoa giòn sần sật, chả cua quết thơm bùi và đĩa hoa chuối bắp thái chỉ làm say lòng bất kỳ người con xa xứ hay du khách nào ghé thăm.</string>
+    <string name="dish_story_tip">Mẹo ngon: Thêm một thìa ớt sa tế Huế chưng dầu hạt điều để bùng nổ hương sắc!</string>
+
+    <string name="dish_ingredients_title">Thành Phần &amp; Dinh Dưỡng</string>
+    <string name="dish_nutrition">~520 kcal • 32g Đạm</string>
+    <string name="dish_ingredient_beef">Thịt bắp hoa bò tươi</string>
+    <string name="dish_ingredient_beef_desc">Thái lát mỏng, giòn gân sần sật</string>
+    <string name="dish_ingredient_crab">Chả cua Huế quết tươi</string>
+    <string name="dish_ingredient_crab_desc">Thịt cua gạch vo viên, ngọt bùi tự nhiên</string>
+    <string name="dish_ingredient_pork">Móng giò heo hầm rục</string>
+    <string name="dish_ingredient_pork_desc">Ninh mềm da béo thanh, ngấm nước lèo</string>
+    <string name="dish_ingredient_paste">Mắm ruốc Cố Đô hạ thổ</string>
+    <string name="dish_ingredient_paste_desc">Lọc trong gia vị nền nã, thơm dịu êm</string>
+    <string name="dish_ingredient_herbs">Sả cây &amp; Rau hoa chuối</string>
+    <string name="dish_ingredient_herbs_desc">Rau kinh giới, húng quế và giá sống</string>
+    <string name="dish_role_main">Chính</string>
+    <string name="dish_role_core">Cốt lõi</string>
+    <string name="dish_role_side">Ăn kèm</string>
+
+    <string name="dish_places_title">Quán Chuẩn Vị Nhất</string>
+    <string name="dish_view_map">Xem bản đồ</string>
+    <string name="dish_place_photo">Hình ảnh quán</string>
+    <string name="dish_place_tuyet_name">Bún Bò Bà Tuyết</string>
+    <string name="dish_place_tuyet_rating">4.9</string>
+    <string name="dish_place_tuyet_address">47 Nguyễn Công Trứ, Phú Hội, Huế</string>
+    <string name="dish_place_tuyet_distance">450m</string>
+    <string name="dish_place_tuyet_price">40k - 50k</string>
+    <string name="dish_place_open">Đang mở cửa</string>
+    <string name="dish_place_menu">Xem quán &amp; Menu</string>
+    <string name="dish_place_muroi_name">Quán Bún Bò Mụ Rơi</string>
+    <string name="dish_place_muroi_rating">4.8</string>
+    <string name="dish_place_muroi_address">Nguyễn Du, P. Phú Cát, Huế</string>
+    <string name="dish_place_muroi_distance">800m</string>
+    <string name="dish_place_muroi_price">35k - 45k</string>
+    <string name="dish_place_muroi_note">Bán từ 06:00</string>
+    <string name="dish_place_diep_name">Bún Bò O Cương Điệp</string>
+    <string name="dish_place_diep_rating">4.7</string>
+    <string name="dish_place_diep_address">06 Trần Thúc Nhẫn, Vĩnh Ninh, Huế</string>
+    <string name="dish_place_diep_distance">1.2km</string>
+    <string name="dish_place_diep_price">40k - 60k</string>
+    <string name="dish_place_diep_note">Thịt bắp giòn</string>
+    <string name="dish_separator">•</string>
+
+    <string name="dish_reviews_title">Thực Khách Nói Gì?</string>
+    <string name="dish_write_review">Viết cảm nhận</string>
+    <string name="dish_review_total">1.850 vị khách</string>
+    <string name="dish_stars_5">5</string>
+    <string name="dish_stars_4">4</string>
+    <string name="dish_stars_3">3</string>
+    <string name="dish_stars_5_share">92%</string>
+    <string name="dish_stars_4_share">6%</string>
+    <string name="dish_stars_3_share">2%</string>
+    <string name="dish_review_1_initials">HN</string>
+    <string name="dish_review_1_name">Trần Hải Nam</string>
+    <string name="dish_review_1_role">Thực khách sành ăn Huế</string>
+    <string name="dish_review_1_date">Hôm qua</string>
+    <string name="dish_review_1_body">“Nước dùng thơm lừng mùi ruốc sả không hề bị nồng gắt, bắp hoa bò giòn sần sật và chả cua quết rất thơm ngọt tự nhiên. Đúng chuẩn phong vị Huế không lai tạp.”</string>
+    <string name="dish_review_2_initials">TT</string>
+    <string name="dish_review_2_name">Lê Thu Thảo</string>
+    <string name="dish_review_2_role">Du khách Hà Nội</string>
+    <string name="dish_review_2_date">3 ngày trước</string>
+    <string name="dish_review_2_body">“Ăn một tô sáng sớm se lạnh bên bờ sông Hương đúng là mỹ vị trần gian. Mọi người nhớ gọi thêm một đĩa chả cua ăn riêng nhé, ngon xuất sắc!”</string>
+
+    <string name="dish_ai_title">Hỏi Trợ Lý Ẩm Thực</string>
+    <string name="dish_ai_body">Tìm quán bún bò chuẩn vị không cay / ít dầu?</string>
+    <string name="dish_ai_chat">Trò chuyện</string>
+    <string name="dish_bottom_label">Gợi ý thưởng thức</string>
+    <string name="dish_bottom_title">Khám phá ngay</string>
+    <string name="dish_directions">Chỉ đường / Đặt bàn</string>
 </resources>

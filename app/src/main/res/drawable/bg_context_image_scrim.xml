@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Stitch hero overlay: from-inverse-surface/80 via-transparent to-transparent, bottom to top. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="90"
+        android:centerColor="@android:color/transparent"
+        android:endColor="@android:color/transparent"
+        android:startColor="@color/hue_inverse_surface_80" />
+</shape>

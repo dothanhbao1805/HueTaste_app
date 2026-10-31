@@ -29,4 +29,26 @@
     <color name="hue_outline_hairline">#F0E5D8</color>
     <color name="hue_surface_80">#CCFCF9F8</color>
     <color name="hue_card_shadow">#1AC8452B</color>
+
+    <!-- Extra Stitch tokens used by the context suggestion screen. -->
+    <color name="hue_surface_container_highest">#E4E2E1</color>
+    <color name="hue_surface_lowest_90">#E6FFFFFF</color>
+    <color name="hue_primary_fixed">#FFDAD3</color>
+    <color name="hue_on_primary_fixed">#3E0500</color>
+    <color name="hue_tertiary">#91402E</color>
+    <color name="hue_tertiary_fixed">#FFDAD2</color>
+    <color name="hue_on_tertiary_fixed">#3D0600</color>
+    <color name="hue_inverse_surface_80">#CC303030</color>
+
+    <!-- Extra Stitch tokens used by the dish detail screen. -->
+    <color name="hue_surface_lowest_80">#CCFFFFFF</color>
+    <color name="hue_surface_lowest_95">#F2FFFFFF</color>
+    <color name="hue_secondary_fixed_50">#80FFDEAA</color>
+    <color name="hue_secondary_fixed_60">#99FFDEAA</color>
+    <color name="hue_on_secondary_fixed_variant">#5F4100</color>
+    <color name="hue_primary_10">#1AC8452B</color>
+    <color name="hue_primary_5">#0DC8452B</color>
+    <color name="hue_secondary_10">#1A7D5700</color>
+    <color name="hue_black_80">#CC000000</color>
+    <color name="hue_black_25">#40000000</color>
 </resources>
