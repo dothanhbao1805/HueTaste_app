@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_snap_tips_sheet"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/_20dp">
+
+    <com.base.common.widget.LsConstraintView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingTop="@dimen/_16dp"
+        android:paddingBottom="@dimen/_8dp">
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scan_tips_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textFont="semi" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/closeButton"
+            android:layout_width="@dimen/_28dp"
+            android:layout_height="@dimen/_28dp"
+            android:background="@drawable/bg_circle_gray"
+            android:contentDescription="@string/scan_close"
+            android:padding="@dimen/_6dp"
+            android:src="@drawable/ic_close_dark"
+            app:colorTint="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.base.common.widget.LsConstraintView>
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/tipsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingTop="@dimen/_8dp" />
+
+</com.base.common.widget.LsLinearView>

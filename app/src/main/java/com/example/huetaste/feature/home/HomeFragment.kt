@@ -7,6 +7,7 @@ import com.base.common.extension.clicks
 import com.example.huetaste.R
 import com.example.huetaste.databinding.FragmentHomeBinding
 import com.example.huetaste.feature.context_suggestion.ContextSuggestionActivity
+import com.example.huetaste.feature.scan.ScanActivity
 import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.NumberFormat
@@ -59,7 +60,7 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         }
 
         binding.scanDishButton.clicks {
-            // Action to trigger dish camera scanner
+            startActivity(ScanActivity.newIntent(requireContext()))
         }
     }
 

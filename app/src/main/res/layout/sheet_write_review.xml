@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_snap_tips_sheet"
+    android:paddingBottom="@dimen/_20dp">
+
+    <com.base.common.widget.LsConstraintView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_8dp"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingTop="@dimen/_16dp">
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/place_review_sheet_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_16sp"
+            app:textFont="semi" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/reviewCloseButton"
+            android:layout_width="@dimen/_28dp"
+            android:layout_height="@dimen/_28dp"
+            android:background="@drawable/bg_circle_gray"
+            android:padding="@dimen/_6dp"
+            app:colorTint="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_close_dark"
+            android:contentDescription="@string/scan_close" />
+
+    </com.base.common.widget.LsConstraintView>
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_8dp">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/sheetStar1"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp"
+            android:padding="@dimen/_4dp"
+            android:src="@drawable/ic_star"
+            android:contentDescription="@string/place_review_star_1" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/sheetStar2"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp"
+            android:padding="@dimen/_4dp"
+            android:src="@drawable/ic_star"
+            android:contentDescription="@string/place_review_star_2" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/sheetStar3"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp"
+            android:padding="@dimen/_4dp"
+            android:src="@drawable/ic_star"
+            android:contentDescription="@string/place_review_star_3" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/sheetStar4"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp"
+            android:padding="@dimen/_4dp"
+            android:src="@drawable/ic_star"
+            android:contentDescription="@string/place_review_star_4" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/sheetStar5"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp"
+            android:padding="@dimen/_4dp"
+            android:src="@drawable/ic_star"
+            android:contentDescription="@string/place_review_star_5" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsEditText
+        android:id="@+id/reviewInput"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_112dp"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_16dp"
+        android:background="@drawable/bg_home_panel"
+        android:gravity="top|start"
+        android:hint="@string/place_review_sheet_hint"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine|textCapSentences"
+        android:maxLength="2000"
+        android:padding="@dimen/_12dp"
+        android:textColor="@color/hue_on_surface"
+        android:textColorHint="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_14sp"
+        app:textFont="regular" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/reviewError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_8dp"
+        android:visibility="gone"
+        android:text=""
+        android:textColor="@color/hue_tertiary"
+        android:textSize="@dimen/text_12sp"
+        app:textFont="regular" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/reviewSubmitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_16dp"
+        android:background="@drawable/bg_shape_pill"
+        android:backgroundTint="@color/hue_primary"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:minHeight="@dimen/_48dp"
+        android:text="@string/place_review_submit"
+        android:textColor="@color/hue_on_primary"
+        android:textSize="@dimen/text_16sp"
+        app:textFont="semi" />
+
+</com.base.common.widget.LsLinearView>

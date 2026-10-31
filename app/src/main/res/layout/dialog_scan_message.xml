@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsFrameView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/_24dp">
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_shape_round_12"
+        android:backgroundTint="@color/hue_surface_lowest"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_20dp"
+        android:paddingTop="@dimen/_24dp"
+        android:paddingBottom="@dimen/_20dp">
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_18sp"
+            app:textFont="bold" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/messageText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:gravity="center"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="regular" />
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_44dp"
+            android:layout_marginTop="@dimen/_24dp"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/cancelButton"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_surface_container_high"
+                android:gravity="center"
+                android:textColor="@color/hue_on_surface"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="semi" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/confirmButton"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_6dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_primary"
+                android:gravity="center"
+                android:textColor="@color/hue_on_primary"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="semi" />
+        </com.base.common.widget.LsLinearView>
+    </com.base.common.widget.LsLinearView>
+</com.base.common.widget.LsFrameView>

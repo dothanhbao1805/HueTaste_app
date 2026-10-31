@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_shape_pill"
+    android:backgroundTint="@color/hue_surface_container"
+    android:paddingHorizontal="@dimen/_12dp"
+    android:paddingVertical="@dimen/_4dp"
+    android:textColor="@color/hue_on_surface_variant"
+    android:textSize="@dimen/text_12sp"
+    app:textFont="medium" />

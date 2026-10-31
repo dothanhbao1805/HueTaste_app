@@ -95,7 +95,7 @@
         android:layout_width="@dimen/_0dp"
         android:layout_height="@dimen/_0dp"
         android:clipToPadding="false"
-        android:overScrollMode="never"
+
         android:scrollbars="none"
         app:layout_constraintTop_toBottomOf="@id/headerBar"
         app:layout_constraintBottom_toTopOf="@id/bottomBar"
@@ -127,7 +127,14 @@
                         android:layout_height="match_parent"
                         android:contentDescription="@string/dish_name"
                         android:scaleType="centerCrop"
+                        android:id="@+id/heroImage"
                         android:src="@drawable/img_dish_bun_bo" />
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/heroPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone" />
 
                     <com.base.common.widget.LsView
                         android:layout_width="match_parent"
@@ -138,6 +145,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_shape_pill"
+                        android:id="@+id/heroBadge"
                         android:backgroundTint="@color/hue_secondary_container"
                         android:paddingHorizontal="@dimen/_12dp"
                         android:paddingVertical="@dimen/_6dp"
@@ -158,6 +166,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_6dp"
+                            android:id="@+id/heroBadgeText"
                             android:text="@string/dish_hero_badge"
                             android:textColor="@color/hue_on_secondary_container"
                             android:textSize="@dimen/text_12sp"
@@ -178,6 +187,23 @@
                         android:tint="@color/context_heart_tint"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/heroCounter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_64dp"
+                        android:layout_marginEnd="@dimen/_16dp"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_black_25"
+                        android:paddingHorizontal="@dimen/_10dp"
+                        android:paddingVertical="@dimen/_4dp"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_11sp"
+                        android:visibility="gone"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:textFont="medium" />
 
                     <com.base.common.widget.LsLinearView
                         android:layout_width="wrap_content"
@@ -201,6 +227,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_4dp"
+                            android:id="@+id/heroTagTimeText"
                             android:text="@string/dish_tag_time"
                             android:textColor="@color/hue_on_surface"
                             android:textSize="@dimen/text_11sp"
@@ -230,6 +257,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_4dp"
+                            android:id="@+id/heroTagSpicyText"
                             android:text="@string/dish_tag_spicy"
                             android:textColor="@color/hue_on_surface"
                             android:textSize="@dimen/text_11sp"
@@ -259,6 +287,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_4dp"
+                            android:id="@+id/heroTagHeritageText"
                             android:text="@string/dish_tag_heritage"
                             android:textColor="@color/hue_on_primary"
                             android:textSize="@dimen/text_11sp"
@@ -284,6 +313,39 @@
                 </com.base.common.widget.LsConstraintView>
 
             </com.base.common.widget.LsCardView>
+
+            <!-- Scan status: shown when the recognised dish has no verified catalog entry -->
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/statusBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:background="@drawable/bg_shape_round_12"
+                android:backgroundTint="@color/hue_secondary_fixed_50"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/_12dp"
+                android:visibility="gone">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_20dp"
+                    android:layout_height="@dimen/_20dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_tips_and_updates"
+                    android:tint="@color/hue_on_secondary_fixed_variant" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/statusBannerText"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/hue_on_secondary_fixed_variant"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="medium" />
+
+            </com.base.common.widget.LsLinearView>
 
             <!-- 2. Name, rating and price -->
             <com.base.common.widget.LsCardView
@@ -313,6 +375,7 @@
                             android:layout_width="@dimen/_0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:id="@+id/dishNameText"
                             android:text="@string/dish_name"
                             android:textColor="@color/hue_on_surface"
                             android:textSize="@dimen/text_20sp"
@@ -327,6 +390,7 @@
                             android:paddingHorizontal="@dimen/_10dp"
                             android:paddingVertical="@dimen/_4dp"
                             android:maxLines="1"
+                            android:id="@+id/authenticBadge"
                             android:text="@string/dish_authentic_badge"
                             android:textColor="@color/hue_on_secondary_fixed"
                             android:textSize="@dimen/text_11sp"
@@ -339,6 +403,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_4dp"
                         android:textStyle="italic"
+                        android:id="@+id/englishNameText"
                         android:text="@string/dish_english_name"
                         android:textColor="@color/hue_on_surface_variant"
                         android:textSize="@dimen/text_12sp"
@@ -349,6 +414,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8dp"
                         android:background="@drawable/bg_shape_round_12"
+                        android:id="@+id/priceBox"
                         android:backgroundTint="@color/hue_surface_container_low"
                         android:paddingHorizontal="@dimen/_16dp"
                         android:paddingVertical="@dimen/_8dp"
@@ -356,6 +422,7 @@
                         android:orientation="horizontal">
 
                         <com.base.common.widget.LsLinearView
+                            android:id="@+id/ratingRow"
                             android:layout_width="@dimen/_0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -409,6 +476,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="end"
+                                android:id="@+id/priceText"
                                 android:text="@string/dish_price"
                                 android:textColor="@color/hue_primary"
                                 android:textSize="@dimen/text_16sp"
@@ -419,6 +487,7 @@
                     </com.base.common.widget.LsLinearView>
 
                     <com.base.common.widget.LsConstraintView
+                        android:id="@+id/pillsContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_12dp">
@@ -476,6 +545,7 @@
                             app:textFont="medium" />
 
                         <androidx.constraintlayout.helper.widget.Flow
+                            android:id="@+id/pillsFlow"
                             android:layout_width="@dimen/_0dp"
                             android:layout_height="wrap_content"
                             app:layout_constraintTop_toTopOf="parent"
@@ -496,6 +566,7 @@
 
             <!-- 3. Culinary story -->
             <com.base.common.widget.LsCardView
+                android:id="@+id/storyCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10dp"
@@ -542,6 +613,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8dp"
                         android:lineSpacingMultiplier="1.3"
+                        android:id="@+id/storyText"
                         android:text="@string/dish_story_body"
                         android:textColor="@color/hue_on_surface_variant"
                         android:textSize="@dimen/text_14sp"
@@ -552,6 +624,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_12dp"
                         android:background="@drawable/bg_shape_round_12"
+                        android:id="@+id/storyTipBox"
                         android:backgroundTint="@color/hue_primary_fixed"
                         android:padding="@dimen/_10dp"
                         android:gravity="center_vertical"
@@ -582,6 +655,7 @@
 
             <!-- 4. Ingredients -->
             <com.base.common.widget.LsCardView
+                android:id="@+id/ingredientsCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10dp"
@@ -629,6 +703,7 @@
                             android:backgroundTint="@color/hue_secondary_fixed_50"
                             android:paddingHorizontal="@dimen/_8dp"
                             android:paddingVertical="@dimen/_2dp"
+                            android:id="@+id/nutritionText"
                             android:text="@string/dish_nutrition"
                             android:textColor="@color/hue_on_secondary_fixed_variant"
                             android:textSize="@dimen/text_11sp"
@@ -637,6 +712,7 @@
                     </com.base.common.widget.LsLinearView>
 
                     <com.base.common.widget.LsLinearView
+                        android:id="@+id/ingredientsList"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_12dp"
@@ -979,6 +1055,7 @@
 
             <!-- 5. Places serving this dish -->
             <com.base.common.widget.LsCardView
+                android:id="@+id/placesCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10dp"
@@ -1034,6 +1111,7 @@
                     </com.base.common.widget.LsLinearView>
 
                     <com.base.common.widget.LsLinearView
+                        android:id="@+id/placesList"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_16dp"
@@ -1471,8 +1549,65 @@
 
             </com.base.common.widget.LsCardView>
 
+            <!-- Similar dishes suggested by the scan -->
+            <com.base.common.widget.LsCardView
+                android:id="@+id/similarCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10dp"
+                android:layout_marginTop="@dimen/_16dp"
+                android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                android:outlineSpotShadowColor="@color/hue_card_shadow"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/hue_surface_lowest"
+                app:cardCornerRadius="@dimen/_16dp"
+                app:cardElevation="@dimen/_1dp">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_16dp">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_22dp"
+                            android:layout_height="@dimen/_22dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_ramen_dining"
+                            android:tint="@color/hue_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:layout_weight="1"
+                            android:text="@string/dish_similar_title"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_16sp"
+                            app:textFont="bold" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/similarList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4dp"
+                        android:orientation="vertical" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsCardView>
+
             <!-- 6. Reviews -->
             <com.base.common.widget.LsCardView
+                android:id="@+id/reviewsCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10dp"
@@ -1926,6 +2061,7 @@
 
             <!-- 7. Food assistant prompt -->
             <com.base.common.widget.LsLinearView
+                android:id="@+id/aiCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10dp"
@@ -2082,6 +2218,58 @@
                 app:textFont="semi" />
 
         </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+    <!-- Loading and error states for dishes loaded from the backend -->
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/stateOverlay"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:background="@color/hue_surface"
+        android:clickable="true"
+        android:elevation="@dimen/_8dp"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerBar">
+
+        <ProgressBar
+            android:id="@+id/loadingIndicator"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp"
+            android:indeterminateTint="@color/hue_primary" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/stateMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12dp"
+            android:gravity="center"
+            android:text="@string/dish_loading"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="regular" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/retryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_44dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:background="@drawable/bg_shape_pill"
+            android:backgroundTint="@color/hue_primary"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_24dp"
+            android:text="@string/dish_retry"
+            android:textColor="@color/hue_on_primary"
+            android:textSize="@dimen/text_14sp"
+            android:visibility="gone"
+            app:textFont="semi" />
 
     </com.base.common.widget.LsLinearView>
 

@@ -258,4 +258,95 @@
     <string name="dish_bottom_label">Gợi ý thưởng thức</string>
     <string name="dish_bottom_title">Khám phá ngay</string>
     <string name="dish_directions">Chỉ đường / Đặt bàn</string>
+
+    <!-- Scan -->
+    <string name="scan_title">Quét món ăn</string>
+    <string name="scan_hint">Đặt món ăn vào giữa khung rồi chụp</string>
+    <string name="scan_identifying">Đang nhận diện món ăn…</string>
+    <string name="scan_close">Đóng</string>
+    <string name="scan_capture">Chụp ảnh</string>
+    <string name="scan_flash">Bật/tắt đèn flash</string>
+    <string name="scan_zoom">Thu phóng</string>
+    <string name="scan_zoom_in">Phóng to</string>
+    <string name="scan_zoom_out">Thu nhỏ</string>
+    <string name="scan_gallery">Chọn ảnh từ thư viện</string>
+    <string name="scan_tips_title">Mẹo chụp</string>
+    <string name="scan_tip_light">Chụp ở nơi đủ sáng, tránh ngược sáng và bóng đổ lên món ăn.</string>
+    <string name="scan_tip_frame">Để món ăn chiếm trọn khung quét, không quá xa hoặc bị cắt mất.</string>
+    <string name="scan_tip_angle">Chụp từ trên xuống hoặc chéo nhẹ để thấy rõ nguyên liệu.</string>
+    <string name="scan_tip_single">Mỗi lần chỉ chụp một món, giữ máy thật chắc tay.</string>
+    <string name="scan_retake">Chụp lại</string>
+    <string name="scan_cancel">Đóng</string>
+    <string name="scan_error_title">Không thể nhận diện</string>
+    <string name="scan_error_not_recognized">Không nhận ra món ăn trong ảnh. Hãy thử chụp gần và rõ hơn.</string>
+    <string name="scan_error_daily_limit">Bạn đã dùng hết lượt quét hôm nay. Vui lòng thử lại vào ngày mai.</string>
+    <string name="scan_error_image">Ảnh không hợp lệ hoặc quá lớn. Hãy chọn ảnh khác.</string>
+    <string name="scan_error_network">Không kết nối được máy chủ. Kiểm tra mạng và thử lại.</string>
+    <string name="scan_error_generic">Đã có lỗi xảy ra. Vui lòng thử lại.</string>
+    <string name="scan_error_capture">Không chụp được ảnh. Vui lòng thử lại.</string>
+    <string name="camera_permission_title">Cần quyền truy cập máy ảnh</string>
+    <string name="camera_permission_rationale">HueTaste cần máy ảnh để chụp và nhận diện món ăn.</string>
+    <string name="camera_permission_settings_message">Quyền máy ảnh đã bị tắt. Hãy bật lại trong Cài đặt để quét món ăn.</string>
+    <string name="camera_permission_allow">Cho phép</string>
+    <string name="camera_permission_open_settings">Mở Cài đặt</string>
+    <string name="camera_permission_not_now">Để sau</string>
+
+    <!-- Dish detail loaded from the backend -->
+    <string name="dish_loading">Đang tải thông tin món ăn…</string>
+    <string name="dish_load_error">Không tải được thông tin món ăn.</string>
+    <string name="dish_retry">Thử lại</string>
+    <string name="dish_status_unverified">Món ăn đang được xác minh, hiện chỉ có thông tin cơ bản.</string>
+    <string name="dish_status_not_hue">Món này không phải đặc sản Huế nên chưa có trong hệ thống.</string>
+    <string name="dish_similar_title">Món Huế tương tự</string>
+    <string name="dish_place_signature">Món đặc trưng</string>
+    <string name="dish_place_directions">Chỉ đường</string>
+    <string name="dish_price_value">%1$sđ</string>
+    <string name="dish_price_range">%1$sđ - %2$sđ</string>
+    <string name="dish_no_map_app">Không tìm thấy ứng dụng bản đồ.</string>
+
+    <string name="dish_image_counter">%1$d / %2$d</string>
+    <string name="dish_image_page_description">Ảnh %1$d trên %2$d</string>
+    <string name="dish_image_viewer_close">Đóng trình xem ảnh</string>
+
+    <!-- Place detail -->
+    <string name="place_screen_title">Chi tiết quán ăn</string>
+    <string name="place_loading">Đang tải thông tin quán…</string>
+    <string name="place_load_error">Không tải được thông tin quán.</string>
+    <string name="place_open_now">Đang mở cửa</string>
+    <string name="place_closed_now">Đã đóng cửa</string>
+    <string name="place_hours_bullet">• %1$s</string>
+    <string name="place_hours_today">Hôm nay: %1$s</string>
+    <string name="place_rating_count">(%1$d đánh giá)</string>
+    <string name="place_call_now">Gọi ngay</string>
+    <string name="place_call">Gọi quán</string>
+    <string name="place_directions">Chỉ đường</string>
+    <string name="place_location">Vị trí</string>
+    <string name="place_save">Lưu quán</string>
+    <string name="place_saved">Đã lưu</string>
+    <string name="place_menu_title">Thực đơn đặc sản quán</string>
+    <string name="place_menu_signature">Đặc trưng</string>
+    <string name="place_map_title">Vị trí bản đồ</string>
+    <string name="place_open_map">Mở bản đồ</string>
+    <string name="place_reviews_title">Đánh giá từ thực khách</string>
+    <string name="place_reviews_count">%1$d lượt nhận xét</string>
+    <string name="place_reviews_empty">Chưa có đánh giá nào. Hãy là người đầu tiên!</string>
+    <string name="place_reviews_more">Xem thêm đánh giá</string>
+    <string name="place_review_overview_note">Điểm trung bình gộp từ Google và đánh giá trong ứng dụng.</string>
+    <string name="place_review_anonymous">Thực khách</string>
+    <string name="place_write_review">Viết đánh giá</string>
+    <string name="place_review_sheet_title">Viết đánh giá</string>
+    <string name="place_review_sheet_hint">Chia sẻ cảm nhận của bạn về quán (không bắt buộc)</string>
+    <string name="place_review_submit">Gửi đánh giá</string>
+    <string name="place_review_rating_required">Hãy chọn số sao cho quán.</string>
+    <string name="place_review_submitted">Đã gửi đánh giá của bạn.</string>
+    <string name="place_review_failed">Không gửi được đánh giá. Hãy thử lại sau.</string>
+    <string name="place_review_star_1">1 sao</string>
+    <string name="place_review_star_2">2 sao</string>
+    <string name="place_review_star_3">3 sao</string>
+    <string name="place_review_star_4">4 sao</string>
+    <string name="place_review_star_5">5 sao</string>
+    <string name="place_favorite_failed">Không cập nhật được mục yêu thích.</string>
+    <string name="place_no_phone_app">Không tìm thấy ứng dụng gọi điện.</string>
+    <string name="place_share_chooser">Chia sẻ quán ăn</string>
+    <string name="place_share_text">%1$s – %2$s</string>
 </resources>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".feature.scan.ScanActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statusBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/navigationBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/cameraPreview"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Freezes the complete camera viewport while identification is running. -->
+    <com.base.common.widget.LsImageView
+        android:id="@+id/capturedPreview"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        app:colorTint="none"
+        app:layout_constraintBottom_toBottomOf="@id/cameraPreview"
+        app:layout_constraintEnd_toEndOf="@id/cameraPreview"
+        app:layout_constraintStart_toStartOf="@id/cameraPreview"
+        app:layout_constraintTop_toTopOf="@id/cameraPreview" />
+
+    <!-- Scan animation stays inside the scan frame. -->
+    <com.base.common.widget.LsCardView
+        android:id="@+id/scanLineContainer"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:visibility="invisible"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="@dimen/_20dp"
+        app:cardElevation="@dimen/_0dp"
+        app:layout_constraintBottom_toBottomOf="@id/scanOverlay"
+        app:layout_constraintEnd_toEndOf="@id/scanOverlay"
+        app:layout_constraintStart_toStartOf="@id/scanOverlay"
+        app:layout_constraintTop_toTopOf="@id/scanOverlay"
+        app:strokeWidth="@dimen/_0dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/scanLine"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleY="1.6"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/lottie_scan" />
+
+    </com.base.common.widget.LsCardView>
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/scanOverlay"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:layout_marginHorizontal="@dimen/_36dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_frame_photo"
+        app:colorTint="none"
+        app:layout_constraintBottom_toTopOf="@id/hintText"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/closeButton" />
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/closeButton"
+        android:layout_width="@dimen/_36dp"
+        android:layout_height="@dimen/_36dp"
+        android:layout_marginStart="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_8dp"
+        android:contentDescription="@string/scan_close"
+        android:padding="@dimen/_6dp"
+        android:src="@drawable/ic_scan_back_white"
+        app:colorTint="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusBar"
+        app:rippleBackground="rippleBorderless" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/titleText"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_8dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:text="@string/scan_title"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_16sp"
+        app:layout_constraintBottom_toBottomOf="@id/closeButton"
+        app:layout_constraintEnd_toStartOf="@id/tipsButton"
+        app:layout_constraintStart_toEndOf="@id/closeButton"
+        app:layout_constraintTop_toTopOf="@id/closeButton"
+        app:textFont="semi" />
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/tipsButton"
+        android:layout_width="@dimen/_34dp"
+        android:layout_height="@dimen/_34dp"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:background="@drawable/bg_tip_yellow_circle"
+        android:contentDescription="@string/scan_tips_title"
+        android:padding="@dimen/_7dp"
+        android:src="@drawable/ic_bulb_black"
+        app:colorTint="none"
+        app:layout_constraintBottom_toBottomOf="@id/closeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/closeButton" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/hintText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:layout_marginBottom="@dimen/_12dp"
+        android:background="@drawable/bg_scan_hint_pill"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_14dp"
+        android:paddingVertical="@dimen/_8dp"
+        android:text="@string/scan_hint"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_12sp"
+        app:layout_constraintBottom_toTopOf="@id/snapButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:textFont="medium" />
+
+    <com.base.common.widget.LsConstraintView
+        android:id="@+id/snapButton"
+        android:layout_width="@dimen/_65dp"
+        android:layout_height="@dimen/_65dp"
+        android:layout_marginBottom="@dimen/_20dp"
+        android:background="@drawable/bg_shutter_outer"
+        android:contentDescription="@string/scan_capture"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.base.common.widget.LsView
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="@dimen/_50dp"
+            android:background="@drawable/bg_shutter_inner"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.base.common.widget.LsImageView
+            android:layout_width="@dimen/_26dp"
+            android:layout_height="@dimen/_26dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_shutter_scan"
+            app:colorTint="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </com.base.common.widget.LsConstraintView>
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/bottomBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:paddingTop="@dimen/_10dp"
+        android:paddingBottom="@dimen/_14dp"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/flashButton"
+            android:layout_width="@dimen/_36dp"
+            android:layout_height="@dimen/_36dp"
+            android:contentDescription="@string/scan_flash"
+            android:padding="@dimen/_6dp"
+            android:src="@drawable/ic_flash_off"
+            app:colorTint="none"
+            app:rippleBackground="rippleBorderless" />
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_12dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/zoomMinusButton"
+                android:layout_width="@dimen/_28dp"
+                android:layout_height="@dimen/_28dp"
+                android:contentDescription="@string/scan_zoom_out"
+                android:padding="@dimen/_6dp"
+                android:src="@drawable/ic_zoom_minus"
+                app:colorTint="none"
+                app:rippleBackground="rippleBorderless" />
+
+            <SeekBar
+                android:id="@+id/zoomSeekBar"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_6dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:contentDescription="@string/scan_zoom"
+                android:max="100"
+                android:minHeight="@dimen/_20dp"
+                android:paddingStart="@dimen/_0dp"
+                android:paddingEnd="@dimen/_0dp"
+                android:progress="0"
+                android:progressDrawable="@drawable/bg_zoom_progress"
+                android:splitTrack="false"
+                android:thumb="@drawable/bg_zoom_thumb"
+                android:thumbOffset="@dimen/_0dp" />
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/zoomPlusButton"
+                android:layout_width="@dimen/_28dp"
+                android:layout_height="@dimen/_28dp"
+                android:contentDescription="@string/scan_zoom_in"
+                android:padding="@dimen/_6dp"
+                android:src="@drawable/ic_zoom_plus"
+                app:colorTint="none"
+                app:rippleBackground="rippleBorderless" />
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/galleryButton"
+            android:layout_width="@dimen/_36dp"
+            android:layout_height="@dimen/_36dp"
+            android:contentDescription="@string/scan_gallery"
+            android:padding="@dimen/_2dp"
+            android:src="@drawable/ic_gallery_camera"
+            app:colorTint="none"
+            app:rippleBackground="rippleBorderless" />
+    </com.base.common.widget.LsLinearView>
+
+    <!-- Swallows touches on the controls while a photo is being identified; the close button stays usable. -->
+    <com.base.common.widget.LsView
+        android:id="@+id/blockTouchView"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:clickable="true"
+        android:focusable="false"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/closeButton" />
+
+</com.base.common.widget.LsConstraintView>

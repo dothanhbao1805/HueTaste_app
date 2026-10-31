@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/viewerRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewerPager"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/viewerCloseButton"
+        android:layout_width="@dimen/_44dp"
+        android:layout_height="@dimen/_44dp"
+        android:layout_marginTop="@dimen/_8dp"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:background="@drawable/bg_shape_circle"
+        android:backgroundTint="@color/hue_black_25"
+        android:contentDescription="@string/dish_image_viewer_close"
+        android:padding="@dimen/_10dp"
+        android:src="@drawable/ic_close_dark"
+        android:tint="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/viewerCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_16dp"
+        android:background="@drawable/bg_shape_pill"
+        android:backgroundTint="@color/hue_black_25"
+        android:paddingHorizontal="@dimen/_12dp"
+        android:paddingVertical="@dimen/_6dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:textFont="medium" />
+
+</com.base.common.widget.LsConstraintView>

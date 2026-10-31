@@ -21,6 +21,11 @@ sdpSsp = "1.1.1"
 autodispose = "1.4.0"
 lifecycle = "2.9.4"
 window = "1.4.0"
+camerax = "1.5.3"
+lottie = "6.7.1"
+coil = "2.7.0"
+retrofit = "3.0.0"
+kotlinCoroutines = "1.10.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,9 +52,22 @@ hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt"
 hilt-android-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt" }
 lifecycle-process = { module = "androidx.lifecycle:lifecycle-process", version.ref = "lifecycle" }
 window = { module = "androidx.window:window", version.ref = "window" }
+lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinCoroutines" }
+camera-core = { module = "androidx.camera:camera-core", version.ref = "camerax" }
+camera-camera2 = { module = "androidx.camera:camera-camera2", version.ref = "camerax" }
+camera-lifecycle = { module = "androidx.camera:camera-lifecycle", version.ref = "camerax" }
+camera-view = { module = "androidx.camera:camera-view", version.ref = "camerax" }
+lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 
 [bundles]
 sdp-ssp-libs = ["sdp", "ssp"]
+camera-libs = ["camera-core", "camera-camera2", "camera-lifecycle", "camera-view"]
+retrofit-libs = ["retrofit", "retrofit-converter-gson"]
 uber-autodispose-libs = ["uber-autodispose", "uber-autodispose-android", "uber-autodispose-android-archcomponents"]
 
 [plugins]

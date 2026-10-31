@@ -51,4 +51,12 @@
     <color name="hue_secondary_10">#1A7D5700</color>
     <color name="hue_black_80">#CC000000</color>
     <color name="hue_black_25">#40000000</color>
+
+    <!-- Scan camera screen. -->
+    <color name="scan_zoom_track">#696969</color>
+
+    <!-- Place detail screen. -->
+    <color name="place_open">#059669</color>
+    <color name="place_open_text">#065F46</color>
+    <color name="place_closed">#BA1A1A</color>
 </resources>

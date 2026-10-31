@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <application
         android:name=".common.App"
         android:allowBackup="true"
@@ -27,6 +34,12 @@
             android:exported="false" />
         <activity
             android:name=".feature.dish_detail.DishDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.place_detail.PlaceDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.scan.ScanActivity"
             android:exported="false" />
     </application>
 

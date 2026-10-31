@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_12dp"
+    android:background="@drawable/bg_shape_round_12"
+    android:backgroundTint="@color/hue_surface_container_low"
+    android:orientation="vertical"
+    android:padding="@dimen/_8dp">
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:orientation="horizontal">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/placeImage"
+            android:layout_width="@dimen/_64dp"
+            android:layout_height="@dimen/_64dp"
+            android:contentDescription="@string/dish_place_photo"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_food_placeholder"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Rounded12" />
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeName"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="bold" />
+
+                <com.base.common.widget.LsImageView
+                    android:id="@+id/placeRatingIcon"
+                    android:layout_width="@dimen/_16dp"
+                    android:layout_height="@dimen/_16dp"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_star"
+                    android:tint="@color/hue_secondary" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_2dp"
+                    android:textColor="@color/hue_secondary"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="bold" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/placeAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_12sp"
+                app:textFont="regular" />
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/hue_primary"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="medium" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeHours"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="regular" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeSignature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6dp"
+                    android:background="@drawable/bg_shape_round_4"
+                    android:backgroundTint="@color/hue_secondary_fixed_60"
+                    android:paddingHorizontal="@dimen/_6dp"
+                    android:text="@string/dish_place_signature"
+                    android:textColor="@color/hue_on_secondary_fixed_variant"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="semi" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/placeDirectionsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/_8dp"
+        android:background="@drawable/bg_shape_pill"
+        android:backgroundTint="@color/hue_primary"
+        android:paddingHorizontal="@dimen/_12dp"
+        android:paddingVertical="@dimen/_6dp"
+        android:text="@string/dish_place_directions"
+        android:textColor="@color/hue_on_primary"
+        android:textSize="@dimen/text_12sp"
+        app:textFont="medium" />
+
+</com.base.common.widget.LsLinearView>

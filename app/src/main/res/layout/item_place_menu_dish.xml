@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:outlineAmbientShadowColor="@color/hue_card_shadow"
+    android:outlineSpotShadowColor="@color/hue_card_shadow"
+    app:cardBackgroundColor="@color/hue_surface_lowest"
+    app:cardCornerRadius="@dimen/_16dp"
+    app:cardElevation="@dimen/_2dp"
+    app:strokeColor="@color/hue_outline_hairline"
+    app:strokeWidth="@dimen/_1dp"
+    android:layout_marginBottom="@dimen/_12dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/_12dp">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/menuDishImage"
+            android:layout_width="@dimen/_96dp"
+            android:layout_height="@dimen/_96dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Rounded12"
+            android:src="@drawable/ic_food_placeholder"
+            android:contentDescription="@string/dish_place_photo" />
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/_12dp">
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/menuDishName"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text=""
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_16sp"
+                    app:textFont="bold" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/menuDishSignature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_primary_fixed"
+                    android:paddingHorizontal="@dimen/_8dp"
+                    android:paddingVertical="@dimen/_2dp"
+                    android:visibility="gone"
+                    android:text="@string/place_menu_signature"
+                    android:textColor="@color/hue_on_primary_fixed"
+                    android:textSize="@dimen/text_10sp"
+                    app:textFont="semi" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/menuDishDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text=""
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_12sp"
+                app:textFont="regular" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/menuDishPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                android:text=""
+                android:textColor="@color/hue_primary"
+                android:textSize="@dimen/text_16sp"
+                app:textFont="bold" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsCardView>
