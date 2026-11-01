@@ -12,17 +12,19 @@ com.example.huetaste
 |   |-- ui             Reusable UI components (gallery/: photo carousel adapter, full-screen viewer, zoom)
 |   `-- widget         Reusable custom Android views
 |-- data
-|   |-- local          Local data sources and persistence implementations
+|   |-- local          Local data sources and persistence implementations (SecureSessionStore)
 |   |-- mapper         Data-to-domain mapping (scan and dish DTOs)
 |   |-- remote         Retrofit HueTasteApi, DTOs, and apiCall error mapping
 |   `-- repository     ScanRepositoryImpl, DishRepositoryImpl
 |-- di                 AppModule, NetworkModule (OkHttp/Retrofit), RepositoryModule
 |-- domain
-|   |-- model          ScanResult, DishDetail, PlaceDetail, Review, OpeningHours, Place, AppError
+|   |-- model          ScanResult, DishDetail, PlaceDetail, Review, OpeningHours, AuthSession, AuthState, AuthValidator, Place, AppError
 |   |-- repository     ScanRepository, DishRepository
-|   `-- usecase        ScanDish, GetScanResult, GetDishDetail, GetPlaceDetail, GetPlaceReviews, SubmitPlaceReview, SetPlaceFavorite
+|   `-- usecase        ScanDish, GetScanResult, GetDishDetail, GetPlaceDetail, GetPlaceReviews, SubmitPlaceReview, SetPlaceFavorite, Login, Register, ContinueAsGuest, GetAuthState
 `-- feature
-    |-- main           LsActivity entry point, ViewPager2, and main tab definitions
+    |-- splash         Launcher Activity: reads the remembered session and opens the main screen or the login
+    |-- auth           Login and Register Activities with their ViewModels
+    |-- main           LsActivity for the main shell, ViewPager2, and main tab definitions
     |-- home           Home fragment extending LsFragment (static Stitch-based UI)
     |-- context_suggestion  Context suggestion Activity extending LsActivity (static Stitch-based UI)
     |-- dish_detail    Dish detail Activity + ViewModel (backend data, or the static Stitch sample) with a hero photo carousel
@@ -37,6 +39,14 @@ com.example.huetaste
 ## Place detail
 
 `PlaceDetailActivity` implements the Stitch "Chi Tiết Quán Ăn" screen and is opened with `newIntent(placeId)`. `PlaceDetailViewModel` loads `GET /dia-diem/{id}` and the first page of `GET /dia-diem/{id}/danh-gia` in parallel through `PlaceRepository`; the place still shows when the reviews fail to load. The hero reuses `common/ui/gallery`, with the backend cover photo put first because the backend gallery leaves it out. Today's opening hours and the open or closed badge come from `OpeningHours`, a framework-independent parser of the backend `gioMoCua` lines (Vietnamese or English day names, several ranges per day); the badge is hidden when the text cannot be read. Parts of the design the backend has no data for (amenities, heritage badges, peak hours, rating breakdown, distance, reservations) are not built. The heart in the header and the "Lưu quán" action share one favorite state saved with `POST`/`DELETE /users/me/yeu-thich`, applied immediately and reverted when the request fails. `ReviewSheet` (an `LsBottomSheet`) posts `POST /danh-gia`; it shares the Activity's ViewModel, which keeps the submit progress, and the first page of reviews is reloaded after a successful post. The backend currently skips token checks in debug mode and the app has no sign-in yet, so favorites and reviews work against that debug backend only.
+
+## Launch and sign-in
+
+`SplashActivity` is the only launcher. It reads the remembered session (`GetAuthStateUseCase`) while the brand stays on screen for a short minimum time, then opens `MainActivity` for a signed-in user or a returning guest, and `LoginActivity` otherwise, so a user who signed in once never sees the login again. Both targets are opened with `NEW_TASK | CLEAR_TASK` through `newRootIntent`, so Back never returns to the splash or the login. `MainActivity` leaves for the login if the session ends while the app is open (the backend rejects the refresh token, or the account is blocked) and checks again whenever it starts.
+
+`LoginActivity` and `RegisterActivity` validate with the pure `AuthValidator` before calling the backend, show field errors under each input, and map backend error codes (`INVALID_CREDENTIALS`, `EMAIL_EXISTS`, network failures) to Vietnamese messages. "Tiếp tục không cần tài khoản" stores a guest flag so the next launch also goes straight to the main screen. "Quên mật khẩu?" and the terms links only announce that they are coming, because the design has no screens for them yet.
+
+The session lives in `SecureSessionStore`: the access and refresh tokens are encrypted with AES-GCM under a key held in the Android Keystore and written to their own preferences file (`auth_session`), which both backup rule files exclude. If the key is lost the store signs the user out instead of failing. `AuthInterceptor` adds the access token to backend requests; `TokenAuthenticator` answers a 401 by exchanging the refresh token once (serialized so parallel requests refresh only once) and repeating the request, and clears the session when the backend rejects the refresh token. The sign-in endpoints use a separate client without these two, so a refresh can never trigger another refresh. Guests send no token. The backend currently skips token checks in debug mode; once it checks them again, scan, favorites and reviews need a signed-in user.
 
 ## Dependency direction
 

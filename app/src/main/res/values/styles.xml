@@ -21,6 +21,14 @@
     </style>
 
     <!-- Stitch budget range: flat 8dp surface-container track with a round 16dp primary thumb. -->
+    <style name="ShapeAppearance.HueTaste.BottomRounded32" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">@dimen/_0dp</item>
+        <item name="cornerSizeTopRight">@dimen/_0dp</item>
+        <item name="cornerSizeBottomLeft">@dimen/_32dp</item>
+        <item name="cornerSizeBottomRight">@dimen/_32dp</item>
+    </style>
+
     <style name="Widget.HueTaste.BudgetSlider" parent="Widget.Material3.Slider">
         <item name="labelBehavior">gone</item>
         <item name="tickVisible">false</item>

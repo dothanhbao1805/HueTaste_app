@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsConstraintView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registerRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hue_surface"
+    tools:context=".feature.auth.RegisterActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statusBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/navigationBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <com.base.common.widget.LsConstraintView
+        android:id="@+id/headerBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_64dp"
+        android:background="@color/hue_surface"
+        android:elevation="@dimen/_2dp"
+        android:paddingHorizontal="@dimen/_10dp"
+        app:layout_constraintTop_toTopOf="@id/statusBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/backButton"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
+            android:contentDescription="@string/context_back"
+            android:padding="@dimen/_12dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/hue_on_surface"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:rippleBackground="rippleBorderless" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/register_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_18sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/backButton"
+            app:layout_constraintEnd_toStartOf="@id/profileBadge"
+            app:textFont="semi" />
+
+        <com.base.common.widget.LsFrameView
+            android:id="@+id/profileBadge"
+            android:layout_width="@dimen/_32dp"
+            android:layout_height="@dimen/_32dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_primary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.base.common.widget.LsImageView
+                android:layout_width="@dimen/_18dp"
+                android:layout_height="@dimen/_18dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_person"
+                android:tint="@color/hue_on_primary" />
+
+        </com.base.common.widget.LsFrameView>
+
+    </com.base.common.widget.LsConstraintView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/registerScroll"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/headerBar"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_16dp"
+            android:paddingHorizontal="@dimen/_10dp">
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:paddingTop="@dimen/_16dp">
+
+                <com.base.common.widget.LsFrameView
+                    android:layout_width="@dimen/_64dp"
+                    android:layout_height="@dimen/_64dp"
+                    android:background="@drawable/bg_shape_circle"
+                    android:backgroundTint="@color/hue_secondary_fixed_50">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_32dp"
+                        android:layout_height="@dimen/_32dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_soup_kitchen"
+                        android:tint="@color/hue_primary"
+                        android:importantForAccessibility="no" />
+
+                </com.base.common.widget.LsFrameView>
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:text="@string/register_heading"
+                    android:textColor="@color/hue_primary"
+                    android:textSize="@dimen/text_32sp"
+                    app:textFont="bold" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_4dp"
+                    android:text="@string/register_subtitle"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="regular" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_24dp">
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_8dp"
+                    android:labelFor="@id/nameInput"
+                    android:text="@string/register_name_label"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="semi" />
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/nameField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_auth_field"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/_52dp"
+                    android:paddingStart="@dimen/_16dp"
+                    android:paddingEnd="@dimen/_16dp"
+                    android:layout_marginTop="@dimen/_4dp">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_22dp"
+                        android:layout_height="@dimen/_22dp"
+                        android:src="@drawable/ic_person"
+                        android:tint="@color/hue_primary"
+                        android:importantForAccessibility="no" />
+
+                    <com.base.common.widget.LsEditText
+                        android:id="@+id/nameInput"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/_8dp"
+                        android:background="@null"
+                        android:hint="@string/register_name_hint"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName|textCapWords"
+                        android:maxLines="1"
+                        android:minHeight="@dimen/_48dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textColorHint="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="regular"
+                        android:autofillHints="name"
+                        android:maxLength="150" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/nameErrorRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_4dp"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="@dimen/_12dp"
+                    android:visibility="gone">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_14dp"
+                        android:layout_height="@dimen/_14dp"
+                        android:src="@drawable/ic_error"
+                        android:tint="@color/hue_error"
+                        android:importantForAccessibility="no" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/nameErrorText"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_6dp"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textColor="@color/hue_error"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="regular" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_16dp">
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_8dp"
+                    android:labelFor="@id/emailInput"
+                    android:text="@string/login_email_label"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="semi" />
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/emailField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_auth_field"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/_52dp"
+                    android:paddingStart="@dimen/_16dp"
+                    android:paddingEnd="@dimen/_16dp"
+                    android:layout_marginTop="@dimen/_4dp">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_22dp"
+                        android:layout_height="@dimen/_22dp"
+                        android:src="@drawable/ic_mail"
+                        android:tint="@color/hue_primary"
+                        android:importantForAccessibility="no" />
+
+                    <com.base.common.widget.LsEditText
+                        android:id="@+id/emailInput"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/_8dp"
+                        android:background="@null"
+                        android:hint="@string/login_email_hint"
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:minHeight="@dimen/_48dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textColorHint="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="regular"
+                        android:autofillHints="emailAddress" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/emailErrorRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_4dp"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="@dimen/_12dp"
+                    android:visibility="gone">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_14dp"
+                        android:layout_height="@dimen/_14dp"
+                        android:src="@drawable/ic_error"
+                        android:tint="@color/hue_error"
+                        android:importantForAccessibility="no" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/emailErrorText"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_6dp"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textColor="@color/hue_error"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="regular" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_16dp">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="@dimen/_8dp">
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:labelFor="@id/passwordInput"
+                        android:layout_weight="1"
+                        android:text="@string/login_password_label"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="semi" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_password_rule"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="regular" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/passwordField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_auth_field"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/_52dp"
+                    android:paddingStart="@dimen/_16dp"
+                    android:paddingEnd="@dimen/_0dp"
+                    android:layout_marginTop="@dimen/_4dp">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_22dp"
+                        android:layout_height="@dimen/_22dp"
+                        android:src="@drawable/ic_lock"
+                        android:tint="@color/hue_primary"
+                        android:importantForAccessibility="no" />
+
+                    <com.base.common.widget.LsEditText
+                        android:id="@+id/passwordInput"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/_8dp"
+                        android:background="@null"
+                        android:hint="@string/register_password_hint"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:minHeight="@dimen/_48dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textColorHint="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="regular"
+                        android:autofillHints="newPassword" />
+
+                    <com.base.common.widget.LsImageView
+                        android:id="@+id/passwordToggle"
+                        android:layout_width="@dimen/_40dp"
+                        android:layout_height="@dimen/_40dp"
+                        android:layout_marginEnd="@dimen/_8dp"
+                        android:padding="@dimen/_10dp"
+                        app:rippleBackground="rippleBorderless"
+                        android:src="@drawable/ic_visibility"
+                        android:tint="@color/hue_on_surface_variant"
+                        android:contentDescription="@string/auth_show_password" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/strengthBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/_8dp"
+                        android:paddingHorizontal="@dimen/_8dp">
+
+                        <com.base.common.widget.LsView
+                            android:id="@+id/strengthBar1"
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="@dimen/_6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_shape_pill"
+                            android:backgroundTint="@color/hue_surface_container_high" />
+
+                        <com.base.common.widget.LsView
+                            android:id="@+id/strengthBar2"
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="@dimen/_6dp"
+                            android:layout_weight="1"
+                            android:layout_marginHorizontal="@dimen/_6dp"
+                            android:background="@drawable/bg_shape_pill"
+                            android:backgroundTint="@color/hue_surface_container_high" />
+
+                        <com.base.common.widget.LsView
+                            android:id="@+id/strengthBar3"
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="@dimen/_6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/bg_shape_pill"
+                            android:backgroundTint="@color/hue_surface_container_high" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/strengthText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4dp"
+                        android:paddingHorizontal="@dimen/_8dp"
+                        android:text=""
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="medium" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/passwordErrorRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_4dp"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="@dimen/_12dp"
+                    android:visibility="gone">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_14dp"
+                        android:layout_height="@dimen/_14dp"
+                        android:src="@drawable/ic_error"
+                        android:tint="@color/hue_error"
+                        android:importantForAccessibility="no" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/passwordErrorText"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_6dp"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textColor="@color/hue_error"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="regular" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_16dp">
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_8dp"
+                    android:labelFor="@id/confirmInput"
+                    android:text="@string/register_confirm_label"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="semi" />
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/confirmField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_auth_field"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/_52dp"
+                    android:paddingStart="@dimen/_16dp"
+                    android:paddingEnd="@dimen/_0dp"
+                    android:layout_marginTop="@dimen/_4dp">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_22dp"
+                        android:layout_height="@dimen/_22dp"
+                        android:src="@drawable/ic_lock"
+                        android:tint="@color/hue_primary"
+                        android:importantForAccessibility="no" />
+
+                    <com.base.common.widget.LsEditText
+                        android:id="@+id/confirmInput"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="@dimen/_8dp"
+                        android:background="@null"
+                        android:hint="@string/register_confirm_hint"
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:maxLines="1"
+                        android:minHeight="@dimen/_48dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textColorHint="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="regular"
+                        android:autofillHints="newPassword" />
+
+                    <com.base.common.widget.LsImageView
+                        android:id="@+id/confirmToggle"
+                        android:layout_width="@dimen/_40dp"
+                        android:layout_height="@dimen/_40dp"
+                        android:layout_marginEnd="@dimen/_8dp"
+                        android:padding="@dimen/_10dp"
+                        app:rippleBackground="rippleBorderless"
+                        android:src="@drawable/ic_visibility"
+                        android:tint="@color/hue_on_surface_variant"
+                        android:contentDescription="@string/auth_show_password" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/confirmErrorRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/_4dp"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="@dimen/_12dp"
+                    android:visibility="gone">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_14dp"
+                        android:layout_height="@dimen/_14dp"
+                        android:src="@drawable/ic_error"
+                        android:tint="@color/hue_error"
+                        android:importantForAccessibility="no" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/confirmErrorText"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_6dp"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textColor="@color/hue_error"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="regular" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_8dp">
+
+                <com.base.common.widget.LsFrameView
+                    android:id="@+id/termsBox"
+                    android:layout_width="@dimen/_48dp"
+                    android:layout_height="@dimen/_48dp"
+                    android:clickable="true"
+                    android:contentDescription="@string/register_terms_checkbox"
+                    android:focusable="true">
+
+                    <com.base.common.widget.LsImageView
+                        android:id="@+id/termsCheckbox"
+                        android:layout_width="@dimen/_20dp"
+                        android:layout_height="@dimen/_20dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_auth_checkbox"
+                        android:padding="@dimen/_2dp"
+                        android:src="@drawable/ic_check"
+                        android:tint="@color/auth_check_tint"
+                        android:importantForAccessibility="no" />
+
+                </com.base.common.widget.LsFrameView>
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/termsText"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lineSpacingExtra="@dimen/_2dp"
+                    android:paddingTop="@dimen/_14dp"
+                    android:text=""
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="regular" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/_8dp">
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/submitButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_primary"
+                    android:clickable="true"
+                    android:elevation="@dimen/_4dp"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:minHeight="@dimen/_48dp">
+
+                    <ProgressBar
+                        android:id="@+id/submitSpinner"
+                        android:layout_width="@dimen/_20dp"
+                        android:layout_height="@dimen/_20dp"
+                        android:layout_marginEnd="@dimen/_8dp"
+                        android:indeterminateTint="@color/hue_on_primary"
+                        android:visibility="gone" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/submitText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/register_submit"
+                        android:textColor="@color/hue_on_primary"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="semi" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_16dp">
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_have_account"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="regular" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/loginLink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:minHeight="@dimen/_48dp"
+                    android:text="@string/register_login"
+                    android:textColor="@color/hue_primary"
+                    android:textSize="@dimen/text_16sp"
+                    app:textFont="bold" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+    </androidx.core.widget.NestedScrollView>
+
+</com.base.common.widget.LsConstraintView>

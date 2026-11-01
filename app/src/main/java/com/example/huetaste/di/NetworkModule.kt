@@ -1,6 +1,8 @@
 package com.example.huetaste.di
 
 import com.example.huetaste.BuildConfig
+import com.example.huetaste.data.remote.AuthInterceptor
+import com.example.huetaste.data.remote.TokenAuthenticator
 import com.example.huetaste.data.remote.HueTasteApi
 import com.google.gson.Gson
 import dagger.Module
@@ -24,7 +26,12 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
+    fun provideOkHttpClient(
+        authInterceptor: AuthInterceptor,
+        tokenAuthenticator: TokenAuthenticator,
+    ): OkHttpClient = OkHttpClient.Builder()
+        .addInterceptor(authInterceptor)
+        .authenticator(tokenAuthenticator)
         .connectTimeout(15, TimeUnit.SECONDS)
         // A scan may fall back across several vision models on the backend, each with its own timeout.
         .readTimeout(90, TimeUnit.SECONDS)

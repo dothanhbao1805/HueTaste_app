@@ -59,4 +59,16 @@
     <color name="place_open">#059669</color>
     <color name="place_open_text">#065F46</color>
     <color name="place_closed">#BA1A1A</color>
+
+    <!-- Splash, login and register screens. -->
+    <color name="hue_canvas">#FFF8F0</color>
+    <color name="hue_primary_deep">#A62D15</color>
+    <color name="hue_primary_0">#00C8452B</color>
+    <color name="hue_primary_15">#26C8452B</color>
+    <color name="hue_primary_30">#4DC8452B</color>
+    <color name="hue_secondary_container_0">#00FDC254</color>
+    <color name="hue_outline_variant_30">#4DE1BFB8</color>
+    <color name="hue_error">#BA1A1A</color>
+    <color name="hue_error_container_40">#66FFDAD6</color>
+    <color name="hue_black_0">#00000000</color>
 </resources>

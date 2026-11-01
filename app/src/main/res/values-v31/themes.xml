@@ -1,0 +1,7 @@
+<resources>
+    <!-- Android 12 and newer show a system splash first; give it the same background as our splash screen. -->
+    <style name="Theme.HueTaste.Splash" parent="Theme.HueTaste">
+        <item name="android:windowBackground">@color/hue_surface</item>
+        <item name="android:windowSplashScreenBackground">@color/hue_surface</item>
+    </style>
+</resources>

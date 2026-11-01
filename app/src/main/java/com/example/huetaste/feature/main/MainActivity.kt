@@ -1,16 +1,28 @@
 package com.example.huetaste.feature.main
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewpager2.widget.ViewPager2
 import com.base.common.base.LsActivity
 import com.base.common.base.LsPageAdapter
 import com.example.huetaste.databinding.ActivityMainBinding
+import com.example.huetaste.domain.model.AuthState
+import com.example.huetaste.domain.usecase.GetAuthStateUseCase
+import com.example.huetaste.feature.auth.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+    @Inject lateinit var getAuthState: GetAuthStateUseCase
+
     private val pageCallback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
             selectMenuItem(position)
@@ -37,6 +49,29 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
             true
         }
         selectMenuItem(binding.viewPager.currentItem)
+        returnToLoginWhenSessionEnds()
+    }
+
+    /**
+     * A signed-in user whose session the backend no longer accepts (the refresh token expired or the account was
+     * blocked) goes back to the login. The state is read again whenever the screen starts, since the session may
+     * have ended while another screen was on top.
+     */
+    private fun returnToLoginWhenSessionEnds() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                if (getAuthState() == AuthState.SIGNED_OUT) {
+                    openLogin()
+                    return@repeatOnLifecycle
+                }
+                getAuthState.observe().collect { state -> if (state == AuthState.SIGNED_OUT) openLogin() }
+            }
+        }
+    }
+
+    private fun openLogin() {
+        startActivity(LoginActivity.newRootIntent(this))
+        finish()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -55,5 +90,11 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
         binding.bottomNavigation.setOnItemSelectedListener(null)
         binding.viewPager.unregisterOnPageChangeCallback(pageCallback)
         super.onDestroy()
+    }
+
+    companion object {
+        /** Opens the main screen as the only screen, after the launch screen or a successful login. */
+        fun newRootIntent(context: Context): Intent = Intent(context, MainActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
     }
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/_80dp"
+    android:height="@dimen/_80dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Rising steam and lotus bud -->
+    <path
+        android:pathData="M50,34 C50,26 46,22 50,14 C54,22 50,26 50,34"
+        android:strokeColor="@color/hue_secondary_container"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.2" />
+    <path
+        android:pathData="M42,33 C37,25 39,19 36,15"
+        android:strokeColor="@color/hue_secondary_container"
+        android:strokeLineCap="round"
+        android:strokeWidth="1.8" />
+    <path
+        android:pathData="M58,33 C63,25 61,19 64,15"
+        android:strokeColor="@color/hue_secondary_container"
+        android:strokeLineCap="round"
+        android:strokeWidth="1.8" />
+    <path
+        android:pathData="M38,34 C44,31 47,34 50,31 C53,34 56,31 62,34"
+        android:strokeColor="@color/hue_primary"
+        android:strokeLineCap="round"
+        android:strokeWidth="1.5" />
+
+    <!-- Bowl -->
+    <path
+        android:fillColor="@color/hue_primary"
+        android:pathData="M22,46 Q21,72 50,74 Q79,72 78,46 Z" />
+    <path
+        android:fillColor="@color/hue_secondary_container"
+        android:pathData="M22,46 a28,6 0 1,0 56,0 a28,6 0 1,0 -56,0 Z" />
+    <path
+        android:fillColor="@color/hue_primary_deep"
+        android:pathData="M25,46 a25,4.5 0 1,0 50,0 a25,4.5 0 1,0 -50,0 Z" />
+    <path
+        android:fillColor="@color/hue_primary"
+        android:pathData="M28,46.5 a22,3.5 0 1,0 44,0 a22,3.5 0 1,0 -44,0 Z" />
+
+    <!-- Garnish -->
+    <path
+        android:fillColor="@color/hue_secondary_container"
+        android:pathData="M43.8,46.5 a1.2,1.2 0 1,0 2.4,0 a1.2,1.2 0 1,0 -2.4,0 Z" />
+    <path
+        android:fillColor="@color/hue_secondary_container"
+        android:pathData="M51.6,46 a1.4,1.4 0 1,0 2.8,0 a1.4,1.4 0 1,0 -2.8,0 Z" />
+    <path
+        android:fillColor="@color/hue_canvas"
+        android:pathData="M48,47.5 a1,1 0 1,0 2,0 a1,1 0 1,0 -2,0 Z" />
+
+    <!-- Foot -->
+    <path
+        android:fillColor="@color/hue_tertiary"
+        android:pathData="M38,73.5 L36,78 C36,79 38,80 50,80 C62,80 64,79 64,78 L62,73.5 Z" />
+    <path
+        android:pathData="M41,77 L59,77"
+        android:strokeColor="@color/hue_secondary_container"
+        android:strokeLineCap="round"
+        android:strokeWidth="1.2" />
+</vector>

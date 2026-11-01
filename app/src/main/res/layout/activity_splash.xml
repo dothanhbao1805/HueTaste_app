@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsConstraintView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/splashRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hue_surface"
+    tools:context=".feature.splash.SplashActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statusBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/navigationBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <com.base.common.widget.LsView
+        android:id="@+id/splashBottomGlow"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_256dp"
+        android:background="@drawable/bg_splash_bottom_glow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/splashMotif"
+        android:layout_width="@dimen/_320dp"
+        android:layout_height="@dimen/_320dp"
+        android:alpha="0.4"
+        android:importantForAccessibility="no"
+        android:src="@drawable/bg_splash_motif"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/splashBrand"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_10dp"
+        app:layout_constraintTop_toTopOf="@id/statusBar"
+        app:layout_constraintBottom_toTopOf="@id/splashFooter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.base.common.widget.LsFrameView
+            android:layout_width="@dimen/_176dp"
+            android:layout_height="@dimen/_176dp">
+
+            <com.base.common.widget.LsView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_splash_glow" />
+
+            <com.base.common.widget.LsFrameView
+                android:layout_width="@dimen/_112dp"
+                android:layout_height="@dimen/_112dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_shape_circle"
+                android:backgroundTint="@color/hue_surface_lowest"
+                android:elevation="@dimen/_4dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_80dp"
+                    android:layout_height="@dimen/_80dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/splash_emblem_description"
+                    android:src="@drawable/ic_splash_emblem" />
+
+            </com.base.common.widget.LsFrameView>
+
+        </com.base.common.widget.LsFrameView>
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/splash_title_first"
+                android:textColor="@color/hue_primary"
+                android:textSize="@dimen/text_32sp"
+                app:textFont="bold" />
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6dp"
+                android:text="@string/splash_title_second"
+                android:textColor="@color/hue_on_surface"
+                android:textSize="@dimen/text_32sp"
+                app:textFont="bold" />
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/_8dp"
+            android:alpha="0.75"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsView
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_2dp"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_primary" />
+
+            <com.base.common.widget.LsView
+                android:layout_width="@dimen/_6dp"
+                android:layout_height="@dimen/_6dp"
+                android:layout_marginHorizontal="@dimen/_8dp"
+                android:background="@color/hue_secondary_container"
+                android:rotation="45" />
+
+            <com.base.common.widget.LsView
+                android:layout_width="@dimen/_24dp"
+                android:layout_height="@dimen/_2dp"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_primary" />
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_32dp"
+            android:text="@string/splash_slogan"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="regular" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/splashFooter"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_24dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_10dp"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ProgressBar
+            android:id="@+id/splashProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/_176dp"
+            android:layout_height="@dimen/_4dp"
+            android:max="100"
+            android:progress="30"
+            android:progressDrawable="@drawable/bg_splash_progress" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:text="@string/splash_loading"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_12sp"
+            app:textFont="medium" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4dp"
+            android:alpha="0.6"
+            android:text="@string/splash_note"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_11sp"
+            app:textFont="regular" />
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsConstraintView>

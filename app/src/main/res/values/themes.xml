@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.HueTaste" parent="Base.Theme.HueTaste" />
+
+    <!-- Launch theme: the window shows the splash background right away instead of a white flash. -->
+    <style name="Theme.HueTaste.Splash" parent="Theme.HueTaste">
+        <item name="android:windowBackground">@color/hue_surface</item>
+    </style>
 </resources>

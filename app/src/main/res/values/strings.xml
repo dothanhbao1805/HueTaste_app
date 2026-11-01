@@ -349,4 +349,71 @@
     <string name="place_no_phone_app">Không tìm thấy ứng dụng gọi điện.</string>
     <string name="place_share_chooser">Chia sẻ quán ăn</string>
     <string name="place_share_text">%1$s – %2$s</string>
+
+    <!-- Splash -->
+    <string name="splash_title_first">Ăn Gì</string>
+    <string name="splash_title_second">Huế</string>
+    <string name="splash_slogan">Khám phá ẩm thực cố đô theo từng khoảnh khắc</string>
+    <string name="splash_loading">Đang chuẩn bị món ngon cho bạn…</string>
+    <string name="splash_note">Kinh kỳ phong vị • Trọn vẹn tinh hoa</string>
+    <string name="splash_emblem_description">Biểu tượng bát bún bò Huế</string>
+
+    <!-- Login -->
+    <string name="login_title">Đăng Nhập</string>
+    <string name="login_welcome">Chào mừng trở lại</string>
+    <string name="login_subtitle">Đăng nhập để lưu món yêu thích và nhận gợi ý hợp khẩu vị</string>
+    <string name="login_email_label">Email</string>
+    <string name="login_email_hint">ten@email.com</string>
+    <string name="login_password_label">Mật khẩu</string>
+    <string name="login_password_hint">Nhập mật khẩu của bạn</string>
+    <string name="login_forgot">Quên mật khẩu?</string>
+    <string name="login_submit">Đăng nhập</string>
+    <string name="login_submitting">Đang xác thực…</string>
+    <string name="login_or">hoặc</string>
+    <string name="login_guest">Tiếp tục không cần tài khoản</string>
+    <string name="login_no_account">Chưa có tài khoản?</string>
+    <string name="login_register">Đăng ký</string>
+    <string name="login_hero_brand">Ăn Gì Huế</string>
+    <string name="login_hero_tag">Ẩm thực Cố Đô</string>
+    <string name="login_hero_badge">Hương vị kinh kỳ</string>
+    <string name="login_hero_caption">Khám phá hơn 300+ phong vị cung đình &amp; hè phố</string>
+    <string name="login_hero_photo">Bát bún bò Huế</string>
+
+    <!-- Register -->
+    <string name="register_title">Đăng Ký</string>
+    <string name="register_heading">Tạo tài khoản</string>
+    <string name="register_subtitle">Chỉ mất một phút để bắt đầu hành trình ẩm thực của bạn</string>
+    <string name="register_name_label">Họ và tên</string>
+    <string name="register_name_hint">Nguyễn Văn An</string>
+    <string name="register_password_hint">Nhập mật khẩu</string>
+    <string name="register_password_rule">Tối thiểu 8 ký tự</string>
+    <string name="register_confirm_label">Nhập lại mật khẩu</string>
+    <string name="register_confirm_hint">Xác nhận lại mật khẩu</string>
+    <string name="register_strength">Độ mạnh: %1$s</string>
+    <string name="register_strength_weak">Yếu</string>
+    <string name="register_strength_medium">Trung bình</string>
+    <string name="register_strength_strong">Mạnh</string>
+    <string name="register_terms">Tôi đồng ý với %1$s và %2$s</string>
+    <string name="register_terms_link">Điều khoản sử dụng</string>
+    <string name="register_privacy_link">Chính sách bảo mật</string>
+    <string name="register_terms_checkbox">Đồng ý điều khoản</string>
+    <string name="register_submit">Đăng ký</string>
+    <string name="register_submitting">Đang tạo tài khoản…</string>
+    <string name="register_have_account">Đã có tài khoản?</string>
+    <string name="register_login">Đăng nhập</string>
+
+    <!-- Shared auth messages -->
+    <string name="auth_show_password">Hiện mật khẩu</string>
+    <string name="auth_hide_password">Ẩn mật khẩu</string>
+    <string name="auth_error_name">Hãy nhập họ và tên</string>
+    <string name="auth_error_email">Email không hợp lệ</string>
+    <string name="auth_error_email_taken">Email đã được sử dụng</string>
+    <string name="auth_error_password">Mật khẩu cần ít nhất 8 ký tự</string>
+    <string name="auth_error_password_empty">Hãy nhập mật khẩu</string>
+    <string name="auth_error_confirm">Mật khẩu nhập lại chưa khớp</string>
+    <string name="auth_error_credentials">Email hoặc mật khẩu không đúng</string>
+    <string name="auth_error_network">Không thể kết nối tới máy chủ. Kiểm tra mạng rồi thử lại.</string>
+    <string name="auth_error_unknown">Có lỗi xảy ra. Hãy thử lại sau.</string>
+    <string name="auth_error_terms">Bạn cần đồng ý với điều khoản để tiếp tục.</string>
+    <string name="auth_coming_soon">Tính năng sắp ra mắt</string>
 </resources>

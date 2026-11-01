@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/_320dp"
+    android:height="@dimen/_320dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <path
+        android:pathData="M10,100 a90,90 0 1,0 180,0 a90,90 0 1,0 -180,0 Z"
+        android:strokeColor="@color/hue_primary_10"
+        android:strokeWidth="1.5" />
+    <path
+        android:pathData="M24,100 a76,76 0 1,0 152,0 a76,76 0 1,0 -152,0 Z"
+        android:strokeColor="@color/hue_primary_10"
+        android:strokeWidth="1" />
+    <path
+        android:pathData="M100,28 C92,48 64,65 64,85 C64,105 80,120 100,120 C120,120 136,105 136,85 C136,65 108,48 100,28 Z"
+        android:strokeColor="@color/hue_primary_10"
+        android:strokeWidth="1.2" />
+    <path
+        android:pathData="M48,100 C68,92 85,64 105,64 C125,64 140,80 140,100"
+        android:strokeColor="@color/hue_primary_10"
+        android:strokeWidth="0.8" />
+    <path
+        android:pathData="M100,172 C92,152 64,135 64,115"
+        android:strokeColor="@color/hue_primary_10"
+        android:strokeWidth="0.8" />
+    <path
+        android:fillColor="@color/hue_primary_10"
+        android:pathData="M20,20 Q50,30 40,60 Q25,45 20,20 Z" />
+    <path
+        android:fillColor="@color/hue_primary_10"
+        android:pathData="M180,20 Q150,30 160,60 Q175,45 180,20 Z" />
+    <path
+        android:fillColor="@color/hue_primary_10"
+        android:pathData="M20,180 Q50,170 40,140 Q25,155 20,180 Z" />
+    <path
+        android:fillColor="@color/hue_primary_10"
+        android:pathData="M180,180 Q150,170 160,140 Q175,155 180,180 Z" />
+</vector>
