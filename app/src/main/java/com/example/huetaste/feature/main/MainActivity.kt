@@ -3,6 +3,7 @@ package com.example.huetaste.feature.main
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
@@ -11,10 +12,12 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewpager2.widget.ViewPager2
 import com.base.common.base.LsActivity
 import com.base.common.base.LsPageAdapter
+import com.base.common.widget.scale.PushDownAnim
+import com.example.huetaste.common.extension.clicksComingSoon
+import com.example.huetaste.common.extension.startLoginActivity
 import com.example.huetaste.databinding.ActivityMainBinding
 import com.example.huetaste.domain.model.AuthState
 import com.example.huetaste.domain.usecase.GetAuthStateUseCase
-import com.example.huetaste.feature.auth.LoginActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -48,6 +51,13 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
             }
             true
         }
+        // Menu items are inflated by BottomNavigationView, so they get the press animation directly; their click
+        // handling stays with the menu.
+        MainTab.entries.forEach { tab ->
+            binding.bottomNavigation.findViewById<View>(tab.menuItemId)?.let(PushDownAnim::setPushDownAnimTo)
+        }
+        // The AI assistant is a separate Activity that does not exist yet.
+        binding.centerAiButton.clicksComingSoon()
         selectMenuItem(binding.viewPager.currentItem)
         returnToLoginWhenSessionEnds()
     }
@@ -70,7 +80,7 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
     }
 
     private fun openLogin() {
-        startActivity(LoginActivity.newRootIntent(this))
+        startLoginActivity()
         finish()
     }
 

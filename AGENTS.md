@@ -53,6 +53,16 @@ Keep `domain` independent of Android, concrete network/database frameworks, `dat
 - Keep framework attributes such as layout size, text, gravity, and accessibility in the `android:` namespace. Keep user-visible strings, colors, and reusable shapes in resources.
 - Reuse suitable click helpers from `base`, including their debounce and animation behavior. Preserve accessibility, content descriptions, touch targets, and expected input behavior.
 
+### Ripple and click feedback
+
+- Every clickable view (one that has `clicks { }` in code or `android:clickable="true"` in XML) must show a ripple. A view that only swallows touches (for example a full-screen loading overlay or touch blocker) is not a button and gets none.
+- The ripple must follow the shape of its button: a circular button gets a circular ripple, a pill gets a pill ripple, a rounded button or card gets a ripple with the same corner radius. Never use a rectangular ripple with a guessed radius, and do not use `app:rippleBackground` (`ripple` or `rippleBorderless`), `?attr/selectableItemBackground`, or `?attr/selectableItemBackgroundBorderless` for buttons.
+- Apply the ripple with `android:foreground` using the shared drawables `@drawable/fg_ripple_circle`, `@drawable/fg_ripple_pill`, `@drawable/fg_ripple_round_<n>` (the radius `<n>` matches the button's corner radius), so the view keeps its own background. If a needed radius is missing, add a new `fg_ripple_round_<n>` drawable instead of reusing a different one. For `LsCardView` (a `MaterialCardView`) set `app:rippleColor="@color/navigation_item_ripple"`, which already follows the card's corners.
+- The ripple color is always `@color/navigation_item_ripple`, the same color as the bottom navigation items. Do not introduce other ripple colors.
+- The ripple must keep a gap from the content: the ripple area is the view's bounds, so the view needs at least `@dimen/_8dp` of padding between its icon or text and each edge (icon-only buttons and text links), and pills and chips need at least `@dimen/_12dp` horizontal and `@dimen/_6dp` vertical padding or a `minHeight` that leaves the same room. Grow the view and its padding rather than shrinking the icon. For a button with its own background shape, the ripple fills that shape and the padding inside it gives the gap. A width-constrained cell (such as an equal-weight tile) may use less horizontal padding, but never touches the content.
+- Ripple and `withAnim = true` always go together. Every view with a ripple is bound with the base `clicks` helper: call `view.clicks { ... }` and do not pass `withAnim = false`. A button whose feature does not exist yet is bound with `clicksComingSoon()` from `common.extension`, never left as a ripple-only or unbound view.
+- The bottom navigation menu items are created by `BottomNavigationView`, so they cannot use `clicks`. Their ripple is `@drawable/bg_bottom_navigation_item` (rounded mask inset from the cell edges, with `itemPaddingTop` and `itemPaddingBottom` keeping the content clear of it) and `PushDownAnim.setPushDownAnimTo` is applied to each item view, which is the same press animation `clicks` uses.
+
 ### Required Activity system-bar anchors
 
 Every Activity layout must contain these two horizontal Guidelines inside its root constraint container, retaining the exact IDs used by `LsActivity`:
@@ -104,7 +114,7 @@ Declare the `app` XML namespace on the root. Constrain the content below `status
 
 ## Verification and handoff
 
-- By default, do not run Gradle builds, tests, app installation, emulators, devices, or the application. The user performs runtime verification and supplies results. Only perform these steps when the user explicitly requests them.
-- Use static verification appropriate to the change: targeted source inspection, XML parsing, resource/package/manifest reference checks, and `git diff --check` when a Git repository is available. For UI changes, also verify mandatory base inheritance, base XML components, `_<number>dp` resource references, and the `_10dp` horizontal margin. Do not initialize Git just to run a check.
+- Gradle builds (for example `./gradlew :app:assembleDebug`) may be run to verify changes. Do not install the app or start emulators, devices, or the application unless the user explicitly requests it; the user performs runtime verification on a device and supplies results.
+- Use static verification appropriate to the change, in addition to a build: targeted source inspection, XML parsing, resource/package/manifest reference checks, and `git diff --check` when a Git repository is available. For UI changes, also verify mandatory base inheritance, base XML components, `_<number>dp` resource references, and the `_10dp` horizontal margin. Do not initialize Git just to run a check.
 - Do not add tests solely for scaffolding or asset-format changes. When meaningful tests are explicitly requested, write them within the approved scope and run them only if execution is also authorized.
-- In the handoff, describe what changed and why, summarize actual static checks, state that no build or runtime verification was performed, and identify any known limitation. Use the user's language and provide actionable guidance when their test results require a follow-up.
+- In the handoff, describe what changed and why, summarize actual static checks and build results, state that no runtime verification on a device was performed, and identify any known limitation. Use the user's language and provide actionable guidance when their test results require a follow-up.

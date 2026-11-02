@@ -7,8 +7,9 @@ import android.view.View
 import androidx.core.view.WindowCompat
 import com.base.common.base.LsActivity
 import com.base.common.extension.clicks
+import com.example.huetaste.common.extension.clicksComingSoon
+import com.example.huetaste.common.extension.startDishDetailActivity
 import com.example.huetaste.databinding.ActivityContextSuggestionBinding
-import com.example.huetaste.feature.dish_detail.DishDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,8 +45,8 @@ class ContextSuggestionActivity : LsActivity<ActivityContextSuggestionBinding>(A
         binding.backButton.clicks { handleBackPressed() }
 
         showTab(showPlaces)
-        binding.tabDishes.clicks(withAnim = false) { showTab(false) }
-        binding.tabPlaces.clicks(withAnim = false) { showTab(true) }
+        binding.tabDishes.clicks { showTab(false) }
+        binding.tabPlaces.clicks { showTab(true) }
         binding.dishDetailsButton.clicks { openDishDetail() }
         dishCards.forEach { card -> card.clicks { openDishDetail() } }
 
@@ -53,11 +54,22 @@ class ContextSuggestionActivity : LsActivity<ActivityContextSuggestionBinding>(A
             heart.isSelected = index in selectedHearts
             heart.clicks { toggleHeart(index, heart) }
         }
+
+        // These entries have no destination yet; they still give the standard ripple and press animation.
+        with(binding) {
+            listOf(
+                notificationsButton, changeContextButton, viewMapButton,
+                filterRelevance, filterDistance, filterOpen, filterRating,
+                contextLinkButton1, contextLinkButton2, contextLinkButton3,
+                contextLinkButton4, contextLinkButton5, contextLinkButton6,
+                refineButton, randomButton,
+            ).forEach { it.clicksComingSoon() }
+        }
     }
 
     // Every card opens the same detail screen until dishes come from real data.
     private fun openDishDetail() {
-        startActivity(DishDetailActivity.newIntent(this))
+        startDishDetailActivity()
     }
 
     private fun showTab(places: Boolean) {

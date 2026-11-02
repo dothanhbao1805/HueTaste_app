@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Menu item ripple: a rounded shape kept clear of the cell edges so neighbouring items never touch. -->
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="@color/navigation_item_ripple">
-    <item android:id="@android:id/mask">
+    <item
+        android:id="@android:id/mask"
+        android:bottom="@dimen/_4dp"
+        android:left="@dimen/_4dp"
+        android:right="@dimen/_4dp"
+        android:top="@dimen/_4dp">
         <shape android:shape="rectangle">
             <solid android:color="@color/white" />
+            <corners android:radius="@dimen/_16dp" />
         </shape>
     </item>
 </ripple>

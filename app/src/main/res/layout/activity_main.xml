@@ -50,6 +50,8 @@
             app:itemBackground="@drawable/bg_bottom_navigation_item"
             app:itemHorizontalTranslationEnabled="false"
             app:itemIconSize="@dimen/_24dp"
+            app:itemPaddingBottom="@dimen/_12dp"
+            app:itemPaddingTop="@dimen/_12dp"
             app:itemIconTint="@color/bottom_navigation_item_color"
             app:itemTextColor="@color/bottom_navigation_item_color"
             app:itemTextAppearanceActive="@style/TextAppearance.HueTaste.BottomNavigation"
@@ -65,6 +67,7 @@
 
     <com.base.common.widget.LsLinearView
         android:id="@+id/centerAiButton"
+        android:foreground="@drawable/fg_ripple_circle"
         android:layout_width="@dimen/_56dp"
         android:layout_height="@dimen/_56dp"
         android:orientation="vertical"

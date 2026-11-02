@@ -8,7 +8,6 @@ import android.graphics.Bitmap
 import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
 import android.util.Size
 import android.widget.SeekBar
 import androidx.activity.result.PickVisualMediaRequest
@@ -38,9 +37,10 @@ import com.base.common.extension.gone
 import com.base.common.extension.invisible
 import com.base.common.extension.visible
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.startAppSettings
+import com.example.huetaste.common.extension.startScanDishDetailActivity
 import com.example.huetaste.databinding.ActivityScanBinding
 import com.example.huetaste.domain.model.AppError
-import com.example.huetaste.feature.dish_detail.DishDetailActivity
 import com.example.huetaste.feature.scan.dialog.ScanMessageDialog
 import com.example.huetaste.feature.scan.sheet.ScanTipsSheet
 import dagger.hilt.android.AndroidEntryPoint
@@ -138,7 +138,7 @@ class ScanActivity : LsActivity<ActivityScanBinding>(ActivityScanBinding::inflat
                     viewModel.events.collect { event ->
                         when (event) {
                             is ScanEvent.OpenDetail -> {
-                                startActivity(DishDetailActivity.newScanIntent(this@ScanActivity, event.scanId))
+                                startScanDishDetailActivity(event.scanId)
                                 finish()
                             }
                             is ScanEvent.Failed -> showErrorDialog(event.error)
@@ -316,9 +316,7 @@ class ScanActivity : LsActivity<ActivityScanBinding>(ActivityScanBinding::inflat
         supportFragmentManager.setFragmentResultListener(REQUEST_PERMISSION_SETTINGS, this) { _, result ->
             if (result.getBoolean(ScanMessageDialog.RESULT_CONFIRMED)) {
                 isWaitingForSettings = true
-                startActivity(
-                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", packageName, null)),
-                )
+                startAppSettings()
             } else {
                 finish()
             }

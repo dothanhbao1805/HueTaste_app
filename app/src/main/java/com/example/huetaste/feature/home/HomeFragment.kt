@@ -5,9 +5,10 @@ import android.view.View
 import com.base.common.base.LsFragment
 import com.base.common.extension.clicks
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.clicksComingSoon
+import com.example.huetaste.common.extension.startContextSuggestionActivity
+import com.example.huetaste.common.extension.startScanActivity
 import com.example.huetaste.databinding.FragmentHomeBinding
-import com.example.huetaste.feature.context_suggestion.ContextSuggestionActivity
-import com.example.huetaste.feature.scan.ScanActivity
 import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.NumberFormat
@@ -46,7 +47,7 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
     override fun onViewCreated() {
         mealChips.forEachIndexed { index, chip ->
             chip.isSelected = index == selectedMealIndex
-            chip.clicks(withAnim = false) { selectMeal(index) }
+            chip.clicks { selectMeal(index) }
         }
         hearts.forEachIndexed { index, heart ->
             heart.isSelected = index in selectedHearts
@@ -56,11 +57,19 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         binding.budgetSlider.addOnChangeListener(budgetListener)
 
         binding.suggestButton.clicks {
-            startActivity(ContextSuggestionActivity.newIntent(requireContext()))
+            requireContext().startContextSuggestionActivity()
         }
 
         binding.scanDishButton.clicks {
-            startActivity(ScanActivity.newIntent(requireContext()))
+            requireContext().startScanActivity()
+        }
+
+        // These entries have no destination yet; they still give the standard ripple and press animation.
+        with(binding) {
+            listOf(
+                notificationsButton, seeAllDishes, mapLink, placeTuyet, placeHanh,
+                categoryNoodles, categoryCakes, categoryClamRice, categoryDesserts, categorySnacks,
+            ).forEach { it.clicksComingSoon() }
         }
     }
 

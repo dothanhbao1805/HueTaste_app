@@ -23,7 +23,7 @@ class GalleryPagerAdapter(
             placeholder(R.drawable.ic_food_placeholder)
             error(R.drawable.ic_food_placeholder)
         }
-        binding.root.clicks(withAnim = false) { onImageClick(position) }
+        binding.root.clicks { onImageClick(position) }
     }
 
     private object DiffCallback : DiffUtil.ItemCallback<GalleryImage>() {

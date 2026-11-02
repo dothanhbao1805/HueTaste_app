@@ -86,17 +86,17 @@
 
     <com.base.common.widget.LsImageView
         android:id="@+id/closeButton"
-        android:layout_width="@dimen/_36dp"
-        android:layout_height="@dimen/_36dp"
+        android:foreground="@drawable/fg_ripple_circle"
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_40dp"
         android:layout_marginStart="@dimen/_10dp"
         android:layout_marginTop="@dimen/_8dp"
         android:contentDescription="@string/scan_close"
-        android:padding="@dimen/_6dp"
+        android:padding="@dimen/_8dp"
         android:src="@drawable/ic_scan_back_white"
         app:colorTint="none"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/statusBar"
-        app:rippleBackground="rippleBorderless" />
+        app:layout_constraintTop_toBottomOf="@id/statusBar" />
 
     <com.base.common.widget.LsTextView
         android:id="@+id/titleText"
@@ -118,6 +118,7 @@
 
     <com.base.common.widget.LsImageView
         android:id="@+id/tipsButton"
+        android:foreground="@drawable/fg_ripple_circle"
         android:layout_width="@dimen/_34dp"
         android:layout_height="@dimen/_34dp"
         android:layout_marginEnd="@dimen/_10dp"
@@ -150,6 +151,7 @@
 
     <com.base.common.widget.LsConstraintView
         android:id="@+id/snapButton"
+        android:foreground="@drawable/fg_ripple_circle"
         android:layout_width="@dimen/_65dp"
         android:layout_height="@dimen/_65dp"
         android:layout_marginBottom="@dimen/_20dp"
@@ -196,13 +198,13 @@
 
         <com.base.common.widget.LsImageView
             android:id="@+id/flashButton"
-            android:layout_width="@dimen/_36dp"
-            android:layout_height="@dimen/_36dp"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp"
             android:contentDescription="@string/scan_flash"
-            android:padding="@dimen/_6dp"
+            android:padding="@dimen/_8dp"
             android:src="@drawable/ic_flash_off"
-            app:colorTint="none"
-            app:rippleBackground="rippleBorderless" />
+            app:colorTint="none" />
 
         <com.base.common.widget.LsLinearView
             android:layout_width="@dimen/_0dp"
@@ -214,13 +216,13 @@
 
             <com.base.common.widget.LsImageView
                 android:id="@+id/zoomMinusButton"
-                android:layout_width="@dimen/_28dp"
-                android:layout_height="@dimen/_28dp"
+                android:foreground="@drawable/fg_ripple_circle"
+                android:layout_width="@dimen/_32dp"
+                android:layout_height="@dimen/_32dp"
                 android:contentDescription="@string/scan_zoom_out"
-                android:padding="@dimen/_6dp"
+                android:padding="@dimen/_8dp"
                 android:src="@drawable/ic_zoom_minus"
-                app:colorTint="none"
-                app:rippleBackground="rippleBorderless" />
+                app:colorTint="none" />
 
             <SeekBar
                 android:id="@+id/zoomSeekBar"
@@ -242,24 +244,24 @@
 
             <com.base.common.widget.LsImageView
                 android:id="@+id/zoomPlusButton"
-                android:layout_width="@dimen/_28dp"
-                android:layout_height="@dimen/_28dp"
+                android:foreground="@drawable/fg_ripple_circle"
+                android:layout_width="@dimen/_32dp"
+                android:layout_height="@dimen/_32dp"
                 android:contentDescription="@string/scan_zoom_in"
-                android:padding="@dimen/_6dp"
+                android:padding="@dimen/_8dp"
                 android:src="@drawable/ic_zoom_plus"
-                app:colorTint="none"
-                app:rippleBackground="rippleBorderless" />
+                app:colorTint="none" />
         </com.base.common.widget.LsLinearView>
 
         <com.base.common.widget.LsImageView
             android:id="@+id/galleryButton"
-            android:layout_width="@dimen/_36dp"
-            android:layout_height="@dimen/_36dp"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
             android:contentDescription="@string/scan_gallery"
-            android:padding="@dimen/_2dp"
+            android:padding="@dimen/_8dp"
             android:src="@drawable/ic_gallery_camera"
-            app:colorTint="none"
-            app:rippleBackground="rippleBorderless" />
+            app:colorTint="none" />
     </com.base.common.widget.LsLinearView>
 
     <!-- Swallows touches on the controls while a photo is being identified; the close button stays usable. -->

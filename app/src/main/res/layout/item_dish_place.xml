@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:foreground="@drawable/fg_ripple_round_12"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/_12dp"
@@ -126,6 +127,7 @@
 
     <com.base.common.widget.LsTextView
         android:id="@+id/placeDirectionsButton"
+        android:foreground="@drawable/fg_ripple_pill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"

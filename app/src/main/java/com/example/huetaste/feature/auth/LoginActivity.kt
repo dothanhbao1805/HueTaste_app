@@ -16,8 +16,9 @@ import com.base.common.base.LsActivity
 import com.base.common.extension.clicks
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.startMainActivity
+import com.example.huetaste.common.extension.startRegisterActivity
 import com.example.huetaste.databinding.ActivityLoginBinding
-import com.example.huetaste.feature.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -45,7 +46,7 @@ class LoginActivity : LsActivity<ActivityLoginBinding>(ActivityLoginBinding::inf
 
         binding.submitButton.clicks { submit() }
         binding.guestButton.clicks { viewModel.skipLogin() }
-        binding.registerLink.clicks { startActivity(RegisterActivity.newIntent(this)) }
+        binding.registerLink.clicks { startRegisterActivity() }
         binding.forgotButton.clicks { makeToast(R.string.auth_coming_soon) }
 
         lifecycleScope.launch {
@@ -83,7 +84,7 @@ class LoginActivity : LsActivity<ActivityLoginBinding>(ActivityLoginBinding::inf
 
     private fun handle(event: AuthEvent) {
         if (event is AuthEvent.Authenticated) {
-            startActivity(MainActivity.newRootIntent(this))
+            startMainActivity()
             finish()
         }
     }

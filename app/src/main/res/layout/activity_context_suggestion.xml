@@ -36,6 +36,7 @@
 
         <com.base.common.widget.LsImageView
             android:id="@+id/backButton"
+            android:foreground="@drawable/fg_ripple_circle"
             android:layout_width="@dimen/_44dp"
             android:layout_height="@dimen/_44dp"
             android:contentDescription="@string/context_back"
@@ -44,8 +45,7 @@
             android:tint="@color/hue_on_surface"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:rippleBackground="rippleBorderless" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.base.common.widget.LsLinearView
             android:id="@+id/locationGroup"
@@ -107,6 +107,9 @@
 
         <com.base.common.widget.LsImageView
             android:id="@+id/notificationsButton"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/fg_ripple_circle"
             android:layout_width="@dimen/_44dp"
             android:layout_height="@dimen/_44dp"
             android:contentDescription="@string/home_notifications"
@@ -115,8 +118,7 @@
             android:tint="@color/hue_on_surface_variant"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/profileAvatar"
-            app:rippleBackground="rippleBorderless" />
+            app:layout_constraintEnd_toStartOf="@id/profileAvatar" />
 
         <com.base.common.widget.LsImageView
             android:id="@+id/profileAvatar"
@@ -190,13 +192,14 @@
                         app:textFont="semi" />
 
                     <com.base.common.widget.LsLinearView
+                        android:foreground="@drawable/fg_ripple_pill"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/changeContextButton"
                         android:background="@drawable/bg_shape_pill"
                         android:backgroundTint="@color/hue_surface_container_high"
-                        android:paddingHorizontal="@dimen/_10dp"
-                        android:paddingVertical="@dimen/_4dp"
+                        android:paddingHorizontal="@dimen/_12dp"
+                        android:paddingVertical="@dimen/_6dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
@@ -373,6 +376,7 @@
                 android:orientation="horizontal">
 
                 <com.base.common.widget.LsLinearView
+                    android:foreground="@drawable/fg_ripple_pill"
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/tabDishes"
@@ -406,6 +410,7 @@
                 </com.base.common.widget.LsLinearView>
 
                 <com.base.common.widget.LsLinearView
+                    android:foreground="@drawable/fg_ripple_pill"
                     android:layout_width="@dimen/_0dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/tabPlaces"
@@ -457,6 +462,7 @@
                     android:orientation="horizontal">
 
                     <com.base.common.widget.LsLinearView
+                        android:foreground="@drawable/fg_ripple_pill"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/filterRelevance"
@@ -489,6 +495,7 @@
                     </com.base.common.widget.LsLinearView>
 
                     <com.base.common.widget.LsLinearView
+                        android:foreground="@drawable/fg_ripple_pill"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/filterDistance"
@@ -521,6 +528,7 @@
                     </com.base.common.widget.LsLinearView>
 
                     <com.base.common.widget.LsLinearView
+                        android:foreground="@drawable/fg_ripple_pill"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/filterOpen"
@@ -553,6 +561,7 @@
                     </com.base.common.widget.LsLinearView>
 
                     <com.base.common.widget.LsLinearView
+                        android:foreground="@drawable/fg_ripple_pill"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/filterRating"
@@ -591,6 +600,7 @@
             <!-- 4. Recommendations -->
             <com.base.common.widget.LsCardView
                 android:id="@+id/dishBunBoCard"
+                app:rippleColor="@color/navigation_item_ripple"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10dp"
@@ -702,6 +712,7 @@
 
                             <com.base.common.widget.LsImageView
                                 android:id="@+id/heartBunBo"
+                                android:foreground="@drawable/fg_ripple_circle"
                                 android:layout_width="@dimen/_36dp"
                                 android:layout_height="@dimen/_36dp"
                                 android:layout_gravity="top|end"
@@ -838,11 +849,13 @@
                             app:textFont="medium" />
 
                         <com.base.common.widget.LsTextView
+                            android:foreground="@drawable/fg_ripple_round_8"
+                            android:paddingHorizontal="@dimen/_8dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/viewMapButton"
                             android:layout_marginStart="@dimen/_8dp"
-                            android:paddingVertical="@dimen/_4dp"
+                            android:paddingVertical="@dimen/_8dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:text="@string/context_view_map"
@@ -928,13 +941,15 @@
                         </com.base.common.widget.LsLinearView>
 
                         <com.base.common.widget.LsTextView
+                            android:id="@+id/contextLinkButton1"
+                            android:foreground="@drawable/fg_ripple_pill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_8dp"
                             android:background="@drawable/bg_shape_pill"
                             android:backgroundTint="@color/hue_surface_container_highest"
-                            android:paddingHorizontal="@dimen/_10dp"
-                            android:paddingVertical="@dimen/_4dp"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_6dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:text="@string/context_go"
@@ -1011,13 +1026,15 @@
                         </com.base.common.widget.LsLinearView>
 
                         <com.base.common.widget.LsTextView
+                            android:id="@+id/contextLinkButton2"
+                            android:foreground="@drawable/fg_ripple_pill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_8dp"
                             android:background="@drawable/bg_shape_pill"
                             android:backgroundTint="@color/hue_surface_container_highest"
-                            android:paddingHorizontal="@dimen/_10dp"
-                            android:paddingVertical="@dimen/_4dp"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_6dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:text="@string/context_details"
@@ -1094,13 +1111,15 @@
                         </com.base.common.widget.LsLinearView>
 
                         <com.base.common.widget.LsTextView
+                            android:id="@+id/contextLinkButton3"
+                            android:foreground="@drawable/fg_ripple_pill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_8dp"
                             android:background="@drawable/bg_shape_pill"
                             android:backgroundTint="@color/hue_surface_container_highest"
-                            android:paddingHorizontal="@dimen/_10dp"
-                            android:paddingVertical="@dimen/_4dp"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_6dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:text="@string/context_details"
@@ -1111,6 +1130,7 @@
                     </com.base.common.widget.LsLinearView>
 
                     <com.base.common.widget.LsLinearView
+                        android:foreground="@drawable/fg_ripple_pill"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/dishDetailsButton"
@@ -1150,6 +1170,7 @@
 
             <com.base.common.widget.LsCardView
                 android:id="@+id/dishBanhBeoCard"
+                app:rippleColor="@color/navigation_item_ripple"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10dp"
@@ -1268,14 +1289,14 @@
 
                                 <com.base.common.widget.LsImageView
                                     android:id="@+id/heartBanhBeo"
-                                    android:layout_width="@dimen/_32dp"
-                                    android:layout_height="@dimen/_32dp"
+                                    android:foreground="@drawable/fg_ripple_circle"
+                                    android:layout_width="@dimen/_36dp"
+                                    android:layout_height="@dimen/_36dp"
                                     android:layout_marginStart="@dimen/_4dp"
                                     android:contentDescription="@string/home_add_favorite"
-                                    android:padding="@dimen/_6dp"
+                                    android:padding="@dimen/_8dp"
                                     android:src="@drawable/ic_favorite"
-                                    android:tint="@color/context_heart_tint"
-                                    app:rippleBackground="rippleBorderless" />
+                                    android:tint="@color/context_heart_tint" />
 
                             </com.base.common.widget.LsLinearView>
 
@@ -1405,13 +1426,15 @@
                             app:textFont="regular" />
 
                         <com.base.common.widget.LsTextView
+                            android:id="@+id/contextLinkButton4"
+                            android:foreground="@drawable/fg_ripple_pill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_8dp"
                             android:background="@drawable/bg_shape_pill"
                             android:backgroundTint="@color/hue_surface_container_highest"
-                            android:paddingHorizontal="@dimen/_10dp"
-                            android:paddingVertical="@dimen/_4dp"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_6dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:text="@string/context_view_place"
@@ -1427,6 +1450,7 @@
 
             <com.base.common.widget.LsCardView
                 android:id="@+id/dishComHenCard"
+                app:rippleColor="@color/navigation_item_ripple"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10dp"
@@ -1545,14 +1569,14 @@
 
                                 <com.base.common.widget.LsImageView
                                     android:id="@+id/heartComHen"
-                                    android:layout_width="@dimen/_32dp"
-                                    android:layout_height="@dimen/_32dp"
+                                    android:foreground="@drawable/fg_ripple_circle"
+                                    android:layout_width="@dimen/_36dp"
+                                    android:layout_height="@dimen/_36dp"
                                     android:layout_marginStart="@dimen/_4dp"
                                     android:contentDescription="@string/home_add_favorite"
-                                    android:padding="@dimen/_6dp"
+                                    android:padding="@dimen/_8dp"
                                     android:src="@drawable/ic_favorite"
-                                    android:tint="@color/context_heart_tint"
-                                    app:rippleBackground="rippleBorderless" />
+                                    android:tint="@color/context_heart_tint" />
 
                             </com.base.common.widget.LsLinearView>
 
@@ -1682,13 +1706,15 @@
                             app:textFont="regular" />
 
                         <com.base.common.widget.LsTextView
+                            android:id="@+id/contextLinkButton5"
+                            android:foreground="@drawable/fg_ripple_pill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_8dp"
                             android:background="@drawable/bg_shape_pill"
                             android:backgroundTint="@color/hue_surface_container_highest"
-                            android:paddingHorizontal="@dimen/_10dp"
-                            android:paddingVertical="@dimen/_4dp"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_6dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:text="@string/context_view_place"
@@ -1704,6 +1730,7 @@
 
             <com.base.common.widget.LsCardView
                 android:id="@+id/dishNamPhoCard"
+                app:rippleColor="@color/navigation_item_ripple"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10dp"
@@ -1823,14 +1850,14 @@
 
                                 <com.base.common.widget.LsImageView
                                     android:id="@+id/heartNamPho"
-                                    android:layout_width="@dimen/_32dp"
-                                    android:layout_height="@dimen/_32dp"
+                                    android:foreground="@drawable/fg_ripple_circle"
+                                    android:layout_width="@dimen/_36dp"
+                                    android:layout_height="@dimen/_36dp"
                                     android:layout_marginStart="@dimen/_4dp"
                                     android:contentDescription="@string/home_add_favorite"
-                                    android:padding="@dimen/_6dp"
+                                    android:padding="@dimen/_8dp"
                                     android:src="@drawable/ic_favorite"
-                                    android:tint="@color/context_heart_tint"
-                                    app:rippleBackground="rippleBorderless" />
+                                    android:tint="@color/context_heart_tint" />
 
                             </com.base.common.widget.LsLinearView>
 
@@ -1930,13 +1957,15 @@
                             app:textFont="regular" />
 
                         <com.base.common.widget.LsTextView
+                            android:id="@+id/contextLinkButton6"
+                            android:foreground="@drawable/fg_ripple_pill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_8dp"
                             android:background="@drawable/bg_shape_pill"
                             android:backgroundTint="@color/hue_surface_container_highest"
-                            android:paddingHorizontal="@dimen/_10dp"
-                            android:paddingVertical="@dimen/_4dp"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_6dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:text="@string/context_view_place"
@@ -2006,6 +2035,7 @@
                     android:orientation="horizontal">
 
                     <com.base.common.widget.LsLinearView
+                        android:foreground="@drawable/fg_ripple_pill"
                         android:layout_width="@dimen/_0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/refineButton"
@@ -2040,6 +2070,7 @@
                     </com.base.common.widget.LsLinearView>
 
                     <com.base.common.widget.LsLinearView
+                        android:foreground="@drawable/fg_ripple_pill"
                         android:layout_width="@dimen/_0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/randomButton"

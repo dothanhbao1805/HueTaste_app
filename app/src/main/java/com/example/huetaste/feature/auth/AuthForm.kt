@@ -27,7 +27,7 @@ internal fun showFieldError(container: View, row: View, text: TextView, @StringR
 /** Lets [toggle] switch this password input between hidden and visible text, keeping the cursor where it was. */
 internal fun LsEditText.bindPasswordToggle(toggle: ImageView) {
     var visible = false
-    toggle.clicks(withAnim = false) {
+    toggle.clicks {
         visible = !visible
         val cursor = selectionEnd
         transformationMethod = if (visible) null else PasswordTransformationMethod.getInstance()

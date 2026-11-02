@@ -36,6 +36,7 @@
 
         <com.base.common.widget.LsImageView
             android:id="@+id/backButton"
+            android:foreground="@drawable/fg_ripple_circle"
             android:layout_width="@dimen/_44dp"
             android:layout_height="@dimen/_44dp"
             android:contentDescription="@string/context_back"
@@ -44,8 +45,7 @@
             android:tint="@color/hue_on_surface"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:rippleBackground="rippleBorderless" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.base.common.widget.LsTextView
             android:layout_width="@dimen/_0dp"
@@ -64,6 +64,7 @@
 
         <com.base.common.widget.LsImageView
             android:id="@+id/headerFavoriteButton"
+            android:foreground="@drawable/fg_ripple_circle"
             android:layout_width="@dimen/_44dp"
             android:layout_height="@dimen/_44dp"
             android:contentDescription="@string/home_add_favorite"
@@ -72,11 +73,11 @@
             android:tint="@color/context_heart_tint"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/shareButton"
-            app:rippleBackground="rippleBorderless" />
+            app:layout_constraintEnd_toStartOf="@id/shareButton" />
 
         <com.base.common.widget.LsImageView
             android:id="@+id/shareButton"
+            android:foreground="@drawable/fg_ripple_circle"
             android:layout_width="@dimen/_44dp"
             android:layout_height="@dimen/_44dp"
             android:contentDescription="@string/dish_share"
@@ -85,8 +86,7 @@
             android:tint="@color/hue_on_surface_variant"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:rippleBackground="rippleBorderless" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </com.base.common.widget.LsConstraintView>
 
@@ -176,6 +176,7 @@
 
                     <com.base.common.widget.LsImageView
                         android:id="@+id/heroFavoriteButton"
+                        android:foreground="@drawable/fg_ripple_circle"
                         android:layout_width="@dimen/_40dp"
                         android:layout_height="@dimen/_40dp"
                         android:layout_margin="@dimen/_16dp"
@@ -1096,11 +1097,13 @@
                             app:textFont="bold" />
 
                         <com.base.common.widget.LsTextView
+                            android:foreground="@drawable/fg_ripple_round_8"
+                            android:paddingHorizontal="@dimen/_8dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/viewMapButton"
                             android:layout_marginStart="@dimen/_8dp"
-                            android:paddingVertical="@dimen/_4dp"
+                            android:paddingVertical="@dimen/_8dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:text="@string/dish_view_map"
@@ -1253,6 +1256,7 @@
                             </com.base.common.widget.LsLinearView>
 
                             <com.base.common.widget.LsTextView
+                                android:foreground="@drawable/fg_ripple_pill"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/placeMenuButton"
@@ -1648,6 +1652,7 @@
                             app:textFont="bold" />
 
                         <com.base.common.widget.LsTextView
+                            android:foreground="@drawable/fg_ripple_pill"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/writeReviewButton"
@@ -1655,7 +1660,7 @@
                             android:background="@drawable/bg_shape_pill"
                             android:backgroundTint="@color/hue_secondary_fixed_50"
                             android:paddingHorizontal="@dimen/_12dp"
-                            android:paddingVertical="@dimen/_4dp"
+                            android:paddingVertical="@dimen/_6dp"
                             android:clickable="true"
                             android:focusable="true"
                             android:text="@string/dish_write_review"
@@ -2113,6 +2118,7 @@
                 </com.base.common.widget.LsLinearView>
 
                 <com.base.common.widget.LsTextView
+                    android:foreground="@drawable/fg_ripple_pill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/aiChatButton"
@@ -2186,6 +2192,7 @@
         </com.base.common.widget.LsLinearView>
 
         <com.base.common.widget.LsLinearView
+            android:foreground="@drawable/fg_ripple_pill"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_48dp"
             android:id="@+id/directionsButton"
@@ -2258,6 +2265,7 @@
 
         <com.base.common.widget.LsTextView
             android:id="@+id/retryButton"
+            android:foreground="@drawable/fg_ripple_pill"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_44dp"
             android:layout_marginTop="@dimen/_16dp"

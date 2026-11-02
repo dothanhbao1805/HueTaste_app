@@ -21,10 +21,10 @@ import com.base.common.extension.clicks
 import com.base.common.extension.makeLinks
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.startMainActivity
 import com.example.huetaste.databinding.ActivityRegisterBinding
 import com.example.huetaste.domain.model.AuthValidator
 import com.example.huetaste.domain.model.PasswordStrength
-import com.example.huetaste.feature.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -66,7 +66,7 @@ class RegisterActivity : LsActivity<ActivityRegisterBinding>(ActivityRegisterBin
         }
 
         showTerms()
-        binding.termsBox.clicks(withAnim = false) {
+        binding.termsBox.clicks {
             termsAccepted = !termsAccepted
             binding.termsCheckbox.isSelected = termsAccepted
         }
@@ -124,7 +124,7 @@ class RegisterActivity : LsActivity<ActivityRegisterBinding>(ActivityRegisterBin
     private fun handle(event: AuthEvent) {
         when (event) {
             AuthEvent.Authenticated -> {
-                startActivity(MainActivity.newRootIntent(this))
+                startMainActivity()
                 finish()
             }
             is AuthEvent.Failed -> makeToast(

@@ -18,7 +18,11 @@ import coil.load
 import com.base.common.base.LsActivity
 import com.base.common.extension.clicks
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.clicksComingSoon
 import com.example.huetaste.common.extension.openMap
+import com.example.huetaste.common.extension.startDishDetailActivity
+import com.example.huetaste.common.extension.startPlaceDetailActivity
+import com.example.huetaste.common.extension.startShareText
 import com.example.huetaste.common.ui.gallery.GalleryPagerAdapter
 import com.example.huetaste.common.ui.gallery.ImageViewerDialog
 import com.example.huetaste.databinding.ActivityDishDetailBinding
@@ -27,7 +31,6 @@ import com.example.huetaste.databinding.ItemDishPillBinding
 import com.example.huetaste.databinding.ItemDishPlaceBinding
 import com.example.huetaste.databinding.ItemDishSimilarBinding
 import com.example.huetaste.domain.model.ScanStatus
-import com.example.huetaste.feature.place_detail.PlaceDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
@@ -64,6 +67,8 @@ import java.util.Locale
         binding.backButton.clicks { handleBackPressed() }
         binding.shareButton.clicks { shareDish() }
         binding.retryButton.clicks { viewModel.load() }
+        // These entries have no destination yet; they still give the standard ripple and press animation.
+        listOf(binding.placeMenuButton, binding.writeReviewButton, binding.aiChatButton).forEach { it.clicksComingSoon() }
 
         // The header and hero hearts show the same favorite state.
         showFavorite()
@@ -236,7 +241,7 @@ import java.util.Locale
             item.placeHours.text = place.openingHours.joinToString(", ")
             item.placeSignature.isVisible = dishPlace.isSignature
             item.placeDirectionsButton.clicks { openMap(place) }
-            item.root.clicks { startActivity(PlaceDetailActivity.newIntent(this, place.id)) }
+            item.root.clicks { startPlaceDetailActivity(place.id) }
         }
     }
 
@@ -252,7 +257,7 @@ import java.util.Locale
             item.similarName.text = similar.name
             item.similarDescription.isVisible = !similar.description.isNullOrBlank()
             item.similarDescription.text = similar.description
-            item.root.clicks { startActivity(newIntent(this, similar.id)) }
+            item.root.clicks { startDishDetailActivity(similar.id) }
         }
     }
 
@@ -284,10 +289,7 @@ import java.util.Locale
         } else {
             getString(R.string.dish_share_text, getString(R.string.dish_name), getString(R.string.dish_story_tip))
         }
-        val send = Intent(Intent.ACTION_SEND)
-            .setType("text/plain")
-            .putExtra(Intent.EXTRA_TEXT, text)
-        startActivity(Intent.createChooser(send, getString(R.string.dish_share_chooser)))
+        startShareText(text, getString(R.string.dish_share_chooser))
     }
 
     override fun onDestroy() {

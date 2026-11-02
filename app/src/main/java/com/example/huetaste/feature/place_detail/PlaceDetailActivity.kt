@@ -4,7 +4,6 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
-import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
@@ -20,6 +19,9 @@ import com.base.common.extension.clicks
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
 import com.example.huetaste.common.extension.openMap
+import com.example.huetaste.common.extension.startDialer
+import com.example.huetaste.common.extension.startDishDetailActivity
+import com.example.huetaste.common.extension.startShareText
 import com.example.huetaste.common.ui.gallery.GalleryPagerAdapter
 import com.example.huetaste.common.ui.gallery.ImageViewerDialog
 import com.example.huetaste.databinding.ActivityPlaceDetailBinding
@@ -29,7 +31,6 @@ import com.example.huetaste.domain.model.OpeningHours
 import com.example.huetaste.domain.model.PlaceDetail
 import com.example.huetaste.domain.model.PlaceMenuItem
 import com.example.huetaste.domain.model.Review
-import com.example.huetaste.feature.dish_detail.DishDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.text.NumberFormat
@@ -251,7 +252,7 @@ class PlaceDetailActivity : LsActivity<ActivityPlaceDetailBinding>(ActivityPlace
         val price = menuItem.price ?: dish.priceFrom
         item.menuDishPrice.isVisible = price != null
         item.menuDishPrice.text = price?.let { getString(R.string.dish_price_value, priceFormat.format(it)) }
-        item.root.clicks { startActivity(DishDetailActivity.newIntent(this, dish.id)) }
+        item.root.clicks { startDishDetailActivity(dish.id) }
     }
 
     private fun showFavorite(favorite: Boolean) {
@@ -325,7 +326,7 @@ class PlaceDetailActivity : LsActivity<ActivityPlaceDetailBinding>(ActivityPlace
 
     private fun dial(phone: String) {
         try {
-            startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + Uri.encode(phone))))
+            startDialer(phone)
         } catch (e: ActivityNotFoundException) {
             makeToast(R.string.place_no_phone_app)
         }
@@ -334,8 +335,7 @@ class PlaceDetailActivity : LsActivity<ActivityPlaceDetailBinding>(ActivityPlace
     private fun sharePlace() {
         val detail = currentPlace ?: return
         val text = listOfNotNull(detail.place.name, detail.place.address?.takeIf { it.isNotBlank() }).joinToString(" – ")
-        val send = Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, text)
-        startActivity(Intent.createChooser(send, getString(R.string.place_share_chooser)))
+        startShareText(text, getString(R.string.place_share_chooser))
     }
 
     private fun colorList(color: Int) = ColorStateList.valueOf(ContextCompat.getColor(this, color))

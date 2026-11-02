@@ -28,7 +28,7 @@ class ReviewSheet : LsBottomSheet<SheetWriteReviewBinding>(SheetWriteReviewBindi
     override fun onViewCreated() {
         rating = savedRating ?: 0
         savedRating = null
-        stars.forEachIndexed { index, star -> star.clicks(withAnim = false) { selectRating(index + 1) } }
+        stars.forEachIndexed { index, star -> star.clicks { selectRating(index + 1) } }
         selectRating(rating)
         binding.reviewCloseButton.clicks { dismiss() }
         binding.reviewSubmitButton.clicks { submit() }

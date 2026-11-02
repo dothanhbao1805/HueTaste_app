@@ -416,4 +416,5 @@
     <string name="auth_error_unknown">Có lỗi xảy ra. Hãy thử lại sau.</string>
     <string name="auth_error_terms">Bạn cần đồng ý với điều khoản để tiếp tục.</string>
     <string name="auth_coming_soon">Tính năng sắp ra mắt</string>
+    <string name="coming_soon">Tính năng sắp ra mắt</string>
 </resources>

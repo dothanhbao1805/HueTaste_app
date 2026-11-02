@@ -2,7 +2,6 @@ package com.example.huetaste.common.extension
 
 import android.content.ActivityNotFoundException
 import android.content.Context
-import android.content.Intent
 import android.net.Uri
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
@@ -19,7 +18,7 @@ fun Context.openMap(place: Place) {
         Uri.parse("geo:0,0?q=$query")
     }
     try {
-        startActivity(Intent(Intent.ACTION_VIEW, uri))
+        startViewUri(uri)
     } catch (e: ActivityNotFoundException) {
         makeToast(R.string.dish_no_map_app)
     }

@@ -43,6 +43,7 @@
 
             <com.base.common.widget.LsTextView
                 android:id="@+id/cancelButton"
+                android:foreground="@drawable/fg_ripple_pill"
                 android:layout_width="@dimen/_0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/_6dp"
@@ -56,6 +57,7 @@
 
             <com.base.common.widget.LsTextView
                 android:id="@+id/confirmButton"
+                android:foreground="@drawable/fg_ripple_pill"
                 android:layout_width="@dimen/_0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/_6dp"

@@ -3,6 +3,8 @@
     <style name="Base.Theme.HueTaste" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/on_primary</item>
+        <!-- Default for every window open/close: new screen enters from the right (base ActivityAnimation). -->
+        <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
     </style>
 
     <style name="Theme.HueTaste" parent="Base.Theme.HueTaste" />

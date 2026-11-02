@@ -6,7 +6,7 @@ The `app` module uses feature-oriented presentation code on top of clean data an
 com.example.huetaste
 |-- common
 |   |-- App            Hilt application extending LsApplication
-|   |-- extension      Small stateless extensions shared by multiple features (openMap)
+|   |-- extension      Small stateless extensions shared by multiple features (openMap; ActivityExt = the single entry point for starting Activities, with the right-to-left transition)
 |   |-- navigation     App routes and navigation contracts
 |   |-- network        Connectivity helpers and app-wide network policies
 |   |-- ui             Reusable UI components (gallery/: photo carousel adapter, full-screen viewer, zoom)

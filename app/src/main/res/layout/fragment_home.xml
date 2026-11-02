@@ -92,6 +92,9 @@
 
         <com.base.common.widget.LsImageView
             android:id="@+id/notificationsButton"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/fg_ripple_circle"
             android:layout_width="@dimen/_44dp"
             android:layout_height="@dimen/_44dp"
             android:contentDescription="@string/home_notifications"
@@ -100,8 +103,7 @@
             android:tint="@color/hue_on_surface_variant"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/profileAvatar"
-            app:rippleBackground="rippleBorderless" />
+            app:layout_constraintEnd_toStartOf="@id/profileAvatar" />
 
         <com.base.common.widget.LsImageView
             android:id="@+id/profileAvatar"
@@ -311,6 +313,7 @@
 
                             <com.base.common.widget.LsTextView
                                 android:id="@+id/mealBreakfast"
+                                android:foreground="@drawable/fg_ripple_pill"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/bg_home_chip"
@@ -324,6 +327,7 @@
 
                             <com.base.common.widget.LsTextView
                                 android:id="@+id/mealLunch"
+                                android:foreground="@drawable/fg_ripple_pill"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_8dp"
@@ -338,6 +342,7 @@
 
                             <com.base.common.widget.LsTextView
                                 android:id="@+id/mealDinner"
+                                android:foreground="@drawable/fg_ripple_pill"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_8dp"
@@ -352,6 +357,7 @@
 
                             <com.base.common.widget.LsTextView
                                 android:id="@+id/mealSnacks"
+                                android:foreground="@drawable/fg_ripple_pill"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/_8dp"
@@ -479,6 +485,7 @@
 
                     <com.base.common.widget.LsLinearView
                         android:id="@+id/suggestButton"
+                        android:foreground="@drawable/fg_ripple_pill"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_16dp"
@@ -555,6 +562,8 @@
 
                     <com.base.common.widget.LsLinearView
                         android:id="@+id/seeAllDishes"
+                        android:foreground="@drawable/fg_ripple_round_8"
+                        android:paddingHorizontal="@dimen/_8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_8dp"
@@ -657,6 +666,7 @@
 
                                     <com.base.common.widget.LsImageView
                                         android:id="@+id/heartBeef"
+                                        android:foreground="@drawable/fg_ripple_circle"
                                         android:layout_width="@dimen/_32dp"
                                         android:layout_height="@dimen/_32dp"
                                         android:layout_gravity="top|end"
@@ -812,6 +822,7 @@
 
                                     <com.base.common.widget.LsImageView
                                         android:id="@+id/heartBanhBeo"
+                                        android:foreground="@drawable/fg_ripple_circle"
                                         android:layout_width="@dimen/_32dp"
                                         android:layout_height="@dimen/_32dp"
                                         android:layout_gravity="top|end"
@@ -966,6 +977,7 @@
 
                                     <com.base.common.widget.LsImageView
                                         android:id="@+id/heartComHen"
+                                        android:foreground="@drawable/fg_ripple_circle"
                                         android:layout_width="@dimen/_32dp"
                                         android:layout_height="@dimen/_32dp"
                                         android:layout_gravity="top|end"
@@ -1109,6 +1121,8 @@
                     <!-- Cat 1: Bún & Mì -->
                     <com.base.common.widget.LsLinearView
                         android:id="@+id/categoryNoodles"
+                        android:foreground="@drawable/fg_ripple_round_16"
+                        android:paddingVertical="@dimen/_8dp"
                         android:layout_width="@dimen/_0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -1149,6 +1163,8 @@
                     <!-- Cat 2: Bánh Huế -->
                     <com.base.common.widget.LsLinearView
                         android:id="@+id/categoryCakes"
+                        android:foreground="@drawable/fg_ripple_round_16"
+                        android:paddingVertical="@dimen/_8dp"
                         android:layout_width="@dimen/_0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -1189,6 +1205,8 @@
                     <!-- Cat 3: Cơm hến -->
                     <com.base.common.widget.LsLinearView
                         android:id="@+id/categoryClamRice"
+                        android:foreground="@drawable/fg_ripple_round_16"
+                        android:paddingVertical="@dimen/_8dp"
                         android:layout_width="@dimen/_0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -1229,6 +1247,8 @@
                     <!-- Cat 4: Chè cung đình -->
                     <com.base.common.widget.LsLinearView
                         android:id="@+id/categoryDesserts"
+                        android:foreground="@drawable/fg_ripple_round_16"
+                        android:paddingVertical="@dimen/_8dp"
                         android:layout_width="@dimen/_0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -1269,6 +1289,8 @@
                     <!-- Cat 5: Ăn vặt -->
                     <com.base.common.widget.LsLinearView
                         android:id="@+id/categorySnacks"
+                        android:foreground="@drawable/fg_ripple_round_16"
+                        android:paddingVertical="@dimen/_8dp"
                         android:layout_width="@dimen/_0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -1353,6 +1375,8 @@
 
                     <com.base.common.widget.LsLinearView
                         android:id="@+id/mapLink"
+                        android:foreground="@drawable/fg_ripple_round_8"
+                        android:paddingHorizontal="@dimen/_8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_8dp"
@@ -1385,6 +1409,7 @@
                 <!-- Spot 1: Bún bò Bà Tuyết -->
                 <com.base.common.widget.LsCardView
                     android:id="@+id/placeTuyet"
+                    app:rippleColor="@color/navigation_item_ripple"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_12dp"
@@ -1535,6 +1560,7 @@
                 <!-- Spot 2: Quán Hạnh - Bánh Huế -->
                 <com.base.common.widget.LsCardView
                     android:id="@+id/placeHanh"
+                    app:rippleColor="@color/navigation_item_ripple"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_12dp"
@@ -1691,6 +1717,7 @@
     <!-- 6. Floating Action Button: Quét món -->
     <com.base.common.widget.LsLinearView
         android:id="@+id/scanDishButton"
+        android:foreground="@drawable/fg_ripple_pill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_16dp"

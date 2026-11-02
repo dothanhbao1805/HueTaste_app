@@ -28,6 +28,7 @@
 
         <com.base.common.widget.LsImageView
             android:id="@+id/reviewCloseButton"
+            android:foreground="@drawable/fg_ripple_circle"
             android:layout_width="@dimen/_28dp"
             android:layout_height="@dimen/_28dp"
             android:background="@drawable/bg_circle_gray"
@@ -50,41 +51,46 @@
 
         <com.base.common.widget.LsImageView
             android:id="@+id/sheetStar1"
-            android:layout_width="@dimen/_40dp"
-            android:layout_height="@dimen/_40dp"
-            android:padding="@dimen/_4dp"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
+            android:padding="@dimen/_8dp"
             android:src="@drawable/ic_star"
             android:contentDescription="@string/place_review_star_1" />
 
         <com.base.common.widget.LsImageView
             android:id="@+id/sheetStar2"
-            android:layout_width="@dimen/_40dp"
-            android:layout_height="@dimen/_40dp"
-            android:padding="@dimen/_4dp"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
+            android:padding="@dimen/_8dp"
             android:src="@drawable/ic_star"
             android:contentDescription="@string/place_review_star_2" />
 
         <com.base.common.widget.LsImageView
             android:id="@+id/sheetStar3"
-            android:layout_width="@dimen/_40dp"
-            android:layout_height="@dimen/_40dp"
-            android:padding="@dimen/_4dp"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
+            android:padding="@dimen/_8dp"
             android:src="@drawable/ic_star"
             android:contentDescription="@string/place_review_star_3" />
 
         <com.base.common.widget.LsImageView
             android:id="@+id/sheetStar4"
-            android:layout_width="@dimen/_40dp"
-            android:layout_height="@dimen/_40dp"
-            android:padding="@dimen/_4dp"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
+            android:padding="@dimen/_8dp"
             android:src="@drawable/ic_star"
             android:contentDescription="@string/place_review_star_4" />
 
         <com.base.common.widget.LsImageView
             android:id="@+id/sheetStar5"
-            android:layout_width="@dimen/_40dp"
-            android:layout_height="@dimen/_40dp"
-            android:padding="@dimen/_4dp"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
+            android:padding="@dimen/_8dp"
             android:src="@drawable/ic_star"
             android:contentDescription="@string/place_review_star_5" />
 
@@ -122,6 +128,7 @@
 
     <com.base.common.widget.LsTextView
         android:id="@+id/reviewSubmitButton"
+        android:foreground="@drawable/fg_ripple_pill"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_16dp"

@@ -10,8 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.base.common.base.LsActivity
 import com.example.huetaste.databinding.ActivitySplashBinding
-import com.example.huetaste.feature.auth.LoginActivity
-import com.example.huetaste.feature.main.MainActivity
+import com.example.huetaste.common.extension.startLoginActivity
+import com.example.huetaste.common.extension.startMainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -43,12 +43,10 @@ class SplashActivity : LsActivity<ActivitySplashBinding>(ActivitySplashBinding::
             duration = FILL_MS
             doOnEnd {
                 if (isFinishing) return@doOnEnd
-                startActivity(
-                    when (destination) {
-                        SplashDestination.MAIN -> MainActivity.newRootIntent(this@SplashActivity)
-                        SplashDestination.LOGIN -> LoginActivity.newRootIntent(this@SplashActivity)
-                    },
-                )
+                when (destination) {
+                    SplashDestination.MAIN -> startMainActivity()
+                    SplashDestination.LOGIN -> startLoginActivity()
+                }
                 finish()
             }
             start()

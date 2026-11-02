@@ -36,6 +36,7 @@
 
         <com.base.common.widget.LsImageView
             android:id="@+id/backButton"
+            android:foreground="@drawable/fg_ripple_circle"
             android:layout_width="@dimen/_48dp"
             android:layout_height="@dimen/_48dp"
             android:contentDescription="@string/context_back"
@@ -44,8 +45,7 @@
             android:tint="@color/hue_on_surface"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:rippleBackground="rippleBorderless" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.base.common.widget.LsTextView
             android:layout_width="@dimen/_0dp"
@@ -395,11 +395,11 @@
 
                     <com.base.common.widget.LsImageView
                         android:id="@+id/passwordToggle"
+                        android:foreground="@drawable/fg_ripple_circle"
                         android:layout_width="@dimen/_40dp"
                         android:layout_height="@dimen/_40dp"
                         android:layout_marginEnd="@dimen/_8dp"
                         android:padding="@dimen/_10dp"
-                        app:rippleBackground="rippleBorderless"
                         android:src="@drawable/ic_visibility"
                         android:tint="@color/hue_on_surface_variant"
                         android:contentDescription="@string/auth_show_password" />
@@ -547,11 +547,11 @@
 
                     <com.base.common.widget.LsImageView
                         android:id="@+id/confirmToggle"
+                        android:foreground="@drawable/fg_ripple_circle"
                         android:layout_width="@dimen/_40dp"
                         android:layout_height="@dimen/_40dp"
                         android:layout_marginEnd="@dimen/_8dp"
                         android:padding="@dimen/_10dp"
-                        app:rippleBackground="rippleBorderless"
                         android:src="@drawable/ic_visibility"
                         android:tint="@color/hue_on_surface_variant"
                         android:contentDescription="@string/auth_show_password" />
@@ -598,6 +598,7 @@
 
                 <com.base.common.widget.LsFrameView
                     android:id="@+id/termsBox"
+                    android:foreground="@drawable/fg_ripple_circle"
                     android:layout_width="@dimen/_48dp"
                     android:layout_height="@dimen/_48dp"
                     android:clickable="true"
@@ -639,6 +640,7 @@
 
                 <com.base.common.widget.LsLinearView
                     android:id="@+id/submitButton"
+                    android:foreground="@drawable/fg_ripple_pill"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -688,6 +690,8 @@
 
                 <com.base.common.widget.LsTextView
                     android:id="@+id/loginLink"
+                    android:foreground="@drawable/fg_ripple_round_8"
+                    android:paddingHorizontal="@dimen/_8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_4dp"
