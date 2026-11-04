@@ -55,7 +55,7 @@ class RegisterViewModel @Inject constructor(
         job = viewModelScope.launch {
             try {
                 register(name, email, password)
-                _events.send(AuthEvent.Authenticated)
+                _events.send(AuthEvent.Authenticated(needsTasteSetup = true))
             } catch (e: AppError) {
                 val failure = e.toAuthFailure()
                 _uiState.value = RegisterUiState(emailTaken = failure == AuthFailure.EMAIL_TAKEN)

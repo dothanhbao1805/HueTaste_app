@@ -14,8 +14,8 @@ internal fun AppError.toAuthFailure(): AuthFailure = when (code) {
 
 /** One-off results of the login and register screens. */
 sealed interface AuthEvent {
-    /** A session (or guest mode) is now stored; open the main screen. */
-    data object Authenticated : AuthEvent
+    /** A session (or guest mode) is now stored; open the taste setup when [needsTasteSetup], else the main screen. */
+    data class Authenticated(val needsTasteSetup: Boolean) : AuthEvent
 
     /** A failure that has no spot in the form, such as a network error while registering. */
     data class Failed(val failure: AuthFailure, val message: String?) : AuthEvent

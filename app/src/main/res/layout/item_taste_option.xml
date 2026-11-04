@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A selectable card of the taste setup: an icon, a title with an optional subtitle and a check box. -->
+<com.base.common.widget.LsConstraintView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:foreground="@drawable/fg_ripple_round_16"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10dp"
+    android:background="@drawable/bg_taste_option"
+    android:clickable="true"
+    android:focusable="true"
+    android:minHeight="@dimen/_64dp"
+    android:padding="@dimen/_12dp">
+
+    <com.base.common.widget.LsFrameView
+        android:id="@+id/optionIconBox"
+        android:layout_width="@dimen/_44dp"
+        android:layout_height="@dimen/_44dp"
+        android:background="@drawable/bg_shape_circle"
+        android:backgroundTint="@color/hue_primary_10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/optionIcon"
+            android:layout_width="@dimen/_22dp"
+            android:layout_height="@dimen/_22dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:tint="@color/hue_primary"
+            tools:src="@drawable/ic_eco" />
+
+    </com.base.common.widget.LsFrameView>
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/optionTitle"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12dp"
+        android:textColor="@color/hue_on_surface"
+        android:textSize="@dimen/text_16sp"
+        app:textFont="semi"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/optionSubtitle"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@id/optionIconBox"
+        app:layout_constraintEnd_toStartOf="@id/optionCheck"
+        tools:text="Ăn chay" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/optionSubtitle"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2dp"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_12sp"
+        app:textFont="regular"
+        app:layout_constraintTop_toBottomOf="@id/optionTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/optionTitle"
+        app:layout_constraintEnd_toEndOf="@id/optionTitle"
+        tools:text="Không thịt cá" />
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/optionCheck"
+        android:layout_width="@dimen/_22dp"
+        android:layout_height="@dimen/_22dp"
+        android:background="@drawable/bg_auth_checkbox"
+        android:importantForAccessibility="no"
+        android:padding="@dimen/_2dp"
+        android:src="@drawable/ic_check"
+        android:tint="@color/auth_check_tint"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</com.base.common.widget.LsConstraintView>

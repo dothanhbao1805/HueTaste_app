@@ -6,6 +6,7 @@ import com.example.huetaste.domain.model.AppError
 import com.example.huetaste.domain.model.AuthValidator
 import com.example.huetaste.domain.usecase.ContinueAsGuestUseCase
 import com.example.huetaste.domain.usecase.LoginUseCase
+import com.example.huetaste.domain.usecase.ShouldShowTasteSetupUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
@@ -29,6 +30,7 @@ data class LoginUiState(
 class LoginViewModel @Inject constructor(
     private val login: LoginUseCase,
     private val continueAsGuest: ContinueAsGuestUseCase,
+    private val shouldShowTasteSetup: ShouldShowTasteSetupUseCase,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(LoginUiState())
@@ -51,7 +53,7 @@ class LoginViewModel @Inject constructor(
         job = viewModelScope.launch {
             try {
                 login(email, password)
-                _events.send(AuthEvent.Authenticated)
+                _events.send(AuthEvent.Authenticated(needsTasteSetup = shouldShowTasteSetup()))
             } catch (e: AppError) {
                 _uiState.value = LoginUiState(failure = e.toAuthFailure(), failureMessage = e.message)
             }
@@ -63,7 +65,7 @@ class LoginViewModel @Inject constructor(
         if (job?.isActive == true) return
         job = viewModelScope.launch {
             continueAsGuest()
-            _events.send(AuthEvent.Authenticated)
+            _events.send(AuthEvent.Authenticated(needsTasteSetup = false))
         }
     }
 }

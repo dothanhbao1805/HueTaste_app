@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Selectable card of the taste setup (diet, meal): a primary tint and outline while selected. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/hue_primary_5" />
+            <stroke
+                android:width="@dimen/_1dp"
+                android:color="@color/hue_primary_30" />
+            <corners android:radius="@dimen/_16dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/hue_surface_lowest" />
+            <stroke
+                android:width="@dimen/_1dp"
+                android:color="@color/hue_outline_hairline" />
+            <corners android:radius="@dimen/_16dp" />
+        </shape>
+    </item>
+</selector>

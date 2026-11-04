@@ -18,6 +18,7 @@ import com.base.common.extension.makeToast
 import com.example.huetaste.R
 import com.example.huetaste.common.extension.startMainActivity
 import com.example.huetaste.common.extension.startRegisterActivity
+import com.example.huetaste.common.extension.startTasteSetupActivity
 import com.example.huetaste.databinding.ActivityLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -84,7 +85,7 @@ class LoginActivity : LsActivity<ActivityLoginBinding>(ActivityLoginBinding::inf
 
     private fun handle(event: AuthEvent) {
         if (event is AuthEvent.Authenticated) {
-            startMainActivity()
+            if (event.needsTasteSetup) startTasteSetupActivity() else startMainActivity()
             finish()
         }
     }

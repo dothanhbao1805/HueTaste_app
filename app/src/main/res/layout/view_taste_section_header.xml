@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Section title of the taste setup with a short hint on the right, such as "Chọn nhiều". -->
+<com.base.common.widget.LsLinearView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_24dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/sectionTitle"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/hue_on_surface"
+        android:textSize="@dimen/text_18sp"
+        app:textFont="bold"
+        tools:text="Vị bạn yêu thích" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/sectionHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8dp"
+        android:text="@string/taste_multi_hint"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_12sp"
+        app:textFont="regular" />
+
+</com.base.common.widget.LsLinearView>

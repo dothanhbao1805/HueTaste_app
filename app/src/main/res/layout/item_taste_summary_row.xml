@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One line of the taste setup summary: an icon, a label and the saved value. -->
+<com.base.common.widget.LsLinearView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_12dp"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/_48dp"
+    android:orientation="horizontal">
+
+    <com.base.common.widget.LsFrameView
+        android:layout_width="@dimen/_36dp"
+        android:layout_height="@dimen/_36dp"
+        android:background="@drawable/bg_shape_circle"
+        android:backgroundTint="@color/hue_primary_10">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/rowIcon"
+            android:layout_width="@dimen/_18dp"
+            android:layout_height="@dimen/_18dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:tint="@color/hue_primary"
+            tools:src="@drawable/ic_eco" />
+
+    </com.base.common.widget.LsFrameView>
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/rowLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12dp"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_14sp"
+        app:textFont="regular"
+        tools:text="Chế độ ăn" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/rowValue"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12dp"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:textColor="@color/hue_on_surface"
+        android:textSize="@dimen/text_14sp"
+        app:textFont="semi"
+        tools:text="Ăn chay" />
+
+</com.base.common.widget.LsLinearView>

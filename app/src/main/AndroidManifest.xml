@@ -38,6 +38,10 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".feature.taste_setup.TasteSetupActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".feature.main.MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />

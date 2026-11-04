@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Loading, empty or failed state of a taste setup catalog; it becomes a retry button when loading failed. -->
+<com.base.common.widget.LsLinearView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/statusBox"
+    android:foreground="@drawable/fg_ripple_round_12"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_12dp"
+    android:background="@drawable/bg_shape_round_12"
+    android:backgroundTint="@color/hue_surface_container_low"
+    android:gravity="center"
+    android:minHeight="@dimen/_48dp"
+    android:orientation="horizontal"
+    android:padding="@dimen/_12dp"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <ProgressBar
+        android:id="@+id/statusSpinner"
+        android:layout_width="@dimen/_20dp"
+        android:layout_height="@dimen/_20dp"
+        android:layout_marginEnd="@dimen/_8dp"
+        android:indeterminateTint="@color/hue_primary" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_14sp"
+        app:textFont="regular"
+        tools:text="@string/taste_loading" />
+
+</com.base.common.widget.LsLinearView>

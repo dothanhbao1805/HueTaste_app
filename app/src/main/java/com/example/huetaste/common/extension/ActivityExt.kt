@@ -14,6 +14,7 @@ import com.example.huetaste.feature.dish_detail.DishDetailActivity
 import com.example.huetaste.feature.main.MainActivity
 import com.example.huetaste.feature.place_detail.PlaceDetailActivity
 import com.example.huetaste.feature.scan.ScanActivity
+import com.example.huetaste.feature.taste_setup.TasteSetupActivity
 
 /**
  * The single place that starts Activities. Every screen, in-app or system (settings, dialer, share sheet, maps),
@@ -27,6 +28,8 @@ fun Context.startMainActivity() = startActivityRtl(MainActivity.newRootIntent(th
 fun Context.startLoginActivity() = startActivityRtl(LoginActivity.newRootIntent(this))
 
 fun Context.startRegisterActivity() = startActivityRtl(RegisterActivity.newIntent(this))
+
+fun Context.startTasteSetupActivity() = startActivityRtl(TasteSetupActivity.newRootIntent(this))
 
 fun Context.startContextSuggestionActivity() = startActivityRtl(ContextSuggestionActivity.newIntent(this))
 

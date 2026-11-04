@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:paddingBottom="@dimen/_24dp">
+
+        <include
+            android:id="@+id/badge"
+            layout="@layout/view_taste_badge" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12dp"
+            android:text="@string/taste_diet_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_24sp"
+            app:textFont="bold" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:text="@string/taste_diet_subtitle"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="regular" />
+
+        <com.base.common.widget.LsLinearView
+            android:id="@+id/dietList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:orientation="vertical" />
+
+        <include
+            android:id="@+id/status"
+            layout="@layout/view_taste_status" />
+
+    </com.base.common.widget.LsLinearView>
+
+</androidx.core.widget.NestedScrollView>

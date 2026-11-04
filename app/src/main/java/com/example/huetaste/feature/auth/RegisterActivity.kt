@@ -22,6 +22,7 @@ import com.base.common.extension.makeLinks
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
 import com.example.huetaste.common.extension.startMainActivity
+import com.example.huetaste.common.extension.startTasteSetupActivity
 import com.example.huetaste.databinding.ActivityRegisterBinding
 import com.example.huetaste.domain.model.AuthValidator
 import com.example.huetaste.domain.model.PasswordStrength
@@ -123,8 +124,8 @@ class RegisterActivity : LsActivity<ActivityRegisterBinding>(ActivityRegisterBin
 
     private fun handle(event: AuthEvent) {
         when (event) {
-            AuthEvent.Authenticated -> {
-                startMainActivity()
+            is AuthEvent.Authenticated -> {
+                if (event.needsTasteSetup) startTasteSetupActivity() else startMainActivity()
                 finish()
             }
             is AuthEvent.Failed -> makeToast(

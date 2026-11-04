@@ -46,4 +46,41 @@
         <item name="haloColor">@color/hue_primary_20</item>
         <item name="haloRadius">@dimen/_16dp</item>
     </style>
+
+    <!-- One option of the taste setup spiciness control: an equal-width pill that fills primary while selected. -->
+    <style name="TasteSetupSegment">
+        <item name="android:foreground">@drawable/fg_ripple_pill</item>
+        <item name="android:layout_width">@dimen/_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/bg_context_segment</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:minHeight">@dimen/_44dp</item>
+        <item name="android:paddingHorizontal">@dimen/_6dp</item>
+        <item name="android:paddingVertical">@dimen/_6dp</item>
+        <item name="android:textColor">@color/context_segment_content</item>
+        <item name="android:textSize">@dimen/text_12sp</item>
+        <item name="textFont">semi</item>
+    </style>
+
+    <!-- One budget option of the taste setup: an equal-width pill in a two-column grid. -->
+    <style name="TasteSetupBudget">
+        <item name="android:foreground">@drawable/fg_ripple_pill</item>
+        <item name="android:layout_width">@dimen/_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/bg_home_chip</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">@dimen/_48dp</item>
+        <item name="android:paddingHorizontal">@dimen/_12dp</item>
+        <item name="android:paddingVertical">@dimen/_6dp</item>
+        <item name="android:textColor">@color/home_chip_text</item>
+        <item name="android:textSize">@dimen/text_14sp</item>
+        <item name="textFont">semi</item>
+    </style>
 </resources>
