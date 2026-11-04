@@ -71,4 +71,14 @@
     <color name="hue_error">#BA1A1A</color>
     <color name="hue_error_container_40">#66FFDAD6</color>
     <color name="hue_black_0">#00000000</color>
+
+    <!-- App logo (ic_logo) artwork colors. -->
+    <color name="logo_roof_outline">#9B3322</color>
+    <color name="logo_roof">#BC4429</color>
+    <color name="logo_roof_trim">#EBC274</color>
+    <color name="logo_steam">#EBC67A</color>
+    <color name="logo_bowl_outline">#7D5310</color>
+    <color name="logo_bowl">#9E6C00</color>
+    <color name="logo_bowl_shade">#8D5A04</color>
+    <color name="logo_bowl_highlight">#D9B76B</color>
 </resources>

@@ -351,12 +351,12 @@
     <string name="place_share_text">%1$s – %2$s</string>
 
     <!-- Splash -->
-    <string name="splash_title_first">Ăn Gì</string>
-    <string name="splash_title_second">Huế</string>
+    <string name="splash_title_first">Hue</string>
+    <string name="splash_title_second">Taste</string>
     <string name="splash_slogan">Khám phá ẩm thực cố đô theo từng khoảnh khắc</string>
     <string name="splash_loading">Đang chuẩn bị món ngon cho bạn…</string>
     <string name="splash_note">Kinh kỳ phong vị • Trọn vẹn tinh hoa</string>
-    <string name="splash_emblem_description">Biểu tượng bát bún bò Huế</string>
+    <string name="splash_emblem_description">Logo HueTaste</string>
 
     <!-- Login -->
     <string name="login_title">Đăng Nhập</string>
@@ -373,7 +373,7 @@
     <string name="login_guest">Tiếp tục không cần tài khoản</string>
     <string name="login_no_account">Chưa có tài khoản?</string>
     <string name="login_register">Đăng ký</string>
-    <string name="login_hero_brand">Ăn Gì Huế</string>
+    <string name="login_hero_brand">HueTaste</string>
     <string name="login_hero_tag">Ẩm thực Cố Đô</string>
     <string name="login_hero_badge">Hương vị kinh kỳ</string>
     <string name="login_hero_caption">Khám phá hơn 300+ phong vị cung đình &amp; hè phố</string>

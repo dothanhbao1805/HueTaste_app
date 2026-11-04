@@ -78,7 +78,7 @@
                     android:layout_height="@dimen/_80dp"
                     android:layout_gravity="center"
                     android:contentDescription="@string/splash_emblem_description"
-                    android:src="@drawable/ic_splash_emblem" />
+                    android:src="@drawable/ic_logo" />
 
             </com.base.common.widget.LsFrameView>
 
@@ -102,7 +102,6 @@
             <com.base.common.widget.LsTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_6dp"
                 android:text="@string/splash_title_second"
                 android:textColor="@color/hue_on_surface"
                 android:textSize="@dimen/text_32sp"

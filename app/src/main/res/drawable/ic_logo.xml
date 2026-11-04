@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- HueTaste logo (roof, steam and bowl) traced from ic_logo.png; viewport is the 1932-px artwork cropped to its content. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="@dimen/_80dp"
+    android:height="@dimen/_80dp"
+    android:viewportWidth="1120"
+    android:viewportHeight="1120">
+
+    <group
+        android:translateX="-406"
+        android:translateY="-430">
+
+        <!-- Roof: outline, gold trim, then the red body -->
+        <path
+            android:pathData="M966,822 C940,822 910,825 880,832 C830,845 780,870 720,890 C640,912 560,902 500,878 C450,855 415,820 413,775 C412,745 430,715 462,715 C492,715 510,740 520,767 C600,750 662,700 680,650 C690,620 686,580 680,542 C678,530 686,520 700,522 C740,528 770,548 782,577 C840,582 900,585 966,587 C1032,585 1092,582 1150,577 C1162,548 1192,528 1232,522 C1246,520 1254,530 1252,542 C1246,580 1242,620 1252,650 C1270,700 1332,750 1412,767 C1422,740 1440,715 1470,715 C1502,715 1520,745 1519,775 C1517,820 1482,855 1432,878 C1372,902 1292,912 1212,890 C1152,870 1102,845 1052,832 C1022,825 992,822 966,822 Z"
+            android:fillColor="@color/logo_roof_outline" />
+        <path
+            android:pathData="M966,760 C800,785 600,820 500,836 C465,825 449,805 447,778 C446,762 452,748 466,748 C488,750 496,775 500,796 C520,802 555,798 590,782 C650,752 700,710 714,660 C722,630 720,600 717,565 C742,572 760,590 768,608 C830,615 900,619 966,620 C1032,619 1102,615 1164,608 C1172,590 1190,572 1215,565 C1212,600 1210,630 1218,660 C1232,710 1282,752 1342,782 C1377,798 1412,802 1432,796 C1436,775 1444,750 1466,748 C1480,748 1486,762 1485,778 C1483,805 1467,825 1432,836 C1332,820 1132,785 966,760 Z"
+            android:fillColor="@color/logo_roof_trim" />
+        <path
+            android:pathData="M966,787 C900,787 840,805 780,832 C730,855 690,870 620,870 C560,868 500,850 470,824 C515,828 570,812 620,786 C692,748 738,700 746,638 C810,646 880,649 966,650 C1052,649 1122,646 1186,638 C1194,700 1240,748 1312,786 C1362,812 1417,828 1462,824 C1432,850 1372,868 1312,870 C1242,870 1202,855 1152,832 C1092,805 1032,787 966,787 Z"
+            android:fillColor="@color/logo_roof" />
+
+        <!-- Roof posts -->
+        <path
+            android:pathData="M588,895 L588,990"
+            android:strokeColor="@color/logo_roof_outline"
+            android:strokeLineCap="round"
+            android:strokeWidth="34" />
+        <path
+            android:pathData="M1344,895 L1344,990"
+            android:strokeColor="@color/logo_roof_outline"
+            android:strokeLineCap="round"
+            android:strokeWidth="34" />
+
+        <!-- Steam -->
+        <group
+            android:translateX="4"
+            android:translateY="3">
+
+            <path
+                android:pathData="M893,948 C870,965 860,995 878,1028 C893,1055 908,1080 893,1112 C915,1095 928,1070 920,1042 C912,1015 888,995 884,972 C882,962 886,954 893,948 Z"
+                android:fillColor="@color/logo_steam" />
+            <path
+                android:pathData="M968,868 C940,888 915,925 925,960 C935,995 975,1030 982,1060 C988,1085 978,1100 965,1112 C995,1092 1010,1068 1007,1040 C1004,1005 970,980 957,945 C948,915 952,890 968,868 Z"
+                android:fillColor="@color/logo_steam" />
+            <path
+                android:pathData="M1048,928 C1025,945 1015,975 1030,1005 C1045,1035 1062,1060 1045,1090 C1068,1075 1082,1050 1075,1022 C1068,995 1045,980 1040,958 C1038,945 1042,935 1048,928 Z"
+                android:fillColor="@color/logo_steam" />
+        </group>
+
+        <!-- Bowl foot -->
+        <path
+            android:pathData="M802,1372 L802,1412 C802,1438 822,1458 848,1458 L1085,1458 C1111,1458 1133,1438 1133,1412 L1133,1372 Z"
+            android:fillColor="@color/logo_bowl_outline" />
+        <path
+            android:pathData="M844,1380 L1088,1380 C1095,1380 1100,1385 1100,1392 L1100,1413 C1100,1420 1095,1425 1088,1425 L844,1425 C837,1425 832,1420 832,1413 L832,1392 C832,1385 837,1380 844,1380 Z"
+            android:fillColor="@color/logo_bowl" />
+        <path
+            android:pathData="M844,1380 L858,1380 L858,1425 L844,1425 C837,1425 832,1420 832,1413 L832,1392 C832,1385 837,1380 844,1380 Z"
+            android:fillColor="@color/logo_bowl_highlight" />
+
+        <!-- Bowl body, shading and highlight -->
+        <path
+            android:pathData="M640,1178 L1292,1178 C1265,1290 1160,1395 966,1412 C772,1395 667,1290 640,1178 Z"
+            android:fillColor="@color/logo_bowl_outline" />
+        <path
+            android:pathData="M678,1180 L1255,1180 C1230,1280 1130,1370 966,1380 C802,1370 702,1280 678,1180 Z"
+            android:fillColor="@color/logo_bowl" />
+        <path
+            android:pathData="M1183,1180 L1255,1180 C1230,1280 1140,1365 1020,1378 C1120,1330 1175,1250 1183,1180 Z"
+            android:fillColor="@color/logo_bowl_shade" />
+        <path
+            android:pathData="M678,1180 L708,1180 C735,1260 780,1330 828,1360 C760,1335 700,1270 678,1180 Z"
+            android:fillColor="@color/logo_bowl_highlight" />
+
+        <!-- Rim and inner line -->
+        <path
+            android:pathData="M608,1163 L1325,1163"
+            android:strokeColor="@color/logo_bowl_outline"
+            android:strokeLineCap="round"
+            android:strokeWidth="36" />
+        <path
+            android:pathData="M695,1212 L1140,1212"
+            android:strokeColor="@color/logo_bowl_outline"
+            android:strokeLineCap="round"
+            android:strokeWidth="26" />
+    </group>
+
+</vector>
