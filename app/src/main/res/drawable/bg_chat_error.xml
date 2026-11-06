@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Assistant bubble shown when the assistant could not answer. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/hue_error_container" />
+    <corners
+        android:bottomLeftRadius="@dimen/_16dp"
+        android:bottomRightRadius="@dimen/_16dp"
+        android:topLeftRadius="@dimen/_4dp"
+        android:topRightRadius="@dimen/_16dp" />
+</shape>

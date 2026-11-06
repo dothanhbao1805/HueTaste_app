@@ -58,4 +58,6 @@
     <dimen name="text_32sp">32sp</dimen>
 
     <dimen name="main_navigation_text_size">11sp</dimen>
+    <dimen name="_140dp">140dp</dimen>
+    <dimen name="_220dp">220dp</dimen>
 </resources>

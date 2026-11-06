@@ -7,6 +7,8 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import com.base.R as BaseR
+import com.example.huetaste.feature.ai_chat.AiChatActivity
+import com.example.huetaste.feature.ai_chat.ChatHistoryActivity
 import com.example.huetaste.feature.auth.LoginActivity
 import com.example.huetaste.feature.auth.RegisterActivity
 import com.example.huetaste.feature.context_suggestion.ContextSuggestionActivity
@@ -23,13 +25,13 @@ import com.example.huetaste.feature.taste_setup.TasteSetupActivity
 
 // region In-app screens
 
-fun Context.startMainActivity() = startActivityRtl(MainActivity.newRootIntent(this))
+fun Context.startMainActivity() = startRootActivityRtl(MainActivity.newRootIntent(this))
 
-fun Context.startLoginActivity() = startActivityRtl(LoginActivity.newRootIntent(this))
+fun Context.startLoginActivity() = startRootActivityRtl(LoginActivity.newRootIntent(this))
 
 fun Context.startRegisterActivity() = startActivityRtl(RegisterActivity.newIntent(this))
 
-fun Context.startTasteSetupActivity() = startActivityRtl(TasteSetupActivity.newRootIntent(this))
+fun Context.startTasteSetupActivity() = startRootActivityRtl(TasteSetupActivity.newRootIntent(this))
 
 fun Context.startContextSuggestionActivity() = startActivityRtl(ContextSuggestionActivity.newIntent(this))
 
@@ -42,6 +44,12 @@ fun Context.startDishDetailActivity(dishId: String) = startActivityRtl(DishDetai
 fun Context.startScanDishDetailActivity(scanId: String) = startActivityRtl(DishDetailActivity.newScanIntent(this, scanId))
 
 fun Context.startPlaceDetailActivity(placeId: String) = startActivityRtl(PlaceDetailActivity.newIntent(this, placeId))
+
+/** Opens the assistant on [conversationId], or on a new conversation; an open chat is brought back to the front. */
+fun Context.startAiChatActivity(conversationId: String? = null) =
+    startActivityRtl(AiChatActivity.newIntent(this, conversationId))
+
+fun Context.startChatHistoryActivity() = startActivityRtl(ChatHistoryActivity.newIntent(this))
 
 // endregion
 
@@ -69,6 +77,24 @@ fun Context.startViewUri(uri: Uri) {
 }
 
 // endregion
+
+/**
+ * Opens a root screen ([intent] built with NEW_TASK | CLEAR_TASK) as the only screen of the task.
+ *
+ * From an Activity, CLEAR_TASK would destroy the current screen before the new one has drawn, so the transition
+ * runs over an empty task and shows a black frame. Instead the new screen is started normally with the slide, and the
+ * screens below are finished with [Activity.finishAffinity], which gives the same back stack without the flash.
+ */
+private fun Context.startRootActivityRtl(intent: Intent) {
+    val activity = this as? Activity
+    if (activity == null) {
+        startActivity(intent)
+        return
+    }
+    intent.removeFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    activity.startActivityRtl(intent)
+    activity.finishAffinity()
+}
 
 /** Starts [intent] with the right-to-left transition when this context is an Activity. */
 fun Context.startActivityRtl(intent: Intent) {

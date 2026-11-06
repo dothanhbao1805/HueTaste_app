@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsFrameView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/_24dp">
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_shape_round_16"
+        android:backgroundTint="@color/hue_surface_lowest"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="@dimen/_24dp">
+
+        <com.base.common.widget.LsImageView
+            android:layout_width="@dimen/_48dp"
+            android:layout_height="@dimen/_48dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_error_10"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/_12dp"
+            android:src="@drawable/ic_delete"
+            android:tint="@color/hue_error" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_14dp"
+            android:gravity="center"
+            android:text="@string/ai_delete_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_18sp"
+            app:textFont="bold" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:gravity="center"
+            android:text="@string/ai_delete_message"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="regular" />
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_24dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/cancelButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_44dp"
+                android:foreground="@drawable/fg_ripple_pill"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/_20dp"
+                android:text="@string/ai_delete_cancel"
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="semi" />
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/confirmButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_44dp"
+                android:layout_marginStart="@dimen/_10dp"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_error"
+                android:foreground="@drawable/fg_ripple_pill"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_24dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_18dp"
+                    android:layout_height="@dimen/_18dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_delete"
+                    android:tint="@color/hue_on_primary" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6dp"
+                    android:text="@string/ai_delete_confirm"
+                    android:textColor="@color/hue_on_primary"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="semi" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsFrameView>

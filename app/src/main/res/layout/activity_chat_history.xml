@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hue_surface"
+    tools:context=".feature.ai_chat.ChatHistoryActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statusBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/navigationBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/headerBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_56dp"
+        android:background="@color/hue_surface_lowest"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/statusBar">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/backButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:contentDescription="@string/ai_chat_back"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/hue_on_surface" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/ai_chat_history"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_18sp"
+            app:textFont="bold" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsView
+        android:id="@+id/headerDivider"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_1dp"
+        android:background="@color/hue_outline_hairline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerBar" />
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/newChatButton"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_48dp"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_16dp"
+        android:background="@drawable/bg_shape_pill"
+        android:backgroundTint="@color/hue_primary"
+        android:elevation="@dimen/_2dp"
+        android:foreground="@drawable/fg_ripple_pill"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerDivider">
+
+        <com.base.common.widget.LsImageView
+            android:layout_width="@dimen/_20dp"
+            android:layout_height="@dimen/_20dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_add"
+            android:tint="@color/hue_on_primary" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:text="@string/ai_chat_new"
+            android:textColor="@color/hue_on_primary"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.scroll.LsRecyclerView
+        android:id="@+id/conversationList"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/_8dp"
+        android:paddingBottom="@dimen/_24dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/newChatButton" />
+
+    <ProgressBar
+        android:id="@+id/loadingProgress"
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_40dp"
+        android:indeterminateTint="@color/hue_primary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/newChatButton" />
+
+    <!-- Shown when the first page of GET /tro-chuyen fails. -->
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/errorView"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/newChatButton">
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/errorText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="regular" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/retryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_44dp"
+            android:layout_marginTop="@dimen/_16dp"
+            android:background="@drawable/bg_shape_pill"
+            android:backgroundTint="@color/hue_surface_container"
+            android:foreground="@drawable/fg_ripple_pill"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_24dp"
+            android:text="@string/ai_chat_retry"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <!-- Shown when GET /tro-chuyen returns no conversations. -->
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/emptyView"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/newChatButton">
+
+        <com.base.common.widget.LsImageView
+            android:layout_width="@dimen/_80dp"
+            android:layout_height="@dimen/_80dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_primary_10"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/_20dp"
+            android:src="@drawable/ic_soup_kitchen"
+            android:tint="@color/hue_primary" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:gravity="center"
+            android:text="@string/ai_history_empty_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_16sp"
+            app:textFont="semi" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4dp"
+            android:gravity="center"
+            android:text="@string/ai_history_empty_message"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="regular" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/startChatButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_48dp"
+            android:layout_marginTop="@dimen/_20dp"
+            android:background="@drawable/bg_shape_pill"
+            android:backgroundTint="@color/hue_primary"
+            android:foreground="@drawable/fg_ripple_pill"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_24dp"
+            android:text="@string/ai_history_start"
+            android:textColor="@color/hue_on_primary"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi" />
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsConstraintView>

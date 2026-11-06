@@ -81,4 +81,10 @@
     <color name="logo_bowl">#9E6C00</color>
     <color name="logo_bowl_shade">#8D5A04</color>
     <color name="logo_bowl_highlight">#D9B76B</color>
+
+    <!-- AI assistant chat and history screens. -->
+    <color name="hue_gold">#F2B84B</color>
+    <color name="hue_error_container">#FFDAD6</color>
+    <color name="hue_on_error_container">#93000A</color>
+    <color name="hue_error_10">#1ABA1A1A</color>
 </resources>

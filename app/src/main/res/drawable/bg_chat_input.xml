@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Floating composer card above the navigation bar. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/hue_surface_lowest" />
+    <stroke
+        android:width="@dimen/_1dp"
+        android:color="@color/hue_outline_hairline" />
+    <corners android:radius="@dimen/_16dp" />
+</shape>

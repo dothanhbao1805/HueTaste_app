@@ -7,7 +7,11 @@
         <item name="android:windowAnimationStyle">@style/ActivityAnimation</item>
     </style>
 
-    <style name="Theme.HueTaste" parent="Base.Theme.HueTaste" />
+    <!-- Every window starts on the app surface, so a screen that is still drawing its first frame never shows the
+         default (dark in night mode) window background. -->
+    <style name="Theme.HueTaste" parent="Base.Theme.HueTaste">
+        <item name="android:windowBackground">@color/hue_surface</item>
+    </style>
 
     <!-- Launch theme: the window shows the splash background right away instead of a white flash. -->
     <style name="Theme.HueTaste.Splash" parent="Theme.HueTaste">

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hue_surface"
+    tools:context=".feature.ai_chat.AiChatActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statusBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/navigationBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <com.base.common.widget.LsConstraintView
+        android:id="@+id/headerBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_64dp"
+        android:background="@color/hue_surface"
+        android:paddingHorizontal="@dimen/_10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/statusBar">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/backButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:contentDescription="@string/ai_chat_back"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/hue_on_surface"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/avatarImage"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp"
+            android:layout_marginStart="@dimen/_4dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_primary_10"
+            android:contentDescription="@string/ai_chat_avatar"
+            android:padding="@dimen/_8dp"
+            android:src="@drawable/ic_soup_kitchen"
+            android:tint="@color/hue_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/backButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.base.common.widget.LsView
+            android:layout_width="@dimen/_12dp"
+            android:layout_height="@dimen/_12dp"
+            android:background="@drawable/bg_chat_status_dot"
+            app:layout_constraintBottom_toBottomOf="@id/avatarImage"
+            app:layout_constraintEnd_toEndOf="@id/avatarImage" />
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/historyButton"
+            app:layout_constraintStart_toEndOf="@id/avatarImage"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/ai_chat_title"
+                android:textColor="@color/hue_on_surface"
+                android:textSize="@dimen/text_16sp"
+                app:textFont="semi" />
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsView
+                    android:layout_width="@dimen/_6dp"
+                    android:layout_height="@dimen/_6dp"
+                    android:background="@drawable/bg_shape_circle"
+                    android:backgroundTint="@color/hue_secondary" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/ai_chat_subtitle"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="medium" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/historyButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:contentDescription="@string/ai_chat_history"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_history"
+            android:tint="@color/hue_on_surface_variant"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/newChatButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/newChatButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:contentDescription="@string/ai_chat_new"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_edit"
+            android:tint="@color/hue_on_surface_variant"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.base.common.widget.LsConstraintView>
+
+    <com.base.common.widget.LsView
+        android:id="@+id/headerDivider"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_1dp"
+        android:background="@color/hue_surface_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerBar" />
+
+    <com.base.common.widget.scroll.LsRecyclerView
+        android:id="@+id/chatList"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:paddingTop="@dimen/_12dp"
+        android:paddingBottom="@dimen/_8dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomBarrier"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerDivider" />
+
+    <!-- The list ends above whichever bottom bar is shown: the composer, or the sign-in bar for guests. -->
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/bottomBarrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierAllowsGoneWidgets="false"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="composer,signInBar" />
+
+    <ProgressBar
+        android:id="@+id/loadingProgress"
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_40dp"
+        android:indeterminateTint="@color/hue_primary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/chatList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/chatList" />
+
+    <!-- Guests: the backend only answers signed-in users. -->
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/signInBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:layout_marginBottom="@dimen/_8dp"
+        android:background="@drawable/bg_chat_input"
+        android:elevation="@dimen/_4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:outlineAmbientShadowColor="@color/hue_card_shadow"
+        android:outlineSpotShadowColor="@color/hue_card_shadow"
+        android:padding="@dimen/_12dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ai_chat_sign_in_message"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="medium" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/signInButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_44dp"
+            android:layout_marginStart="@dimen/_12dp"
+            android:background="@drawable/bg_shape_pill"
+            android:backgroundTint="@color/hue_primary"
+            android:foreground="@drawable/fg_ripple_pill"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_20dp"
+            android:text="@string/ai_chat_sign_in"
+            android:textColor="@color/hue_on_primary"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <!-- Composer: the backend takes text only (max 1000 characters) plus an optional location. -->
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/composer"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:layout_marginBottom="@dimen/_8dp"
+        android:background="@drawable/bg_chat_input"
+        android:elevation="@dimen/_4dp"
+        android:orientation="vertical"
+        android:outlineAmbientShadowColor="@color/hue_card_shadow"
+        android:outlineSpotShadowColor="@color/hue_card_shadow"
+        android:padding="@dimen/_8dp"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.base.common.widget.LsLinearView
+            android:id="@+id/locationChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_shape_pill"
+            android:backgroundTint="@color/hue_surface_container_low"
+            android:foreground="@drawable/fg_ripple_pill"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/_32dp"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_12dp"
+            android:paddingVertical="@dimen/_6dp">
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/locationIcon"
+                android:layout_width="@dimen/_16dp"
+                android:layout_height="@dimen/_16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_location"
+                android:tint="@color/hue_on_surface_variant" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/locationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_4dp"
+                android:text="@string/ai_chat_location"
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_11sp"
+                app:textFont="medium" />
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsEditText
+                android:id="@+id/messageInput"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_surface_container_low"
+                android:hint="@string/ai_chat_input_hint"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine|textCapSentences"
+                android:maxLength="1000"
+                android:maxLines="4"
+                android:minHeight="@dimen/_44dp"
+                android:paddingHorizontal="@dimen/_14dp"
+                android:paddingVertical="@dimen/_10dp"
+                android:textColor="@color/hue_on_surface"
+                android:textColorHint="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="regular" />
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/sendButton"
+                android:layout_width="@dimen/_44dp"
+                android:layout_height="@dimen/_44dp"
+                android:layout_marginStart="@dimen/_8dp"
+                android:background="@drawable/bg_shape_circle"
+                android:backgroundTint="@color/hue_primary"
+                android:contentDescription="@string/ai_chat_send"
+                android:elevation="@dimen/_2dp"
+                android:foreground="@drawable/fg_ripple_circle"
+                android:padding="@dimen/_12dp"
+                android:src="@drawable/ic_send"
+                android:tint="@color/hue_on_primary" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsConstraintView>

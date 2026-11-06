@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One place of a reply: backend diaDiem[] item (anhUrl, tenDiaDiem, diaChi, khoangCachKm, diemTrungBinh, gioMoCua,
+     mucGia, lyDoGiaiThich), aligned with the assistant bubbles. -->
+<com.base.common.widget.LsFrameView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/_40dp"
+    android:paddingTop="@dimen/_6dp"
+    android:paddingBottom="@dimen/_6dp">
+
+    <com.base.common.widget.LsCardView
+        android:id="@+id/placeCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:outlineAmbientShadowColor="@color/hue_card_shadow"
+        android:outlineSpotShadowColor="@color/hue_card_shadow"
+        app:cardBackgroundColor="@color/hue_surface_lowest"
+        app:cardCornerRadius="@dimen/_16dp"
+        app:cardElevation="@dimen/_1dp"
+        app:rippleColor="@color/navigation_item_ripple"
+        app:strokeColor="@color/hue_outline_hairline"
+        app:strokeWidth="@dimen/_1dp">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.base.common.widget.LsFrameView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_140dp">
+
+                <com.base.common.widget.LsImageView
+                    android:id="@+id/placeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/ai_chat_place_photo"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_food_placeholder" />
+
+                <com.base.common.widget.LsView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_context_image_scrim" />
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/openBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_margin="@dimen/_10dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_surface_lowest_90"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_10dp"
+                    android:paddingVertical="@dimen/_4dp">
+
+                    <com.base.common.widget.LsView
+                        android:id="@+id/openDot"
+                        android:layout_width="@dimen/_8dp"
+                        android:layout_height="@dimen/_8dp"
+                        android:background="@drawable/bg_shape_circle"
+                        android:backgroundTint="@color/place_open" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/openText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="semi" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/ratingBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|end"
+                    android:layout_margin="@dimen/_10dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_secondary_container"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_10dp"
+                    android:paddingVertical="@dimen/_4dp">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_14dp"
+                        android:layout_height="@dimen/_14dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_star"
+                        android:tint="@color/hue_on_secondary_container" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/ratingText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_2dp"
+                        android:textColor="@color/hue_on_secondary_container"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="semi" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/_12dp"
+                    android:paddingBottom="@dimen/_10dp">
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/placeName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/hue_on_primary"
+                        android:textSize="@dimen/text_18sp"
+                        app:textFont="semi" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/placeReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/hue_surface_lowest_90"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="medium" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsFrameView>
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_12dp">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_18dp"
+                        android:layout_height="@dimen/_18dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_location"
+                        android:tint="@color/hue_primary" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/placeAddress"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="medium" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/placeDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_secondary_fixed_40"
+                        android:paddingHorizontal="@dimen/_8dp"
+                        android:paddingVertical="@dimen/_2dp"
+                        android:textColor="@color/hue_on_secondary_container"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="semi" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/priceRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:background="@drawable/bg_shape_round_12"
+                    android:backgroundTint="@color/hue_surface_container_low"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_12dp"
+                    android:paddingVertical="@dimen/_6dp">
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/ai_chat_price_label"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="medium" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/placePrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/hue_primary"
+                        android:textSize="@dimen/text_16sp"
+                        app:textFont="bold" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/directionsButton"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_surface_container"
+                        android:foreground="@drawable/fg_ripple_pill"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_40dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_12dp"
+                        android:paddingVertical="@dimen/_6dp">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_18dp"
+                            android:layout_height="@dimen/_18dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_near_me"
+                            android:tint="@color/hue_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_6dp"
+                            android:text="@string/ai_chat_directions"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="semi" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/viewPlaceButton"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_primary"
+                        android:foreground="@drawable/fg_ripple_pill"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_40dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_12dp"
+                        android:paddingVertical="@dimen/_6dp">
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ai_chat_view_place"
+                            android:textColor="@color/hue_on_primary"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="semi" />
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_18dp"
+                            android:layout_height="@dimen/_18dp"
+                            android:layout_marginStart="@dimen/_6dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_arrow_forward"
+                            android:tint="@color/hue_on_primary" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsCardView>
+
+</com.base.common.widget.LsFrameView>

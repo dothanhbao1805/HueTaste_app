@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Approximate location, sent to the assistant to find places near the user. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -56,6 +58,13 @@
             android:exported="false" />
         <activity
             android:name=".feature.scan.ScanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.ai_chat.AiChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".feature.ai_chat.ChatHistoryActivity"
             android:exported="false" />
     </application>
 

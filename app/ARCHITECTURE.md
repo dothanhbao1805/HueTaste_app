@@ -12,15 +12,15 @@ com.example.huetaste
 |   |-- ui             Reusable UI components (gallery/: photo carousel adapter, full-screen viewer, zoom)
 |   `-- widget         Reusable custom Android views
 |-- data
-|   |-- local          Local data sources and persistence implementations (SecureSessionStore, TasteSetupStore)
-|   |-- mapper         Data-to-domain mapping (scan, dish, place, auth and preference DTOs)
+|   |-- local          Local data sources and persistence implementations (SecureSessionStore, TasteSetupStore, DeviceLocationProvider)
+|   |-- mapper         Data-to-domain mapping (scan, dish, place, auth, preference and chat DTOs)
 |   |-- remote         Retrofit HueTasteApi, DTOs, and apiCall error mapping
-|   `-- repository     ScanRepositoryImpl, DishRepositoryImpl, PlaceRepositoryImpl, AuthRepositoryImpl, PreferenceRepositoryImpl
+|   `-- repository     ScanRepositoryImpl, DishRepositoryImpl, PlaceRepositoryImpl, AuthRepositoryImpl, PreferenceRepositoryImpl, ChatRepositoryImpl
 |-- di                 AppModule, NetworkModule (OkHttp/Retrofit), RepositoryModule
 |-- domain
-|   |-- model          ScanResult, DishDetail, PlaceDetail, Review, OpeningHours, AuthSession, AuthState, AuthValidator, Place, AppError, DietOption, TasteTag, TastePreference, Ingredient, MealType, MealBudget, DailyNeed
-|   |-- repository     ScanRepository, DishRepository, PlaceRepository, AuthRepository, PreferenceRepository
-|   `-- usecase        ScanDish, GetScanResult, GetDishDetail, GetPlaceDetail, GetPlaceReviews, SubmitPlaceReview, SetPlaceFavorite, Login, Register, ContinueAsGuest, GetAuthState, GetTasteSetupOptions, SearchIngredients, SaveDiets, SaveTastes, SaveDailyNeeds, ShouldShowTasteSetup, MarkTasteSetupHandled
+|   |-- model          ScanResult, DishDetail, PlaceDetail, Review, OpeningHours, AuthSession, AuthState, AuthValidator, Place, AppError, DietOption, TasteTag, TastePreference, Ingredient, MealType, MealBudget, DailyNeed, ChatConversation, ChatMessage, ChatReply, GeoPoint
+|   |-- repository     ScanRepository, DishRepository, PlaceRepository, AuthRepository, PreferenceRepository, ChatRepository, LocationProvider
+|   `-- usecase        ScanDish, GetScanResult, GetDishDetail, GetPlaceDetail, GetPlaceReviews, SubmitPlaceReview, SetPlaceFavorite, Login, Register, ContinueAsGuest, GetAuthState, GetTasteSetupOptions, SearchIngredients, SaveDiets, SaveTastes, SaveDailyNeeds, ShouldShowTasteSetup, MarkTasteSetupHandled, SendChatMessage, GetConversations, GetConversationMessages, DeleteConversation, GetCurrentLocation
 `-- feature
     |-- splash         Launcher Activity: reads the remembered session and opens the main screen or the login
     |-- auth           Login and Register Activities with their ViewModels
@@ -31,6 +31,7 @@ com.example.huetaste
     |-- dish_detail    Dish detail Activity + ViewModel (backend data, or the static Stitch sample) with a hero photo carousel
     |-- place_detail   Place detail Activity + ViewModel + review sheet (backend data), opened from a place in the dish detail
     |-- scan           Camera scan Activity, ViewModel, image processing, tips sheet, message dialog
+    |-- ai_chat        AI assistant chat and conversation history Activities, ViewModels, adapters and delete dialog
     |-- search         Empty Search fragment extending LsFragment
     |-- favorites      Empty Favorites fragment extending LsFragment
     `-- profile        Empty Profile fragment extending LsFragment
@@ -74,6 +75,14 @@ The Activity layout uses the `statusBar` and `navigationBar` Guidelines expected
 ## Context suggestion screen
 
 `ContextSuggestionActivity` implements the Stitch "Gợi Ý Theo Ngữ Cảnh" screen as its own Activity, because it is a separate flow with its own back stack rather than a main tab; it has a back button instead of the main bottom bar. Its layout is static sample content built from `Ls*` views, with the 10dp horizontal margin applied once per section. The Activity only keeps the dishes/places selection and favorite hearts across recreation; Home's "Gợi ý món ăn ngay" button (`suggestButton`) opens it through `newIntent()`.
+
+## AI assistant
+
+`AiChatActivity` implements the Stitch "Trợ Lý AI Ẩm Thực" screen and `ChatHistoryActivity` "Trợ Lý AI - Lịch Sử Trò Chuyện", both backed by the backend `/tro-chuyen` endpoints through `ChatRepository`. The center AI button of the main bottom bar always opens a new conversation, which is only created on the backend (`POST /tro-chuyen`) when its first question is sent; `SendChatMessageUseCase` also creates a new one and asks again once when the open conversation was deleted meanwhile (`CUOC_TRO_CHUYEN_NOT_FOUND`). The history reopens a conversation with `startAiChatActivity(id)`, which brings the existing chat back (`CLEAR_TOP | SINGLE_TOP`) and hands it the id through `onNewIntent`.
+
+`AiChatViewModel` owns the rows; the conversation id, the location choice and a failed question are kept in `SavedStateHandle`. A question shows at once as a dimmed bubble with the typing bubble (the backend takes 3-8 s); the reply (`POST /tro-chuyen/{id}/tin-nhan`) replaces it with the stored question, the answer, one sideways row of dish cards (`monAn[]`) and one card per place (`diaDiem[]`). Failures become an error bubble with "Thử lại", which sends the same question again (the backend stores a question before asking Gemini, so a retried question can appear twice in the stored history). A stored conversation is read from every page of `GET /tro-chuyen/{id}/tin-nhan` and rebuilt by `ChatItemsBuilder`: consecutive dish suggestions form one row, place suggestions one card each, with a header whenever the day changes. Only suggestions with a backend `GoiY` record are stored, so a reopened conversation can show fewer cards than it did live. Cards open the dish or place detail; "Chỉ đường" uses `openMap`.
+
+The backend only answers signed-in users, so guests (and users whose session ended) see a sign-in bar instead of the composer, leading to the login. The location chip asks for `ACCESS_COARSE_LOCATION`; while it is on, each question carries `viDo`/`kinhDo` from `DeviceLocationProvider`, which uses the platform `LocationManager` (a recent cached network/passive fix, otherwise one network fix within 5 s) and sends none when it finds nothing. `ChatHistoryViewModel` pages through `GET /tro-chuyen` (20 per page, newest first, more when the list nears its end) and groups rows into "Hôm nay", "Hôm qua", "Tuần trước" or their date; deleting removes the row at once and puts it back if `DELETE /tro-chuyen/{id}` fails. Parts of the design the backend has no data for are not built: read receipts, the tip line, review counts, a dish inside the place card, voice input, photo attachments, and search or tags in the history.
 
 ## Backend access
 

@@ -62,4 +62,6 @@ data class DiaDiemDto(
     val mucGia: Int?,
     val diemTrungBinh: Double?,
     val anhUrl: String?,
+    /** Only filled when the request carried the user's location. */
+    val khoangCachKm: Double? = null,
 )

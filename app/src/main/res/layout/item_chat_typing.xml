@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/_6dp">
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/avatarImage"
+        android:layout_width="@dimen/_32dp"
+        android:layout_height="@dimen/_32dp"
+        android:layout_marginTop="@dimen/_4dp"
+        android:background="@drawable/bg_shape_circle"
+        android:backgroundTint="@color/hue_primary"
+        android:importantForAccessibility="no"
+        android:padding="@dimen/_7dp"
+        android:src="@drawable/ic_auto_awesome"
+        android:tint="@color/hue_on_primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/typingBubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8dp"
+        android:background="@drawable/bg_chat_bubble_ai"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingVertical="@dimen/_14dp"
+        app:layout_constraintStart_toEndOf="@id/avatarImage"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.base.common.widget.LsView
+            android:id="@+id/dot1"
+            android:layout_width="@dimen/_8dp"
+            android:layout_height="@dimen/_8dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_primary" />
+
+        <com.base.common.widget.LsView
+            android:id="@+id/dot2"
+            android:layout_width="@dimen/_8dp"
+            android:layout_height="@dimen/_8dp"
+            android:layout_marginStart="@dimen/_6dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_primary" />
+
+        <com.base.common.widget.LsView
+            android:id="@+id/dot3"
+            android:layout_width="@dimen/_8dp"
+            android:layout_height="@dimen/_8dp"
+            android:layout_marginStart="@dimen/_6dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_primary" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/typingText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4dp"
+        android:paddingHorizontal="@dimen/_4dp"
+        android:text="@string/ai_chat_typing"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_11sp"
+        app:layout_constraintStart_toStartOf="@id/typingBubble"
+        app:layout_constraintTop_toBottomOf="@id/typingBubble"
+        app:textFont="medium" />
+
+</com.base.common.widget.LsConstraintView>

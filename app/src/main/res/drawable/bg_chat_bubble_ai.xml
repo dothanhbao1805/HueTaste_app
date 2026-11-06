@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bubble of an assistant reply: porcelain card, tail corner at the top left. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/hue_surface_lowest" />
+    <stroke
+        android:width="@dimen/_1dp"
+        android:color="@color/hue_outline_hairline" />
+    <corners
+        android:bottomLeftRadius="@dimen/_16dp"
+        android:bottomRightRadius="@dimen/_16dp"
+        android:topLeftRadius="@dimen/_4dp"
+        android:topRightRadius="@dimen/_16dp" />
+</shape>

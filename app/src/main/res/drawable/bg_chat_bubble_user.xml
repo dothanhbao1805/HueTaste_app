@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bubble of a message the user sent: primary fill, tail corner at the top right. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/hue_primary" />
+    <corners
+        android:bottomLeftRadius="@dimen/_16dp"
+        android:bottomRightRadius="@dimen/_16dp"
+        android:topLeftRadius="@dimen/_16dp"
+        android:topRightRadius="@dimen/_4dp" />
+</shape>

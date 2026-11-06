@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Assistant avatar: imperial red-orange to gold. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <gradient
+        android:angle="45"
+        android:endColor="@color/hue_gold"
+        android:startColor="@color/hue_primary"
+        android:type="linear" />
+</shape>

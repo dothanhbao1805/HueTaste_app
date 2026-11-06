@@ -3,6 +3,11 @@ package com.example.huetaste.data.remote
 import com.example.huetaste.data.remote.dto.CapNhatCheDoAnBody
 import com.example.huetaste.data.remote.dto.CapNhatSoThichBody
 import com.example.huetaste.data.remote.dto.CheDoAnOutDto
+import com.example.huetaste.data.remote.dto.CuocTroChuyenDto
+import com.example.huetaste.data.remote.dto.GuiTinNhanBody
+import com.example.huetaste.data.remote.dto.TraLoiDto
+import com.example.huetaste.data.remote.dto.TrangCuocTroChuyenDto
+import com.example.huetaste.data.remote.dto.TrangTinNhanDto
 import com.example.huetaste.data.remote.dto.DanhGiaDto
 import com.example.huetaste.data.remote.dto.DiaDiemChiTietDto
 import com.example.huetaste.data.remote.dto.MonAnChiTietDto
@@ -77,4 +82,24 @@ interface HueTasteApi {
 
     @PUT("users/me/nhu-cau")
     suspend fun saveDailyNeed(@Body body: NhuCauBody)
+
+    @POST("tro-chuyen")
+    suspend fun createConversation(): CuocTroChuyenDto
+
+    @GET("tro-chuyen")
+    suspend fun getConversations(@Query("page") page: Int, @Query("size") size: Int): TrangCuocTroChuyenDto
+
+    @GET("tro-chuyen/{idCuoc}/tin-nhan")
+    suspend fun getMessages(
+        @Path("idCuoc") conversationId: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int,
+    ): TrangTinNhanDto
+
+    /** The assistant answers in about 3-8 seconds; the client read timeout covers it. */
+    @POST("tro-chuyen/{idCuoc}/tin-nhan")
+    suspend fun sendMessage(@Path("idCuoc") conversationId: String, @Body body: GuiTinNhanBody): TraLoiDto
+
+    @DELETE("tro-chuyen/{idCuoc}")
+    suspend fun deleteConversation(@Path("idCuoc") conversationId: String)
 }

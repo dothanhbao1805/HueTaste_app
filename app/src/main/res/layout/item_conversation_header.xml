@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/_4dp"
+    android:paddingTop="@dimen/_16dp"
+    android:paddingBottom="@dimen/_8dp">
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/headerLabel"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:letterSpacing="0.08"
+        android:textAllCaps="true"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_12sp"
+        app:textFont="semi" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/headerCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_11sp"
+        app:textFont="regular" />
+
+</com.base.common.widget.LsLinearView>

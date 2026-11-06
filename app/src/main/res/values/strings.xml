@@ -484,4 +484,57 @@
     <string name="taste_summary_none">Chưa chọn</string>
     <string name="taste_summary_no_budget">Không giới hạn</string>
     <string name="taste_summary_edit_hint">Có thể chỉnh sửa tại Cá nhân › Khẩu vị</string>
+
+    <!-- AI assistant chat. -->
+    <string name="ai_chat_back">Quay lại</string>
+    <string name="ai_chat_title">Trợ lý Ẩm thực Cố Đô</string>
+    <string name="ai_chat_subtitle">Trực tuyến • Hiểu rõ khẩu vị Huế</string>
+    <string name="ai_chat_avatar">Trợ lý ẩm thực</string>
+    <string name="ai_chat_history">Lịch sử trò chuyện</string>
+    <string name="ai_chat_new">Cuộc trò chuyện mới</string>
+    <string name="ai_chat_welcome">Dạ kính chào bạn! Mình là <b>Cố Đô AI</b>. Hỏi mình hôm nay ăn gì, quán nào ngon gần bạn hay món nào hợp thời tiết nhé!</string>
+    <string name="ai_chat_welcome_caption">Trợ lý AI Huế</string>
+    <string name="ai_chat_suggestions_label">Gợi ý dành cho bạn:</string>
+    <string name="ai_chat_suggestion_lunch">Hôm nay ăn gì trưa nay?</string>
+    <string name="ai_chat_suggestion_nearby">Quán bún bò ngon gần đây</string>
+    <string name="ai_chat_suggestion_mild">Món Huế không cay cho bé</string>
+    <string name="ai_chat_suggestion_budget">Ngân sách 30k Cồn Hến</string>
+    <string name="ai_chat_match">Hợp vị %1$d%%</string>
+    <string name="ai_chat_open">Đang mở cửa</string>
+    <string name="ai_chat_closed">Đã đóng cửa</string>
+    <string name="ai_chat_distance_km">%1$s km</string>
+    <string name="ai_chat_distance_m">%1$d m</string>
+    <string name="ai_chat_price_label">Mức giá trung bình:</string>
+    <string name="ai_chat_directions">Chỉ đường</string>
+    <string name="ai_chat_view_place">Xem quán ăn</string>
+    <string name="ai_chat_dish_photo">Ảnh món ăn</string>
+    <string name="ai_chat_place_photo">Ảnh quán ăn</string>
+    <string name="ai_chat_typing">Trợ lý đang tìm món và quán phù hợp…</string>
+    <string name="ai_chat_error">Trợ lý ảo chưa trả lời được, bạn thử hỏi lại nhé</string>
+    <string name="ai_chat_retry">Thử lại</string>
+    <string name="ai_chat_location">Dùng vị trí của bạn để tìm quán gần</string>
+    <string name="ai_chat_location_on">Đang dùng vị trí của bạn</string>
+    <string name="ai_chat_input_hint">Hỏi món ngon, quán ăn ở Huế…</string>
+    <string name="ai_chat_send">Gửi</string>
+    <string name="ai_chat_today">Hôm nay</string>
+    <string name="ai_chat_yesterday">Hôm qua</string>
+    <string name="ai_chat_last_week">Tuần trước</string>
+    <string name="ai_chat_error_network">Không có kết nối mạng, bạn kiểm tra lại rồi thử nhé</string>
+    <string name="ai_chat_sign_in_message">Đăng nhập để trò chuyện với trợ lý ẩm thực</string>
+    <string name="ai_chat_sign_in">Đăng nhập</string>
+    <string name="ai_chat_location_denied">Chưa có quyền vị trí nên trợ lý chưa tìm được quán gần bạn</string>
+
+    <!-- AI assistant conversation history. -->
+    <string name="ai_history_count">%1$d hội thoại</string>
+    <string name="ai_history_untitled">Cuộc trò chuyện mới</string>
+    <string name="ai_history_delete_failed">Chưa xóa được cuộc trò chuyện, bạn thử lại nhé</string>
+    <string name="ai_history_load_failed">Chưa tải được lịch sử trò chuyện</string>
+    <string name="ai_history_delete">Xóa cuộc trò chuyện</string>
+    <string name="ai_history_empty_title">Chưa có cuộc trò chuyện nào</string>
+    <string name="ai_history_empty_message">Hỏi trợ lý để tìm món ngon Huế hợp với bạn</string>
+    <string name="ai_history_start">Bắt đầu trò chuyện</string>
+    <string name="ai_delete_title">Xóa cuộc trò chuyện?</string>
+    <string name="ai_delete_message">Toàn bộ tin nhắn và gợi ý trong cuộc trò chuyện này sẽ bị xóa vĩnh viễn khỏi lịch sử.</string>
+    <string name="ai_delete_cancel">Hủy</string>
+    <string name="ai_delete_confirm">Xóa</string>
 </resources>

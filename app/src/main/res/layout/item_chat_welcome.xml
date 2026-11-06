@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/_6dp">
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/avatarImage"
+        android:layout_width="@dimen/_32dp"
+        android:layout_height="@dimen/_32dp"
+        android:layout_marginTop="@dimen/_4dp"
+        android:background="@drawable/bg_shape_circle"
+        android:backgroundTint="@color/hue_primary"
+        android:importantForAccessibility="no"
+        android:padding="@dimen/_7dp"
+        android:src="@drawable/ic_auto_awesome"
+        android:tint="@color/hue_on_primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/messageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8dp"
+        android:layout_marginEnd="@dimen/_32dp"
+        android:background="@drawable/bg_chat_bubble_ai"
+        android:lineSpacingExtra="@dimen/_4dp"
+        android:padding="@dimen/_14dp"
+        android:text="@string/ai_chat_welcome"
+        android:textColor="@color/hue_on_surface"
+        android:textSize="@dimen/text_14sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/avatarImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:textFont="regular" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/captionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4dp"
+        android:paddingHorizontal="@dimen/_4dp"
+        android:text="@string/ai_chat_welcome_caption"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_11sp"
+        app:layout_constraintStart_toStartOf="@id/messageText"
+        app:layout_constraintTop_toBottomOf="@id/messageText"
+        app:textFont="medium" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/suggestionsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12dp"
+        android:text="@string/ai_chat_suggestions_label"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_11sp"
+        app:layout_constraintStart_toStartOf="@id/messageText"
+        app:layout_constraintTop_toBottomOf="@id/captionText"
+        app:textFont="medium" />
+
+    <HorizontalScrollView
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/messageText"
+        app:layout_constraintTop_toBottomOf="@id/suggestionsLabel">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/suggestionLunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8dp"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_surface_container_low"
+                android:foreground="@drawable/fg_ripple_pill"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/_36dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_12dp"
+                android:paddingVertical="@dimen/_6dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_16dp"
+                    android:layout_height="@dimen/_16dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_wb_sunny"
+                    android:tint="@color/hue_secondary" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/suggestionLunchText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:text="@string/ai_chat_suggestion_lunch"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="medium" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/suggestionNearby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8dp"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_surface_container_low"
+                android:foreground="@drawable/fg_ripple_pill"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/_36dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_12dp"
+                android:paddingVertical="@dimen/_6dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_16dp"
+                    android:layout_height="@dimen/_16dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_local_fire_department"
+                    android:tint="@color/hue_primary" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/suggestionNearbyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:text="@string/ai_chat_suggestion_nearby"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="medium" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/suggestionMild"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_8dp"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_surface_container_low"
+                android:foreground="@drawable/fg_ripple_pill"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/_36dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_12dp"
+                android:paddingVertical="@dimen/_6dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_16dp"
+                    android:layout_height="@dimen/_16dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_eco"
+                    android:tint="@color/hue_secondary" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/suggestionMildText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:text="@string/ai_chat_suggestion_mild"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="medium" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/suggestionBudget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_surface_container_low"
+                android:foreground="@drawable/fg_ripple_pill"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/_36dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_12dp"
+                android:paddingVertical="@dimen/_6dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_16dp"
+                    android:layout_height="@dimen/_16dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_payments"
+                    android:tint="@color/hue_primary" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/suggestionBudgetText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:text="@string/ai_chat_suggestion_budget"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="medium" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+    </HorizontalScrollView>
+
+</com.base.common.widget.LsConstraintView>

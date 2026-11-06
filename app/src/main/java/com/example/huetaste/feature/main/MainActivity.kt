@@ -13,7 +13,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.base.common.base.LsActivity
 import com.base.common.base.LsPageAdapter
 import com.base.common.widget.scale.PushDownAnim
-import com.example.huetaste.common.extension.clicksComingSoon
+import com.base.common.extension.clicks
+import com.example.huetaste.common.extension.startAiChatActivity
 import com.example.huetaste.common.extension.startLoginActivity
 import com.example.huetaste.databinding.ActivityMainBinding
 import com.example.huetaste.domain.model.AuthState
@@ -56,8 +57,8 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
         MainTab.entries.forEach { tab ->
             binding.bottomNavigation.findViewById<View>(tab.menuItemId)?.let(PushDownAnim::setPushDownAnimTo)
         }
-        // The AI assistant is a separate Activity that does not exist yet.
-        binding.centerAiButton.clicksComingSoon()
+        // The AI assistant is its own Activity, not a tab.
+        binding.centerAiButton.clicks { startAiChatActivity() }
         selectMenuItem(binding.viewPager.currentItem)
         returnToLoginWhenSessionEnds()
     }

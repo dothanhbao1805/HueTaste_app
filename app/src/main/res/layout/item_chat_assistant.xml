@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="@dimen/_6dp">
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/avatarImage"
+        android:layout_width="@dimen/_32dp"
+        android:layout_height="@dimen/_32dp"
+        android:layout_marginTop="@dimen/_4dp"
+        android:background="@drawable/bg_shape_circle"
+        android:backgroundTint="@color/hue_primary"
+        android:importantForAccessibility="no"
+        android:padding="@dimen/_7dp"
+        android:src="@drawable/ic_auto_awesome"
+        android:tint="@color/hue_on_primary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/messageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8dp"
+        android:layout_marginEnd="@dimen/_32dp"
+        android:background="@drawable/bg_chat_bubble_ai"
+        android:lineSpacingExtra="@dimen/_4dp"
+        android:padding="@dimen/_14dp"
+        android:textColor="@color/hue_on_surface"
+        android:textSize="@dimen/text_14sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/avatarImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:textFont="regular" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4dp"
+        android:paddingHorizontal="@dimen/_4dp"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_11sp"
+        app:layout_constraintStart_toStartOf="@id/messageText"
+        app:layout_constraintTop_toBottomOf="@id/messageText"
+        app:textFont="medium" />
+
+</com.base.common.widget.LsConstraintView>

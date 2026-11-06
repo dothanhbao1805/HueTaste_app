@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One CuocTroChuyenOut: the title is tieuDe (the first question), the time comes from ngayTao. -->
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/conversationRow"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_8dp"
+    android:background="@drawable/bg_chat_card"
+    android:foreground="@drawable/fg_ripple_round_16"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/_64dp"
+    android:orientation="horizontal"
+    android:paddingVertical="@dimen/_12dp"
+    android:paddingStart="@dimen/_14dp"
+    android:paddingEnd="@dimen/_4dp">
+
+    <com.base.common.widget.LsImageView
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_40dp"
+        android:background="@drawable/bg_ai_avatar_gradient"
+        android:importantForAccessibility="no"
+        android:padding="@dimen/_10dp"
+        android:src="@drawable/ic_auto_awesome"
+        android:tint="@color/hue_on_primary" />
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/conversationTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/conversationTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2dp"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_11sp"
+            app:textFont="regular" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/deleteButton"
+        android:layout_width="@dimen/_44dp"
+        android:layout_height="@dimen/_44dp"
+        android:contentDescription="@string/ai_history_delete"
+        android:foreground="@drawable/fg_ripple_circle"
+        android:padding="@dimen/_12dp"
+        android:src="@drawable/ic_delete"
+        android:tint="@color/hue_on_surface_variant" />
+
+</com.base.common.widget.LsLinearView>

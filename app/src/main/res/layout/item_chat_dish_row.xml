@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Dish cards of one reply (backend monAn[]), scrolled sideways under the bubble. -->
+<com.base.common.widget.scroll.LsRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dishList"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipToPadding="false"
+    android:nestedScrollingEnabled="false"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/_40dp"
+    android:paddingTop="@dimen/_6dp"
+    android:paddingBottom="@dimen/_6dp"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />

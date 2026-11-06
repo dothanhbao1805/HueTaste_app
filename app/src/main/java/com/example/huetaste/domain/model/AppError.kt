@@ -20,5 +20,7 @@ class AppError(
         const val TOKEN_EXPIRED = "TOKEN_EXPIRED"
         const val INVALID_TOKEN = "INVALID_TOKEN"
         const val UNAUTHORIZED = "UNAUTHORIZED"
+        const val CONVERSATION_NOT_FOUND = "CUOC_TRO_CHUYEN_NOT_FOUND"
+        const val CHATBOT_EMPTY = "CHATBOT_TRA_LOI_RONG"
     }
 }

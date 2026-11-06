@@ -1,12 +1,16 @@
 package com.example.huetaste.di
 
+import com.example.huetaste.data.local.DeviceLocationProvider
 import com.example.huetaste.data.repository.AuthRepositoryImpl
+import com.example.huetaste.data.repository.ChatRepositoryImpl
 import com.example.huetaste.data.repository.DishRepositoryImpl
 import com.example.huetaste.data.repository.PlaceRepositoryImpl
 import com.example.huetaste.data.repository.PreferenceRepositoryImpl
 import com.example.huetaste.data.repository.ScanRepositoryImpl
 import com.example.huetaste.domain.repository.AuthRepository
+import com.example.huetaste.domain.repository.ChatRepository
 import com.example.huetaste.domain.repository.DishRepository
+import com.example.huetaste.domain.repository.LocationProvider
 import com.example.huetaste.domain.repository.PlaceRepository
 import com.example.huetaste.domain.repository.PreferenceRepository
 import com.example.huetaste.domain.repository.ScanRepository
@@ -38,4 +42,12 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindPreferenceRepository(impl: PreferenceRepositoryImpl): PreferenceRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindChatRepository(impl: ChatRepositoryImpl): ChatRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindLocationProvider(impl: DeviceLocationProvider): LocationProvider
 }
