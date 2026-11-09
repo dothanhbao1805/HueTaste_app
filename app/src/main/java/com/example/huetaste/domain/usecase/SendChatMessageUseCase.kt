@@ -9,15 +9,25 @@ import javax.inject.Inject
 /**
  * Sends a question. A conversation is only created on the backend when its first question is sent; one that was
  * deleted meanwhile (from the history screen) is replaced by a new one and the question is sent once more.
+ *
+ * [onConversationCreated] reports a new conversation before its question is sent, so that retrying a failed question
+ * continues that conversation instead of creating another one.
  */
 class SendChatMessageUseCase @Inject constructor(private val repository: ChatRepository) {
-    suspend operator fun invoke(conversationId: String?, text: String, location: GeoPoint?): SentChatMessage {
-        val id = conversationId ?: repository.createConversation().id
+    suspend operator fun invoke(
+        conversationId: String?,
+        text: String,
+        location: GeoPoint?,
+        onConversationCreated: (String) -> Unit,
+    ): SentChatMessage {
+        suspend fun create() = repository.createConversation().id.also(onConversationCreated)
+
+        val id = conversationId ?: create()
         return try {
             SentChatMessage(id, repository.sendMessage(id, text, location))
         } catch (e: AppError) {
             if (conversationId == null || e.code != AppError.CONVERSATION_NOT_FOUND) throw e
-            val newId = repository.createConversation().id
+            val newId = create()
             SentChatMessage(newId, repository.sendMessage(newId, text, location))
         }
     }

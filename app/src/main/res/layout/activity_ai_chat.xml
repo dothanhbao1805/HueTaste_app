@@ -314,7 +314,6 @@
                 android:background="@drawable/bg_shape_circle"
                 android:backgroundTint="@color/hue_primary"
                 android:contentDescription="@string/ai_chat_send"
-                android:elevation="@dimen/_2dp"
                 android:foreground="@drawable/fg_ripple_circle"
                 android:padding="@dimen/_12dp"
                 android:src="@drawable/ic_send"

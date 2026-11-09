@@ -157,7 +157,7 @@ class AiChatViewModel @Inject constructor(
         sendJob = viewModelScope.launch {
             val location = if (_uiState.value.usesLocation) getCurrentLocation() else null
             try {
-                val sent = sendChatMessage(conversationId, question, location)
+                val sent = sendChatMessage(conversationId, question, location) { conversationId = it }
                 conversationId = sent.conversationId
                 _uiState.update { state ->
                     val kept = state.items.filterNot { it == ChatUiItem.Typing || it.key == pendingKey }

@@ -16,6 +16,8 @@ import coil.request.ImageRequest
 import coil.size.Scale
 import coil.target.Target
 import com.base.common.widget.LsImageView
+import com.example.huetaste.R
+import com.example.huetaste.common.ui.ImageShimmerDrawable
 import kotlin.math.abs
 
 /**
@@ -106,12 +108,19 @@ class ImageZoomController(
             ImageRequest.Builder(imageView.context)
                 .data(url)
                 .placeholderMemoryCacheKey(placeholderKey)
+                .placeholder(ImageShimmerDrawable(imageView.context))
+                .error(R.drawable.ic_food_placeholder)
                 .size(MAX_IMAGE_PX, MAX_IMAGE_PX)
                 .scale(Scale.FIT)
                 .crossfade(true)
                 .target(object : Target {
                     override fun onStart(placeholder: Drawable?) = show(placeholder)
                     override fun onSuccess(result: Drawable) = show(result)
+
+                    // A smaller copy already on screen stays; only the loading effect must not run forever.
+                    override fun onError(error: Drawable?) {
+                        if (imageView.drawable is ImageShimmerDrawable) show(error)
+                    }
                 })
                 .build(),
         )
@@ -126,7 +135,7 @@ class ImageZoomController(
         zoomAnimator?.cancel()
         userMatrix.reset()
         val drawable = imageView.drawable
-        if (drawable == null || imageView.width == 0 || imageView.height == 0) {
+        if (drawable == null || drawable.intrinsicWidth <= 0 || imageView.width == 0 || imageView.height == 0) {
             baseMatrix.reset()
         } else {
             val source = RectF(0f, 0f, drawable.intrinsicWidth.toFloat(), drawable.intrinsicHeight.toFloat())
@@ -182,7 +191,9 @@ class ImageZoomController(
     }
 
     private fun applyMatrix() {
-        if (imageView.drawable == null) return
+        // The loading effect has no size of its own: it fills the view and there is nothing to position.
+        val drawable = imageView.drawable
+        if (drawable == null || drawable.intrinsicWidth <= 0) return
         keepInsideView()
         drawMatrix.set(baseMatrix)
         drawMatrix.postConcat(userMatrix)

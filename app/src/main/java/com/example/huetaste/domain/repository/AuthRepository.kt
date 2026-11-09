@@ -2,6 +2,7 @@ package com.example.huetaste.domain.repository
 
 import com.example.huetaste.domain.model.AuthSession
 import com.example.huetaste.domain.model.AuthState
+import com.example.huetaste.domain.model.UserProfile
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {
@@ -15,6 +16,9 @@ interface AuthRepository {
     suspend fun continueAsGuest()
 
     suspend fun currentState(): AuthState
+
+    /** The signed-in user as of the last sign-in, or null for a guest. */
+    suspend fun currentUser(): UserProfile?
 
     /** Emits the new state whenever the session changes, for example when the backend rejects the refresh token. */
     fun observeState(): Flow<AuthState>

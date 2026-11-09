@@ -39,6 +39,16 @@ class LsImageView @JvmOverloads constructor(
     private var backgroundTintAttr = ColorManager.COLOR_NONE
 
     init {
+        // ShapeableImageView erases everything outside its shape, background included, and fits that shape inside
+        // the view padding. A padded icon on a round background would be left with a square of background, so
+        // padding here only insets the image; the shape, and the background it reveals, keep the full view size.
+        val left = paddingLeft
+        val top = paddingTop
+        val right = paddingRight
+        val bottom = paddingBottom
+        super.setPadding(0, 0, 0, 0)
+        setContentPadding(left, top, right, bottom)
+
         context.withStyledAttributes(attrs, intArrayOf(android.R.attr.background)) {
             hadBackground = getResourceId(0, 0) != 0
         }
@@ -65,6 +75,18 @@ class LsImageView @JvmOverloads constructor(
                 updateUi()
             }
         }
+    }
+
+    /**
+     * Always content padding (see init). ShapeableImageView also calls this on its first measure with the total
+     * padding, which is the content padding here, so that call changes nothing instead of doubling it.
+     */
+    override fun setPadding(left: Int, top: Int, right: Int, bottom: Int) {
+        setContentPadding(left, top, right, bottom)
+    }
+
+    override fun setPaddingRelative(start: Int, top: Int, end: Int, bottom: Int) {
+        setContentPaddingRelative(start, top, end, bottom)
     }
 
     fun setClicks(clicks: (Pair<Float, Float>) -> Unit) {

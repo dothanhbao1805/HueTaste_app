@@ -9,6 +9,22 @@ data class MonAnDto(
     val buoiPhuHop: List<String>?,
     val giaThamKhaoTu: Int?,
     val giaThamKhaoDen: Int?,
+    val idDanhMucMonAn: String? = null,
+)
+
+data class TrangMonAnDto(
+    val items: List<MonAnDto>?,
+)
+
+data class YeuThichDto(
+    val monAn: List<MonAnDto>?,
+)
+
+data class YeuThichMonAnBody(val idMonAn: String)
+
+data class DanhMucOutDto(
+    val idDanhMucMonAn: String,
+    val tenDanhMuc: String,
 )
 
 data class MonAnChiTietDto(

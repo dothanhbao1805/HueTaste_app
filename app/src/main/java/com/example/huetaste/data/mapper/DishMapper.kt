@@ -1,9 +1,11 @@
 package com.example.huetaste.data.mapper
 
+import com.example.huetaste.data.remote.dto.DanhMucOutDto
 import com.example.huetaste.data.remote.dto.DiaDiemDto
 import com.example.huetaste.data.remote.dto.MonAnChiTietDto
 import com.example.huetaste.data.remote.dto.MonAnDto
 import com.example.huetaste.domain.model.Dish
+import com.example.huetaste.domain.model.DishCategory
 import com.example.huetaste.domain.model.DishDetail
 import com.example.huetaste.domain.model.GalleryImage
 import com.example.huetaste.domain.model.DishIngredient
@@ -18,7 +20,10 @@ fun MonAnDto.toDomain() = Dish(
     mealTimes = buoiPhuHop.orEmpty(),
     priceFrom = giaThamKhaoTu,
     priceTo = giaThamKhaoDen,
+    categoryId = idDanhMucMonAn,
 )
+
+fun DanhMucOutDto.toDomain() = DishCategory(id = idDanhMucMonAn, name = tenDanhMuc)
 
 fun MonAnChiTietDto.toDomain() = DishDetail(
     dish = Dish(

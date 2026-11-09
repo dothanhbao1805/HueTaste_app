@@ -8,6 +8,7 @@ data class Dish(
     val mealTimes: List<String>,
     val priceFrom: Int?,
     val priceTo: Int?,
+    val categoryId: String? = null,
 )
 
 data class DishDetail(

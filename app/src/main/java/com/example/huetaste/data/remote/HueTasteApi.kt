@@ -9,6 +9,12 @@ import com.example.huetaste.data.remote.dto.TraLoiDto
 import com.example.huetaste.data.remote.dto.TrangCuocTroChuyenDto
 import com.example.huetaste.data.remote.dto.TrangTinNhanDto
 import com.example.huetaste.data.remote.dto.DanhGiaDto
+import com.example.huetaste.data.remote.dto.DanhMucOutDto
+import com.example.huetaste.data.remote.dto.GoiYBody
+import com.example.huetaste.data.remote.dto.KetQuaGoiYDto
+import com.example.huetaste.data.remote.dto.TrangMonAnDto
+import com.example.huetaste.data.remote.dto.YeuThichDto
+import com.example.huetaste.data.remote.dto.YeuThichMonAnBody
 import com.example.huetaste.data.remote.dto.DiaDiemChiTietDto
 import com.example.huetaste.data.remote.dto.MonAnChiTietDto
 import com.example.huetaste.data.remote.dto.NguyenLieuOutDto
@@ -82,6 +88,24 @@ interface HueTasteApi {
 
     @PUT("users/me/nhu-cau")
     suspend fun saveDailyNeed(@Body body: NhuCauBody)
+
+    @POST("goi-y")
+    suspend fun getSuggestions(@Body body: GoiYBody): KetQuaGoiYDto
+
+    @GET("danh-muc")
+    suspend fun getCategories(): List<DanhMucOutDto>
+
+    @GET("mon-an")
+    suspend fun getDishes(@Query("page") page: Int, @Query("size") size: Int): TrangMonAnDto
+
+    @GET("users/me/yeu-thich")
+    suspend fun getFavorites(@Query("loai") type: String): YeuThichDto
+
+    @POST("users/me/yeu-thich")
+    suspend fun addFavoriteDish(@Body body: YeuThichMonAnBody)
+
+    @DELETE("users/me/yeu-thich/mon-an/{idMonAn}")
+    suspend fun removeFavoriteDish(@Path("idMonAn") dishId: String)
 
     @POST("tro-chuyen")
     suspend fun createConversation(): CuocTroChuyenDto

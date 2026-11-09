@@ -14,11 +14,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewpager2.widget.ViewPager2
-import coil.load
 import com.base.common.base.LsActivity
 import com.base.common.extension.clicks
 import com.example.huetaste.R
 import com.example.huetaste.common.extension.clicksComingSoon
+import com.example.huetaste.common.extension.loadWithShimmer
 import com.example.huetaste.common.extension.openMap
 import com.example.huetaste.common.extension.startDishDetailActivity
 import com.example.huetaste.common.extension.startPlaceDetailActivity
@@ -225,10 +225,7 @@ import java.util.Locale
         dish.places.forEach { dishPlace ->
             val place = dishPlace.place
             val item = ItemDishPlaceBinding.inflate(layoutInflater, binding.placesList, true)
-            item.placeImage.load(place.imageUrl) {
-                placeholder(R.drawable.ic_food_placeholder)
-                error(R.drawable.ic_food_placeholder)
-            }
+            item.placeImage.loadWithShimmer(place.imageUrl)
             item.placeName.text = place.name
             item.placeRatingIcon.isVisible = place.rating != null
             item.placeRating.isVisible = place.rating != null
@@ -250,10 +247,7 @@ import java.util.Locale
         binding.similarList.removeAllViews()
         dish.similarDishes.forEach { similar ->
             val item = ItemDishSimilarBinding.inflate(layoutInflater, binding.similarList, true)
-            item.similarImage.load(similar.imageUrl) {
-                placeholder(R.drawable.ic_food_placeholder)
-                error(R.drawable.ic_food_placeholder)
-            }
+            item.similarImage.loadWithShimmer(similar.imageUrl)
             item.similarName.text = similar.name
             item.similarDescription.isVisible = !similar.description.isNullOrBlank()
             item.similarDescription.text = similar.description

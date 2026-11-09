@@ -15,18 +15,18 @@ com.example.huetaste
 |   |-- local          Local data sources and persistence implementations (SecureSessionStore, TasteSetupStore, DeviceLocationProvider)
 |   |-- mapper         Data-to-domain mapping (scan, dish, place, auth, preference and chat DTOs)
 |   |-- remote         Retrofit HueTasteApi, DTOs, and apiCall error mapping
-|   `-- repository     ScanRepositoryImpl, DishRepositoryImpl, PlaceRepositoryImpl, AuthRepositoryImpl, PreferenceRepositoryImpl, ChatRepositoryImpl
+|   `-- repository     ScanRepositoryImpl, DishRepositoryImpl, PlaceRepositoryImpl, AuthRepositoryImpl, PreferenceRepositoryImpl, ChatRepositoryImpl, SuggestionRepositoryImpl
 |-- di                 AppModule, NetworkModule (OkHttp/Retrofit), RepositoryModule
 |-- domain
 |   |-- model          ScanResult, DishDetail, PlaceDetail, Review, OpeningHours, AuthSession, AuthState, AuthValidator, Place, AppError, DietOption, TasteTag, TastePreference, Ingredient, MealType, MealBudget, DailyNeed, ChatConversation, ChatMessage, ChatReply, GeoPoint
-|   |-- repository     ScanRepository, DishRepository, PlaceRepository, AuthRepository, PreferenceRepository, ChatRepository, LocationProvider
-|   `-- usecase        ScanDish, GetScanResult, GetDishDetail, GetPlaceDetail, GetPlaceReviews, SubmitPlaceReview, SetPlaceFavorite, Login, Register, ContinueAsGuest, GetAuthState, GetTasteSetupOptions, SearchIngredients, SaveDiets, SaveTastes, SaveDailyNeeds, ShouldShowTasteSetup, MarkTasteSetupHandled, SendChatMessage, GetConversations, GetConversationMessages, DeleteConversation, GetCurrentLocation
+|   |-- repository     ScanRepository, DishRepository, PlaceRepository, AuthRepository, PreferenceRepository, ChatRepository, SuggestionRepository, LocationProvider
+|   `-- usecase        GetDishSuggestions, GetDishes, GetDishCategories, GetFavoriteDishIds, SetDishFavorite, GetCurrentUser, ScanDish, GetScanResult, GetDishDetail, GetPlaceDetail, GetPlaceReviews, SubmitPlaceReview, SetPlaceFavorite, Login, Register, ContinueAsGuest, GetAuthState, GetTasteSetupOptions, SearchIngredients, SaveDiets, SaveTastes, SaveDailyNeeds, ShouldShowTasteSetup, MarkTasteSetupHandled, SendChatMessage, GetConversations, GetConversationMessages, DeleteConversation, GetCurrentLocation
 `-- feature
     |-- splash         Launcher Activity: reads the remembered session and opens the main screen or the login
     |-- auth           Login and Register Activities with their ViewModels
     |-- taste_setup    Taste setup Activity after sign-up: diet, flavour and today's-needs pages plus a summary, sharing one ViewModel
     |-- main           LsActivity for the main shell, ViewPager2, and main tab definitions
-    |-- home           Home fragment extending LsFragment (static Stitch-based UI)
+    |-- home           Home fragment + ViewModel and adapters (backend suggestions and categories; "Địa điểm gần bạn" is still the static sample)
     |-- context_suggestion  Context suggestion Activity extending LsActivity (static Stitch-based UI)
     |-- dish_detail    Dish detail Activity + ViewModel (backend data, or the static Stitch sample) with a hero photo carousel
     |-- place_detail   Place detail Activity + ViewModel + review sheet (backend data), opened from a place in the dish detail
@@ -72,9 +72,13 @@ This structure deliberately does not copy plant-specific packages or dependencie
 
 The Activity layout uses the `statusBar` and `navigationBar` Guidelines expected by `LsActivity`; the base class owns system-bar inset updates. The ViewPager2 carries the single 10dp horizontal margin, so tab layouts must not add it again. Search, Favorites, and Profile own empty `LsConstraintView` layouts. Home owns a scrolling layout built from `Ls*` views with colors from the Stitch palette (`hue_*` in `colors.xml`); its photos are placeholders until image assets and an image-loading approach are supplied.
 
+## Home screen
+
+`HomeViewModel` loads the home data once, so rotating or switching tabs neither reloads it nor records another `GoiY` on the backend. Signed-in users get `POST /goi-y` (no parameters at first, so the time of day and today's saved needs decide) and their favorite dishes from `GET /users/me/yeu-thich`; guests get the first dishes of the public `GET /mon-an` with no match percentage or hearts. Categories come from `GET /danh-muc`, and each card's tag joins the dish's `idDanhMucMonAn` to them; dishes, categories and favorites load independently. "Gợi ý món ăn ngay" sends the selected meal, budget and note and reloads the list in place, or leads a guest to the login. The greeting, avatar and weather line come from the stored user and `nguCanh`. A heart is applied at once and undone if the backend refuses. Backend data has no dish rating, so the cards show none. Category taps, notifications, "Xem tất cả" and the whole "Địa điểm gần bạn" section are not connected yet.
+
 ## Context suggestion screen
 
-`ContextSuggestionActivity` implements the Stitch "Gợi Ý Theo Ngữ Cảnh" screen as its own Activity, because it is a separate flow with its own back stack rather than a main tab; it has a back button instead of the main bottom bar. Its layout is static sample content built from `Ls*` views, with the 10dp horizontal margin applied once per section. The Activity only keeps the dishes/places selection and favorite hearts across recreation; Home's "Gợi ý món ăn ngay" button (`suggestButton`) opens it through `newIntent()`.
+`ContextSuggestionActivity` implements the Stitch "Gợi Ý Theo Ngữ Cảnh" screen as its own Activity, because it is a separate flow with its own back stack rather than a main tab; it has a back button instead of the main bottom bar. Its layout is static sample content built from `Ls*` views, with the 10dp horizontal margin applied once per section. The Activity only keeps the dishes/places selection and favorite hearts across recreation. Nothing opens it for now: Home's "Gợi ý món ăn ngay" button reloads the suggestions in place until this screen has backend data.
 
 ## AI assistant
 

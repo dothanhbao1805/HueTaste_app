@@ -13,11 +13,12 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import coil.load
 import com.base.common.base.LsMultiListAdapter
 import com.base.common.base.LsViewHolder
 import com.base.common.extension.clicks
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.formatPriceRange
+import com.example.huetaste.common.extension.loadWithShimmer
 import com.example.huetaste.domain.model.AppError
 import com.example.huetaste.domain.model.Dish
 import com.example.huetaste.domain.model.Place
@@ -107,6 +108,8 @@ class ChatAdapter(
         AppError.NETWORK -> context.getString(R.string.ai_chat_error_network)
         AppError.UNAUTHORIZED, AppError.INVALID_TOKEN, AppError.TOKEN_EXPIRED ->
             context.getString(R.string.ai_chat_sign_in_message)
+        // The server message of these two can name the model or a configuration key.
+        AppError.CHATBOT_UNAVAILABLE, AppError.CHATBOT_NOT_CONFIGURED -> context.getString(R.string.ai_chat_busy)
         AppError.UNKNOWN -> context.getString(R.string.ai_chat_error)
         else -> item.message?.takeIf { it.isNotBlank() } ?: context.getString(R.string.ai_chat_error)
     }
@@ -123,11 +126,7 @@ class ChatAdapter(
     private fun bindPlace(item: ChatUiItem.PlaceCard, binding: ItemChatPlaceBinding) = with(binding) {
         val context = root.context
         val place = item.place
-        placeImage.load(place.imageUrl) {
-            placeholder(R.drawable.ic_food_placeholder)
-            error(R.drawable.ic_food_placeholder)
-            fallback(R.drawable.ic_food_placeholder)
-        }
+        placeImage.loadWithShimmer(place.imageUrl)
         placeName.text = place.name
         placeReason.isVisible = !item.reason.isNullOrBlank()
         placeReason.text = item.reason
@@ -147,7 +146,7 @@ class ChatAdapter(
         placeAddress.text = place.address
         placeDistance.isVisible = item.distanceKm != null
         placeDistance.text = item.distanceKm?.let { ChatFormat.distance(context, it) }
-        val price = ChatFormat.price(context, place.priceLevel, null)
+        val price = context.formatPriceRange(place.priceLevel, null)
         priceRow.isVisible = price != null
         placePrice.text = price
 

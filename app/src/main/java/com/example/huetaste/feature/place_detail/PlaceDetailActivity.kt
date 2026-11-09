@@ -13,11 +13,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewpager2.widget.ViewPager2
-import coil.load
 import com.base.common.base.LsActivity
 import com.base.common.extension.clicks
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.loadWithShimmer
 import com.example.huetaste.common.extension.openMap
 import com.example.huetaste.common.extension.startDialer
 import com.example.huetaste.common.extension.startDishDetailActivity
@@ -241,10 +241,7 @@ class PlaceDetailActivity : LsActivity<ActivityPlaceDetailBinding>(ActivityPlace
 
     private fun bindMenuItem(item: ItemPlaceMenuDishBinding, menuItem: PlaceMenuItem) {
         val dish = menuItem.dish
-        item.menuDishImage.load(dish.imageUrl) {
-            placeholder(R.drawable.ic_food_placeholder)
-            error(R.drawable.ic_food_placeholder)
-        }
+        item.menuDishImage.loadWithShimmer(dish.imageUrl)
         item.menuDishName.text = dish.name
         item.menuDishSignature.isVisible = menuItem.isSignature
         item.menuDishDescription.isVisible = !dish.description.isNullOrBlank()
@@ -300,12 +297,7 @@ class PlaceDetailActivity : LsActivity<ActivityPlaceDetailBinding>(ActivityPlace
         val hasAvatar = !review.authorAvatarUrl.isNullOrBlank()
         item.reviewAvatarImage.isVisible = hasAvatar
         item.reviewAvatarInitial.isVisible = !hasAvatar
-        if (hasAvatar) {
-            item.reviewAvatarImage.load(review.authorAvatarUrl) {
-                placeholder(R.drawable.ic_food_placeholder)
-                error(R.drawable.ic_food_placeholder)
-            }
-        }
+        if (hasAvatar) item.reviewAvatarImage.loadWithShimmer(review.authorAvatarUrl)
         val date = formatDate(review.createdAt)
         item.reviewDate.isVisible = date != null
         item.reviewDate.text = date

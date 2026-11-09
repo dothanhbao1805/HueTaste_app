@@ -14,18 +14,6 @@ import kotlin.math.roundToInt
 internal object ChatFormat {
     private val vietnamese = Locale("vi", "VN")
 
-    /** `giaThamKhaoTu` / `giaThamKhaoDen` (or a place's `mucGia`) as VND, or null when neither is known. */
-    fun price(context: Context, from: Int?, to: Int?): String? {
-        val format = NumberFormat.getIntegerInstance(vietnamese)
-        return when {
-            from != null && to != null && from != to ->
-                context.getString(R.string.dish_price_range, format.format(from), format.format(to))
-            from != null -> context.getString(R.string.dish_price_value, format.format(from))
-            to != null -> context.getString(R.string.dish_price_value, format.format(to))
-            else -> null
-        }
-    }
-
     /** `khoangCachKm` as meters below 1 km, otherwise as kilometers with one decimal. */
     fun distance(context: Context, km: Double): String = if (km < 1) {
         context.getString(R.string.ai_chat_distance_m, (km * 1000).roundToInt())

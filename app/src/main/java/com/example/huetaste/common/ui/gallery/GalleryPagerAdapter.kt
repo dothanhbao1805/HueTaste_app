@@ -1,10 +1,10 @@
 package com.example.huetaste.common.ui.gallery
 
 import androidx.recyclerview.widget.DiffUtil
-import coil.load
 import com.base.common.base.LsListAdapter
 import com.base.common.extension.clicks
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.loadWithShimmer
 import com.example.huetaste.databinding.ItemGalleryPageBinding
 import com.example.huetaste.domain.model.GalleryImage
 
@@ -16,12 +16,14 @@ class GalleryPagerAdapter(
     override fun bindItem(item: GalleryImage, binding: ItemGalleryPageBinding, position: Int) {
         binding.galleryImage.contentDescription = binding.root.context
             .getString(R.string.dish_image_page_description, position + 1, itemCount)
-        binding.galleryImage.load(item.url) {
+        binding.galleryImage.loadWithShimmer(item.url) {
             crossfade(true)
             // The viewer reuses this bitmap as its placeholder while the full-size image loads.
             memoryCacheKey(item.url)
-            placeholder(R.drawable.ic_food_placeholder)
-            error(R.drawable.ic_food_placeholder)
+            // Links to other sites can die after they were collected; the smaller copy usually still loads.
+            listener(onError = { _, _ ->
+                item.thumbnailUrl?.let { thumbnail -> binding.galleryImage.loadWithShimmer(thumbnail) }
+            })
         }
         binding.root.clicks { onImageClick(position) }
     }

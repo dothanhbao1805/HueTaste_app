@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/_72dp"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/fg_ripple_round_16"
+    android:gravity="center_horizontal"
+    android:minHeight="@dimen/_48dp"
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/_8dp">
+
+    <com.base.common.widget.LsFrameView
+        android:id="@+id/iconTile"
+        android:layout_width="@dimen/_52dp"
+        android:layout_height="@dimen/_52dp">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/categoryIcon"
+            android:layout_width="@dimen/_24dp"
+            android:layout_height="@dimen/_24dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no" />
+
+    </com.base.common.widget.LsFrameView>
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/categoryName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:paddingHorizontal="@dimen/_2dp"
+        android:textColor="@color/hue_on_surface"
+        android:textSize="@dimen/text_11sp"
+        app:textFont="medium" />
+
+</com.base.common.widget.LsLinearView>

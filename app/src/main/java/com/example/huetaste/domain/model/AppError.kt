@@ -22,5 +22,7 @@ class AppError(
         const val UNAUTHORIZED = "UNAUTHORIZED"
         const val CONVERSATION_NOT_FOUND = "CUOC_TRO_CHUYEN_NOT_FOUND"
         const val CHATBOT_EMPTY = "CHATBOT_TRA_LOI_RONG"
+        const val CHATBOT_UNAVAILABLE = "CHATBOT_KHONG_KHA_DUNG"
+        const val CHATBOT_NOT_CONFIGURED = "GEMINI_NOT_CONFIGURED"
     }
 }
