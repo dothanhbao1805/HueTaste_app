@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A dish of the place menu that can be flagged in the report sheet; selection comes from isSelected. -->
+<com.base.common.widget.LsTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:foreground="@drawable/fg_ripple_pill"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_home_chip"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center"
+    android:maxLines="1"
+    android:ellipsize="end"
+    android:minHeight="@dimen/_40dp"
+    android:paddingHorizontal="@dimen/_16dp"
+    android:paddingVertical="@dimen/_6dp"
+    android:textColor="@color/home_chip_text"
+    android:textSize="@dimen/text_14sp"
+    app:textFont="medium"
+    tools:text="Bún bò Huế" />

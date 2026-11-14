@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Report sheet of the place screen: a reason, the wrong dishes of the menu and a description. -->
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_snap_tips_sheet"
+    android:paddingBottom="@dimen/_20dp">
+
+    <com.base.common.widget.LsConstraintView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_8dp"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingTop="@dimen/_16dp">
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/reportTitle"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_36dp"
+            android:gravity="center"
+            android:text="@string/place_report_sheet_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_16sp"
+            app:textFont="semi"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/reportPlaceName"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/reportPlaceName"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_36dp"
+            android:layout_marginTop="@dimen/_2dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_12sp"
+            app:textFont="regular"
+            app:layout_constraintTop_toBottomOf="@id/reportTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/reportCloseButton"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:layout_width="@dimen/_28dp"
+            android:layout_height="@dimen/_28dp"
+            android:background="@drawable/bg_circle_gray"
+            android:padding="@dimen/_6dp"
+            app:colorTint="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_close_dark"
+            android:contentDescription="@string/scan_close" />
+
+    </com.base.common.widget.LsConstraintView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/reportScroll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:scrollbars="none">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_16dp"
+            android:paddingHorizontal="@dimen/_16dp">
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                android:text="@string/place_report_reason_title"
+                android:textColor="@color/hue_on_surface"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="semi" />
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/reportReasons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/reportDishesSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20dp"
+                    android:text="@string/place_report_dishes_title"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="semi" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2dp"
+                    android:text="@string/place_report_dishes_hint"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="regular" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/reportDishes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    app:chipSpacingHorizontal="@dimen/_8dp"
+                    app:chipSpacingVertical="@dimen/_8dp" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:text="@string/place_report_description_title"
+                android:textColor="@color/hue_on_surface"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="semi" />
+
+            <com.base.common.widget.LsEditText
+                android:id="@+id/reportInput"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_112dp"
+                android:layout_marginTop="@dimen/_10dp"
+                android:background="@drawable/bg_home_panel"
+                android:gravity="top|start"
+                android:hint="@string/place_report_description_hint"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine|textCapSentences"
+                android:maxLength="2000"
+                android:padding="@dimen/_12dp"
+                android:textColor="@color/hue_on_surface"
+                android:textColorHint="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="regular" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/reportError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_8dp"
+        android:visibility="gone"
+        android:text=""
+        android:textColor="@color/hue_tertiary"
+        android:textSize="@dimen/text_12sp"
+        app:textFont="regular" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/reportSubmitButton"
+        android:foreground="@drawable/fg_ripple_pill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_12dp"
+        android:background="@drawable/bg_shape_pill"
+        android:backgroundTint="@color/hue_primary"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:minHeight="@dimen/_48dp"
+        android:text="@string/place_report_submit"
+        android:textColor="@color/hue_on_primary"
+        android:textSize="@dimen/text_16sp"
+        app:textFont="semi" />
+
+</com.base.common.widget.LsLinearView>

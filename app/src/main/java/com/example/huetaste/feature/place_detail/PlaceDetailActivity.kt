@@ -81,6 +81,7 @@ class PlaceDetailActivity : LsActivity<ActivityPlaceDetailBinding>(ActivityPlace
         binding.callNowButton.clicks { currentPlace?.phone?.let(::dial) }
         binding.writeReviewButton.clicks { ReviewSheet.show(supportFragmentManager) }
         binding.loadMoreReviewsButton.clicks { viewModel.loadMoreReviews() }
+        binding.reportPlaceButton.clicks { ReportPlaceSheet.show(supportFragmentManager) }
 
         binding.heroPager.adapter = heroAdapter
         binding.heroPager.registerOnPageChangeCallback(heroPageCallback)
@@ -95,6 +96,7 @@ class PlaceDetailActivity : LsActivity<ActivityPlaceDetailBinding>(ActivityPlace
                 launch { viewModel.uiState.collect(::render) }
                 launch { viewModel.events.collect(::handle) }
                 launch { viewModel.reviewState.collect(::acknowledgeWhenSheetClosed) }
+                launch { viewModel.reportState.collect(::acknowledgeReportWhenSheetClosed) }
             }
         }
     }
@@ -115,7 +117,14 @@ class PlaceDetailActivity : LsActivity<ActivityPlaceDetailBinding>(ActivityPlace
         when (event) {
             PlaceDetailEvent.FavoriteFailed -> makeToast(R.string.place_favorite_failed)
             PlaceDetailEvent.ReviewSubmitted -> makeToast(R.string.place_review_submitted)
+            PlaceDetailEvent.ReportSubmitted -> makeToast(R.string.place_report_submitted)
         }
+    }
+
+    /** A report can finish after its sheet was closed; nobody else would report its result then. */
+    private fun acknowledgeReportWhenSheetClosed(state: ReportSubmitState) {
+        val finished = state is ReportSubmitState.Submitted || state is ReportSubmitState.Failed
+        if (finished && !ReportPlaceSheet.isShown(supportFragmentManager)) viewModel.acknowledgeReportResult()
     }
 
     /** A review can finish after the sheet was closed; nobody else would report its result then. */

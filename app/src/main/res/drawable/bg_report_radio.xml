@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Single-choice indicator of a report reason: a filled primary circle while selected, an outlined one otherwise. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="oval">
+            <solid android:color="@color/hue_primary" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/hue_surface_lowest" />
+            <stroke
+                android:width="@dimen/_2dp"
+                android:color="@color/hue_outline_hairline" />
+        </shape>
+    </item>
+</selector>

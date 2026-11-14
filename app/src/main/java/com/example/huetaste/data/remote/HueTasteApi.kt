@@ -1,6 +1,9 @@
 package com.example.huetaste.data.remote
 
+import com.example.huetaste.data.remote.dto.BaoCaoDto
 import com.example.huetaste.data.remote.dto.CapNhatCheDoAnBody
+import com.example.huetaste.data.remote.dto.GuiBaoCaoBody
+import com.example.huetaste.data.remote.dto.TrangBaoCaoDto
 import com.example.huetaste.data.remote.dto.CapNhatSoThichBody
 import com.example.huetaste.data.remote.dto.CheDoAnOutDto
 import com.example.huetaste.data.remote.dto.CuocTroChuyenDto
@@ -70,6 +73,12 @@ interface HueTasteApi {
 
     @POST("danh-gia")
     suspend fun submitReview(@Body body: VietDanhGiaBody): DanhGiaDto
+
+    @POST("bao-cao")
+    suspend fun submitReport(@Body body: GuiBaoCaoBody): BaoCaoDto
+
+    @GET("users/me/bao-cao")
+    suspend fun getMyReports(@Query("page") page: Int, @Query("size") size: Int): TrangBaoCaoDto
 
     @POST("users/me/yeu-thich")
     suspend fun addFavoritePlace(@Body body: YeuThichDiaDiemBody)

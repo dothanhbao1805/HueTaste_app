@@ -10,6 +10,7 @@ import com.example.huetaste.domain.model.ReviewPage
 import com.example.huetaste.domain.usecase.GetPlaceDetailUseCase
 import com.example.huetaste.domain.usecase.GetPlaceReviewsUseCase
 import com.example.huetaste.domain.usecase.SetPlaceFavoriteUseCase
+import com.example.huetaste.domain.usecase.SubmitPlaceReportUseCase
 import com.example.huetaste.domain.usecase.SubmitPlaceReviewUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -51,10 +52,19 @@ sealed interface ReviewSubmitState {
     data object Submitted : ReviewSubmitState
 }
 
+/** Progress of the report being written in the report sheet. */
+sealed interface ReportSubmitState {
+    data object Idle : ReportSubmitState
+    data object Submitting : ReportSubmitState
+    data class Failed(val error: AppError) : ReportSubmitState
+    data object Submitted : ReportSubmitState
+}
+
 /** One-off messages for the screen. */
 sealed interface PlaceDetailEvent {
     data object FavoriteFailed : PlaceDetailEvent
     data object ReviewSubmitted : PlaceDetailEvent
+    data object ReportSubmitted : PlaceDetailEvent
 }
 
 @HiltViewModel
@@ -64,6 +74,7 @@ class PlaceDetailViewModel @Inject constructor(
     private val getPlaceReviews: GetPlaceReviewsUseCase,
     private val submitPlaceReview: SubmitPlaceReviewUseCase,
     private val setPlaceFavorite: SetPlaceFavoriteUseCase,
+    private val submitPlaceReport: SubmitPlaceReportUseCase,
 ) : ViewModel() {
 
     // Intent extras arrive as the Activity's default arguments.
@@ -77,6 +88,9 @@ class PlaceDetailViewModel @Inject constructor(
     private val _reviewState = MutableStateFlow<ReviewSubmitState>(ReviewSubmitState.Idle)
     val reviewState: StateFlow<ReviewSubmitState> = _reviewState.asStateFlow()
 
+    private val _reportState = MutableStateFlow<ReportSubmitState>(ReportSubmitState.Idle)
+    val reportState: StateFlow<ReportSubmitState> = _reportState.asStateFlow()
+
     private val _events = Channel<PlaceDetailEvent>(Channel.BUFFERED)
     val events = _events.receiveAsFlow()
 
@@ -84,6 +98,7 @@ class PlaceDetailViewModel @Inject constructor(
     private var moreReviewsJob: Job? = null
     private var favoriteJob: Job? = null
     private var submitJob: Job? = null
+    private var reportJob: Job? = null
 
     init {
         load()
@@ -163,6 +178,26 @@ class PlaceDetailViewModel @Inject constructor(
     fun acknowledgeReviewResult() {
         if (_reviewState.value is ReviewSubmitState.Submitted) _events.trySend(PlaceDetailEvent.ReviewSubmitted)
         if (_reviewState.value !is ReviewSubmitState.Submitting) _reviewState.value = ReviewSubmitState.Idle
+    }
+
+    /** Sends the report; [reason] is the label the user picked, shown as is to the admins. */
+    fun submitReport(reason: String, description: String, dishIds: List<String>) {
+        if (reportJob?.isActive == true) return
+        _reportState.value = ReportSubmitState.Submitting
+        reportJob = viewModelScope.launch {
+            try {
+                submitPlaceReport(placeId, reason, description.trim().ifEmpty { null }, dishIds)
+                _reportState.value = ReportSubmitState.Submitted
+            } catch (e: AppError) {
+                _reportState.value = ReportSubmitState.Failed(e)
+            }
+        }
+    }
+
+    /** Called by the report sheet once it has reacted to [ReportSubmitState.Submitted] or [ReportSubmitState.Failed]. */
+    fun acknowledgeReportResult() {
+        if (_reportState.value is ReportSubmitState.Submitted) _events.trySend(PlaceDetailEvent.ReportSubmitted)
+        if (_reportState.value !is ReportSubmitState.Submitting) _reportState.value = ReportSubmitState.Idle
     }
 
     private suspend fun refreshReviews() {

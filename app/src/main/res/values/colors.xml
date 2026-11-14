@@ -68,6 +68,7 @@
     <color name="hue_primary_30">#4DC8452B</color>
     <color name="hue_secondary_container_0">#00FDC254</color>
     <color name="hue_outline_variant_30">#4DE1BFB8</color>
+    <color name="hue_outline_variant">#E1BFB8</color>
     <color name="hue_error">#BA1A1A</color>
     <color name="hue_error_container_40">#66FFDAD6</color>
     <color name="hue_black_0">#00000000</color>

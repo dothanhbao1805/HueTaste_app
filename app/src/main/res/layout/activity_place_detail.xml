@@ -927,6 +927,39 @@
 
             </com.base.common.widget.LsLinearView>
 
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/reportPlaceButton"
+                android:foreground="@drawable/fg_ripple_pill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_24dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/_40dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_12dp"
+                android:paddingVertical="@dimen/_8dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_18dp"
+                    android:layout_height="@dimen/_18dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_flag"
+                    android:tint="@color/hue_on_surface_variant" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6dp"
+                    android:text="@string/place_report_link"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="medium" />
+
+            </com.base.common.widget.LsLinearView>
+
         </com.base.common.widget.LsLinearView>
 
     </androidx.core.widget.NestedScrollView>

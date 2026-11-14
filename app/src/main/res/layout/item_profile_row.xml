@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    One row of a profile menu card: a tinted round icon, a title with an optional subtitle and a chevron.
+    The icon, texts and colors are set from ProfileFragment; the card around the rows clips the ripple to its corners.
+-->
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="@drawable/fg_ripple_rect"
+    android:minHeight="@dimen/_56dp"
+    android:paddingHorizontal="@dimen/_16dp"
+    android:paddingVertical="@dimen/_12dp">
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/rowIcon"
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_40dp"
+        android:background="@drawable/bg_shape_circle"
+        android:importantForAccessibility="no"
+        android:padding="@dimen/_10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_14dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/rowChevron"
+        app:layout_constraintStart_toEndOf="@id/rowIcon"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/rowTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_16sp"
+            app:textFont="semi" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/rowSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_12sp"
+            android:visibility="gone"
+            app:textFont="regular" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/rowChevron"
+        android:layout_width="@dimen/_22dp"
+        android:layout_height="@dimen/_22dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_chevron_right"
+        android:tint="@color/hue_outline_variant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</com.base.common.widget.LsConstraintView>

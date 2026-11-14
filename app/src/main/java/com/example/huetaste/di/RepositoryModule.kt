@@ -7,6 +7,7 @@ import com.example.huetaste.data.repository.DishRepositoryImpl
 import com.example.huetaste.data.repository.FavoriteRepositoryImpl
 import com.example.huetaste.data.repository.PlaceRepositoryImpl
 import com.example.huetaste.data.repository.PreferenceRepositoryImpl
+import com.example.huetaste.data.repository.ReportRepositoryImpl
 import com.example.huetaste.data.repository.ScanRepositoryImpl
 import com.example.huetaste.data.repository.SuggestionRepositoryImpl
 import com.example.huetaste.domain.repository.AuthRepository
@@ -16,6 +17,7 @@ import com.example.huetaste.domain.repository.FavoriteRepository
 import com.example.huetaste.domain.repository.LocationProvider
 import com.example.huetaste.domain.repository.PlaceRepository
 import com.example.huetaste.domain.repository.PreferenceRepository
+import com.example.huetaste.domain.repository.ReportRepository
 import com.example.huetaste.domain.repository.ScanRepository
 import com.example.huetaste.domain.repository.SuggestionRepository
 import dagger.Binds
@@ -58,6 +60,10 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindSuggestionRepository(impl: SuggestionRepositoryImpl): SuggestionRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindReportRepository(impl: ReportRepositoryImpl): ReportRepository
 
     @Binds
     @Singleton
