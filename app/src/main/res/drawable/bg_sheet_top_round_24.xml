@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bottom-sheet surface: rounded top corners only, square bottom edge; tint with android:backgroundTint. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/white" />
+    <corners
+        android:topLeftRadius="@dimen/_24dp"
+        android:topRightRadius="@dimen/_24dp"
+        android:bottomLeftRadius="@dimen/_0dp"
+        android:bottomRightRadius="@dimen/_0dp" />
+</shape>

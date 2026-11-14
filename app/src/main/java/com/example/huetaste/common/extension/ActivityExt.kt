@@ -13,6 +13,8 @@ import com.example.huetaste.feature.auth.LoginActivity
 import com.example.huetaste.feature.auth.RegisterActivity
 import com.example.huetaste.feature.context_suggestion.ContextSuggestionActivity
 import com.example.huetaste.feature.dish_detail.DishDetailActivity
+import com.example.huetaste.feature.favorites.FavoriteCollection
+import com.example.huetaste.feature.favorites.FavoriteCollectionActivity
 import com.example.huetaste.feature.main.MainActivity
 import com.example.huetaste.feature.place_detail.PlaceDetailActivity
 import com.example.huetaste.feature.scan.ScanActivity
@@ -50,6 +52,9 @@ fun Context.startAiChatActivity(conversationId: String? = null) =
     startActivityRtl(AiChatActivity.newIntent(this, conversationId))
 
 fun Context.startChatHistoryActivity() = startActivityRtl(ChatHistoryActivity.newIntent(this))
+
+fun Context.startFavoriteCollectionActivity(collection: FavoriteCollection) =
+    startActivityRtl(FavoriteCollectionActivity.newIntent(this, collection))
 
 // endregion
 

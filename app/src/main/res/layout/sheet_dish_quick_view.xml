@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_sheet_top_round_24"
+    android:backgroundTint="@color/hue_surface_lowest"
+    android:orientation="vertical">
+
+    <com.base.common.widget.LsView
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_10dp"
+        android:background="@drawable/bg_shape_pill"
+        android:backgroundTint="@color/hue_outline_hairline" />
+
+    <ProgressBar
+        android:id="@+id/quickLoading"
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="@dimen/_72dp"
+        android:indeterminateTint="@color/hue_primary" />
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/quickError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_24dp"
+        android:paddingVertical="@dimen/_48dp"
+        android:visibility="gone">
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/favorites_quick_error"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="regular" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/quickRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:background="@drawable/bg_shape_pill"
+            android:backgroundTint="@color/hue_primary"
+            android:foreground="@drawable/fg_ripple_pill"
+            android:gravity="center"
+            android:minHeight="@dimen/_44dp"
+            android:paddingHorizontal="@dimen/_24dp"
+            android:text="@string/favorites_quick_retry"
+            android:textColor="@color/hue_on_primary"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/quickContent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never"
+        android:visibility="gone">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_16dp"
+            android:paddingTop="@dimen/_12dp"
+            android:paddingBottom="@dimen/_16dp">
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/quickImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_176dp"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Rounded12" />
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_14dp"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/quickCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="semi" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/quickName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_20sp"
+                        app:textFont="bold" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/quickPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4dp"
+                        android:textColor="@color/hue_primary"
+                        android:textSize="@dimen/text_16sp"
+                        app:textFont="bold" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsImageView
+                    android:id="@+id/quickFavorite"
+                    android:layout_width="@dimen/_44dp"
+                    android:layout_height="@dimen/_44dp"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:background="@drawable/bg_shape_circle"
+                    android:backgroundTint="@color/hue_primary_10"
+                    android:foreground="@drawable/fg_ripple_circle"
+                    android:padding="@dimen/_12dp"
+                    android:src="@drawable/ic_favorite"
+                    android:tint="@color/hue_primary" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/quickTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12dp"
+                app:chipSpacingHorizontal="@dimen/_8dp"
+                app:chipSpacingVertical="@dimen/_8dp" />
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/quickTastesSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16dp"
+                    android:text="@string/favorites_quick_tastes"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="bold" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/quickTastes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    app:chipSpacingHorizontal="@dimen/_8dp"
+                    app:chipSpacingVertical="@dimen/_8dp" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/quickIngredientsSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16dp"
+                    android:text="@string/favorites_quick_ingredients"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="bold" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/quickIngredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    app:chipSpacingHorizontal="@dimen/_8dp"
+                    app:chipSpacingVertical="@dimen/_8dp" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/quickPlacesSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/quickPlacesTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16dp"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="bold" />
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/quickPlaces"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/quickDetailsButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_primary"
+                android:foreground="@drawable/fg_ripple_pill"
+                android:gravity="center"
+                android:minHeight="@dimen/_52dp"
+                android:text="@string/favorites_quick_details"
+                android:textColor="@color/hue_on_primary"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="semi" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </androidx.core.widget.NestedScrollView>
+
+</com.base.common.widget.LsLinearView>

@@ -10,6 +10,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.base.common.base.LsBottomSheet
 import com.base.common.extension.clicks
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.applySheetHeight
 import com.example.huetaste.databinding.SheetWriteReviewBinding
 import kotlinx.coroutines.launch
 
@@ -26,6 +27,7 @@ class ReviewSheet : LsBottomSheet<SheetWriteReviewBinding>(SheetWriteReviewBindi
     override fun isAdjustResize(): Boolean = true
 
     override fun onViewCreated() {
+        binding.root.applySheetHeight()
         rating = savedRating ?: 0
         savedRating = null
         stars.forEachIndexed { index, star -> star.clicks { selectRating(index + 1) } }

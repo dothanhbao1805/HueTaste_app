@@ -37,17 +37,18 @@
 
             <com.base.common.widget.LsLinearView
                 android:id="@+id/locationGroup"
-                android:layout_width="@dimen/_0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="@dimen/_8dp"
-                android:orientation="vertical">
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/fg_ripple_round_12"
+                android:orientation="vertical"
+                android:padding="@dimen/_8dp">
 
                 <com.base.common.widget.LsLinearView
                     android:id="@+id/locationRow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/home_change_location"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -58,13 +59,16 @@
                         android:src="@drawable/ic_location"
                         android:tint="@color/hue_primary" />
 
+                    <!-- The weight only shrinks a long name, so the arrow after it stays on screen. -->
                     <com.base.common.widget.LsTextView
+                        android:id="@+id/locationTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_4dp"
+                        android:layout_weight="1"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="@string/home_location"
+                        android:text="@string/home_location_loading"
                         android:textColor="@color/hue_on_surface"
                         android:textSize="@dimen/text_14sp"
                         app:textFont="semi" />
@@ -79,8 +83,11 @@
                 </com.base.common.widget.LsLinearView>
 
                 <com.base.common.widget.LsTextView
+                    android:id="@+id/locationSubtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:text="@string/home_location_subtitle"
                     android:textColor="@color/hue_on_surface_variant"
                     android:textSize="@dimen/text_11sp"
@@ -727,20 +734,24 @@
                         android:orientation="vertical">
 
                         <com.base.common.widget.LsTextView
+                            android:id="@+id/placesTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="@string/home_nearby_title"
+                            android:maxLines="2"
+                            android:text="@string/home_places_title"
                             android:textColor="@color/hue_on_surface"
                             android:textSize="@dimen/text_18sp"
                             app:textFont="semi" />
 
                         <com.base.common.widget.LsTextView
+                            android:id="@+id/placesSubtitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_2dp"
-                            android:text="@string/home_nearby_subtitle"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:visibility="gone"
                             android:textColor="@color/hue_on_surface_variant"
                             android:textSize="@dimen/text_11sp"
                             app:textFont="regular" />
@@ -780,307 +791,64 @@
 
                 </com.base.common.widget.LsLinearView>
 
-                <!-- Spot 1: Bún bò Bà Tuyết -->
-                <com.base.common.widget.LsCardView
-                    android:id="@+id/placeTuyet"
-                    app:rippleColor="@color/navigation_item_ripple"
+                <com.base.common.widget.LsFrameView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_12dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:outlineAmbientShadowColor="@color/hue_card_shadow"
-                    android:outlineSpotShadowColor="@color/hue_card_shadow"
-                    app:cardBackgroundColor="@color/hue_surface_lowest"
-                    app:cardCornerRadius="@dimen/_16dp"
-                    app:cardElevation="@dimen/_2dp"
-                    app:strokeColor="@color/hue_outline_hairline"
-                    app:strokeWidth="@dimen/_1dp">
+                    android:minHeight="@dimen/_120dp">
 
-                    <com.base.common.widget.LsLinearView
+                    <com.base.common.widget.scroll.LsRecyclerView
+                        android:id="@+id/homePlaceList"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_12dp">
+                        android:nestedScrollingEnabled="false"
+                        android:visibility="gone"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                        <com.base.common.widget.LsImageView
-                            android:layout_width="@dimen/_80dp"
-                            android:layout_height="@dimen/_80dp"
-                            android:contentDescription="@string/home_place_tuyet_name"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/img_place_tuyet"
-                            app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Rounded12" />
+                    <ProgressBar
+                        android:id="@+id/homePlacesLoading"
+                        android:layout_width="@dimen/_32dp"
+                        android:layout_height="@dimen/_32dp"
+                        android:layout_gravity="center"
+                        android:indeterminateTint="@color/hue_primary" />
 
-                        <com.base.common.widget.LsLinearView
-                            android:layout_width="@dimen/_0dp"
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/homePlacesMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <com.base.common.widget.LsTextView
+                            android:id="@+id/homePlacesMessageText"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_12dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:gravity="center"
+                            android:textColor="@color/hue_on_surface_variant"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="regular" />
 
-                            <com.base.common.widget.LsLinearView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal">
-
-                                <com.base.common.widget.LsView
-                                    android:layout_width="@dimen/_6dp"
-                                    android:layout_height="@dimen/_6dp"
-                                    android:background="@drawable/bg_home_dot" />
-
-                                <com.base.common.widget.LsTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_4dp"
-                                    android:text="@string/home_open_now"
-                                    android:textColor="@color/hue_primary"
-                                    android:textSize="@dimen/text_11sp"
-                                    app:textFont="semi" />
-
-                                <com.base.common.widget.LsView
-                                    android:layout_width="@dimen/_0dp"
-                                    android:layout_height="@dimen/_0dp"
-                                    android:layout_weight="1" />
-
-                                <com.base.common.widget.LsImageView
-                                    android:layout_width="@dimen/_16dp"
-                                    android:layout_height="@dimen/_16dp"
-                                    android:importantForAccessibility="no"
-                                    android:src="@drawable/ic_star"
-                                    android:tint="@color/hue_secondary_container" />
-
-                                <com.base.common.widget.LsTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_2dp"
-                                    android:text="@string/home_place_tuyet_rating"
-                                    android:textColor="@color/hue_on_surface"
-                                    android:textSize="@dimen/text_12sp"
-                                    app:textFont="semi" />
-
-                            </com.base.common.widget.LsLinearView>
-
-                            <com.base.common.widget.LsTextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_2dp"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="@string/home_place_tuyet_name"
-                                android:textColor="@color/hue_on_surface"
-                                android:textSize="@dimen/text_16sp"
-                                app:textFont="semi" />
-
-                            <com.base.common.widget.LsTextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_2dp"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="@string/home_place_tuyet_address"
-                                android:textColor="@color/hue_on_surface_variant"
-                                android:textSize="@dimen/text_11sp"
-                                app:textFont="regular" />
-
-                            <com.base.common.widget.LsLinearView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_4dp"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal">
-
-                                <com.base.common.widget.LsImageView
-                                    android:layout_width="@dimen/_14dp"
-                                    android:layout_height="@dimen/_14dp"
-                                    android:importantForAccessibility="no"
-                                    android:src="@drawable/ic_near_me"
-                                    android:tint="@color/hue_on_surface_variant" />
-
-                                <com.base.common.widget.LsTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_2dp"
-                                    android:text="@string/home_place_tuyet_distance"
-                                    android:textColor="@color/hue_on_surface_variant"
-                                    android:textSize="@dimen/text_11sp"
-                                    app:textFont="regular" />
-
-                                <com.base.common.widget.LsTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="@dimen/_4dp"
-                                    android:text="•"
-                                    android:textColor="@color/hue_on_surface_variant"
-                                    android:textSize="@dimen/text_11sp" />
-
-                                <com.base.common.widget.LsTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/home_place_tuyet_price"
-                                    android:textColor="@color/hue_on_surface_variant"
-                                    android:textSize="@dimen/text_11sp"
-                                    app:textFont="regular" />
-
-                            </com.base.common.widget.LsLinearView>
-
-                        </com.base.common.widget.LsLinearView>
+                        <com.base.common.widget.LsTextView
+                            android:id="@+id/homePlacesRetry"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10dp"
+                            android:background="@drawable/bg_shape_pill"
+                            android:backgroundTint="@color/hue_surface_container_high"
+                            android:foreground="@drawable/fg_ripple_pill"
+                            android:gravity="center"
+                            android:minHeight="@dimen/_36dp"
+                            android:paddingHorizontal="@dimen/_16dp"
+                            android:paddingVertical="@dimen/_6dp"
+                            android:text="@string/ai_chat_retry"
+                            android:textColor="@color/hue_primary"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="semi" />
 
                     </com.base.common.widget.LsLinearView>
 
-                </com.base.common.widget.LsCardView>
-
-                <!-- Spot 2: Quán Hạnh - Bánh Huế -->
-                <com.base.common.widget.LsCardView
-                    android:id="@+id/placeHanh"
-                    app:rippleColor="@color/navigation_item_ripple"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_12dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:outlineAmbientShadowColor="@color/hue_card_shadow"
-                    android:outlineSpotShadowColor="@color/hue_card_shadow"
-                    app:cardBackgroundColor="@color/hue_surface_lowest"
-                    app:cardCornerRadius="@dimen/_16dp"
-                    app:cardElevation="@dimen/_2dp"
-                    app:strokeColor="@color/hue_outline_hairline"
-                    app:strokeWidth="@dimen/_1dp">
-
-                    <com.base.common.widget.LsLinearView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/_12dp">
-
-                        <com.base.common.widget.LsImageView
-                            android:layout_width="@dimen/_80dp"
-                            android:layout_height="@dimen/_80dp"
-                            android:contentDescription="@string/home_place_hanh_name"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/img_place_hanh"
-                            app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Rounded12" />
-
-                        <com.base.common.widget.LsLinearView
-                            android:layout_width="@dimen/_0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_12dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <com.base.common.widget.LsLinearView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal">
-
-                                <com.base.common.widget.LsView
-                                    android:layout_width="@dimen/_6dp"
-                                    android:layout_height="@dimen/_6dp"
-                                    android:background="@drawable/bg_home_dot" />
-
-                                <com.base.common.widget.LsTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_4dp"
-                                    android:text="@string/home_open_now"
-                                    android:textColor="@color/hue_primary"
-                                    android:textSize="@dimen/text_11sp"
-                                    app:textFont="semi" />
-
-                                <com.base.common.widget.LsView
-                                    android:layout_width="@dimen/_0dp"
-                                    android:layout_height="@dimen/_0dp"
-                                    android:layout_weight="1" />
-
-                                <com.base.common.widget.LsImageView
-                                    android:layout_width="@dimen/_16dp"
-                                    android:layout_height="@dimen/_16dp"
-                                    android:importantForAccessibility="no"
-                                    android:src="@drawable/ic_star"
-                                    android:tint="@color/hue_secondary_container" />
-
-                                <com.base.common.widget.LsTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_2dp"
-                                    android:text="@string/home_place_hanh_rating"
-                                    android:textColor="@color/hue_on_surface"
-                                    android:textSize="@dimen/text_12sp"
-                                    app:textFont="semi" />
-
-                            </com.base.common.widget.LsLinearView>
-
-                            <com.base.common.widget.LsTextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_2dp"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="@string/home_place_hanh_name"
-                                android:textColor="@color/hue_on_surface"
-                                android:textSize="@dimen/text_16sp"
-                                app:textFont="semi" />
-
-                            <com.base.common.widget.LsTextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_2dp"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="@string/home_place_hanh_address"
-                                android:textColor="@color/hue_on_surface_variant"
-                                android:textSize="@dimen/text_11sp"
-                                app:textFont="regular" />
-
-                            <com.base.common.widget.LsLinearView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_4dp"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal">
-
-                                <com.base.common.widget.LsImageView
-                                    android:layout_width="@dimen/_14dp"
-                                    android:layout_height="@dimen/_14dp"
-                                    android:importantForAccessibility="no"
-                                    android:src="@drawable/ic_near_me"
-                                    android:tint="@color/hue_on_surface_variant" />
-
-                                <com.base.common.widget.LsTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="@dimen/_2dp"
-                                    android:text="@string/home_place_hanh_distance"
-                                    android:textColor="@color/hue_on_surface_variant"
-                                    android:textSize="@dimen/text_11sp"
-                                    app:textFont="regular" />
-
-                                <com.base.common.widget.LsTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginHorizontal="@dimen/_4dp"
-                                    android:text="•"
-                                    android:textColor="@color/hue_on_surface_variant"
-                                    android:textSize="@dimen/text_11sp" />
-
-                                <com.base.common.widget.LsTextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/home_place_hanh_price"
-                                    android:textColor="@color/hue_on_surface_variant"
-                                    android:textSize="@dimen/text_11sp"
-                                    app:textFont="regular" />
-
-                            </com.base.common.widget.LsLinearView>
-
-                        </com.base.common.widget.LsLinearView>
-
-                    </com.base.common.widget.LsLinearView>
-
-                </com.base.common.widget.LsCardView>
+                </com.base.common.widget.LsFrameView>
 
             </com.base.common.widget.LsLinearView>
 

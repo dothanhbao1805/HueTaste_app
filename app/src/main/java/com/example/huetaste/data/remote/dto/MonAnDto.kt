@@ -10,6 +10,7 @@ data class MonAnDto(
     val giaThamKhaoTu: Int?,
     val giaThamKhaoDen: Int?,
     val idDanhMucMonAn: String? = null,
+    val thoiTietPhuHop: List<String>? = null,
 )
 
 data class TrangMonAnDto(
@@ -18,6 +19,7 @@ data class TrangMonAnDto(
 
 data class YeuThichDto(
     val monAn: List<MonAnDto>?,
+    val diaDiem: List<DiaDiemDto>? = null,
 )
 
 data class YeuThichMonAnBody(val idMonAn: String)
@@ -35,6 +37,7 @@ data class MonAnChiTietDto(
     val buoiPhuHop: List<String>?,
     val giaThamKhaoTu: Int?,
     val giaThamKhaoDen: Int?,
+    val thoiTietPhuHop: List<String>? = null,
     val danhMuc: DanhMucDto?,
     val nguyenLieu: List<NguyenLieuDto>?,
     val soThich: List<SoThichDto>?,
@@ -68,6 +71,10 @@ data class MonAnDiaDiemDto(
     val laMonDacTrung: Boolean?,
 )
 
+data class TrangDiaDiemDto(
+    val items: List<DiaDiemDto>?,
+)
+
 data class DiaDiemDto(
     val idDiaDiem: String,
     val tenDiaDiem: String,
@@ -78,6 +85,7 @@ data class DiaDiemDto(
     val mucGia: Int?,
     val diemTrungBinh: Double?,
     val anhUrl: String?,
+    val soDienThoai: String? = null,
     /** Only filled when the request carried the user's location. */
     val khoangCachKm: Double? = null,
 )

@@ -110,6 +110,7 @@
             android:paddingTop="@dimen/_16dp">
 
             <com.base.common.widget.LsCardView
+                android:id="@+id/heroCard"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_256dp"
                 android:outlineAmbientShadowColor="@color/hue_card_shadow"

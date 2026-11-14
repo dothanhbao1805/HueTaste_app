@@ -42,7 +42,7 @@ class PlaceDetailActivity : LsActivity<ActivityPlaceDetailBinding>(ActivityPlace
     private val viewModel: PlaceDetailViewModel by viewModels()
 
     private val priceFormat = NumberFormat.getIntegerInstance(Locale("vi", "VN"))
-    private val heroAdapter = GalleryPagerAdapter(onImageClick = ::openImageViewer)
+    private val heroAdapter = GalleryPagerAdapter(pressTarget = { binding.heroCard }, onImageClick = ::openImageViewer)
     private val heroPageCallback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) = showHeroCounter(position)
     }

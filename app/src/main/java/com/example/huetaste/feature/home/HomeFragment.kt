@@ -1,5 +1,10 @@
 package com.example.huetaste.feature.home
 
+import android.Manifest
+import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
@@ -16,9 +21,12 @@ import com.example.huetaste.common.extension.clicksComingSoon
 import com.example.huetaste.common.extension.loadWithShimmer
 import com.example.huetaste.common.extension.startDishDetailActivity
 import com.example.huetaste.common.extension.startLoginActivity
+import com.example.huetaste.common.extension.startPlaceDetailActivity
 import com.example.huetaste.common.extension.startScanActivity
 import com.example.huetaste.databinding.FragmentHomeBinding
 import com.example.huetaste.domain.model.AppError
+import com.example.huetaste.domain.model.DeviceArea
+import com.example.huetaste.domain.model.HomePlacesKind
 import com.example.huetaste.domain.model.MealType
 import com.example.huetaste.domain.model.SuggestionContext
 import com.example.huetaste.domain.model.UserProfile
@@ -30,7 +38,7 @@ import java.util.Calendar
 import java.util.Locale
 import kotlin.math.roundToInt
 
-/** The greeting and suggested dishes come from the backend; "Địa điểm gần bạn" is still the sample from the layout. */
+/** The greeting, suggested dishes and places come from the backend; the places follow the device's location. */
 @AndroidEntryPoint
 class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
     private val viewModel by lazy { ViewModelProvider(this)[HomeViewModel::class.java] }
@@ -40,6 +48,9 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         onFavoriteClick = { item -> viewModel.toggleFavorite(item.dish.id) },
     )
     private val categoryAdapter = HomeCategoryAdapter()
+    private val placeAdapter = HomePlaceAdapter(
+        onPlaceClick = { item -> requireActivity().startPlaceDetailActivity(item.place.id) },
+    )
 
     private val budgetFormat = NumberFormat.getIntegerInstance(Locale("vi", "VN"))
 
@@ -59,9 +70,23 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
 
     private var shownUser: UserProfile? = null
 
+    /** A first tap always shows the system dialog; only after that can "no dialog" mean it was denied for good. */
+    private var hasRequestedLocation = false
+
+    private val locationPermission = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions(),
+    ) { result ->
+        viewModel.refreshLocation(openSettingsIfOff = result.values.any { it })
+    }
+
+    private val locationSettings = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+        viewModel.refreshLocation()
+    }
+
     override fun onViewCreated() {
         binding.homeDishList.adapter = dishAdapter
         binding.homeCategoryList.adapter = categoryAdapter
+        binding.homePlaceList.adapter = placeAdapter
 
         mealChips.forEach { (meal, chip) -> chip.clicks { viewModel.selectMeal(meal) } }
         showBudget(binding.budgetSlider.value)
@@ -69,20 +94,25 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
 
         binding.suggestButton.clicks { suggest() }
         binding.homeDishesRetry.clicks { viewModel.retry() }
+        binding.homePlacesRetry.clicks { viewModel.retryPlaces() }
         binding.scanDishButton.clicks { requireContext().startScanActivity() }
+        binding.locationGroup.clicks { onLocationClicked() }
 
         // These entries have no destination yet; they still give the standard ripple and press animation.
         with(binding) {
-            listOf(notificationsButton, seeAllDishes, mapLink, placeTuyet, placeHanh).forEach { it.clicksComingSoon() }
+            listOf(notificationsButton, seeAllDishes, mapLink).forEach { it.clicksComingSoon() }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.onScreenStarted()
                 launch { viewModel.uiState.collect(::render) }
                 launch {
                     viewModel.events.collect { event ->
                         when (event) {
                             HomeEvent.FavoriteFailed -> requireContext().makeToast(R.string.home_favorite_failed)
+                            HomeEvent.AskLocationPermission -> requestLocationPermission()
+                            HomeEvent.OpenLocationSettings -> openLocationSettings()
                         }
                     }
                 }
@@ -92,15 +122,67 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
 
     private fun render(state: HomeUiState) {
         val dayPart = currentDayPart()
+        showLocation(state.location)
         showGreeting(state.user, dayPart)
         showContext(state.context, dayPart)
         showSubtitle(state)
         mealChips.forEach { (meal, chip) -> chip.isSelected = meal == state.selectedMeal }
         showDishes(state)
+        showPlaces(state)
 
         binding.categoriesSection.isVisible = state.categories.isNotEmpty()
         binding.categoriesCaption.text = getString(R.string.home_categories_count, state.categories.size)
         categoryAdapter.submitList(state.categories)
+    }
+
+    private fun showLocation(location: DeviceArea?) {
+        when (location) {
+            null -> {
+                binding.locationTitle.setText(R.string.home_location_loading)
+                binding.locationSubtitle.setText(R.string.home_location_subtitle)
+            }
+            DeviceArea.PermissionMissing, DeviceArea.LocationOff -> {
+                binding.locationTitle.setText(R.string.home_location_off)
+                binding.locationSubtitle.setText(R.string.home_location_off_subtitle)
+            }
+            is DeviceArea.Found -> {
+                binding.locationTitle.text = location.name ?: getString(R.string.home_location_on)
+                binding.locationSubtitle.setText(
+                    if (location.name != null) R.string.home_location_subtitle else R.string.home_location_unknown_subtitle,
+                )
+            }
+        }
+    }
+
+    private fun onLocationClicked() {
+        when (viewModel.uiState.value.location) {
+            null -> Unit
+            DeviceArea.PermissionMissing -> {
+                val deniedForGood = hasRequestedLocation &&
+                    LOCATION_PERMISSIONS.none { shouldShowRequestPermissionRationale(it) }
+                if (deniedForGood) {
+                    openAppSettings()
+                } else {
+                    hasRequestedLocation = true
+                    requestLocationPermission()
+                }
+            }
+            DeviceArea.LocationOff -> openLocationSettings()
+            is DeviceArea.Found -> viewModel.refreshLocation()
+        }
+    }
+
+    private fun requestLocationPermission() {
+        locationPermission.launch(LOCATION_PERMISSIONS)
+    }
+
+    private fun openLocationSettings() {
+        locationSettings.launch(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+    }
+
+    private fun openAppSettings() {
+        val packageUri = Uri.fromParts("package", requireContext().packageName, null)
+        locationSettings.launch(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageUri))
     }
 
     private fun showGreeting(user: UserProfile?, dayPart: DayPart) {
@@ -158,9 +240,42 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         }
     }
 
+    private fun showPlaces(state: HomeUiState) {
+        val places = state.places
+        val content = places as? HomePlacesState.Content
+        val items = state.placeItems
+        binding.homePlaceList.isVisible = items.isNotEmpty()
+        binding.homePlacesLoading.isVisible = places is HomePlacesState.Loading
+        binding.homePlacesMessage.isVisible = places is HomePlacesState.Error || (content != null && items.isEmpty())
+        binding.homePlacesRetry.isVisible = places is HomePlacesState.Error
+        if (places is HomePlacesState.Error) {
+            binding.homePlacesMessageText.setText(errorMessage(places.error, R.string.home_places_error))
+        } else if (content != null && items.isEmpty()) {
+            binding.homePlacesMessageText.setText(R.string.home_places_empty)
+        }
+        binding.placesTitle.setText(
+            when (content?.places?.kind) {
+                HomePlacesKind.NEARBY -> R.string.home_nearby_title
+                HomePlacesKind.FEATURED -> R.string.home_featured_title
+                null -> R.string.home_places_title
+            },
+        )
+        val subtitle = content?.let(::placesSubtitle)
+        binding.placesSubtitle.isVisible = subtitle != null
+        binding.placesSubtitle.text = subtitle
+        placeAdapter.submitList(items)
+    }
+
+    private fun placesSubtitle(content: HomePlacesState.Content): String? = when {
+        content.places.kind == HomePlacesKind.NEARBY ->
+            (content.area as? DeviceArea.Found)?.name?.let { getString(R.string.home_nearby_subtitle, it) }
+        content.area is DeviceArea.Found -> null
+        else -> getString(R.string.home_featured_enable_location)
+    }
+
     @StringRes
-    private fun errorMessage(error: AppError): Int =
-        if (error.code == AppError.NETWORK) R.string.ai_chat_error_network else R.string.home_suggestions_error
+    private fun errorMessage(error: AppError, @StringRes otherwise: Int = R.string.home_suggestions_error): Int =
+        if (error.code == AppError.NETWORK) R.string.ai_chat_error_network else otherwise
 
     private fun suggest() {
         val asked = viewModel.suggest(
@@ -201,6 +316,7 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         binding.budgetSlider.removeOnChangeListener(budgetListener)
         binding.homeDishList.adapter = null
         binding.homeCategoryList.adapter = null
+        binding.homePlaceList.adapter = null
         shownUser = null
         super.onDestroyView()
     }
@@ -214,5 +330,9 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
 
     private companion object {
         const val SEPARATOR = " • "
+        val LOCATION_PERMISSIONS = arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+        )
     }
 }

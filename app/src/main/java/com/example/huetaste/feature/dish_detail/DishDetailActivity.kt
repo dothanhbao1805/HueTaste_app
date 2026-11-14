@@ -46,7 +46,7 @@ import java.util.Locale
     private var content: DishDetailContent? = null
     // Hero page to return to after recreation; applied once the gallery has been submitted.
     private var pendingHeroPage: Int? = null
-    private val heroAdapter = GalleryPagerAdapter(onImageClick = ::openImageViewer)
+    private val heroAdapter = GalleryPagerAdapter(pressTarget = { binding.heroCard }, onImageClick = ::openImageViewer)
     private val heroPageCallback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) = showHeroCounter(position)
     }

@@ -9,6 +9,8 @@ data class Dish(
     val priceFrom: Int?,
     val priceTo: Int?,
     val categoryId: String? = null,
+    /** The backend `thoiTietPhuHop` codes, such as `mua` or `nong`. */
+    val weatherTags: List<String> = emptyList(),
 )
 
 data class DishDetail(
@@ -50,4 +52,5 @@ data class Place(
     val priceLevel: Int?,
     val rating: Double?,
     val imageUrl: String?,
+    val phone: String? = null,
 )

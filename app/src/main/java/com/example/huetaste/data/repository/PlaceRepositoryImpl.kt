@@ -1,11 +1,14 @@
 package com.example.huetaste.data.repository
 
 import com.example.huetaste.data.mapper.toDomain
+import com.example.huetaste.data.mapper.toHomePlace
 import com.example.huetaste.data.remote.HueTasteApi
 import com.example.huetaste.data.remote.apiCall
 import com.example.huetaste.data.remote.dto.VietDanhGiaBody
 import com.example.huetaste.data.remote.dto.YeuThichDiaDiemBody
 import com.example.huetaste.di.IoDispatcher
+import com.example.huetaste.domain.model.GeoPoint
+import com.example.huetaste.domain.model.HomePlace
 import com.example.huetaste.domain.model.PlaceDetail
 import com.example.huetaste.domain.model.Review
 import com.example.huetaste.domain.model.ReviewPage
@@ -20,6 +23,17 @@ class PlaceRepositoryImpl @Inject constructor(
     private val gson: Gson,
     @param:IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) : PlaceRepository {
+
+    override suspend fun getNearbyPlaces(point: GeoPoint, radiusKm: Double, size: Int): List<HomePlace> =
+        withContext(ioDispatcher) {
+            apiCall(gson) {
+                api.getNearbyPlaces(point.latitude, point.longitude, radiusKm, size).items.orEmpty().map { it.toHomePlace() }
+            }
+        }
+
+    override suspend fun getFeaturedPlaces(size: Int): List<HomePlace> = withContext(ioDispatcher) {
+        apiCall(gson) { api.getFeaturedPlaces(size).items.orEmpty().map { it.toHomePlace() } }
+    }
 
     override suspend fun getPlaceDetail(placeId: String): PlaceDetail = withContext(ioDispatcher) {
         apiCall(gson) { api.getPlaceDetail(placeId).toDomain() }

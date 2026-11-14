@@ -17,7 +17,10 @@ import com.base.common.base.LsMultiListAdapter
 import com.base.common.base.LsViewHolder
 import com.base.common.extension.clicks
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.formatDistance
 import com.example.huetaste.common.extension.formatPriceRange
+import com.example.huetaste.common.extension.formatRating
+import com.example.huetaste.common.extension.isOpenNow
 import com.example.huetaste.common.extension.loadWithShimmer
 import com.example.huetaste.domain.model.AppError
 import com.example.huetaste.domain.model.Dish
@@ -131,7 +134,7 @@ class ChatAdapter(
         placeReason.isVisible = !item.reason.isNullOrBlank()
         placeReason.text = item.reason
 
-        val isOpen = ChatFormat.isOpenNow(place.openingHours)
+        val isOpen = place.isOpenNow()
         openBadge.isVisible = isOpen != null
         if (isOpen != null) {
             openText.setText(if (isOpen) R.string.ai_chat_open else R.string.ai_chat_closed)
@@ -140,12 +143,12 @@ class ChatAdapter(
             )
         }
         ratingBadge.isVisible = place.rating != null
-        ratingText.text = place.rating?.let(ChatFormat::rating)
+        ratingText.text = place.rating?.let(::formatRating)
 
         placeAddress.isVisible = !place.address.isNullOrBlank()
         placeAddress.text = place.address
         placeDistance.isVisible = item.distanceKm != null
-        placeDistance.text = item.distanceKm?.let { ChatFormat.distance(context, it) }
+        placeDistance.text = item.distanceKm?.let { context.formatDistance(it) }
         val price = context.formatPriceRange(place.priceLevel, null)
         priceRow.isVisible = price != null
         placePrice.text = price

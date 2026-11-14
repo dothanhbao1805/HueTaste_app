@@ -12,6 +12,7 @@ import com.example.huetaste.data.remote.dto.DanhGiaDto
 import com.example.huetaste.data.remote.dto.DanhMucOutDto
 import com.example.huetaste.data.remote.dto.GoiYBody
 import com.example.huetaste.data.remote.dto.KetQuaGoiYDto
+import com.example.huetaste.data.remote.dto.TrangDiaDiemDto
 import com.example.huetaste.data.remote.dto.TrangMonAnDto
 import com.example.huetaste.data.remote.dto.YeuThichDto
 import com.example.huetaste.data.remote.dto.YeuThichMonAnBody
@@ -45,6 +46,17 @@ interface HueTasteApi {
 
     @GET("mon-an/{idMonAn}")
     suspend fun getDishDetail(@Path("idMonAn") dishId: String): MonAnChiTietDto
+
+    @GET("dia-diem")
+    suspend fun getNearbyPlaces(
+        @Query("viDo") latitude: Double,
+        @Query("kinhDo") longitude: Double,
+        @Query("banKinhKm") radiusKm: Double,
+        @Query("size") size: Int,
+    ): TrangDiaDiemDto
+
+    @GET("dia-diem/noi-bat")
+    suspend fun getFeaturedPlaces(@Query("size") size: Int): TrangDiaDiemDto
 
     @GET("dia-diem/{idDiaDiem}")
     suspend fun getPlaceDetail(@Path("idDiaDiem") placeId: String): DiaDiemChiTietDto
@@ -99,7 +111,7 @@ interface HueTasteApi {
     suspend fun getDishes(@Query("page") page: Int, @Query("size") size: Int): TrangMonAnDto
 
     @GET("users/me/yeu-thich")
-    suspend fun getFavorites(@Query("loai") type: String): YeuThichDto
+    suspend fun getFavorites(@Query("loai") type: String? = null): YeuThichDto
 
     @POST("users/me/yeu-thich")
     suspend fun addFavoriteDish(@Body body: YeuThichMonAnBody)

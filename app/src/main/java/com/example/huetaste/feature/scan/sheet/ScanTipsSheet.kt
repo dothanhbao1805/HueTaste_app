@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager
 import com.base.common.base.LsBottomSheet
 import com.base.common.extension.clicks
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.applySheetHeight
 import com.example.huetaste.databinding.ItemScanTipBinding
 import com.example.huetaste.databinding.SheetScanTipsBinding
 
@@ -16,6 +17,7 @@ class ScanTipsSheet : LsBottomSheet<SheetScanTipsBinding>(SheetScanTipsBinding::
     override fun isAdjustResize(): Boolean = false
 
     override fun onViewCreated() {
+        binding.root.applySheetHeight()
         binding.closeButton.clicks { dismiss() }
         Tip.entries.forEach { tip ->
             val item = ItemScanTipBinding.inflate(layoutInflater, binding.tipsContainer, true)

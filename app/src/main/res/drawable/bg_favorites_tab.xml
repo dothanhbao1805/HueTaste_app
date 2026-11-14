@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Segment of the Món ăn / Quán ăn switch: filled when selected, invisible otherwise. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/hue_primary" />
+            <corners android:radius="@dimen/_100dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/hue_black_0" />
+            <corners android:radius="@dimen/_100dp" />
+        </shape>
+    </item>
+</selector>

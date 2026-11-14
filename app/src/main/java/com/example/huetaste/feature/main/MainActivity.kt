@@ -85,6 +85,11 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
         finish()
     }
 
+    /** Shows [tab] as if its bottom bar item was tapped, for screens that lead to another tab. */
+    fun selectTab(tab: MainTab) {
+        binding.bottomNavigation.selectedItemId = tab.menuItemId
+    }
+
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         selectMenuItem(binding.viewPager.currentItem)

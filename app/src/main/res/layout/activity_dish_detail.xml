@@ -111,6 +111,7 @@
 
             <!-- 1. Hero photo -->
             <com.base.common.widget.LsCardView
+                android:id="@+id/heroCard"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_320dp"
                 android:layout_marginHorizontal="@dimen/_10dp"

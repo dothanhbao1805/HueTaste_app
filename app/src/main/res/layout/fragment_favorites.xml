@@ -1,5 +1,769 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/hue_surface" />
+    android:background="@color/hue_surface">
+
+    <!--
+        The header, tabs and filters all scroll away with the list, so the list gets the whole screen and no card
+        ends up hidden under a pinned bar. The 10dp side margin is applied once, here, as in the home screen.
+    -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/favoritesCoordinator"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:paddingHorizontal="@dimen/_10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/favoritesAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/hue_surface"
+            android:stateListAnimator="@null"
+            app:elevation="@dimen/_0dp"
+            app:liftOnScroll="false">
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/favoritesHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:text="@string/favorites_title"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_24sp"
+                    app:textFont="bold" />
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_surface_container_low"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/_48dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_14dp"
+                    android:paddingEnd="@dimen/_4dp">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_20dp"
+                        android:layout_height="@dimen/_20dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_search"
+                        android:tint="@color/hue_primary" />
+
+                    <com.base.common.widget.LsEditText
+                        android:id="@+id/searchInput"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="@string/favorites_search_hint"
+                        android:imeOptions="actionSearch"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:maxLength="60"
+                        android:maxLines="1"
+                        android:paddingVertical="@dimen/_12dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textColorHint="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="regular" />
+
+                    <com.base.common.widget.LsImageView
+                        android:id="@+id/searchClear"
+                        android:layout_width="@dimen/_40dp"
+                        android:layout_height="@dimen/_40dp"
+                        android:background="@drawable/bg_shape_circle"
+                        android:backgroundTint="@color/hue_black_0"
+                        android:contentDescription="@string/favorites_search_clear"
+                        android:foreground="@drawable/fg_ripple_circle"
+                        android:padding="@dimen/_10dp"
+                        android:src="@drawable/ic_close"
+                        android:tint="@color/hue_on_surface_variant"
+                        android:visibility="gone" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:outlineAmbientShadowColor="@color/hue_card_shadow"
+                    android:outlineSpotShadowColor="@color/hue_card_shadow"
+                    app:cardBackgroundColor="@color/hue_surface_lowest"
+                    app:cardCornerRadius="@dimen/_16dp"
+                    app:cardElevation="@dimen/_2dp"
+                    app:strokeColor="@color/hue_outline_hairline"
+                    app:strokeWidth="@dimen/_1dp">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/_12dp">
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_18dp"
+                                    android:layout_height="@dimen/_18dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_ramen_dining"
+                                    android:tint="@color/hue_primary" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:id="@+id/statDishes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_4dp"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_18sp"
+                                    app:textFont="bold" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:text="@string/favorites_stat_dishes"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsImageView
+                                    android:layout_width="@dimen/_18dp"
+                                    android:layout_height="@dimen/_18dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_storefront"
+                                    android:tint="@color/hue_primary" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:id="@+id/statPlaces"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_4dp"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_18sp"
+                                    app:textFont="bold" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:text="@string/favorites_stat_places"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsView
+                                    android:layout_width="@dimen/_8dp"
+                                    android:layout_height="@dimen/_8dp"
+                                    android:background="@drawable/bg_home_dot"
+                                    android:backgroundTint="@color/place_open" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:id="@+id/statOpen"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_6dp"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_18sp"
+                                    app:textFont="bold" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:text="@string/favorites_stat_open"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_11sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsCardView>
+
+                <!-- "Hôm nay ăn gì?": a random pick among the saved dishes; shown on the dishes tab only. -->
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/randomCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:background="@drawable/bg_home_context"
+                    android:backgroundTint="@color/hue_secondary_fixed_40"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_16dp">
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/favorites_random_badge"
+                        android:textColor="@color/hue_primary"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="semi" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4dp"
+                        android:text="@string/favorites_random_title"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_18sp"
+                        app:textFont="bold" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2dp"
+                        android:text="@string/favorites_random_message"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="regular" />
+
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/randomButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12dp"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_primary"
+                        android:foreground="@drawable/fg_ripple_pill"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_44dp"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_18dp">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_18dp"
+                            android:layout_height="@dimen/_18dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_casino"
+                            android:tint="@color/hue_on_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_8dp"
+                            android:text="@string/favorites_random_button"
+                            android:textColor="@color/hue_on_primary"
+                            android:textSize="@dimen/text_14sp"
+                            app:textFont="semi" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/collectionsSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/favorites_collections_title"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_16sp"
+                            app:textFont="bold" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/favorites_collections_auto"
+                            android:textColor="@color/hue_on_surface_variant"
+                            android:textSize="@dimen/text_11sp"
+                            app:textFont="regular" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.scroll.LsRecyclerView
+                        android:id="@+id/collectionList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10dp"
+                        android:clipToPadding="false"
+                        android:nestedScrollingEnabled="false"
+                        android:orientation="horizontal"
+                        android:overScrollMode="never"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_4dp"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_surface_container"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_4dp">
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/tabDishes"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_favorites_tab"
+                        android:foreground="@drawable/fg_ripple_pill"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_44dp"
+                        android:textColor="@color/home_chip_text"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="semi" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/tabPlaces"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_favorites_tab"
+                        android:foreground="@drawable/fg_ripple_pill"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_44dp"
+                        android:textColor="@color/home_chip_text"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="semi" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/sortButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_favorites_sort_button"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="@drawable/fg_ripple_pill"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/_36dp"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/_12dp"
+                        android:paddingEnd="@dimen/_8dp">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_16dp"
+                            android:layout_height="@dimen/_16dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_tune"
+                            android:tint="@color/hue_primary" />
+
+                        <com.base.common.widget.LsTextView
+                            android:id="@+id/sortLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_6dp"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="medium" />
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_18dp"
+                            android:layout_height="@dimen/_18dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_expand_more"
+                            android:tint="@color/hue_on_surface_variant" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsView
+                        android:layout_width="@dimen/_1dp"
+                        android:layout_height="@dimen/_20dp"
+                        android:layout_marginHorizontal="@dimen/_10dp"
+                        android:background="@color/hue_outline_hairline" />
+
+                    <HorizontalScrollView
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:overScrollMode="never"
+                        android:scrollbars="none">
+
+                        <!-- A HorizontalScrollView hosts one child, so the two filter rows share this frame. -->
+                        <com.base.common.widget.LsFrameView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                        <com.base.common.widget.LsLinearView
+                            android:id="@+id/dishFilterRow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/chipMealAll"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_home_chip"
+                                android:foreground="@drawable/fg_ripple_pill"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_36dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:text="@string/favorites_filter_all"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/chipMealMorning"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_home_chip"
+                                android:foreground="@drawable/fg_ripple_pill"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_36dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:text="@string/favorites_meal_morning"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/chipMealNoon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_home_chip"
+                                android:foreground="@drawable/fg_ripple_pill"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_36dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:text="@string/favorites_meal_noon"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/chipMealAfternoon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_home_chip"
+                                android:foreground="@drawable/fg_ripple_pill"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_36dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:text="@string/favorites_meal_afternoon"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/chipMealEvening"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_home_chip"
+                                android:foreground="@drawable/fg_ripple_pill"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_36dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:text="@string/favorites_meal_evening"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:id="@+id/placeFilterRow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/chipPlaceAll"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_home_chip"
+                                android:foreground="@drawable/fg_ripple_pill"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_36dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:text="@string/favorites_filter_all"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/chipPlaceOpen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_home_chip"
+                                android:foreground="@drawable/fg_ripple_pill"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_36dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:text="@string/favorites_filter_open"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        </com.base.common.widget.LsFrameView>
+
+                    </HorizontalScrollView>
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.base.common.widget.scroll.LsRecyclerView
+            android:id="@+id/favoritesList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/_8dp"
+            android:paddingBottom="@dimen/_16dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <!-- Loading, empty, no-result and error states share this block. -->
+        <com.base.common.widget.LsFrameView
+            android:id="@+id/stateContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <ProgressBar
+                android:id="@+id/favoritesLoading"
+                android:layout_width="@dimen/_40dp"
+                android:layout_height="@dimen/_40dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/hue_primary" />
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/stateBlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/_24dp">
+
+                <com.base.common.widget.LsImageView
+                    android:id="@+id/stateIcon"
+                    android:layout_width="@dimen/_72dp"
+                    android:layout_height="@dimen/_72dp"
+                    android:background="@drawable/bg_shape_circle"
+                    android:backgroundTint="@color/hue_primary_10"
+                    android:importantForAccessibility="no"
+                    android:padding="@dimen/_20dp"
+                    android:tint="@color/hue_primary" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/stateTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16dp"
+                    android:gravity="center"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_18sp"
+                    app:textFont="bold" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/stateMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:gravity="center"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="regular" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/stateButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_primary"
+                    android:foreground="@drawable/fg_ripple_pill"
+                    android:gravity="center"
+                    android:minHeight="@dimen/_48dp"
+                    android:paddingHorizontal="@dimen/_24dp"
+                    android:textColor="@color/hue_on_primary"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="semi" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsFrameView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!-- A guest has nothing saved, so this covers the whole tab. -->
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/guestState"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:background="@color/hue_surface"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12dp"
+            android:text="@string/favorites_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_24sp"
+            app:textFont="bold" />
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/_56dp">
+
+            <com.base.common.widget.LsImageView
+                android:layout_width="@dimen/_96dp"
+                android:layout_height="@dimen/_96dp"
+                android:background="@drawable/bg_shape_circle"
+                android:backgroundTint="@color/hue_primary"
+                android:importantForAccessibility="no"
+                android:padding="@dimen/_28dp"
+                android:src="@drawable/ic_favorite_border"
+                android:tint="@color/hue_on_primary" />
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24dp"
+                android:gravity="center"
+                android:text="@string/favorites_guest_title"
+                android:textColor="@color/hue_on_surface"
+                android:textSize="@dimen/text_20sp"
+                app:textFont="bold" />
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                android:gravity="center"
+                android:text="@string/favorites_guest_message"
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="regular" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/guestLoginButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24dp"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_primary"
+                android:foreground="@drawable/fg_ripple_pill"
+                android:gravity="center"
+                android:minHeight="@dimen/_48dp"
+                android:paddingHorizontal="@dimen/_40dp"
+                android:text="@string/favorites_guest_button"
+                android:textColor="@color/hue_on_primary"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="semi" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsConstraintView>

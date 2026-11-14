@@ -8,6 +8,7 @@ import com.example.huetaste.domain.model.Dish
 import com.example.huetaste.domain.model.DishCategory
 import com.example.huetaste.domain.model.DishDetail
 import com.example.huetaste.domain.model.GalleryImage
+import com.example.huetaste.domain.model.HomePlace
 import com.example.huetaste.domain.model.DishIngredient
 import com.example.huetaste.domain.model.DishPlace
 import com.example.huetaste.domain.model.Place
@@ -21,6 +22,7 @@ fun MonAnDto.toDomain() = Dish(
     priceFrom = giaThamKhaoTu,
     priceTo = giaThamKhaoDen,
     categoryId = idDanhMucMonAn,
+    weatherTags = thoiTietPhuHop.orEmpty(),
 )
 
 fun DanhMucOutDto.toDomain() = DishCategory(id = idDanhMucMonAn, name = tenDanhMuc)
@@ -34,6 +36,7 @@ fun MonAnChiTietDto.toDomain() = DishDetail(
         mealTimes = buoiPhuHop.orEmpty(),
         priceFrom = giaThamKhaoTu,
         priceTo = giaThamKhaoDen,
+        weatherTags = thoiTietPhuHop.orEmpty(),
     ),
     categoryName = danhMuc?.tenDanhMuc,
     ingredients = nguyenLieu.orEmpty().map {
@@ -60,4 +63,7 @@ fun DiaDiemDto.toDomain() = Place(
     priceLevel = mucGia,
     rating = diemTrungBinh,
     imageUrl = anhUrl,
+    phone = soDienThoai?.takeIf { it.isNotBlank() },
 )
+
+fun DiaDiemDto.toHomePlace() = HomePlace(place = toDomain(), distanceKm = khoangCachKm)

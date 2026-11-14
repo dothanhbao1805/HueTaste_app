@@ -9,6 +9,11 @@
     <!-- Home: header -->
     <string name="home_location">Huế, Việt Nam</string>
     <string name="home_location_subtitle">Trang Chủ</string>
+    <string name="home_location_loading">Đang lấy vị trí…</string>
+    <string name="home_location_off">Chưa bật vị trí</string>
+    <string name="home_location_off_subtitle">Nhấn để bật vị trí</string>
+    <string name="home_location_on">Đã bật vị trí</string>
+    <string name="home_location_unknown_subtitle">Chưa xác định được khu vực</string>
     <string name="home_notifications">Thông báo</string>
     <string name="home_profile_photo">Hồ sơ cá nhân</string>
     <string name="home_change_location">Chọn địa điểm</string>
@@ -65,7 +70,14 @@
 
     <!-- Home: nearby -->
     <string name="home_nearby_title">Địa điểm gần bạn</string>
-    <string name="home_nearby_subtitle">Bán kính dưới 1km quanh Tràng Tiền</string>
+    <string name="home_nearby_subtitle">Quanh %1$s</string>
+    <string name="home_places_title">Địa điểm quán ăn</string>
+    <string name="home_featured_title">Địa điểm quán ăn nổi bật tại Huế</string>
+    <string name="home_featured_enable_location">Bật vị trí để xem quán gần bạn</string>
+    <string name="home_places_empty">Chưa có quán nào để gợi ý</string>
+    <string name="home_places_error">Chưa tải được danh sách quán, bạn thử lại nhé</string>
+    <string name="home_place_distance_about">khoảng %1$s</string>
+    <string name="home_place_meta_separator">•</string>
     <string name="home_map_link">Bản đồ</string>
     <string name="home_open_now">Đang mở cửa</string>
     <string name="home_place_photo">Hình ảnh quán</string>
@@ -535,4 +547,80 @@
     <string name="ai_delete_message">Toàn bộ tin nhắn và gợi ý trong cuộc trò chuyện này sẽ bị xóa vĩnh viễn khỏi lịch sử.</string>
     <string name="ai_delete_cancel">Hủy</string>
     <string name="ai_delete_confirm">Xóa</string>
+
+    <!-- Favorites tab -->
+    <string name="favorites_title">Yêu thích</string>
+    <string name="favorites_search_hint">Tìm trong danh sách đã lưu</string>
+    <string name="favorites_search_clear">Xóa nội dung tìm kiếm</string>
+    <string name="favorites_stat_dishes">Món ăn</string>
+    <string name="favorites_stat_places">Quán ăn</string>
+    <string name="favorites_stat_open">Đang mở cửa</string>
+    <string name="favorites_tab_dishes">Món ăn (%1$d)</string>
+    <string name="favorites_tab_places">Quán ăn (%1$d)</string>
+    <string name="favorites_filter_all">Tất cả</string>
+    <string name="favorites_filter_open">Đang mở cửa</string>
+    <string name="favorites_meal_morning">Sáng</string>
+    <string name="favorites_meal_noon">Trưa</string>
+    <string name="favorites_meal_afternoon">Chiều</string>
+    <string name="favorites_meal_evening">Tối</string>
+    <string name="favorites_meal_late">Khuya</string>
+    <string name="favorites_sort_title">Sắp xếp theo</string>
+    <string name="favorites_sort_recent">Mới lưu</string>
+    <string name="favorites_sort_price_low">Giá thấp → cao</string>
+    <string name="favorites_sort_price_high">Giá cao → thấp</string>
+    <string name="favorites_sort_name">Tên A–Z</string>
+    <string name="favorites_sort_nearest">Gần nhất</string>
+    <string name="favorites_sort_rating">Đánh giá cao</string>
+    <string name="favorites_weather_rain">Hợp ngày mưa</string>
+    <string name="favorites_weather_hot">Hợp ngày nóng</string>
+    <string name="favorites_weather_cool">Hợp ngày mát</string>
+    <string name="favorites_weather_cold">Hợp ngày lạnh</string>
+    <string name="favorites_remove_cd">Bỏ %1$s khỏi yêu thích</string>
+    <string name="favorites_removed">Đã bỏ “%1$s” khỏi yêu thích</string>
+    <string name="favorites_undo">Hoàn tác</string>
+    <string name="favorites_action_failed">Chưa cập nhật được yêu thích, bạn thử lại nhé</string>
+    <string name="favorites_call">Gọi điện</string>
+    <string name="favorites_directions">Chỉ đường</string>
+    <string name="favorites_no_dialer">Không tìm thấy ứng dụng gọi điện.</string>
+    <string name="favorites_guest_title">Đăng nhập để lưu món yêu thích</string>
+    <string name="favorites_guest_message">Lưu lại những món ăn và quán ngon để xem lại bất cứ lúc nào</string>
+    <string name="favorites_guest_button">Đăng nhập</string>
+    <string name="favorites_empty_dishes_title">Chưa có món yêu thích</string>
+    <string name="favorites_empty_dishes_message">Nhấn vào trái tim ở món bạn thích để lưu lại đây nhé</string>
+    <string name="favorites_empty_places_title">Chưa có quán yêu thích</string>
+    <string name="favorites_empty_places_message">Nhấn vào trái tim ở quán bạn thích để lưu lại đây nhé</string>
+    <string name="favorites_empty_button">Khám phá món ngon</string>
+    <string name="favorites_no_result_title">Không tìm thấy kết quả</string>
+    <string name="favorites_no_result_message">Thử đổi từ khóa hoặc bộ lọc khác nhé</string>
+    <string name="favorites_no_result_button">Xóa bộ lọc</string>
+    <string name="favorites_error_title">Chưa tải được danh sách</string>
+    <string name="favorites_error_message">Đã có lỗi xảy ra, bạn thử lại nhé</string>
+    <string name="favorites_error_button">Thử lại</string>
+
+    <!-- Favorites: random pick, collections, quick view -->
+    <string name="favorites_random_badge">Gợi ý từ món đã lưu</string>
+    <string name="favorites_random_title">Hôm nay ăn gì?</string>
+    <string name="favorites_random_message">Chọn giúp bạn một món đã lưu hợp với buổi này</string>
+    <string name="favorites_random_button">Chọn ngẫu nhiên</string>
+    <string name="favorites_collections_title">Bộ sưu tập của bạn</string>
+    <string name="favorites_collections_auto">Tự động sắp xếp</string>
+    <string name="favorites_col_morning">Món sáng</string>
+    <string name="favorites_col_rainy">Ăn ngày mưa</string>
+    <string name="favorites_col_hot">Ngày nóng</string>
+    <string name="favorites_col_open">Đang mở cửa</string>
+    <string name="favorites_col_nearby">Gần bạn</string>
+    <string name="favorites_col_count_dishes">%1$d món</string>
+    <string name="favorites_col_count_places">%1$d quán</string>
+    <string name="favorites_col_saved_dishes">%1$d món đã lưu</string>
+    <string name="favorites_col_saved_places">%1$d quán đã lưu</string>
+    <string name="favorites_col_empty_title">Bộ sưu tập đang trống</string>
+    <string name="favorites_col_empty_message">Các mục phù hợp sẽ tự xuất hiện khi bạn lưu thêm</string>
+    <string name="favorites_col_back">Quay lại</string>
+    <string name="favorites_quick_close">Đóng</string>
+    <string name="favorites_quick_tastes">Khẩu vị</string>
+    <string name="favorites_quick_ingredients">Nguyên liệu chính</string>
+    <string name="favorites_quick_places">Quán có món này (%1$d)</string>
+    <string name="favorites_quick_details">Xem chi tiết</string>
+    <string name="favorites_quick_error">Chưa tải được thông tin món, bạn thử lại nhé</string>
+    <string name="favorites_quick_retry">Thử lại</string>
 </resources>
