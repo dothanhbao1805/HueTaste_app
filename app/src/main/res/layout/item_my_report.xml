@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One report of the my reports list: place, status, reason, description, flagged dishes, admin response and dates. -->
+<com.base.common.widget.LsCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_12dp"
+    app:cardBackgroundColor="@color/hue_surface_lowest"
+    app:cardCornerRadius="@dimen/_8dp"
+    app:cardElevation="@dimen/_0dp"
+    app:strokeColor="@color/hue_outline_hairline"
+    app:strokeWidth="@dimen/_1dp">
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_14dp">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_16sp"
+                    app:textFont="bold"
+                    tools:text="Bún Bò Bà Tuyết" />
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/placeHiddenTag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4dp"
+                    android:background="@drawable/bg_shape_round_4"
+                    android:backgroundTint="@color/hue_surface_container"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_6dp"
+                    android:paddingVertical="@dimen/_2dp"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_12dp"
+                        android:layout_height="@dimen/_12dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_visibility_off"
+                        android:tint="@color/hue_on_surface_variant" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4dp"
+                        android:text="@string/my_reports_place_hidden"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="medium" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/statusChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_secondary_fixed"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_8dp"
+                android:paddingVertical="@dimen/_2dp">
+
+                <com.base.common.widget.LsImageView
+                    android:id="@+id/statusIcon"
+                    android:layout_width="@dimen/_14dp"
+                    android:layout_height="@dimen/_14dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_schedule"
+                    android:tint="@color/hue_on_secondary_fixed_variant" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/statusText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:text="@string/my_reports_status_pending"
+                    android:textColor="@color/hue_on_secondary_fixed_variant"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="medium" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsImageView
+                android:layout_width="@dimen/_16dp"
+                android:layout_height="@dimen/_16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_flag"
+                android:tint="@color/hue_primary" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/reasonText"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6dp"
+                android:layout_weight="1"
+                android:textColor="@color/hue_primary"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="medium"
+                tools:text="Giá không đúng" />
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/descriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:background="@drawable/bg_shape_round_6"
+            android:backgroundTint="@color/hue_surface_container_low"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:padding="@dimen/_8dp"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_12sp"
+            app:textFont="regular"
+            tools:text="Quán đã tăng giá tô đặc biệt lên 65.000đ từ đầu tuần rồi ạ, trên ứng dụng vẫn để giá cũ." />
+
+        <com.base.common.widget.LsLinearView
+            android:id="@+id/dishesSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:orientation="vertical">
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_14dp"
+                    android:layout_height="@dimen/_14dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_restaurant_menu"
+                    android:tint="@color/hue_on_surface_variant" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:text="@string/my_reports_dishes_title"
+                    android:textAllCaps="true"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="semi" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <!-- One item_my_report_dish row per flagged dish, added by the adapter. -->
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/dishList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsLinearView
+            android:id="@+id/responseBlock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:background="@drawable/bg_shape_round_8"
+            android:backgroundTint="@color/hue_surface_container"
+            android:orientation="vertical"
+            android:padding="@dimen/_10dp">
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_16dp"
+                    android:layout_height="@dimen/_16dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_support_agent"
+                    android:tint="@color/hue_primary" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6dp"
+                    android:text="@string/my_reports_response_title"
+                    android:textColor="@color/hue_primary"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="bold" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/responseText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:textColor="@color/hue_on_surface"
+                android:textSize="@dimen/text_12sp"
+                app:textFont="regular"
+                tools:text="Cảm ơn bạn! Chúng tôi đã cập nhật lại thực đơn của quán." />
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:background="@color/hue_outline_hairline" />
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/dateIcon"
+                android:layout_width="@dimen/_14dp"
+                android:layout_height="@dimen/_14dp"
+                android:layout_marginEnd="@dimen/_4dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_calendar_today"
+                android:tint="@color/hue_on_surface_variant" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/dateText"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_11sp"
+                app:textFont="regular"
+                tools:text="Gửi ngày 15/11/2026" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/reviewingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/my_reports_reviewing"
+                android:textColor="@color/hue_secondary"
+                android:textSize="@dimen/text_11sp"
+                app:textFont="medium" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsCardView>

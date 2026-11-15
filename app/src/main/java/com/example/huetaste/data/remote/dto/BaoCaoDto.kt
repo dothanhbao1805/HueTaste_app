@@ -24,6 +24,8 @@ data class BaoCaoDto(
 data class DiaDiemBaoCaoDto(
     val idDiaDiem: String,
     val tenDiaDiem: String?,
+    /** `active`, `hidden` (the admins hid the place while handling a report) or `unverified`. */
+    val trangThai: String?,
 )
 
 data class ChiTietBaoCaoDto(

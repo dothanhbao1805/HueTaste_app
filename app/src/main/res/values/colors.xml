@@ -88,4 +88,9 @@
     <color name="hue_error_container">#FFDAD6</color>
     <color name="hue_on_error_container">#93000A</color>
     <color name="hue_error_10">#1ABA1A1A</color>
+
+    <!-- Handled report and "no violation" results of the my reports screen. -->
+    <color name="hue_success">#0D6832</color>
+    <color name="hue_success_container">#D1F4E0</color>
+    <color name="hue_success_container_soft">#E6F7EE</color>
 </resources>

@@ -90,6 +90,13 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
         binding.bottomNavigation.selectedItemId = tab.menuItemId
     }
 
+    /** A screen above asked for a tab through [newTabIntent]; CLEAR_TOP has already closed it. */
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        val tab = intent.getStringExtra(EXTRA_TAB)?.let { name -> MainTab.entries.firstOrNull { it.name == name } }
+        if (tab != null) selectTab(tab)
+    }
+
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         selectMenuItem(binding.viewPager.currentItem)
@@ -112,5 +119,12 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
         /** Opens the main screen as the only screen, after the launch screen or a successful login. */
         fun newRootIntent(context: Context): Intent = Intent(context, MainActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+
+        /** Brings the running main screen back on [tab], closing the screens opened above it. */
+        fun newTabIntent(context: Context, tab: MainTab): Intent = Intent(context, MainActivity::class.java)
+            .putExtra(EXTRA_TAB, tab.name)
+            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+
+        private const val EXTRA_TAB = "tab"
     }
 }

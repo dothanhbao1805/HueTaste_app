@@ -671,4 +671,26 @@
     <string name="profile_logout_dialog_message">Bạn sẽ cần đăng nhập lại để dùng các tính năng cá nhân.</string>
     <string name="profile_logout_cancel">Hủy</string>
     <string name="profile_logout_confirm">Đăng xuất</string>
+
+    <!-- My reports -->
+    <string name="my_reports_back">Quay lại</string>
+    <string name="my_reports_status_pending">Đang chờ xử lý</string>
+    <string name="my_reports_status_resolved">Đã xử lý</string>
+    <string name="my_reports_place_hidden">Quán đã bị ẩn</string>
+    <string name="my_reports_dishes_title">Món đã báo cáo:</string>
+    <string name="my_reports_dish_pending">Chờ xét</string>
+    <string name="my_reports_dish_violation">Vi phạm · đã gỡ khỏi quán</string>
+    <string name="my_reports_dish_no_violation">Không vi phạm</string>
+    <string name="my_reports_response_title">Phản hồi từ HueTaste</string>
+    <string name="my_reports_sent_on">Gửi ngày %1$s</string>
+    <string name="my_reports_resolved_on">Xử lý ngày %1$s</string>
+    <string name="my_reports_reviewing">HueTaste đang xem xét</string>
+    <string name="my_reports_loading_more">Đang tải thêm báo cáo…</string>
+    <string name="my_reports_empty_title">Bạn chưa gửi báo cáo nào</string>
+    <string name="my_reports_empty_message">Khi thấy thông tin quán chưa đúng, hãy bấm \"%1$s\" trong trang chi tiết quán.</string>
+    <string name="my_reports_explore">Khám phá quán ngon Cố Đô</string>
+    <string name="my_reports_error_title">Đã xảy ra sự cố kết nối</string>
+    <string name="my_reports_error_message">Không tải được báo cáo. Hãy thử lại sau.</string>
+    <string name="my_reports_retry">Thử lại</string>
+    <string name="my_reports_error_hint">Kiểm tra lại kết nối Wi-Fi hoặc 4G/5G</string>
 </resources>

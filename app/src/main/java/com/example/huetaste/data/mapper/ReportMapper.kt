@@ -13,6 +13,7 @@ fun BaoCaoDto.toDomain() = PlaceReport(
     id = idBaoCao,
     placeId = diaDiem?.idDiaDiem,
     placeName = diaDiem?.tenDiaDiem,
+    placeHidden = diaDiem?.trangThai == "hidden",
     reason = lyDo.orEmpty(),
     description = moTa?.takeIf { it.isNotBlank() },
     // Anything but a handled report is still waiting for the admins.

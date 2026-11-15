@@ -5,6 +5,8 @@ data class PlaceReport(
     val id: String,
     val placeId: String?,
     val placeName: String?,
+    /** The admins hid the place, usually while handling a report about it. */
+    val placeHidden: Boolean,
     val reason: String,
     val description: String?,
     val status: ReportStatus,

@@ -16,6 +16,8 @@ import com.example.huetaste.feature.dish_detail.DishDetailActivity
 import com.example.huetaste.feature.favorites.FavoriteCollection
 import com.example.huetaste.feature.favorites.FavoriteCollectionActivity
 import com.example.huetaste.feature.main.MainActivity
+import com.example.huetaste.feature.main.MainTab
+import com.example.huetaste.feature.my_reports.MyReportsActivity
 import com.example.huetaste.feature.place_detail.PlaceDetailActivity
 import com.example.huetaste.feature.scan.ScanActivity
 import com.example.huetaste.feature.taste_setup.TasteSetupActivity
@@ -28,6 +30,8 @@ import com.example.huetaste.feature.taste_setup.TasteSetupActivity
 // region In-app screens
 
 fun Context.startMainActivity() = startRootActivityRtl(MainActivity.newRootIntent(this))
+
+fun Context.startMainTab(tab: MainTab) = startActivityRtl(MainActivity.newTabIntent(this, tab))
 
 fun Context.startLoginActivity() = startRootActivityRtl(LoginActivity.newRootIntent(this))
 
@@ -52,6 +56,8 @@ fun Context.startAiChatActivity(conversationId: String? = null) =
     startActivityRtl(AiChatActivity.newIntent(this, conversationId))
 
 fun Context.startChatHistoryActivity() = startActivityRtl(ChatHistoryActivity.newIntent(this))
+
+fun Context.startMyReportsActivity() = startActivityRtl(MyReportsActivity.newIntent(this))
 
 fun Context.startFavoriteCollectionActivity(collection: FavoriteCollection) =
     startActivityRtl(FavoriteCollectionActivity.newIntent(this, collection))
