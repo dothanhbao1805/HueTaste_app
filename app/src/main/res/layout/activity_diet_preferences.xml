@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The Stitch "Chế độ ăn" screen: edit the diets suggestions are filtered by, from Profile. -->
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hue_surface"
+    tools:context=".feature.diet_preferences.DietPreferencesActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statusBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/navigationBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/headerBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:paddingTop="@dimen/_6dp"
+        android:paddingBottom="@dimen/_12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/statusBar">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/backButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_surface_lowest"
+            android:contentDescription="@string/taste_prefs_back"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/hue_on_surface" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/profile_diet_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_18sp"
+            app:textFont="bold" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsView
+        android:id="@+id/headerDivider"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_1dp"
+        android:background="@color/hue_outline_hairline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerBar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerDivider">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_10dp"
+            android:paddingTop="@dimen/_14dp"
+            android:paddingBottom="@dimen/_16dp">
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/taste_diet_title"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_20sp"
+                        app:textFont="bold" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4dp"
+                        android:text="@string/diet_prefs_subtitle"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="regular" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:layout_marginTop="@dimen/_4dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_secondary_container"
+                    android:paddingHorizontal="@dimen/_10dp"
+                    android:paddingVertical="@dimen/_4dp"
+                    android:text="@string/taste_multi_hint"
+                    android:textColor="@color/hue_on_secondary_container"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="medium" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <include
+                android:id="@+id/status"
+                layout="@layout/view_taste_status" />
+
+            <!-- Filled by bindOptions: "Ăn bình thường" first, then the backend diets. -->
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/dietList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/infoBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16dp"
+                android:background="@drawable/bg_shape_round_12"
+                android:backgroundTint="@color/hue_secondary_fixed_40"
+                android:orientation="horizontal"
+                android:padding="@dimen/_14dp"
+                android:visibility="gone">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_20dp"
+                    android:layout_height="@dimen/_20dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_info"
+                    android:tint="@color/hue_primary" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12dp"
+                    android:layout_weight="1"
+                    android:text="@string/diet_prefs_info"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="regular" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.base.common.widget.LsFrameView
+        android:id="@+id/bottomBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/hue_surface"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:paddingVertical="@dimen/_12dp"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_48dp"
+            android:background="@drawable/bg_shape_pill"
+            android:backgroundTint="@color/hue_primary"
+            android:foreground="@drawable/fg_ripple_pill"
+            android:gravity="center"
+            android:text="@string/taste_prefs_save"
+            android:textColor="@color/hue_on_primary"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi" />
+
+    </com.base.common.widget.LsFrameView>
+
+</com.base.common.widget.LsConstraintView>

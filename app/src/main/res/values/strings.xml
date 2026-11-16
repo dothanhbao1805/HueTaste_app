@@ -693,4 +693,22 @@
     <string name="my_reports_error_message">Không tải được báo cáo. Hãy thử lại sau.</string>
     <string name="my_reports_retry">Thử lại</string>
     <string name="my_reports_error_hint">Kiểm tra lại kết nối Wi-Fi hoặc 4G/5G</string>
+    <!-- Taste preferences (edit from Profile) -->
+    <string name="taste_prefs_back">Quay lại</string>
+    <string name="taste_prefs_intro">Chúng tôi dùng những lựa chọn này để gợi ý món ăn chuẩn vị Cố Đô hợp khẩu vị bạn nhất mỗi ngày.</string>
+    <string name="taste_prefs_spice_helper">Đặc sản cay nồng Cố Đô</string>
+    <string name="taste_prefs_reset">Đặt lại sở thích mặc định</string>
+    <string name="taste_prefs_save">Lưu thay đổi</string>
+    <string name="taste_prefs_saving">Đang lưu…</string>
+    <string name="taste_prefs_saved">Đã lưu sở thích ẩm thực Huế!</string>
+    <string name="taste_prefs_network_failed">Không thể kết nối tới máy chủ. Kiểm tra mạng rồi thử lại.</string>
+    <string name="discard_changes_title">Bỏ thay đổi?</string>
+    <string name="discard_changes_message">Bạn có thay đổi chưa lưu. Bạn có muốn ở lại để cập nhật không?</string>
+    <string name="discard_changes_stay">Ở lại tiếp tục</string>
+    <string name="discard_changes_confirm">Bỏ thay đổi</string>
+
+    <!-- Diet preferences (edit from Profile) -->
+    <string name="diet_prefs_subtitle">Chúng tôi sẽ gợi ý món chuẩn vị và phù hợp nhất với bạn.</string>
+    <string name="diet_prefs_info">Các món không phù hợp sẽ được ẩn hoặc gắn nhãn cảnh báo trong gợi ý món và kết quả tìm kiếm quán ngon cố đô.</string>
+    <string name="diet_prefs_saved">Đã lưu chế độ ăn</string>
 </resources>

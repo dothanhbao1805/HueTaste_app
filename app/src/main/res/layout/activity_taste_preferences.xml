@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The Stitch "Sở thích ẩm thực" screen: edit spiciness, liked flavours and dish styles from Profile. -->
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hue_surface"
+    tools:context=".feature.taste_preferences.TastePreferencesActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statusBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/navigationBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/headerBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:paddingTop="@dimen/_6dp"
+        android:paddingBottom="@dimen/_12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/statusBar">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/backButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_surface_lowest"
+            android:contentDescription="@string/taste_prefs_back"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/hue_on_surface" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/profile_taste_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_18sp"
+            app:textFont="bold" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsView
+        android:id="@+id/headerDivider"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_1dp"
+        android:background="@color/hue_outline_hairline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerBar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerDivider">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_10dp"
+            android:paddingTop="@dimen/_14dp"
+            android:paddingBottom="@dimen/_16dp">
+
+            <!-- Intro -->
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_shape_round_16"
+                android:backgroundTint="@color/hue_surface_container_low"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/_16dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_40dp"
+                    android:layout_height="@dimen/_40dp"
+                    android:background="@drawable/bg_shape_circle"
+                    android:backgroundTint="@color/hue_secondary_fixed"
+                    android:importantForAccessibility="no"
+                    android:padding="@dimen/_10dp"
+                    android:src="@drawable/ic_auto_awesome"
+                    android:tint="@color/hue_primary" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10dp"
+                    android:layout_weight="1"
+                    android:text="@string/taste_prefs_intro"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="regular" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <include
+                android:id="@+id/status"
+                layout="@layout/view_taste_status" />
+
+            <!-- Spiciness -->
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/spiceCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12dp"
+                android:background="@drawable/bg_shape_round_16"
+                android:backgroundTint="@color/hue_surface_lowest"
+                android:orientation="vertical"
+                android:padding="@dimen/_16dp"
+                android:visibility="gone">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_40dp"
+                        android:layout_height="@dimen/_40dp"
+                        android:background="@drawable/bg_shape_circle"
+                        android:backgroundTint="@color/hue_surface_container_low"
+                        android:importantForAccessibility="no"
+                        android:padding="@dimen/_10dp"
+                        android:src="@drawable/ic_local_fire_department"
+                        android:tint="@color/hue_primary" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10dp"
+                        android:layout_weight="1"
+                        android:text="@string/taste_spice_title"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_16sp"
+                        app:textFont="bold" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/spiceSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_primary_fixed_40"
+                        android:ellipsize="end"
+                        android:maxWidth="@dimen/_120dp"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_12dp"
+                        android:paddingVertical="@dimen/_6dp"
+                        android:textColor="@color/hue_primary"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="medium" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_surface_container"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_4dp">
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/spiceNone"
+                        style="@style/TasteSetupSegment"
+                        android:text="@string/taste_spice_none" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/spiceMild"
+                        style="@style/TasteSetupSegment"
+                        android:text="@string/taste_spice_mild" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/spiceMedium"
+                        style="@style/TasteSetupSegment"
+                        android:text="@string/taste_spice_medium" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/spiceHue"
+                        style="@style/TasteSetupSegment"
+                        android:text="@string/taste_spice_hue" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:gravity="center_vertical|end"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_14dp"
+                        android:layout_height="@dimen/_14dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_local_fire_department"
+                        android:tint="@color/hue_primary" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4dp"
+                        android:text="@string/taste_prefs_spice_helper"
+                        android:textColor="@color/hue_primary"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="medium" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <!-- Flavours -->
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/flavorCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12dp"
+                android:background="@drawable/bg_shape_round_16"
+                android:backgroundTint="@color/hue_surface_lowest"
+                android:orientation="vertical"
+                android:padding="@dimen/_16dp"
+                android:visibility="gone">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_40dp"
+                        android:layout_height="@dimen/_40dp"
+                        android:background="@drawable/bg_shape_circle"
+                        android:backgroundTint="@color/hue_surface_container_low"
+                        android:importantForAccessibility="no"
+                        android:padding="@dimen/_10dp"
+                        android:src="@drawable/ic_favorite"
+                        android:tint="@color/hue_primary" />
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/taste_flavor_section"
+                            android:textColor="@color/hue_on_surface"
+                            android:textSize="@dimen/text_16sp"
+                            app:textFont="bold" />
+
+                        <com.base.common.widget.LsTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/taste_multi_hint"
+                            android:textColor="@color/hue_on_surface_variant"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="regular" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/flavorSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_primary_fixed_40"
+                        android:ellipsize="end"
+                        android:maxWidth="@dimen/_120dp"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_12dp"
+                        android:paddingVertical="@dimen/_6dp"
+                        android:textColor="@color/hue_primary"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="medium" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/flavorGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    app:chipSpacingHorizontal="@dimen/_8dp"
+                    app:chipSpacingVertical="@dimen/_8dp" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <!-- Dish styles -->
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/styleCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12dp"
+                android:background="@drawable/bg_shape_round_16"
+                android:backgroundTint="@color/hue_surface_lowest"
+                android:orientation="vertical"
+                android:padding="@dimen/_16dp"
+                android:visibility="gone">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_40dp"
+                        android:layout_height="@dimen/_40dp"
+                        android:background="@drawable/bg_shape_circle"
+                        android:backgroundTint="@color/hue_surface_container_low"
+                        android:importantForAccessibility="no"
+                        android:padding="@dimen/_10dp"
+                        android:src="@drawable/ic_restaurant_menu"
+                        android:tint="@color/hue_primary" />
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10dp"
+                        android:layout_weight="1"
+                        android:text="@string/taste_style_section"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_16sp"
+                        app:textFont="bold" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/styleSummary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_primary_fixed_40"
+                        android:ellipsize="end"
+                        android:maxWidth="@dimen/_120dp"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/_12dp"
+                        android:paddingVertical="@dimen/_6dp"
+                        android:textColor="@color/hue_primary"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="medium" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/styleGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    app:chipSpacingHorizontal="@dimen/_8dp"
+                    app:chipSpacingVertical="@dimen/_8dp" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <!-- Back to the saved choices -->
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/resetButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_44dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_12dp"
+                android:foreground="@drawable/fg_ripple_pill"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_16dp"
+                android:visibility="gone">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_18dp"
+                    android:layout_height="@dimen/_18dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_restart_alt"
+                    android:tint="@color/hue_on_surface_variant" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6dp"
+                    android:text="@string/taste_prefs_reset"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_14sp"
+                    app:textFont="medium" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.base.common.widget.LsFrameView
+        android:id="@+id/bottomBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/hue_surface"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:paddingVertical="@dimen/_12dp"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_48dp"
+            android:background="@drawable/bg_shape_pill"
+            android:backgroundTint="@color/hue_primary"
+            android:foreground="@drawable/fg_ripple_pill"
+            android:gravity="center"
+            android:text="@string/taste_prefs_save"
+            android:textColor="@color/hue_on_primary"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi" />
+
+    </com.base.common.widget.LsFrameView>
+
+</com.base.common.widget.LsConstraintView>

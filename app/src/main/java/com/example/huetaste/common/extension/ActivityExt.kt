@@ -12,6 +12,7 @@ import com.example.huetaste.feature.ai_chat.ChatHistoryActivity
 import com.example.huetaste.feature.auth.LoginActivity
 import com.example.huetaste.feature.auth.RegisterActivity
 import com.example.huetaste.feature.context_suggestion.ContextSuggestionActivity
+import com.example.huetaste.feature.diet_preferences.DietPreferencesActivity
 import com.example.huetaste.feature.dish_detail.DishDetailActivity
 import com.example.huetaste.feature.favorites.FavoriteCollection
 import com.example.huetaste.feature.favorites.FavoriteCollectionActivity
@@ -20,6 +21,7 @@ import com.example.huetaste.feature.main.MainTab
 import com.example.huetaste.feature.my_reports.MyReportsActivity
 import com.example.huetaste.feature.place_detail.PlaceDetailActivity
 import com.example.huetaste.feature.scan.ScanActivity
+import com.example.huetaste.feature.taste_preferences.TastePreferencesActivity
 import com.example.huetaste.feature.taste_setup.TasteSetupActivity
 
 /**
@@ -58,6 +60,10 @@ fun Context.startAiChatActivity(conversationId: String? = null) =
 fun Context.startChatHistoryActivity() = startActivityRtl(ChatHistoryActivity.newIntent(this))
 
 fun Context.startMyReportsActivity() = startActivityRtl(MyReportsActivity.newIntent(this))
+
+fun Context.startTastePreferencesActivity() = startActivityRtl(TastePreferencesActivity.newIntent(this))
+
+fun Context.startDietPreferencesActivity() = startActivityRtl(DietPreferencesActivity.newIntent(this))
 
 fun Context.startFavoriteCollectionActivity(collection: FavoriteCollection) =
     startActivityRtl(FavoriteCollectionActivity.newIntent(this, collection))

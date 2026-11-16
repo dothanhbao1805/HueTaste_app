@@ -47,7 +47,6 @@
                 android:background="@drawable/bg_shape_circle"
                 android:backgroundTint="@color/hue_surface_lowest"
                 android:contentDescription="@string/my_reports_back"
-                android:elevation="@dimen/_1dp"
                 android:foreground="@drawable/fg_ripple_circle"
                 android:padding="@dimen/_10dp"
                 android:src="@drawable/ic_arrow_back"

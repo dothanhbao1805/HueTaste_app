@@ -73,6 +73,12 @@
         <activity
             android:name=".feature.my_reports.MyReportsActivity"
             android:exported="false" />
+        <activity
+            android:name=".feature.taste_preferences.TastePreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.diet_preferences.DietPreferencesActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
