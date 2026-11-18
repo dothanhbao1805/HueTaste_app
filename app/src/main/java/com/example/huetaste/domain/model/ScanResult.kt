@@ -26,3 +26,40 @@ data class ScanResult(
     val dish: DishDetail?,
     val similarDishes: List<Dish>,
 )
+
+/** One past scan in "Lịch sử scan món". */
+data class ScanHistoryItem(
+    val id: String,
+    val status: ScanStatus,
+    val imageUrl: String,
+    val name: String,
+    val confidence: Float?,
+    val description: String?,
+    val isHueSpecialty: Boolean,
+    val isSaved: Boolean,
+    val dishId: String?,
+    /** Epoch millis. */
+    val createdAt: Long,
+)
+
+enum class ScanHistoryFilter(val apiValue: String) {
+    ALL("tat_ca"),
+    HUE_SPECIALTY("dac_san"),
+
+    /** A Huế dish not yet in the catalog: still being researched or left unverified. */
+    UPDATING("dang_cap_nhat"),
+    SAVED("da_luu"),
+}
+
+/** One page of the history, newest first. */
+data class ScanHistoryPage(
+    val items: List<ScanHistoryItem>,
+    val total: Int,
+    val page: Int,
+) {
+    val hasMore get() = page * PAGE_SIZE < total
+
+    companion object {
+        const val PAGE_SIZE = 20
+    }
+}

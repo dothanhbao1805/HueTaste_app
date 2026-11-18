@@ -79,6 +79,12 @@
         <activity
             android:name=".feature.diet_preferences.DietPreferencesActivity"
             android:exported="false" />
+        <activity
+            android:name=".feature.daily_needs.DailyNeedsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.scan_history.ScanHistoryActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

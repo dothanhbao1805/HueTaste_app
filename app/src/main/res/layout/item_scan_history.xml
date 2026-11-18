@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One past scan: the photo, the recognized dish, how well it matched and where it stands in the catalog. -->
+<com.base.common.widget.LsCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:outlineAmbientShadowColor="@color/hue_card_shadow"
+    android:outlineSpotShadowColor="@color/hue_card_shadow"
+    app:cardBackgroundColor="@color/hue_surface_lowest"
+    app:cardCornerRadius="@dimen/_12dp"
+    app:cardElevation="@dimen/_2dp"
+    app:rippleColor="@color/navigation_item_ripple"
+    app:strokeColor="@color/hue_outline_hairline"
+    app:strokeWidth="@dimen/_1dp">
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/_12dp"
+        android:paddingStart="@dimen/_12dp"
+        android:paddingEnd="@dimen/_4dp">
+
+        <com.base.common.widget.LsCardView
+            android:layout_width="@dimen/_72dp"
+            android:layout_height="@dimen/_72dp"
+            app:cardBackgroundColor="@color/hue_surface_container"
+            app:cardCornerRadius="@dimen/_12dp"
+            app:cardElevation="@dimen/_0dp"
+            app:strokeWidth="@dimen/_0dp">
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/scanImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop" />
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/_4dp"
+                android:background="@drawable/bg_shape_round_4"
+                android:backgroundTint="@color/hue_black_80"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_4dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_10dp"
+                    android:layout_height="@dimen/_10dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_bolt"
+                    android:tint="@color/hue_secondary_fixed" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scan_history_ai_badge"
+                    android:textColor="@color/hue_on_primary"
+                    android:textSize="@dimen/text_10sp"
+                    app:textFont="medium" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsCardView>
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/scanName"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_16sp"
+                    app:textFont="semi"
+                    tools:text="Bún bò Huế" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/scanTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6dp"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="medium"
+                    tools:text="14:32" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/scanDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_12sp"
+                app:textFont="regular"
+                tools:text="Bún sợi to, nước dùng đậm đà sả ớt, giò heo và chả cua" />
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/scanConfidence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_6dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_secondary_fixed"
+                    android:paddingHorizontal="@dimen/_8dp"
+                    android:paddingVertical="@dimen/_2dp"
+                    android:textColor="@color/hue_on_secondary_fixed"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="medium"
+                    tools:text="98% khớp" />
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/scanStatusBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_shape_pill"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_8dp"
+                    android:paddingVertical="@dimen/_2dp">
+
+                    <com.base.common.widget.LsImageView
+                        android:id="@+id/scanStatusIcon"
+                        android:layout_width="@dimen/_12dp"
+                        android:layout_height="@dimen/_12dp"
+                        android:importantForAccessibility="no" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/scanStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_4dp"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="medium"
+                        tools:text="Có trong danh mục" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+        <!-- 16dp icon with 10dp padding on each side keeps the ripple clear of it. -->
+        <com.base.common.widget.LsImageView
+            android:id="@+id/moreButton"
+            android:layout_width="@dimen/_36dp"
+            android:layout_height="@dimen/_36dp"
+            android:layout_marginStart="@dimen/_4dp"
+            android:contentDescription="@string/scan_history_more"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_more_vert"
+            android:tint="@color/hue_on_surface_variant" />
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsCardView>

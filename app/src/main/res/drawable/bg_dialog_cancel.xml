@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cancel button of the confirm dialogs: a white pill with a thin primary border. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/hue_surface_lowest" />
+    <stroke
+        android:width="@dimen/_0_5dp"
+        android:color="@color/hue_primary" />
+    <corners android:radius="@dimen/_100dp" />
+</shape>

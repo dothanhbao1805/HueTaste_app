@@ -23,6 +23,8 @@ import com.example.huetaste.data.remote.dto.DiaDiemChiTietDto
 import com.example.huetaste.data.remote.dto.MonAnChiTietDto
 import com.example.huetaste.data.remote.dto.NguyenLieuOutDto
 import com.example.huetaste.data.remote.dto.NhuCauBody
+import com.example.huetaste.data.remote.dto.NhuCauOutDto
+import com.example.huetaste.data.remote.dto.TrangLichSuScanDto
 import com.example.huetaste.data.remote.dto.ScanOutDto
 import com.example.huetaste.data.remote.dto.SoThichOutDto
 import com.example.huetaste.data.remote.dto.TrangDanhGiaDto
@@ -109,6 +111,26 @@ interface HueTasteApi {
 
     @PUT("users/me/nhu-cau")
     suspend fun saveDailyNeed(@Body body: NhuCauBody)
+
+    /** Without `ngay` the backend returns today's needs (Vietnam time). */
+    @GET("users/me/nhu-cau")
+    suspend fun getMyNeeds(): List<NhuCauOutDto>
+
+    @DELETE("users/me/nhu-cau/{idNhuCau}")
+    suspend fun deleteDailyNeed(@Path("idNhuCau") needId: String)
+
+    @GET("users/me/lich-su-scan")
+    suspend fun getScanHistory(
+        @Query("page") page: Int,
+        @Query("size") size: Int,
+        @Query("loc") filter: String,
+    ): TrangLichSuScanDto
+
+    @DELETE("users/me/lich-su-scan/{idLichSuScan}")
+    suspend fun deleteScan(@Path("idLichSuScan") scanId: String)
+
+    @POST("users/me/lich-su-scan/{idLichSuScan}/khoi-phuc")
+    suspend fun restoreScan(@Path("idLichSuScan") scanId: String)
 
     @POST("goi-y")
     suspend fun getSuggestions(@Body body: GoiYBody): KetQuaGoiYDto

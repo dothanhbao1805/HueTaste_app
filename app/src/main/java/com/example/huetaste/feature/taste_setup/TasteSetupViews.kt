@@ -3,12 +3,14 @@ package com.example.huetaste.feature.taste_setup
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import com.base.common.extension.clicks
 import com.example.huetaste.R
 import com.example.huetaste.databinding.ItemTasteChipBinding
 import com.example.huetaste.databinding.ItemTasteOptionBinding
 import com.example.huetaste.databinding.ViewTasteStatusBinding
+import com.example.huetaste.domain.model.MealType
 import com.google.android.material.chip.ChipGroup
 
 /** One selectable card of the taste setup pages. */
@@ -84,3 +86,21 @@ internal fun ViewTasteStatusBinding.render(state: OptionsState, isEmpty: Boolean
         },
     )
 }
+
+internal val MealType.label: Int
+    @StringRes get() = when (this) {
+        MealType.BREAKFAST -> R.string.taste_meal_breakfast
+        MealType.LUNCH -> R.string.taste_meal_lunch
+        MealType.SNACK -> R.string.taste_meal_snack
+        MealType.DINNER -> R.string.taste_meal_dinner
+        MealType.LATE_NIGHT -> R.string.taste_meal_late_night
+    }
+
+internal val MealType.icon: Int
+    @DrawableRes get() = when (this) {
+        MealType.BREAKFAST -> R.drawable.ic_wb_twilight
+        MealType.LUNCH -> R.drawable.ic_wb_sunny
+        MealType.SNACK -> R.drawable.ic_icecream
+        MealType.DINNER -> R.drawable.ic_restaurant_menu
+        MealType.LATE_NIGHT -> R.drawable.ic_bedtime
+    }

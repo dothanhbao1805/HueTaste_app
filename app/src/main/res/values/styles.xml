@@ -83,4 +83,120 @@
         <item name="android:textSize">@dimen/text_14sp</item>
         <item name="textFont">semi</item>
     </style>
+
+    <!-- "Nhu cầu hôm nay": one white section card. -->
+    <style name="DailyNeedsCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_shape_round_16</item>
+        <item name="android:backgroundTint">@color/hue_surface_lowest</item>
+        <item name="android:elevation">@dimen/_2dp</item>
+        <item name="android:outlineAmbientShadowColor">@color/hue_card_shadow</item>
+        <item name="android:outlineSpotShadowColor">@color/hue_card_shadow</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/_14dp</item>
+    </style>
+
+    <style name="DailyNeedsCardIcon">
+        <item name="android:layout_width">@dimen/_36dp</item>
+        <item name="android:layout_height">@dimen/_36dp</item>
+        <item name="android:background">@drawable/bg_shape_circle</item>
+        <item name="android:importantForAccessibility">no</item>
+        <item name="android:padding">@dimen/_8dp</item>
+    </style>
+
+    <style name="DailyNeedsCardTitle">
+        <item name="android:layout_width">@dimen/_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_10dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/hue_on_surface</item>
+        <item name="android:textSize">@dimen/text_16sp</item>
+        <item name="textFont">semi</item>
+    </style>
+
+    <!-- "+ Không cay"-style pill that adds a phrase to the note. -->
+    <style name="DailyNeedsQuickNote">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_shape_pill</item>
+        <item name="android:backgroundTint">@color/hue_surface_container</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">@drawable/fg_ripple_pill</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingHorizontal">@dimen/_12dp</item>
+        <item name="android:paddingVertical">@dimen/_6dp</item>
+        <item name="android:textColor">@color/hue_on_surface_variant</item>
+        <item name="android:textSize">@dimen/text_11sp</item>
+        <item name="textFont">medium</item>
+    </style>
+
+    <!-- "Lịch sử scan món": a filter pill; the selected state comes from isSelected. -->
+    <style name="ScanHistoryFilter">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_home_chip</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:foreground">@drawable/fg_ripple_pill</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">@dimen/_40dp</item>
+        <item name="android:paddingHorizontal">@dimen/_16dp</item>
+        <item name="android:paddingVertical">@dimen/_6dp</item>
+        <item name="android:textColor">@color/home_chip_text</item>
+        <item name="android:textSize">@dimen/text_12sp</item>
+        <item name="textFont">medium</item>
+    </style>
+
+    <!-- A centered empty or error state over the list. -->
+    <style name="ScanHistoryState">
+        <item name="android:layout_width">@dimen/_0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginHorizontal">@dimen/_10dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
+    <style name="ScanHistoryStateTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/_16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/hue_on_surface</item>
+        <item name="android:textSize">@dimen/text_18sp</item>
+        <item name="textFont">bold</item>
+    </style>
+
+    <style name="ScanHistoryStateMessage">
+        <item name="android:layout_width">@dimen/_260dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/_6dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/hue_on_surface_variant</item>
+        <item name="android:textSize">@dimen/text_14sp</item>
+        <item name="textFont">regular</item>
+    </style>
+
+    <!-- Primary pill with an icon and a label. -->
+    <style name="ScanHistoryPrimaryButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/_48dp</item>
+        <item name="android:background">@drawable/bg_shape_pill</item>
+        <item name="android:backgroundTint">@color/hue_primary</item>
+        <item name="android:foreground">@drawable/fg_ripple_pill</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingHorizontal">@dimen/_20dp</item>
+    </style>
+
+    <style name="ScanHistoryPrimaryButtonText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/_8dp</item>
+        <item name="android:textColor">@color/hue_on_primary</item>
+        <item name="android:textSize">@dimen/text_14sp</item>
+        <item name="textFont">semi</item>
+    </style>
 </resources>

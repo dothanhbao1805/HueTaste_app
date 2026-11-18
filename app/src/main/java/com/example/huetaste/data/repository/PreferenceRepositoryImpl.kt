@@ -63,6 +63,14 @@ class PreferenceRepositoryImpl @Inject constructor(
         apiCall(gson) { api.saveDailyNeed(need.toBody()) }
     }
 
+    override suspend fun getTodayNeeds(): List<DailyNeed> = withContext(ioDispatcher) {
+        apiCall(gson) { api.getMyNeeds().mapNotNull { it.toDomainOrNull() } }
+    }
+
+    override suspend fun deleteDailyNeed(id: String) = withContext(ioDispatcher) {
+        apiCall(gson) { api.deleteDailyNeed(id) }
+    }
+
     // Reading the session decrypts with the Keystore, so the flag is read off the main thread too.
     override suspend fun isSetupHandled(): Boolean = withContext(ioDispatcher) {
         val userId = sessionStore.session()?.user?.id ?: return@withContext true

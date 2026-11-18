@@ -1,7 +1,5 @@
 package com.example.huetaste.feature.taste_setup
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Lifecycle
@@ -70,22 +68,4 @@ class DailyNeedStepFragment : LsFragment<FragmentTasteDailyNeedBinding>(Fragment
         binding.avoidStatus.isVisible = status != null
         status?.let(binding.avoidStatus::setText)
     }
-
-    private val MealType.label: Int
-        @StringRes get() = when (this) {
-            MealType.BREAKFAST -> R.string.taste_meal_breakfast
-            MealType.LUNCH -> R.string.taste_meal_lunch
-            MealType.SNACK -> R.string.taste_meal_snack
-            MealType.DINNER -> R.string.taste_meal_dinner
-            MealType.LATE_NIGHT -> R.string.taste_meal_late_night
-        }
-
-    private val MealType.icon: Int
-        @DrawableRes get() = when (this) {
-            MealType.BREAKFAST -> R.drawable.ic_wb_twilight
-            MealType.LUNCH -> R.drawable.ic_wb_sunny
-            MealType.SNACK -> R.drawable.ic_icecream
-            MealType.DINNER -> R.drawable.ic_restaurant_menu
-            MealType.LATE_NIGHT -> R.drawable.ic_bedtime
-        }
 }

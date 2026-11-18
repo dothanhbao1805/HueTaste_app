@@ -24,6 +24,10 @@ interface PreferenceRepository {
     /** Creates or overwrites today's need for [DailyNeed.meal]. */
     suspend fun saveDailyNeed(need: DailyNeed)
 
+    /** Today's needs, one per meal. */
+    suspend fun getTodayNeeds(): List<DailyNeed>
+    suspend fun deleteDailyNeed(id: String)
+
     /** Whether the current user finished or skipped the taste setup on this device. */
     suspend fun isSetupHandled(): Boolean
     suspend fun markSetupHandled()

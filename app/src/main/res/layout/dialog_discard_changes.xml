@@ -61,12 +61,12 @@
         <com.base.common.widget.LsTextView
             android:id="@+id/discardButton"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_44dp"
-            android:layout_marginTop="@dimen/_8dp"
-            android:foreground="@drawable/fg_ripple_pill"
+            android:layout_height="@dimen/_48dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:background="@drawable/bg_dialog_cancel"
             android:gravity="center"
             android:text="@string/discard_changes_confirm"
-            android:textColor="@color/hue_on_surface_variant"
+            android:textColor="@color/hue_primary"
             android:textSize="@dimen/text_14sp"
             app:textFont="semi" />
 

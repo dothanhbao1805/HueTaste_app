@@ -43,15 +43,13 @@
 
             <com.base.common.widget.LsTextView
                 android:id="@+id/cancelButton"
-                android:foreground="@drawable/fg_ripple_pill"
                 android:layout_width="@dimen/_0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/_6dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_shape_pill"
-                android:backgroundTint="@color/hue_surface_container_high"
+                android:background="@drawable/bg_dialog_cancel"
                 android:gravity="center"
-                android:textColor="@color/hue_on_surface"
+                android:textColor="@color/hue_primary"
                 android:textSize="@dimen/text_14sp"
                 app:textFont="semi" />
 

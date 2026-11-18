@@ -14,9 +14,11 @@ import com.base.common.base.LsFragment
 import com.base.common.extension.clicks
 import com.example.huetaste.R
 import com.example.huetaste.common.extension.clicksComingSoon
+import com.example.huetaste.common.extension.startDailyNeedsActivity
 import com.example.huetaste.common.extension.startDietPreferencesActivity
 import com.example.huetaste.common.extension.startLoginActivity
 import com.example.huetaste.common.extension.startMyReportsActivity
+import com.example.huetaste.common.extension.startScanHistoryActivity
 import com.example.huetaste.common.extension.startTastePreferencesActivity
 import com.example.huetaste.databinding.FragmentProfileBinding
 import com.example.huetaste.databinding.ItemProfileRowBinding
@@ -42,10 +44,12 @@ class ProfileFragment : LsFragment<FragmentProfileBinding>(FragmentProfileBindin
             rowLogout.rowChevron.isVisible = false
 
             // shortcut: these screens are not built yet; replace each with its screen when it lands.
-            listOf(editButton, rowNeed.root, rowScanHistory.root, rowPassword.root)
+            listOf(editButton, rowPassword.root)
                 .forEach { it.clicksComingSoon() }
             rowTaste.root.clicks { requireContext().startTastePreferencesActivity() }
             rowDiet.root.clicks { requireContext().startDietPreferencesActivity() }
+            rowNeed.root.clicks { requireContext().startDailyNeedsActivity() }
+            rowScanHistory.root.clicks { requireContext().startScanHistoryActivity() }
             rowReports.root.clicks { requireContext().startMyReportsActivity() }
             rowLogout.root.clicks { LogoutDialog.show(childFragmentManager) }
             guestLoginButton.clicks { requireActivity().startLoginActivity() }

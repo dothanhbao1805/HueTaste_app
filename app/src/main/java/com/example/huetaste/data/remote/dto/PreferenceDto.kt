@@ -38,4 +38,15 @@ data class NhuCauBody(
     val gioAn: String?,
     val nganSach: Long?,
     val nguyenLieuTranh: List<String>,
+    val ghiChu: String? = null,
+)
+
+data class NhuCauOutDto(
+    val idNhuCauTheoNgay: String,
+    val buaAn: String?,
+    /** "HH:mm:ss". */
+    val gioAn: String?,
+    val nganSach: Long?,
+    val ghiChu: String?,
+    val nguyenLieuTranh: List<NguyenLieuOutDto>?,
 )

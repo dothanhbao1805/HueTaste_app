@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The Stitch "Lịch sử scan món - HueTaste" screen: past scans grouped by day, with filters, empty and error states. -->
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hue_surface"
+    tools:context=".feature.scan_history.ScanHistoryActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statusBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/navigationBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/headerBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:paddingTop="@dimen/_6dp"
+        android:paddingBottom="@dimen/_12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/statusBar">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/backButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_surface_lowest"
+            android:contentDescription="@string/taste_prefs_back"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/hue_on_surface" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/profile_scan_history_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_18sp"
+            app:textFont="bold" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsView
+        android:id="@+id/headerDivider"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_1dp"
+        android:background="@color/hue_outline_hairline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerBar" />
+
+    <HorizontalScrollView
+        android:id="@+id/filterBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerDivider">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/_12dp">
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/filterAll"
+                style="@style/ScanHistoryFilter"
+                tools:text="Tất cả · 4" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/filterHue"
+                style="@style/ScanHistoryFilter"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/scan_history_filter_hue" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/filterUpdating"
+                style="@style/ScanHistoryFilter"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/scan_history_filter_updating" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/filterSaved"
+                style="@style/ScanHistoryFilter"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/scan_history_filter_saved" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </HorizontalScrollView>
+
+    <!-- The bottom padding keeps the last card clear of the floating scan button. -->
+    <com.base.common.widget.scroll.LsRecyclerView
+        android:id="@+id/scanList"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:layout_marginHorizontal="@dimen/_10dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_88dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterBar"
+        tools:listitem="@layout/item_scan_history" />
+
+    <ProgressBar
+        android:id="@+id/loadingProgress"
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_40dp"
+        android:indeterminateTint="@color/hue_primary"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterBar" />
+
+    <!-- Shown when the user has never scanned a dish. -->
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/emptyView"
+        style="@style/ScanHistoryState"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterBar"
+        tools:visibility="gone">
+
+        <com.base.common.widget.LsImageView
+            android:layout_width="@dimen/_96dp"
+            android:layout_height="@dimen/_96dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_primary_fixed"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/_26dp"
+            android:src="@drawable/ic_photo_camera"
+            android:tint="@color/hue_primary" />
+
+        <com.base.common.widget.LsTextView
+            style="@style/ScanHistoryStateTitle"
+            android:text="@string/scan_history_empty_title" />
+
+        <com.base.common.widget.LsTextView
+            style="@style/ScanHistoryStateMessage"
+            android:text="@string/scan_history_empty_message" />
+
+        <com.base.common.widget.LsLinearView
+            android:id="@+id/firstScanButton"
+            style="@style/ScanHistoryPrimaryButton"
+            android:layout_marginTop="@dimen/_24dp">
+
+            <com.base.common.widget.LsImageView
+                android:layout_width="@dimen/_20dp"
+                android:layout_height="@dimen/_20dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_photo_camera"
+                android:tint="@color/hue_on_primary" />
+
+            <com.base.common.widget.LsTextView
+                style="@style/ScanHistoryPrimaryButtonText"
+                android:text="@string/scan_history_first_scan" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+    <!-- Shown when the chosen filter matches no scan. -->
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/filterEmptyView"
+        style="@style/ScanHistoryState"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterBar"
+        tools:visibility="gone">
+
+        <com.base.common.widget.LsImageView
+            android:layout_width="@dimen/_64dp"
+            android:layout_height="@dimen/_64dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_surface_container"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/_16dp"
+            android:src="@drawable/ic_tune"
+            android:tint="@color/hue_on_surface_variant" />
+
+        <com.base.common.widget.LsTextView
+            style="@style/ScanHistoryStateTitle"
+            android:text="@string/scan_history_filter_empty_title" />
+
+        <com.base.common.widget.LsTextView
+            style="@style/ScanHistoryStateMessage"
+            android:text="@string/scan_history_filter_empty_message" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/showAllButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12dp"
+            android:foreground="@drawable/fg_ripple_pill"
+            android:gravity="center"
+            android:minHeight="@dimen/_44dp"
+            android:paddingHorizontal="@dimen/_16dp"
+            android:paddingVertical="@dimen/_8dp"
+            android:text="@string/scan_history_show_all"
+            android:textColor="@color/hue_primary"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <!-- Shown when the first page could not be loaded. -->
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/errorView"
+        style="@style/ScanHistoryState"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/filterBar"
+        tools:visibility="gone">
+
+        <com.base.common.widget.LsImageView
+            android:layout_width="@dimen/_80dp"
+            android:layout_height="@dimen/_80dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_error_container"
+            android:importantForAccessibility="no"
+            android:padding="@dimen/_20dp"
+            android:src="@drawable/ic_cloud_off"
+            android:tint="@color/hue_error" />
+
+        <com.base.common.widget.LsTextView
+            style="@style/ScanHistoryStateTitle"
+            android:text="@string/scan_history_error_title" />
+
+        <com.base.common.widget.LsTextView
+            style="@style/ScanHistoryStateMessage"
+            android:text="@string/scan_history_error_message" />
+
+        <com.base.common.widget.LsLinearView
+            android:id="@+id/retryButton"
+            style="@style/ScanHistoryPrimaryButton"
+            android:layout_marginTop="@dimen/_20dp">
+
+            <com.base.common.widget.LsImageView
+                android:layout_width="@dimen/_18dp"
+                android:layout_height="@dimen/_18dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_refresh"
+                android:tint="@color/hue_on_primary" />
+
+            <com.base.common.widget.LsTextView
+                style="@style/ScanHistoryPrimaryButtonText"
+                android:text="@string/scan_history_retry" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/scanButton"
+        style="@style/ScanHistoryPrimaryButton"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:layout_marginBottom="@dimen/_16dp"
+        android:contentDescription="@string/scan_history_new_scan"
+        android:elevation="@dimen/_6dp"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.base.common.widget.LsImageView
+            android:layout_width="@dimen/_20dp"
+            android:layout_height="@dimen/_20dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_document_scanner"
+            android:tint="@color/hue_on_primary" />
+
+        <com.base.common.widget.LsTextView
+            style="@style/ScanHistoryPrimaryButtonText"
+            android:text="@string/scan_history_new_scan" />
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsConstraintView>

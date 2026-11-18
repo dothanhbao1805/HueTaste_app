@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Day header of the scan history: "Hôm nay", "Hôm qua" or the date, with how many dishes it holds. -->
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/_16dp">
+
+    <com.base.common.widget.LsView
+        android:layout_width="@dimen/_6dp"
+        android:layout_height="@dimen/_14dp"
+        android:background="@drawable/bg_shape_pill"
+        android:backgroundTint="@color/hue_primary" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/headerLabel"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_6dp"
+        android:layout_weight="1"
+        android:textColor="@color/hue_on_surface"
+        android:textSize="@dimen/text_16sp"
+        app:textFont="semi"
+        tools:text="Hôm nay" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/headerCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_11sp"
+        app:textFont="regular"
+        tools:text="2 món nhận diện" />
+
+</com.base.common.widget.LsLinearView>

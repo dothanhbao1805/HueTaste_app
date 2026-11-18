@@ -51,6 +51,9 @@ data class DailyNeed(
     val time: String,
     val budget: MealBudget?,
     val avoidIngredientIds: List<String>,
+    val note: String? = null,
+    /** The backend id once saved; needed to delete the meal. */
+    val id: String? = null,
 )
 
 /** The catalogs the taste setup chooses from. */

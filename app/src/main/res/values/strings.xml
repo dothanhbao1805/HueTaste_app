@@ -711,4 +711,59 @@
     <string name="diet_prefs_subtitle">Chúng tôi sẽ gợi ý món chuẩn vị và phù hợp nhất với bạn.</string>
     <string name="diet_prefs_info">Các món không phù hợp sẽ được ẩn hoặc gắn nhãn cảnh báo trong gợi ý món và kết quả tìm kiếm quán ngon cố đô.</string>
     <string name="diet_prefs_saved">Đã lưu chế độ ăn</string>
+
+    <!-- Daily needs (edit from Profile) -->
+    <string name="daily_needs_kicker">Tùy biến nhịp ăn</string>
+    <string name="daily_needs_title">Hôm nay bạn ăn thế nào?</string>
+    <string name="daily_needs_subtitle">Không bắt buộc — giúp HueTaste gợi ý đúng bữa và đúng nhịp sinh hoạt hôm nay của bạn.</string>
+    <string name="daily_needs_meal_breakfast_hint">6:00 – 9:30 • Điểm tâm, bún bò, bánh canh</string>
+    <string name="daily_needs_meal_lunch_hint">11:00 – 13:30 • Cơm niêu, cơm hến, mâm cơm Huế</string>
+    <string name="daily_needs_meal_snack_hint">14:30 – 17:00 • Bánh bèo, chè hẻm, bánh ép</string>
+    <string name="daily_needs_meal_dinner_hint">18:00 – 21:00 • Quán ấm cúng, ven sông Hương</string>
+    <string name="daily_needs_meal_late_night_hint">Sau 21:30 • Bánh mì cầu Tràng Tiền, bún bò đêm</string>
+    <string name="daily_needs_budget_under_30_hint">Bình dân, học sinh</string>
+    <string name="daily_needs_budget_30_60_hint">Phổ biến, đầy đặn</string>
+    <string name="daily_needs_budget_60_100_hint">Nhà hàng, gia đình</string>
+    <string name="daily_needs_budget_over_100_hint">Ẩm thực Cung đình</string>
+    <string name="daily_needs_budget_none">Không giới hạn</string>
+    <string name="daily_needs_note_title">Ghi chú khẩu vị</string>
+    <string name="daily_needs_note_subtitle">Càng chi tiết, gợi ý càng chuẩn gu Cố Đô</string>
+    <string name="daily_needs_note_hint">Ví dụ: hôm nay muốn ăn nhẹ, ít cay, nhiều rau thơm…</string>
+    <string name="daily_needs_note_counter">%1$d/%2$d</string>
+    <string name="daily_needs_note_no_spicy">Không cay</string>
+    <string name="daily_needs_note_vegetarian">Ăn chay</string>
+    <string name="daily_needs_note_add_no_spicy">+ Không cay</string>
+    <string name="daily_needs_note_add_vegetarian">+ Ăn chay</string>
+    <string name="daily_needs_clear">Xóa lựa chọn</string>
+    <string name="daily_needs_saved">Đã lưu nhu cầu hôm nay</string>
+
+    <!-- Scan history (from Profile) -->
+    <string name="scan_history_filter_all">Tất cả</string>
+    <string name="scan_history_filter_all_count">Tất cả · %1$d</string>
+    <string name="scan_history_filter_hue">Đặc sản Huế</string>
+    <string name="scan_history_filter_updating">Đang cập nhật</string>
+    <string name="scan_history_filter_saved">Đã lưu</string>
+    <string name="scan_history_day_count">%1$d món nhận diện</string>
+    <string name="scan_history_ai_badge">AI</string>
+    <string name="scan_history_match">%1$d%% khớp</string>
+    <string name="scan_history_in_catalog">Có trong danh mục</string>
+    <string name="scan_history_updating">Đang cập nhật</string>
+    <string name="scan_history_unverified">Chưa xác minh</string>
+    <string name="scan_history_not_saved">Ngoài danh mục</string>
+    <string name="scan_history_more">Xóa khỏi lịch sử</string>
+    <string name="scan_history_loading_more">Đang tải thêm món đã quét…</string>
+    <string name="scan_history_empty_title">Chưa có món nào được quét</string>
+    <string name="scan_history_empty_message">Chụp một món ăn bất kỳ để HueTaste nhận diện, thẩm định độ chuẩn vị và gợi ý quán ngon xứ Huế.</string>
+    <string name="scan_history_first_scan">Quét món đầu tiên</string>
+    <string name="scan_history_filter_empty_title">Không có món nào khớp bộ lọc</string>
+    <string name="scan_history_filter_empty_message">Bạn chưa quét món nào thuộc danh mục này.</string>
+    <string name="scan_history_show_all">Xem tất cả món đã quét</string>
+    <string name="scan_history_error_title">Mất kết nối máy chủ</string>
+    <string name="scan_history_error_message">Không tải được dữ liệu scan gần đây. Vui lòng kiểm tra mạng và thử lại.</string>
+    <string name="scan_history_retry">Thử lại ngay</string>
+    <string name="scan_history_new_scan">Quét món mới</string>
+    <string name="scan_history_delete_title">Xóa khỏi lịch sử?</string>
+    <string name="scan_history_delete_message">Xóa \"%1$s\" khỏi lịch sử scan của bạn? Bạn có thể hoàn tác ngay sau khi xóa.</string>
+    <string name="scan_history_deleted">Đã xóa món khỏi lịch sử scan</string>
+    <string name="scan_history_action_failed">Chưa thực hiện được. Hãy thử lại.</string>
 </resources>

@@ -48,32 +48,33 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_24dp"
-            android:gravity="end"
             android:orientation="horizontal">
 
             <com.base.common.widget.LsTextView
                 android:id="@+id/cancelButton"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_0dp"
                 android:layout_height="@dimen/_44dp"
-                android:foreground="@drawable/fg_ripple_pill"
+                android:layout_weight="1"
+                android:background="@drawable/bg_dialog_cancel"
                 android:gravity="center"
-                android:paddingHorizontal="@dimen/_20dp"
+                android:paddingHorizontal="@dimen/_12dp"
                 android:text="@string/ai_delete_cancel"
-                android:textColor="@color/hue_on_surface_variant"
+                android:textColor="@color/hue_primary"
                 android:textSize="@dimen/text_14sp"
                 app:textFont="semi" />
 
             <com.base.common.widget.LsLinearView
                 android:id="@+id/confirmButton"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_0dp"
                 android:layout_height="@dimen/_44dp"
                 android:layout_marginStart="@dimen/_10dp"
+                android:layout_weight="1"
                 android:background="@drawable/bg_shape_pill"
                 android:backgroundTint="@color/hue_error"
                 android:foreground="@drawable/fg_ripple_pill"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/_24dp">
+                android:paddingHorizontal="@dimen/_12dp">
 
                 <com.base.common.widget.LsImageView
                     android:layout_width="@dimen/_18dp"

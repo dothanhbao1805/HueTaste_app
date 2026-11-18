@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A budget tile of "Nhu cầu hôm nay": a price range over a short hint; the selected state comes from isSelected. -->
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_daily_budget_tile"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/fg_ripple_round_12"
+    android:minHeight="@dimen/_52dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="@dimen/_12dp">
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:duplicateParentState="true"
+        android:orientation="vertical">
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/budgetLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:duplicateParentState="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/daily_budget_title"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi"
+            tools:text="30k – 60k" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/budgetHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:duplicateParentState="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/home_chip_text"
+            android:textSize="@dimen/text_11sp"
+            app:textFont="medium"
+            tools:text="Phổ biến, đầy đặn" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/budgetCheck"
+        android:layout_width="@dimen/_18dp"
+        android:layout_height="@dimen/_18dp"
+        android:layout_marginStart="@dimen/_4dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_check_circle"
+        android:tint="@color/hue_on_primary"
+        android:visibility="invisible" />
+
+</com.base.common.widget.LsLinearView>
