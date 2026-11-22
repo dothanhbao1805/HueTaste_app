@@ -11,10 +11,15 @@ data class MonAnDto(
     val giaThamKhaoDen: Int?,
     val idDanhMucMonAn: String? = null,
     val thoiTietPhuHop: List<String>? = null,
+    /** Only `GET /mon-an` sends these two. */
+    val soQuan: Int? = null,
+    val laMonTieuBieu: Boolean? = null,
 )
 
 data class TrangMonAnDto(
     val items: List<MonAnDto>?,
+    val total: Int? = null,
+    val page: Int? = null,
 )
 
 data class YeuThichDto(
@@ -73,6 +78,8 @@ data class MonAnDiaDiemDto(
 
 data class TrangDiaDiemDto(
     val items: List<DiaDiemDto>?,
+    val total: Int? = null,
+    val page: Int? = null,
 )
 
 data class DiaDiemDto(
@@ -88,4 +95,6 @@ data class DiaDiemDto(
     val soDienThoai: String? = null,
     /** Only filled when the request carried the user's location. */
     val khoangCachKm: Double? = null,
+    /** `co_do`, `bo_bac` or `bo_nam`, worked out by the backend from the coordinates. */
+    val khuVuc: String? = null,
 )

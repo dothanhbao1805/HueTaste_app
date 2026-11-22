@@ -7,11 +7,9 @@ import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import com.base.common.extension.clicks
 import com.example.huetaste.R
-import com.example.huetaste.databinding.ItemTasteChipBinding
 import com.example.huetaste.databinding.ItemTasteOptionBinding
 import com.example.huetaste.databinding.ViewTasteStatusBinding
 import com.example.huetaste.domain.model.MealType
-import com.google.android.material.chip.ChipGroup
 
 /** One selectable card of the taste setup pages. */
 internal data class TasteOption(
@@ -48,29 +46,6 @@ internal fun ViewGroup.bindOptions(options: List<TasteOption>, onClick: (TasteOp
         item.root.isSelected = option.selected
         item.optionCheck.isSelected = option.selected
     }
-}
-
-/** Shows [items] as selectable pills, rebuilding them only when the items change, like [bindOptions]. */
-internal fun <T> ChipGroup.bindChips(
-    items: List<T>,
-    key: (T) -> String,
-    label: (T) -> String,
-    isSelected: (T) -> Boolean,
-    onClick: (T) -> Unit,
-) {
-    val keys = items.map(key)
-    if (tag != keys) {
-        removeAllViews()
-        val inflater = LayoutInflater.from(context)
-        items.forEach { item ->
-            val chip = ItemTasteChipBinding.inflate(inflater, this, false).root
-            chip.text = label(item)
-            chip.clicks { onClick(item) }
-            addView(chip)
-        }
-        tag = keys
-    }
-    items.forEachIndexed { index, item -> getChildAt(index).isSelected = isSelected(item) }
 }
 
 /** Shows loading, failure (tap to retry) or an empty catalog; hidden once a non-empty catalog is shown. */

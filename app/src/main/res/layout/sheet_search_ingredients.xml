@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ingredient filter of the search tab: picked names on top, matches of the search box below. -->
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_snap_tips_sheet"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/_20dp">
+
+    <com.base.common.widget.LsConstraintView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_16dp"
+        android:paddingTop="@dimen/_16dp"
+        android:paddingBottom="@dimen/_8dp">
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/search_ingredients_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_18sp"
+            app:textFont="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ingredientClose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/ingredientClose"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp"
+            android:contentDescription="@string/scan_close"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_close"
+            android:tint="@color/hue_on_surface_variant"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.base.common.widget.LsConstraintView>
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:background="@drawable/bg_shape_pill"
+        android:backgroundTint="@color/hue_surface_container_low"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/_48dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_14dp">
+
+        <com.base.common.widget.LsImageView
+            android:layout_width="@dimen/_20dp"
+            android:layout_height="@dimen/_20dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_search"
+            android:tint="@color/hue_primary" />
+
+        <com.base.common.widget.LsEditText
+            android:id="@+id/ingredientSearchInput"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/search_ingredients_hint"
+            android:imeOptions="actionSearch"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:maxLength="60"
+            android:maxLines="1"
+            android:paddingVertical="@dimen/_12dp"
+            android:textColor="@color/hue_on_surface"
+            android:textColorHint="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="regular" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:scrollbars="none">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_16dp"
+            android:paddingBottom="@dimen/_12dp">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/ingredientSelectedGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12dp"
+                app:chipSpacingHorizontal="@dimen/_8dp"
+                app:chipSpacingVertical="@dimen/_8dp" />
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16dp"
+                android:text="@string/search_ingredients_suggestions"
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_12sp"
+                app:textFont="semi" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/ingredientStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="regular" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/ingredientResultGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                app:chipSpacingHorizontal="@dimen/_8dp"
+                app:chipSpacingVertical="@dimen/_8dp" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_16dp"
+        android:layout_marginTop="@dimen/_8dp"
+        android:orientation="horizontal">
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/ingredientReset"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_dialog_cancel"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/fg_ripple_pill"
+            android:gravity="center"
+            android:minHeight="@dimen/_48dp"
+            android:text="@string/search_reset"
+            android:textColor="@color/hue_primary"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/ingredientApply"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_home_button_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="@drawable/fg_ripple_pill"
+            android:gravity="center"
+            android:minHeight="@dimen/_48dp"
+            android:text="@string/search_apply"
+            android:textColor="@color/hue_on_primary"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="semi" />
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsLinearView>

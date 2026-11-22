@@ -1,10 +1,5 @@
 package com.example.huetaste.feature.home
 
-import android.Manifest
-import android.content.Intent
-import android.net.Uri
-import android.provider.Settings
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.StringRes
 import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
@@ -18,11 +13,13 @@ import com.base.common.extension.clicks
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
 import com.example.huetaste.common.extension.clicksComingSoon
-import com.example.huetaste.common.extension.loadWithShimmer
 import com.example.huetaste.common.extension.startDishDetailActivity
 import com.example.huetaste.common.extension.startLoginActivity
 import com.example.huetaste.common.extension.startPlaceDetailActivity
 import com.example.huetaste.common.extension.startScanActivity
+import com.example.huetaste.common.ui.LocationAccess
+import com.example.huetaste.common.ui.showArea
+import com.example.huetaste.common.ui.showAvatar
 import com.example.huetaste.databinding.FragmentHomeBinding
 import com.example.huetaste.domain.model.AppError
 import com.example.huetaste.domain.model.DeviceArea
@@ -70,18 +67,11 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
 
     private var shownUser: UserProfile? = null
 
-    /** A first tap always shows the system dialog; only after that can "no dialog" mean it was denied for good. */
-    private var hasRequestedLocation = false
-
-    private val locationPermission = registerForActivityResult(
-        ActivityResultContracts.RequestMultiplePermissions(),
-    ) { result ->
-        viewModel.refreshLocation(openSettingsIfOff = result.values.any { it })
-    }
-
-    private val locationSettings = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        viewModel.refreshLocation()
-    }
+    private val locationAccess = LocationAccess(
+        fragment = this,
+        onPermissionResult = { granted -> viewModel.refreshLocation(openSettingsIfOff = granted) },
+        onSettingsClosed = { viewModel.refreshLocation() },
+    )
 
     override fun onViewCreated() {
         binding.homeDishList.adapter = dishAdapter
@@ -96,11 +86,13 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         binding.homeDishesRetry.clicks { viewModel.retry() }
         binding.homePlacesRetry.clicks { viewModel.retryPlaces() }
         binding.scanDishButton.clicks { requireContext().startScanActivity() }
-        binding.locationGroup.clicks { onLocationClicked() }
+        binding.header.locationGroup.clicks {
+            locationAccess.onAreaClicked(viewModel.uiState.value.location) { viewModel.refreshLocation() }
+        }
 
         // These entries have no destination yet; they still give the standard ripple and press animation.
         with(binding) {
-            listOf(notificationsButton, seeAllDishes, mapLink).forEach { it.clicksComingSoon() }
+            listOf(header.notificationsButton, seeAllDishes, mapLink).forEach { it.clicksComingSoon() }
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
@@ -111,8 +103,8 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
                     viewModel.events.collect { event ->
                         when (event) {
                             HomeEvent.FavoriteFailed -> requireContext().makeToast(R.string.home_favorite_failed)
-                            HomeEvent.AskLocationPermission -> requestLocationPermission()
-                            HomeEvent.OpenLocationSettings -> openLocationSettings()
+                            HomeEvent.AskLocationPermission -> locationAccess.requestPermission()
+                            HomeEvent.OpenLocationSettings -> locationAccess.openLocationSettings()
                         }
                     }
                 }
@@ -122,7 +114,7 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
 
     private fun render(state: HomeUiState) {
         val dayPart = currentDayPart()
-        showLocation(state.location)
+        binding.header.showArea(state.location, R.string.home_location_subtitle)
         showGreeting(state.user, dayPart)
         showContext(state.context, dayPart)
         showSubtitle(state)
@@ -135,56 +127,6 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         categoryAdapter.submitList(state.categories)
     }
 
-    private fun showLocation(location: DeviceArea?) {
-        when (location) {
-            null -> {
-                binding.locationTitle.setText(R.string.home_location_loading)
-                binding.locationSubtitle.setText(R.string.home_location_subtitle)
-            }
-            DeviceArea.PermissionMissing, DeviceArea.LocationOff -> {
-                binding.locationTitle.setText(R.string.home_location_off)
-                binding.locationSubtitle.setText(R.string.home_location_off_subtitle)
-            }
-            is DeviceArea.Found -> {
-                binding.locationTitle.text = location.name ?: getString(R.string.home_location_on)
-                binding.locationSubtitle.setText(
-                    if (location.name != null) R.string.home_location_subtitle else R.string.home_location_unknown_subtitle,
-                )
-            }
-        }
-    }
-
-    private fun onLocationClicked() {
-        when (viewModel.uiState.value.location) {
-            null -> Unit
-            DeviceArea.PermissionMissing -> {
-                val deniedForGood = hasRequestedLocation &&
-                    LOCATION_PERMISSIONS.none { shouldShowRequestPermissionRationale(it) }
-                if (deniedForGood) {
-                    openAppSettings()
-                } else {
-                    hasRequestedLocation = true
-                    requestLocationPermission()
-                }
-            }
-            DeviceArea.LocationOff -> openLocationSettings()
-            is DeviceArea.Found -> viewModel.refreshLocation()
-        }
-    }
-
-    private fun requestLocationPermission() {
-        locationPermission.launch(LOCATION_PERMISSIONS)
-    }
-
-    private fun openLocationSettings() {
-        locationSettings.launch(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
-    }
-
-    private fun openAppSettings() {
-        val packageUri = Uri.fromParts("package", requireContext().packageName, null)
-        locationSettings.launch(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageUri))
-    }
-
     private fun showGreeting(user: UserProfile?, dayPart: DayPart) {
         val greeting = getString(dayPart.greeting)
         binding.greetingTitle.text = user?.name?.takeIf { it.isNotBlank() }
@@ -194,10 +136,7 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         // Every state change renders; the photo only loads again for another user. A guest keeps the layout's icon.
         if (user != null && user != shownUser) {
             shownUser = user
-            binding.profileAvatar.loadWithShimmer(user.avatarUrl) {
-                error(R.drawable.ic_person)
-                fallback(R.drawable.ic_person)
-            }
+            binding.header.showAvatar(user.avatarUrl)
         }
     }
 
@@ -330,9 +269,5 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
 
     private companion object {
         const val SEPARATOR = " • "
-        val LOCATION_PERMISSIONS = arrayOf(
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-        )
     }
 }

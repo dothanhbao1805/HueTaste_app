@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Radius of "Gần tôi" in the search tab. -->
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_snap_tips_sheet"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/_16dp"
+    android:paddingTop="@dimen/_16dp"
+    android:paddingBottom="@dimen/_20dp">
+
+    <com.base.common.widget.LsConstraintView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/search_radius_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_18sp"
+            app:textFont="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/radiusClose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/radiusClose"
+            android:layout_width="@dimen/_40dp"
+            android:layout_height="@dimen/_40dp"
+            android:contentDescription="@string/scan_close"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_close"
+            android:tint="@color/hue_on_surface_variant"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.base.common.widget.LsConstraintView>
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/radiusValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16dp"
+        android:gravity="center"
+        android:textColor="@color/hue_primary"
+        android:textSize="@dimen/text_24sp"
+        app:textFont="bold" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/radiusSlider"
+        style="@style/Widget.HueTaste.BudgetSlider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8dp"
+        android:contentDescription="@string/search_radius_title"
+        android:stepSize="1"
+        android:value="5"
+        android:valueFrom="1"
+        android:valueTo="50" />
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/search_radius_min"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_12sp"
+            app:textFont="regular" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search_radius_max"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_12sp"
+            app:textFont="regular" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/radiusApply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20dp"
+        android:background="@drawable/bg_home_button_primary"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="@drawable/fg_ripple_pill"
+        android:gravity="center"
+        android:minHeight="@dimen/_48dp"
+        android:text="@string/search_apply"
+        android:textColor="@color/hue_on_primary"
+        android:textSize="@dimen/text_14sp"
+        app:textFont="semi" />
+
+</com.base.common.widget.LsLinearView>

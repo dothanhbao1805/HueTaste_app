@@ -1,5 +1,605 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/hue_surface" />
+    android:background="@color/hue_surface">
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/view_main_header"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--
+        The search box, tabs and filters scroll away with the results, as in the favorites tab, so small screens keep
+        room for the list. The 10dp side margin is applied once, here.
+    -->
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/searchCoordinator"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:paddingHorizontal="@dimen/_10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/searchAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/hue_surface"
+            android:stateListAnimator="@null"
+            app:elevation="@dimen/_0dp"
+            app:liftOnScroll="false">
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_4dp"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_surface_container_high"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/_48dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/_14dp"
+                    android:paddingEnd="@dimen/_4dp">
+
+                    <com.base.common.widget.LsImageView
+                        android:layout_width="@dimen/_22dp"
+                        android:layout_height="@dimen/_22dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_search"
+                        android:tint="@color/hue_primary" />
+
+                    <com.base.common.widget.LsEditText
+                        android:id="@+id/searchInput"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="@string/search_hint"
+                        android:imeOptions="actionSearch"
+                        android:importantForAutofill="no"
+                        android:inputType="text"
+                        android:maxLength="60"
+                        android:maxLines="1"
+                        android:paddingVertical="@dimen/_12dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textColorHint="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="regular" />
+
+                    <com.base.common.widget.LsImageView
+                        android:id="@+id/searchClear"
+                        android:layout_width="@dimen/_40dp"
+                        android:layout_height="@dimen/_40dp"
+                        android:contentDescription="@string/search_clear"
+                        android:foreground="@drawable/fg_ripple_circle"
+                        android:padding="@dimen/_10dp"
+                        android:src="@drawable/ic_close"
+                        android:tint="@color/hue_on_surface_variant"
+                        android:visibility="gone" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6dp"
+                    android:drawableStart="@drawable/ic_tips_and_updates"
+                    android:drawablePadding="@dimen/_6dp"
+                    android:drawableTint="@color/hue_primary"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:paddingHorizontal="@dimen/_8dp"
+                    android:text="@string/search_accent_hint"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="regular" />
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:backgroundTint="@color/hue_surface_container"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/_4dp">
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/tabDishes"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_favorites_tab"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/ic_ramen_dining"
+                        android:drawablePadding="@dimen/_6dp"
+                        android:drawableTint="@color/home_chip_text"
+                        android:focusable="true"
+                        android:foreground="@drawable/fg_ripple_pill"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_44dp"
+                        android:paddingHorizontal="@dimen/_12dp"
+                        android:text="@string/search_tab_dishes"
+                        android:textColor="@color/home_chip_text"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="semi" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/tabPlaces"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_favorites_tab"
+                        android:clickable="true"
+                        android:drawableStart="@drawable/ic_storefront"
+                        android:drawablePadding="@dimen/_6dp"
+                        android:drawableTint="@color/home_chip_text"
+                        android:focusable="true"
+                        android:foreground="@drawable/fg_ripple_pill"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_44dp"
+                        android:paddingHorizontal="@dimen/_12dp"
+                        android:text="@string/search_tab_places"
+                        android:textColor="@color/home_chip_text"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="semi" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <HorizontalScrollView
+                    android:id="@+id/filterScroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:overScrollMode="never"
+                    android:scrollbars="none">
+
+                    <!-- A HorizontalScrollView hosts one child, so the two filter rows share this frame. -->
+                    <com.base.common.widget.LsFrameView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.base.common.widget.LsLinearView
+                            android:id="@+id/dishFilterRow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/categoryGroup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:chipSpacingHorizontal="@dimen/_8dp"
+                                app:singleLine="true" />
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/ingredientChip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_home_chip"
+                                android:clickable="true"
+                                android:drawableEnd="@drawable/ic_tune"
+                                android:drawablePadding="@dimen/_4dp"
+                                android:drawableTint="@color/home_chip_text"
+                                android:focusable="true"
+                                android:foreground="@drawable/fg_ripple_pill"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_40dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:paddingVertical="@dimen/_6dp"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_14sp"
+                                app:textFont="medium" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsLinearView
+                            android:id="@+id/placeFilterRow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/nearMeChip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_home_chip"
+                                android:clickable="true"
+                                android:drawableStart="@drawable/ic_near_me"
+                                android:drawablePadding="@dimen/_4dp"
+                                android:drawableTint="@color/home_chip_text"
+                                android:focusable="true"
+                                android:foreground="@drawable/fg_ripple_pill"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_40dp"
+                                android:paddingHorizontal="@dimen/_14dp"
+                                android:paddingVertical="@dimen/_6dp"
+                                android:text="@string/search_near_me"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_14sp"
+                                app:textFont="medium" />
+
+                            <com.base.common.widget.LsTextView
+                                android:id="@+id/radiusChip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                android:background="@drawable/bg_home_chip"
+                                android:clickable="true"
+                                android:drawableEnd="@drawable/ic_arrow_drop_down"
+                                android:drawableTint="@color/home_chip_text"
+                                android:focusable="true"
+                                android:foreground="@drawable/fg_ripple_pill"
+                                android:gravity="center"
+                                android:minHeight="@dimen/_40dp"
+                                android:paddingStart="@dimen/_14dp"
+                                android:paddingEnd="@dimen/_12dp"
+                                android:paddingVertical="@dimen/_6dp"
+                                android:textColor="@color/home_chip_text"
+                                android:textSize="@dimen/text_14sp"
+                                app:textFont="medium" />
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/areaGroup"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_8dp"
+                                app:chipSpacingHorizontal="@dimen/_8dp"
+                                app:singleLine="true" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </com.base.common.widget.LsFrameView>
+
+                </HorizontalScrollView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/resultBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/resultCount"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:drawableStart="@drawable/ic_search"
+                        android:drawablePadding="@dimen/_6dp"
+                        android:drawableTint="@color/hue_primary"
+                        android:gravity="center_vertical"
+                        android:paddingVertical="@dimen/_8dp"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="medium" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/sortButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:drawableEnd="@drawable/ic_expand_more"
+                        android:drawableTint="@color/hue_on_surface"
+                        android:focusable="true"
+                        android:foreground="@drawable/fg_ripple_pill"
+                        android:gravity="center_vertical"
+                        android:minHeight="@dimen/_40dp"
+                        android:paddingHorizontal="@dimen/_12dp"
+                        android:paddingVertical="@dimen/_6dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_12sp"
+                        app:textFont="semi" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.base.common.widget.scroll.LsRecyclerView
+            android:id="@+id/resultList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/_4dp"
+            android:paddingBottom="@dimen/_16dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <!-- The start page, the loading placeholders and the empty and error messages share this block. -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/stateScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:fillViewport="true"
+            android:paddingBottom="@dimen/_16dp"
+            android:scrollbars="none"
+            android:visibility="gone"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <com.base.common.widget.LsFrameView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/initialBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/_8dp">
+
+                    <com.base.common.widget.LsCardView
+                        android:id="@+id/recentCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/hue_surface_lowest"
+                        app:cardCornerRadius="@dimen/_16dp"
+                        app:cardElevation="@dimen/_0dp"
+                        app:strokeColor="@color/hue_outline_hairline"
+                        app:strokeWidth="@dimen/_1dp">
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/_12dp">
+
+                            <com.base.common.widget.LsLinearView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.base.common.widget.LsTextView
+                                    android:layout_width="@dimen/_0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:drawableStart="@drawable/ic_history"
+                                    android:drawablePadding="@dimen/_6dp"
+                                    android:drawableTint="@color/hue_primary"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/search_recent_title"
+                                    android:textColor="@color/hue_on_surface"
+                                    android:textSize="@dimen/text_16sp"
+                                    app:textFont="semi" />
+
+                                <com.base.common.widget.LsTextView
+                                    android:id="@+id/recentClear"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:foreground="@drawable/fg_ripple_pill"
+                                    android:gravity="center"
+                                    android:minHeight="@dimen/_40dp"
+                                    android:paddingHorizontal="@dimen/_12dp"
+                                    android:paddingVertical="@dimen/_6dp"
+                                    android:text="@string/search_recent_clear"
+                                    android:textColor="@color/hue_primary"
+                                    android:textSize="@dimen/text_12sp"
+                                    app:textFont="medium" />
+
+                            </com.base.common.widget.LsLinearView>
+
+                            <com.base.common.widget.LsLinearView
+                                android:id="@+id/recentList"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_4dp"
+                                android:orientation="vertical" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                    </com.base.common.widget.LsCardView>
+
+                    <com.base.common.widget.LsTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20dp"
+                        android:drawableStart="@drawable/ic_local_fire_department"
+                        android:drawablePadding="@dimen/_6dp"
+                        android:drawableTint="@color/hue_primary"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="@dimen/_4dp"
+                        android:text="@string/search_suggestions_title"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_16sp"
+                        app:textFont="semi" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/suggestionGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12dp"
+                        app:chipSpacingHorizontal="@dimen/_8dp"
+                        app:chipSpacingVertical="@dimen/_8dp" />
+
+                    <com.base.common.widget.LsLinearView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20dp"
+                        android:background="@drawable/bg_shape_round_16"
+                        android:backgroundTint="@color/hue_primary_fixed_40"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/_16dp">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_48dp"
+                            android:layout_height="@dimen/_48dp"
+                            android:background="@drawable/bg_shape_circle"
+                            android:backgroundTint="@color/hue_primary"
+                            android:importantForAccessibility="no"
+                            android:padding="@dimen/_12dp"
+                            android:src="@drawable/ic_auto_awesome"
+                            android:tint="@color/hue_on_primary" />
+
+                        <com.base.common.widget.LsLinearView
+                            android:layout_width="@dimen/_0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/_12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/search_ai_title"
+                                android:textColor="@color/hue_on_surface"
+                                android:textSize="@dimen/text_16sp"
+                                app:textFont="semi" />
+
+                            <com.base.common.widget.LsTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_2dp"
+                                android:text="@string/search_ai_message"
+                                android:textColor="@color/hue_on_surface_variant"
+                                android:textSize="@dimen/text_12sp"
+                                app:textFont="regular" />
+
+                        </com.base.common.widget.LsLinearView>
+
+                        <com.base.common.widget.LsTextView
+                            android:id="@+id/aiSuggestButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_home_button_primary"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="@drawable/fg_ripple_pill"
+                            android:gravity="center"
+                            android:minHeight="@dimen/_36dp"
+                            android:paddingHorizontal="@dimen/_12dp"
+                            android:paddingVertical="@dimen/_6dp"
+                            android:text="@string/search_ai_button"
+                            android:textColor="@color/hue_on_primary"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="semi" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/skeletonBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/_4dp"
+                    android:visibility="gone">
+
+                    <include layout="@layout/item_search_skeleton" />
+
+                    <include layout="@layout/item_search_skeleton" />
+
+                    <include layout="@layout/item_search_skeleton" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/messageBlock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/_24dp"
+                    android:paddingTop="@dimen/_48dp"
+                    android:visibility="gone">
+
+                    <com.base.common.widget.LsImageView
+                        android:id="@+id/messageIcon"
+                        android:layout_width="@dimen/_80dp"
+                        android:layout_height="@dimen/_80dp"
+                        android:background="@drawable/bg_shape_circle"
+                        android:backgroundTint="@color/hue_primary_fixed"
+                        android:importantForAccessibility="no"
+                        android:padding="@dimen/_20dp"
+                        android:tint="@color/hue_primary" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/messageTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16dp"
+                        android:gravity="center"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_20sp"
+                        app:textFont="bold" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/messageText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8dp"
+                        android:gravity="center"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="regular" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/messagePrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_24dp"
+                        android:background="@drawable/bg_home_button_primary"
+                        android:clickable="true"
+                        android:drawablePadding="@dimen/_6dp"
+                        android:drawableTint="@color/hue_on_primary"
+                        android:focusable="true"
+                        android:foreground="@drawable/fg_ripple_pill"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_48dp"
+                        android:paddingHorizontal="@dimen/_24dp"
+                        android:textColor="@color/hue_on_primary"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="semi" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/messageSecondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12dp"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_surface_container"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="@drawable/fg_ripple_pill"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_48dp"
+                        android:paddingHorizontal="@dimen/_24dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_14sp"
+                        app:textFont="semi" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsFrameView>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</com.base.common.widget.LsConstraintView>

@@ -10,6 +10,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.base.common.base.LsBottomSheet
 import com.base.common.extension.clicks
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.mealLabel
+import com.example.huetaste.common.extension.weatherLabel
 import com.example.huetaste.common.extension.applySheetHeight
 import com.example.huetaste.common.extension.formatPriceRange
 import com.example.huetaste.common.extension.formatRating

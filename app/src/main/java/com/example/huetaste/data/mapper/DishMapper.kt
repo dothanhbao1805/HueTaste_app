@@ -12,6 +12,9 @@ import com.example.huetaste.domain.model.HomePlace
 import com.example.huetaste.domain.model.DishIngredient
 import com.example.huetaste.domain.model.DishPlace
 import com.example.huetaste.domain.model.Place
+import com.example.huetaste.domain.model.DishSearchItem
+import com.example.huetaste.domain.model.PlaceArea
+import com.example.huetaste.domain.model.PlaceSearchItem
 
 fun MonAnDto.toDomain() = Dish(
     id = idMonAn,
@@ -67,3 +70,15 @@ fun DiaDiemDto.toDomain() = Place(
 )
 
 fun DiaDiemDto.toHomePlace() = HomePlace(place = toDomain(), distanceKm = khoangCachKm)
+
+fun MonAnDto.toSearchItem() = DishSearchItem(
+    dish = toDomain(),
+    placeCount = soQuan ?: 0,
+    isSignature = laMonTieuBieu == true,
+)
+
+fun DiaDiemDto.toSearchItem() = PlaceSearchItem(
+    place = toDomain(),
+    distanceKm = khoangCachKm,
+    area = PlaceArea.entries.firstOrNull { it.code == khuVuc },
+)

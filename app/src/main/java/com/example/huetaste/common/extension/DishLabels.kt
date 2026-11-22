@@ -1,4 +1,4 @@
-package com.example.huetaste.feature.favorites
+package com.example.huetaste.common.extension
 
 import androidx.annotation.StringRes
 import com.example.huetaste.R

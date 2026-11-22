@@ -10,11 +10,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.base.common.base.LsActivity
 import com.base.common.extension.clicks
 import com.base.common.extension.makeToast
+import com.example.huetaste.common.ui.bindChips
 import com.example.huetaste.R
 import com.example.huetaste.databinding.ActivityTastePreferencesBinding
 import com.example.huetaste.feature.taste_setup.OptionsState
 import com.example.huetaste.feature.taste_setup.SpiceLevel
-import com.example.huetaste.feature.taste_setup.bindChips
 import com.example.huetaste.feature.taste_setup.render
 import com.example.huetaste.common.ui.DiscardChangesDialog
 import dagger.hilt.android.AndroidEntryPoint

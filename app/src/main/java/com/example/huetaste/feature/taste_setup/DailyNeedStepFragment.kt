@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.base.common.base.LsFragment
 import com.base.common.extension.clicks
+import com.example.huetaste.common.ui.bindChips
 import com.example.huetaste.R
 import com.example.huetaste.databinding.FragmentTasteDailyNeedBinding
 import com.example.huetaste.domain.model.MealBudget

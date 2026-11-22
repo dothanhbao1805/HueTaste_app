@@ -5,6 +5,7 @@ import android.content.Context
 import android.net.Uri
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
+import com.example.huetaste.domain.model.DayHours
 import com.example.huetaste.domain.model.OpeningHours
 import com.example.huetaste.domain.model.Place
 import java.text.NumberFormat
@@ -24,12 +25,15 @@ fun Context.formatDistance(km: Double): String = if (km < 1) {
 fun formatRating(value: Double): String = String.format(Locale.US, "%.1f", value)
 
 /** Whether the place is open now according to its `gioMoCua` lines, or null when they cannot be read. */
-fun Place.isOpenNow(): Boolean? {
+fun Place.isOpenNow(): Boolean? = todayHours()?.isOpenNow
+
+/** Today's line of `gioMoCua`, or null when no line describes today. */
+fun Place.todayHours(): DayHours? {
     val now = Calendar.getInstance()
     // Calendar counts Sunday as 1; OpeningHours counts Monday as 1 and Sunday as 7.
     val day = (now.get(Calendar.DAY_OF_WEEK) + 5) % 7 + 1
     val minute = now.get(Calendar.HOUR_OF_DAY) * 60 + now.get(Calendar.MINUTE)
-    return OpeningHours.forDay(openingHours, day, minute)?.isOpenNow
+    return OpeningHours.forDay(openingHours, day, minute)
 }
 
 /** Opens [place] in any installed map app, by coordinates when known and by name and address otherwise. */

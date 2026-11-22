@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import com.base.common.base.LsListAdapter
 import com.base.common.extension.clicks
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.mealLabel
+import com.example.huetaste.common.extension.weatherLabel
 import com.example.huetaste.common.extension.formatPriceRange
 import com.example.huetaste.common.extension.loadWithShimmer
 import com.example.huetaste.databinding.ItemFavoriteDishCardBinding

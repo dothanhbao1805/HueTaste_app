@@ -41,6 +41,7 @@
     <dimen name="_100dp">100dp</dimen>
     <dimen name="_112dp">112dp</dimen>
     <dimen name="_144dp">144dp</dimen>
+    <dimen name="_160dp">160dp</dimen>
     <dimen name="_176dp">176dp</dimen>
     <dimen name="_256dp">256dp</dimen>
     <dimen name="_260dp">260dp</dimen>

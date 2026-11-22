@@ -1,4 +1,4 @@
-package com.example.huetaste.feature.favorites
+package com.example.huetaste.common.ui
 
 import android.graphics.Rect
 import android.view.View

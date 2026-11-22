@@ -21,6 +21,7 @@ import com.base.common.base.LsFragment
 import com.base.common.extension.clicks
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
+import com.example.huetaste.common.ui.ListSpacingDecoration
 import com.example.huetaste.common.extension.openMap
 import com.example.huetaste.common.extension.startDialer
 import com.example.huetaste.common.extension.startFavoriteCollectionActivity

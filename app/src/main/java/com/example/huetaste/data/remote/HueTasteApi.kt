@@ -60,6 +60,18 @@ interface HueTasteApi {
         @Query("size") size: Int,
     ): TrangDiaDiemDto
 
+    /** `khuVuc` is `co_do`, `bo_bac` or `bo_nam`; the location pair is optional but must be sent together. */
+    @GET("dia-diem")
+    suspend fun searchPlaces(
+        @Query("q") query: String?,
+        @Query("viDo") latitude: Double?,
+        @Query("kinhDo") longitude: Double?,
+        @Query("banKinhKm") radiusKm: Double?,
+        @Query("khuVuc") area: String?,
+        @Query("page") page: Int,
+        @Query("size") size: Int,
+    ): TrangDiaDiemDto
+
     @GET("dia-diem/noi-bat")
     suspend fun getFeaturedPlaces(@Query("size") size: Int): TrangDiaDiemDto
 
@@ -140,6 +152,17 @@ interface HueTasteApi {
 
     @GET("mon-an")
     suspend fun getDishes(@Query("page") page: Int, @Query("size") size: Int): TrangMonAnDto
+
+    /** Each `nguyenLieu` is sent as its own query pair; the backend returns dishes that have all of them. */
+    @GET("mon-an")
+    suspend fun searchDishes(
+        @Query("q") query: String?,
+        @Query("idDanhMucMonAn") categoryId: String?,
+        @Query("nguyenLieu") ingredients: List<String>,
+        @Query("sapXep") sort: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int,
+    ): TrangMonAnDto
 
     @GET("users/me/yeu-thich")
     suspend fun getFavorites(@Query("loai") type: String? = null): YeuThichDto

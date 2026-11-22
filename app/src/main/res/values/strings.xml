@@ -766,4 +766,73 @@
     <string name="scan_history_delete_message">Xóa \"%1$s\" khỏi lịch sử scan của bạn? Bạn có thể hoàn tác ngay sau khi xóa.</string>
     <string name="scan_history_deleted">Đã xóa món khỏi lịch sử scan</string>
     <string name="scan_history_action_failed">Chưa thực hiện được. Hãy thử lại.</string>
+
+    <!-- Search tab -->
+    <string name="search_header_subtitle">Tìm kiếm</string>
+    <string name="search_hint">Tìm món ăn, quán ăn Cố Đô Huế…</string>
+    <string name="search_clear">Xóa nội dung tìm kiếm</string>
+    <string name="search_accent_hint">Gõ có dấu hoặc không dấu đều được (vd: bun bo → Bún bò)</string>
+    <string name="search_tab_dishes">Món ăn</string>
+    <string name="search_tab_places">Quán ăn</string>
+    <string name="search_filter_all">Tất cả</string>
+    <string name="search_ingredient_chip">Nguyên liệu</string>
+    <string name="search_ingredient_chip_count">Nguyên liệu (%1$d)</string>
+    <string name="search_near_me">Gần tôi</string>
+    <string name="search_radius_chip">Bán kính: %1$d km</string>
+    <string name="search_area_co_do">Phố cổ &amp; Cố Đô</string>
+    <string name="search_area_bo_bac">Bờ Bắc sông Hương</string>
+    <string name="search_area_bo_nam">Bờ Nam sông Hương</string>
+    <string name="search_area_short_co_do">Cố Đô</string>
+    <string name="search_area_short_bo_bac">Bờ Bắc</string>
+    <string name="search_area_short_bo_nam">Bờ Nam</string>
+    <string name="search_result_count">Tìm thấy %1$d kết quả phù hợp</string>
+    <string name="search_sort_label">Sắp xếp: %1$s</string>
+    <string name="search_sort_popular">Phổ biến</string>
+    <string name="search_sort_name">Tên A–Z</string>
+    <string name="search_sort_price">Giá thấp</string>
+    <string name="search_recent_title">Tìm kiếm gần đây</string>
+    <string name="search_recent_clear">Xóa tất cả</string>
+    <string name="search_recent_remove_cd">Xóa \"%1$s\" khỏi lịch sử tìm kiếm</string>
+    <string name="search_suggestions_title">Gợi ý món ngon xứ Huế</string>
+    <string-array name="search_suggestions">
+        <item>Bún bò Huế</item>
+        <item>Bánh bèo</item>
+        <item>Cơm hến</item>
+        <item>Chè Huế</item>
+        <item>Bánh ép</item>
+        <item>Bánh bột lọc</item>
+    </string-array>
+    <string name="search_ai_title">Chưa biết ăn gì?</string>
+    <string name="search_ai_message">Để trợ lý AI gợi ý món theo thời tiết và nơi bạn đang đứng.</string>
+    <string name="search_ai_button">Gợi ý ngay</string>
+    <string name="search_empty_title">Không tìm thấy kết quả</string>
+    <string name="search_empty_message">Không có món ăn hoặc quán nào khớp. Bạn kiểm tra lại chính tả hoặc bỏ bớt bộ lọc nhé.</string>
+    <string name="search_clear_filters">Xóa bộ lọc</string>
+    <string name="search_try_term">Thử \"%1$s\"</string>
+    <string name="search_error_title">Không thể tải dữ liệu ẩm thực</string>
+    <string name="search_error_message">Đã có lỗi khi tìm kiếm. Bạn thử lại sau ít phút nhé.</string>
+    <string name="search_retry">Thử lại ngay</string>
+    <string name="search_loading_more">Đang tải thêm kết quả…</string>
+    <string name="search_load_more_failed">Chưa tải thêm được kết quả, bạn kéo xuống để thử lại</string>
+    <string name="search_favorite_failed">Chưa cập nhật được yêu thích, bạn thử lại nhé</string>
+    <string name="search_location_unavailable">Chưa xác định được vị trí của bạn</string>
+    <string name="search_dish_signature">Món tiêu biểu</string>
+    <string name="search_favorite_add_cd">Thêm %1$s vào yêu thích</string>
+    <string name="search_dish_place_count">%1$d quán</string>
+    <string name="search_place_distance">Cách bạn %1$s</string>
+    <string name="search_place_distance_area">Cách bạn %1$s (%2$s)</string>
+    <string name="search_place_hours_today">Hôm nay: %1$s</string>
+    <string name="search_ingredients_title">Chọn nguyên liệu</string>
+    <string name="search_ingredients_hint">Tìm nguyên liệu (vd: tôm, sả, mắm ruốc)</string>
+    <string name="search_ingredients_suggestions">Món phải có đủ các nguyên liệu đã chọn</string>
+    <string name="search_ingredients_searching">Đang tìm nguyên liệu…</string>
+    <string name="search_ingredients_empty">Không có nguyên liệu nào khớp</string>
+    <string name="search_ingredients_failed">Chưa tải được nguyên liệu, bạn thử gõ lại nhé</string>
+    <string name="search_reset">Đặt lại</string>
+    <string name="search_apply">Áp dụng</string>
+    <string name="search_apply_count">Áp dụng (%1$d)</string>
+    <string name="search_radius_title">Bán kính tìm quán</string>
+    <string name="search_radius_value">%1$d km</string>
+    <string name="search_radius_min">1 km</string>
+    <string name="search_radius_max">50 km</string>
 </resources>

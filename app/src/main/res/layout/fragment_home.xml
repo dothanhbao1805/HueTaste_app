@@ -6,129 +6,14 @@
     android:layout_height="match_parent"
     android:background="@color/hue_surface">
 
-    <com.base.common.widget.LsConstraintView
-        android:id="@+id/headerBar"
+    <include
+        android:id="@+id/header"
+        layout="@layout/view_main_header"
         android:layout_width="@dimen/_0dp"
         android:layout_height="@dimen/_64dp"
-        android:background="@color/hue_surface"
-        android:elevation="@dimen/_2dp"
-        android:paddingHorizontal="@dimen/_10dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.base.common.widget.LsLinearView
-            android:id="@+id/headerBrandGroup"
-            android:layout_width="@dimen/_0dp"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/notificationsButton">
-
-            <com.base.common.widget.LsImageView
-                android:id="@+id/headerLogo"
-                android:layout_width="@dimen/_32dp"
-                android:layout_height="@dimen/_32dp"
-                android:src="@drawable/ic_huetaste_logo"
-                android:contentDescription="@string/app_name" />
-
-            <com.base.common.widget.LsLinearView
-                android:id="@+id/locationGroup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="@drawable/fg_ripple_round_12"
-                android:orientation="vertical"
-                android:padding="@dimen/_8dp">
-
-                <com.base.common.widget.LsLinearView
-                    android:id="@+id/locationRow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <com.base.common.widget.LsImageView
-                        android:layout_width="@dimen/_18dp"
-                        android:layout_height="@dimen/_18dp"
-                        android:importantForAccessibility="no"
-                        android:src="@drawable/ic_location"
-                        android:tint="@color/hue_primary" />
-
-                    <!-- The weight only shrinks a long name, so the arrow after it stays on screen. -->
-                    <com.base.common.widget.LsTextView
-                        android:id="@+id/locationTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_4dp"
-                        android:layout_weight="1"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="@string/home_location_loading"
-                        android:textColor="@color/hue_on_surface"
-                        android:textSize="@dimen/text_14sp"
-                        app:textFont="semi" />
-
-                    <com.base.common.widget.LsImageView
-                        android:layout_width="@dimen/_16dp"
-                        android:layout_height="@dimen/_16dp"
-                        android:importantForAccessibility="no"
-                        android:src="@drawable/ic_expand_more"
-                        android:tint="@color/hue_on_surface_variant" />
-
-                </com.base.common.widget.LsLinearView>
-
-                <com.base.common.widget.LsTextView
-                    android:id="@+id/locationSubtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="@string/home_location_subtitle"
-                    android:textColor="@color/hue_on_surface_variant"
-                    android:textSize="@dimen/text_11sp"
-                    app:textFont="regular" />
-
-            </com.base.common.widget.LsLinearView>
-
-        </com.base.common.widget.LsLinearView>
-
-        <com.base.common.widget.LsImageView
-            android:id="@+id/notificationsButton"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="@drawable/fg_ripple_circle"
-            android:layout_width="@dimen/_44dp"
-            android:layout_height="@dimen/_44dp"
-            android:contentDescription="@string/home_notifications"
-            android:padding="@dimen/_10dp"
-            android:src="@drawable/ic_notifications"
-            android:tint="@color/hue_on_surface_variant"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/profileAvatar" />
-
-        <com.base.common.widget.LsImageView
-            android:id="@+id/profileAvatar"
-            android:layout_width="@dimen/_36dp"
-            android:layout_height="@dimen/_36dp"
-            android:layout_marginStart="@dimen/_4dp"
-            android:contentDescription="@string/home_profile_photo"
-            android:scaleType="centerCrop"
-            android:background="@color/hue_surface_container_high"
-            android:src="@drawable/ic_person"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Circle"
-            app:strokeColor="@color/hue_primary_20"
-            app:strokeWidth="@dimen/_2dp" />
-
-    </com.base.common.widget.LsConstraintView>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/homeScroll"
@@ -138,7 +23,7 @@
 
         android:paddingBottom="@dimen/_80dp"
         android:scrollbars="none"
-        app:layout_constraintTop_toBottomOf="@id/headerBar"
+        app:layout_constraintTop_toBottomOf="@id/header"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">

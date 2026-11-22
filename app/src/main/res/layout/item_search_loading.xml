@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bottom row of the search results while the next page loads. -->
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingVertical="@dimen/_16dp">
+
+    <ProgressBar
+        android:layout_width="@dimen/_20dp"
+        android:layout_height="@dimen/_20dp"
+        android:indeterminateTint="@color/hue_primary" />
+
+    <com.base.common.widget.LsTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8dp"
+        android:text="@string/search_loading_more"
+        android:textColor="@color/hue_on_surface_variant"
+        android:textSize="@dimen/text_12sp"
+        app:textFont="medium" />
+
+</com.base.common.widget.LsLinearView>

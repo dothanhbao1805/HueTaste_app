@@ -2,6 +2,9 @@ package com.example.huetaste.domain.repository
 
 import com.example.huetaste.domain.model.GeoPoint
 import com.example.huetaste.domain.model.HomePlace
+import com.example.huetaste.domain.model.PlaceSearchItem
+import com.example.huetaste.domain.model.PlaceSearchQuery
+import com.example.huetaste.domain.model.SearchPage
 import com.example.huetaste.domain.model.PlaceDetail
 import com.example.huetaste.domain.model.Review
 import com.example.huetaste.domain.model.ReviewPage
@@ -11,6 +14,8 @@ interface PlaceRepository {
     suspend fun getNearbyPlaces(point: GeoPoint, radiusKm: Double, size: Int): List<HomePlace>
 
     suspend fun getFeaturedPlaces(size: Int): List<HomePlace>
+
+    suspend fun searchPlaces(query: PlaceSearchQuery, page: Int): SearchPage<PlaceSearchItem>
 
     suspend fun getPlaceDetail(placeId: String): PlaceDetail
 

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A place of the search results: cover with rating, today's hours and price, then name, status, address and distance. -->
+<com.base.common.widget.LsCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:outlineAmbientShadowColor="@color/hue_card_shadow"
+    android:outlineSpotShadowColor="@color/hue_card_shadow"
+    app:cardBackgroundColor="@color/hue_surface_lowest"
+    app:cardCornerRadius="@dimen/_16dp"
+    app:cardElevation="@dimen/_2dp"
+    app:rippleColor="@color/navigation_item_ripple"
+    app:strokeColor="@color/hue_outline_hairline"
+    app:strokeWidth="@dimen/_1dp">
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.base.common.widget.LsFrameView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_144dp">
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/placeImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/hue_surface_container_high"
+                android:scaleType="centerCrop" />
+
+            <com.base.common.widget.LsView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_dish_scrim" />
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/favoriteButton"
+                android:layout_width="@dimen/_36dp"
+                android:layout_height="@dimen/_36dp"
+                android:layout_gravity="top|start"
+                android:layout_margin="@dimen/_8dp"
+                android:background="@drawable/bg_home_heart"
+                android:foreground="@drawable/fg_ripple_circle"
+                android:padding="@dimen/_8dp"
+                android:src="@drawable/ic_favorite"
+                android:tint="@color/home_heart_tint" />
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/placeRatingChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="@dimen/_10dp"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_secondary_container"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_8dp"
+                android:paddingVertical="@dimen/_2dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_14dp"
+                    android:layout_height="@dimen/_14dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_star"
+                    android:tint="@color/hue_on_secondary_container" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_2dp"
+                    android:textColor="@color/hue_on_secondary_container"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="bold" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_12dp"
+                android:paddingBottom="@dimen/_8dp">
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeHours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_shape_round_6"
+                    android:backgroundTint="@color/hue_black_25"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingHorizontal="@dimen/_8dp"
+                    android:paddingVertical="@dimen/_2dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="medium" />
+
+                <com.base.common.widget.LsView
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="@dimen/_0dp"
+                    android:layout_weight="1" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:textColor="@color/hue_secondary_fixed"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="bold" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsFrameView>
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_12dp"
+            android:paddingTop="@dimen/_10dp"
+            android:paddingBottom="@dimen/_4dp">
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeName"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_18sp"
+                    app:textFont="semi" />
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/placeOpenChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8dp"
+                    android:background="@drawable/bg_shape_pill"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_8dp"
+                    android:paddingVertical="@dimen/_2dp">
+
+                    <com.base.common.widget.LsView
+                        android:id="@+id/placeOpenDot"
+                        android:layout_width="@dimen/_6dp"
+                        android:layout_height="@dimen/_6dp"
+                        android:layout_marginEnd="@dimen/_4dp"
+                        android:background="@drawable/bg_home_dot" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/placeOpenText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="semi" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/placeAddressRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_16dp"
+                    android:layout_height="@dimen/_16dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_location"
+                    android:tint="@color/hue_primary" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeAddress"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="regular" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1dp"
+                android:layout_marginTop="@dimen/_8dp"
+                android:background="@color/hue_surface_container_low" />
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.base.common.widget.LsImageView
+                    android:id="@+id/placeDistanceIcon"
+                    android:layout_width="@dimen/_16dp"
+                    android:layout_height="@dimen/_16dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_near_me"
+                    android:tint="@color/hue_primary" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeDistance"
+                    android:layout_width="@dimen/_0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="regular" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/directionsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:drawableEnd="@drawable/ic_arrow_forward"
+                    android:drawablePadding="@dimen/_2dp"
+                    android:drawableTint="@color/hue_primary"
+                    android:focusable="true"
+                    android:foreground="@drawable/fg_ripple_pill"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/_40dp"
+                    android:paddingHorizontal="@dimen/_12dp"
+                    android:paddingVertical="@dimen/_6dp"
+                    android:text="@string/favorites_directions"
+                    android:textColor="@color/hue_primary"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="semi" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsCardView>
