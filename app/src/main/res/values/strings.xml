@@ -423,6 +423,21 @@
     <string name="forgot_success">Đã đặt lại mật khẩu. Hãy đăng nhập bằng mật khẩu mới.</string>
     <string name="coming_soon">Tính năng sắp ra mắt</string>
 
+    <string name="notifications_title">Thông báo</string>
+    <string name="notifications_mark_all">Đọc tất cả</string>
+    <string name="notifications_unread">Chưa đọc</string>
+    <string name="notifications_unread_description">Thông báo, %1$d chưa đọc</string>
+    <string name="notifications_today">Hôm nay, %1$s</string>
+    <string name="notifications_empty_title">Chưa có thông báo</string>
+    <string name="notifications_empty_message">Kết quả báo cáo, món bạn đã quét, nhắc giờ ăn và gợi ý món theo thời tiết sẽ hiện ở đây.</string>
+    <string name="notifications_error_message">Không tải được thông báo. Hãy thử lại sau.</string>
+    <string name="notifications_guest_title">Đăng nhập để nhận thông báo</string>
+    <string name="notifications_guest_message">Thông báo gắn với tài khoản của bạn: báo cáo, món đã quét và nhắc giờ ăn.</string>
+    <string name="notifications_load_failed">Không tải thêm được thông báo</string>
+    <string name="notifications_mark_all_failed">Không đánh dấu được, hãy thử lại</string>
+    <string name="notifications_channel_name">Thông báo HueTaste</string>
+    <string name="notifications_channel_description">Kết quả báo cáo, món đã quét, nhắc giờ ăn và gợi ý món mỗi ngày</string>
+
     <!-- Taste setup -->
     <string name="taste_badge">Khẩu vị cố đô</string>
     <string name="taste_step">Bước %1$d/%2$d</string>

@@ -24,6 +24,7 @@ import com.example.huetaste.feature.language.LanguageActivity
 import com.example.huetaste.feature.main.MainActivity
 import com.example.huetaste.feature.main.MainTab
 import com.example.huetaste.feature.my_reports.MyReportsActivity
+import com.example.huetaste.feature.notifications.NotificationsActivity
 import com.example.huetaste.feature.place_detail.PlaceDetailActivity
 import com.example.huetaste.feature.profile.EditProfileActivity
 import com.example.huetaste.feature.scan.ScanActivity
@@ -76,6 +77,8 @@ fun Context.startAiChatActivity(conversationId: String? = null) =
     startActivityRtl(AiChatActivity.newIntent(this, conversationId))
 
 fun Context.startChatHistoryActivity() = startActivityRtl(ChatHistoryActivity.newIntent(this))
+
+fun Context.startNotificationsActivity() = startActivityRtl(NotificationsActivity.newIntent(this))
 
 fun Context.startMyReportsActivity() = startActivityRtl(MyReportsActivity.newIntent(this))
 

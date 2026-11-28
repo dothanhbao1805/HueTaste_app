@@ -3,7 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- The notification check job only runs with a connection; Android 14+ requires this for that constraint. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Status bar notifications (asked for on Android 13+) and the periodic check surviving a reboot. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <!-- Sent to the backend to find places near the user. The user may grant only the approximate one. -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -88,6 +93,14 @@
         <activity
             android:name=".feature.my_reports.MyReportsActivity"
             android:exported="false" />
+        <activity
+            android:name=".feature.notifications.NotificationsActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".feature.notifications.NotificationCheckJob"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
         <activity
             android:name=".feature.taste_preferences.TastePreferencesActivity"
             android:exported="false" />

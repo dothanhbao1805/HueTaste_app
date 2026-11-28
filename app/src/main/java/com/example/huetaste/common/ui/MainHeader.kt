@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.base.common.extension.clicks
-import com.example.huetaste.common.extension.clicksComingSoon
 import com.example.huetaste.domain.model.UserProfile
 import kotlinx.coroutines.launch
 import com.example.huetaste.R
@@ -57,7 +56,7 @@ class MainHeader(private val fragment: Fragment, @StringRes private val subtitle
 
     fun bind(header: ViewMainHeaderBinding) {
         header.locationGroup.clicks { locationAccess.onAreaClicked(viewModel.uiState.value.area) { viewModel.refreshLocation() } }
-        header.notificationsButton.clicksComingSoon()
+        fragment.bindNotificationBell(header)
 
         val owner = fragment.viewLifecycleOwner
         var shownUser: UserProfile? = null

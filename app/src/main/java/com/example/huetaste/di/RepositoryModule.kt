@@ -5,6 +5,7 @@ import com.example.huetaste.data.repository.AuthRepositoryImpl
 import com.example.huetaste.data.repository.ChatRepositoryImpl
 import com.example.huetaste.data.repository.DishRepositoryImpl
 import com.example.huetaste.data.repository.FavoriteRepositoryImpl
+import com.example.huetaste.data.repository.NotificationRepositoryImpl
 import com.example.huetaste.data.repository.PlaceRepositoryImpl
 import com.example.huetaste.data.repository.PreferenceRepositoryImpl
 import com.example.huetaste.data.repository.RecentSearchRepositoryImpl
@@ -16,6 +17,7 @@ import com.example.huetaste.domain.repository.ChatRepository
 import com.example.huetaste.domain.repository.DishRepository
 import com.example.huetaste.domain.repository.FavoriteRepository
 import com.example.huetaste.domain.repository.LocationProvider
+import com.example.huetaste.domain.repository.NotificationRepository
 import com.example.huetaste.domain.repository.PlaceRepository
 import com.example.huetaste.domain.repository.PreferenceRepository
 import com.example.huetaste.domain.repository.RecentSearchRepository
@@ -70,6 +72,10 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindRecentSearchRepository(impl: RecentSearchRepositoryImpl): RecentSearchRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindNotificationRepository(impl: NotificationRepositoryImpl): NotificationRepository
 
     @Binds
     @Singleton

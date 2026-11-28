@@ -17,6 +17,7 @@ import com.example.huetaste.data.remote.dto.DanhMucOutDto
 import com.example.huetaste.data.remote.dto.GoiYBody
 import com.example.huetaste.data.remote.dto.KetQuaGoiYDto
 import com.example.huetaste.data.remote.dto.TrangDiaDiemDto
+import com.example.huetaste.data.remote.dto.TrangThongBaoDto
 import com.example.huetaste.data.remote.dto.TrangMonAnDto
 import com.example.huetaste.data.remote.dto.YeuThichDto
 import com.example.huetaste.data.remote.dto.YeuThichMonAnBody
@@ -29,6 +30,7 @@ import com.example.huetaste.data.remote.dto.NhuCauBody
 import com.example.huetaste.data.remote.dto.NhuCauOutDto
 import com.example.huetaste.data.remote.dto.TrangLichSuScanDto
 import com.example.huetaste.data.remote.dto.ScanOutDto
+import com.example.huetaste.data.remote.dto.SoChuaDocDto
 import com.example.huetaste.data.remote.dto.SoThichOutDto
 import com.example.huetaste.data.remote.dto.TrangDanhGiaDto
 import com.example.huetaste.data.remote.dto.VietDanhGiaBody
@@ -46,6 +48,18 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface HueTasteApi {
+    @GET("users/me/thong-bao")
+    suspend fun getNotifications(@Query("page") page: Int, @Query("size") size: Int): TrangThongBaoDto
+
+    @GET("users/me/thong-bao/chua-doc")
+    suspend fun getUnreadNotificationCount(): SoChuaDocDto
+
+    @POST("users/me/thong-bao/{idThongBao}/da-doc")
+    suspend fun markNotificationRead(@Path("idThongBao") notificationId: String)
+
+    @POST("users/me/thong-bao/da-doc-tat-ca")
+    suspend fun markAllNotificationsRead()
+
     @PATCH("users/me")
     suspend fun updateProfile(@Body body: CapNhatThongTinBody): NguoiDungDto
 

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_shape_round_16"
+    android:backgroundTint="@color/hue_surface_lowest"
+    android:foreground="@drawable/fg_ripple_round_16"
+    android:orientation="horizontal"
+    android:padding="@dimen/_12dp">
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/typeIcon"
+        android:layout_width="@dimen/_40dp"
+        android:layout_height="@dimen/_40dp"
+        android:background="@drawable/bg_shape_circle"
+        android:backgroundTint="@color/hue_primary_fixed"
+        android:importantForAccessibility="no"
+        android:padding="@dimen/_10dp"
+        android:tint="@color/hue_primary"
+        tools:src="@drawable/ic_flag" />
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/titleText"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/hue_on_surface"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="semi"
+                tools:text="Báo cáo của bạn đã được xử lý" />
+
+            <com.base.common.widget.LsView
+                android:id="@+id/unreadDot"
+                android:layout_width="@dimen/_8dp"
+                android:layout_height="@dimen/_8dp"
+                android:layout_marginStart="@dimen/_8dp"
+                android:background="@drawable/bg_shape_circle"
+                android:backgroundTint="@color/hue_primary"
+                android:importantForAccessibility="no" />
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/bodyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4dp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_14sp"
+            app:textFont="regular"
+            tools:text="Bún bò O Phượng: Đã gỡ 1 món sai khỏi thực đơn của quán." />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/timeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_6dp"
+            android:importantForAccessibility="no"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_12sp"
+            app:textFont="regular"
+            tools:text="Hôm nay, 07:05" />
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsLinearView>

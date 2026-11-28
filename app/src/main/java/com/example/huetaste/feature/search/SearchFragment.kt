@@ -18,12 +18,12 @@ import com.base.common.extension.clicks
 import com.base.common.extension.hideKeyboard
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
-import com.example.huetaste.common.extension.clicksComingSoon
 import com.example.huetaste.common.extension.openMap
 import com.example.huetaste.common.extension.startAiChatActivity
 import com.example.huetaste.common.extension.startDishDetailActivity
 import com.example.huetaste.common.extension.startPlaceDetailActivity
 import com.example.huetaste.common.ui.ListSpacingDecoration
+import com.example.huetaste.common.ui.bindNotificationBell
 import com.example.huetaste.common.ui.LocationAccess
 import com.example.huetaste.common.ui.bindChips
 import com.example.huetaste.common.ui.showArea
@@ -91,7 +91,7 @@ class SearchFragment : LsFragment<FragmentSearchBinding>(FragmentSearchBinding::
             header.locationGroup.clicks {
                 locationAccess.onAreaClicked(viewModel.uiState.value.location) { viewModel.refreshLocation() }
             }
-            header.notificationsButton.clicksComingSoon()
+            bindNotificationBell(header)
 
             searchInput.doAfterTextChanged { viewModel.setQuery(it?.toString().orEmpty()) }
             searchInput.setOnEditorActionListener { view, actionId, _ ->

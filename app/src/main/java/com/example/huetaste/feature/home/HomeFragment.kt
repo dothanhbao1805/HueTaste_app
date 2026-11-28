@@ -20,6 +20,7 @@ import com.example.huetaste.common.extension.startScanActivity
 import com.example.huetaste.common.extension.startSuggestionReviewActivity
 import com.example.huetaste.common.extension.weatherText
 import com.example.huetaste.common.ui.LocationAccess
+import com.example.huetaste.common.ui.bindNotificationBell
 import com.example.huetaste.common.ui.showArea
 import com.example.huetaste.common.ui.showAvatar
 import com.example.huetaste.databinding.FragmentHomeBinding
@@ -70,7 +71,8 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
 
         // These entries have no destination yet; they still give the standard ripple and press animation.
         with(binding) {
-            listOf(header.notificationsButton, seeAllDishes, mapLink).forEach { it.clicksComingSoon() }
+            listOf(seeAllDishes, mapLink).forEach { it.clicksComingSoon() }
+            bindNotificationBell(header)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {

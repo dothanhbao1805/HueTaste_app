@@ -1,10 +1,14 @@
 package com.example.huetaste.feature.main
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.updatePadding
@@ -21,7 +25,9 @@ import com.example.huetaste.common.extension.startAiChatActivity
 import com.example.huetaste.common.extension.startLoginActivity
 import com.example.huetaste.databinding.ActivityMainBinding
 import com.example.huetaste.domain.model.AuthState
+import com.example.huetaste.domain.usecase.ClaimNotificationPromptUseCase
 import com.example.huetaste.domain.usecase.GetAuthStateUseCase
+import com.example.huetaste.feature.notifications.NotificationScheduler
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,6 +35,10 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     @Inject lateinit var getAuthState: GetAuthStateUseCase
+    @Inject lateinit var claimNotificationPrompt: ClaimNotificationPromptUseCase
+
+    // Refusing only keeps notifications out of the status bar; the bell and the list still show them.
+    private val notificationPermission = registerForActivityResult(ActivityResultContracts.RequestPermission()) { }
 
     private val pageCallback = object : ViewPager2.OnPageChangeCallback() {
         override fun onPageSelected(position: Int) {
@@ -84,16 +94,29 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
     private fun returnToLoginWhenSessionEnds() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                if (getAuthState() == AuthState.SIGNED_OUT) {
-                    openLogin()
-                    return@repeatOnLifecycle
+                when (getAuthState()) {
+                    AuthState.SIGNED_OUT -> {
+                        openLogin()
+                        return@repeatOnLifecycle
+                    }
+                    AuthState.SIGNED_IN -> startNotifications()
+                    AuthState.GUEST -> Unit
                 }
                 getAuthState.observe().collect { state -> if (state == AuthState.SIGNED_OUT) openLogin() }
             }
         }
     }
 
+    /** Checks for notifications now and every 15 minutes; the permission is asked for once, on Android 13 and later. */
+    private suspend fun startNotifications() {
+        NotificationScheduler.start(this)
+        val granted = Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
+            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED
+        if (!granted && claimNotificationPrompt()) notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+    }
+
     private fun openLogin() {
+        NotificationScheduler.stop(this)
         startLoginActivity()
         finish()
     }
