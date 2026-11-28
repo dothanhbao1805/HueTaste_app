@@ -4,9 +4,14 @@ import com.example.huetaste.BuildConfig
 import com.example.huetaste.data.local.SecureSessionStore
 import com.example.huetaste.data.mapper.toDomain
 import com.example.huetaste.data.remote.AuthApi
+import com.example.huetaste.data.remote.HueTasteApi
 import com.example.huetaste.data.remote.apiCall
 import com.example.huetaste.data.remote.dto.DangKyBody
 import com.example.huetaste.data.remote.dto.DangNhapBody
+import com.example.huetaste.data.remote.dto.DatLaiMatKhauBody
+import com.example.huetaste.data.remote.dto.DoiMatKhauBody
+import com.example.huetaste.data.remote.dto.QuenMatKhauBody
+import com.example.huetaste.data.remote.dto.XacThucOtpBody
 import com.example.huetaste.di.IoDispatcher
 import com.example.huetaste.domain.model.AuthSession
 import com.example.huetaste.domain.model.AuthState
@@ -21,6 +26,8 @@ import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
     private val api: AuthApi,
+    /** The client that carries the access token, for calls on the signed-in account. */
+    private val accountApi: HueTasteApi,
     private val store: SecureSessionStore,
     private val gson: Gson,
     @param:IoDispatcher private val ioDispatcher: CoroutineDispatcher,
@@ -38,6 +45,22 @@ class AuthRepositoryImpl @Inject constructor(
             store.save(session)
             session
         }
+
+    override suspend fun requestPasswordReset(email: String) = withContext(ioDispatcher) {
+        apiCall(gson) { api.forgotPassword(QuenMatKhauBody(email.trim())) }
+    }
+
+    override suspend fun verifyResetCode(email: String, code: String) = withContext(ioDispatcher) {
+        apiCall(gson) { api.verifyOtp(XacThucOtpBody(email.trim(), code)) }
+    }
+
+    override suspend fun resetPassword(email: String, code: String, newPassword: String) = withContext(ioDispatcher) {
+        apiCall(gson) { api.resetPassword(DatLaiMatKhauBody(email.trim(), code, newPassword)) }
+    }
+
+    override suspend fun changePassword(oldPassword: String, newPassword: String) = withContext(ioDispatcher) {
+        apiCall(gson) { accountApi.changePassword(DoiMatKhauBody(oldPassword, newPassword)) }
+    }
 
     override suspend fun continueAsGuest() {
         withContext(ioDispatcher) { store.markGuest() }

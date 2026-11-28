@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One language: flag, name and a radio; the whole row is selected for the language picked. -->
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_56dp"
+    android:layout_marginBottom="@dimen/_8dp"
+    android:background="@drawable/bg_language_item"
+    android:foreground="@drawable/fg_ripple_round_12"
+    android:paddingHorizontal="@dimen/_14dp">
+
+    <com.base.common.widget.LsImageView
+        android:id="@+id/flag"
+        android:layout_width="@dimen/_28dp"
+        android:layout_height="@dimen/_28dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Circle"
+        tools:src="@drawable/ic_vietnam" />
+
+    <com.base.common.widget.LsTextView
+        android:id="@+id/languageName"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_12dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/hue_on_surface"
+        android:textSize="@dimen/text_16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/radioSelected"
+        app:layout_constraintStart_toEndOf="@id/flag"
+        app:layout_constraintTop_toTopOf="parent"
+        app:textFont="medium"
+        tools:text="Tiếng Việt" />
+
+    <!-- Follows the row's selected state. -->
+    <com.base.common.widget.LsView
+        android:id="@+id/radioSelected"
+        android:layout_width="@dimen/_20dp"
+        android:layout_height="@dimen/_20dp"
+        android:background="@drawable/bg_language_radio"
+        android:duplicateParentState="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</com.base.common.widget.LsConstraintView>

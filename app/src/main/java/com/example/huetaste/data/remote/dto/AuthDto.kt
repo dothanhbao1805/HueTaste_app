@@ -14,6 +14,26 @@ data class DangKyBody(
 
 data class RefreshBody(val refreshToken: String)
 
+/** Mirror the backend `QuenMatKhau`, `XacThucOtp` and `DatLaiMatKhau` schemas. */
+data class QuenMatKhauBody(val email: String)
+
+data class XacThucOtpBody(
+    val email: String,
+    val otp: String,
+)
+
+/** Mirrors the backend `DoiMatKhau` schema. */
+data class DoiMatKhauBody(
+    val matKhauCu: String,
+    val matKhauMoi: String,
+)
+
+data class DatLaiMatKhauBody(
+    val email: String,
+    val otp: String,
+    val matKhauMoi: String,
+)
+
 data class NguoiDungDto(
     val idNguoiDung: String,
     val email: String,

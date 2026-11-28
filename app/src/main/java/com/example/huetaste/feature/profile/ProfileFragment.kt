@@ -14,24 +14,35 @@ import com.base.common.base.LsFragment
 import com.base.common.extension.clicks
 import com.example.huetaste.R
 import com.example.huetaste.common.extension.clicksComingSoon
+import com.example.huetaste.common.extension.startChangePasswordActivity
+import com.base.data.Prefs
 import com.example.huetaste.common.extension.startDailyNeedsActivity
 import com.example.huetaste.common.extension.startDietPreferencesActivity
+import com.example.huetaste.common.extension.startLanguageActivity
 import com.example.huetaste.common.extension.startLoginActivity
 import com.example.huetaste.common.extension.startMyReportsActivity
 import com.example.huetaste.common.extension.startScanHistoryActivity
 import com.example.huetaste.common.extension.startTastePreferencesActivity
+import com.example.huetaste.common.ui.MainHeader
 import com.example.huetaste.databinding.FragmentProfileBinding
 import com.example.huetaste.databinding.ItemProfileRowBinding
 import com.example.huetaste.domain.model.UserProfile
+import com.example.huetaste.feature.language.savedLanguage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 /** The user's own corner: who is signed in, links to their taste, activity and account, and signing out. */
 @AndroidEntryPoint
 class ProfileFragment : LsFragment<FragmentProfileBinding>(FragmentProfileBinding::inflate) {
     private val viewModel by lazy { ViewModelProvider(this)[ProfileViewModel::class.java] }
 
+    @Inject lateinit var prefs: Prefs
+
+    private val mainHeader = MainHeader(this, R.string.profile_title)
+
     override fun onViewCreated() {
+        mainHeader.bind(binding.header)
         with(binding) {
             bindRow(rowTaste, R.drawable.ic_restaurant, R.color.hue_primary_fixed, R.color.hue_primary, R.string.profile_taste_title, R.string.profile_taste_subtitle)
             bindRow(rowDiet, R.drawable.ic_eco, R.color.hue_secondary_fixed, R.color.hue_on_secondary_fixed, R.string.profile_diet_title, R.string.profile_diet_subtitle)
@@ -40,18 +51,21 @@ class ProfileFragment : LsFragment<FragmentProfileBinding>(FragmentProfileBindin
             bindRow(rowReports, R.drawable.ic_flag, R.color.hue_surface_container, R.color.hue_on_surface_variant, R.string.profile_reports_title, R.string.profile_reports_subtitle)
             bindRow(rowPassword, R.drawable.ic_lock, R.color.hue_surface_container, R.color.hue_on_surface_variant, R.string.profile_password_title)
             bindRow(rowLogout, R.drawable.ic_logout, R.color.hue_error_container, R.color.hue_error, R.string.profile_logout_title)
+            bindRow(rowLanguage, R.drawable.ic_language, R.color.hue_surface_container, R.color.hue_on_surface_variant, R.string.profile_language_title)
+            rowLanguage.rowSubtitle.isVisible = true
             rowLogout.rowTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.hue_error))
             rowLogout.rowChevron.isVisible = false
 
-            // shortcut: these screens are not built yet; replace each with its screen when it lands.
-            listOf(editButton, rowPassword.root)
-                .forEach { it.clicksComingSoon() }
-            rowTaste.root.clicks { requireContext().startTastePreferencesActivity() }
-            rowDiet.root.clicks { requireContext().startDietPreferencesActivity() }
-            rowNeed.root.clicks { requireContext().startDailyNeedsActivity() }
-            rowScanHistory.root.clicks { requireContext().startScanHistoryActivity() }
-            rowReports.root.clicks { requireContext().startMyReportsActivity() }
-            rowLogout.root.clicks { LogoutDialog.show(childFragmentManager) }
+            // shortcut: profile editing is not built yet; open its screen here when it lands.
+            editButton.clicksComingSoon()
+            rowPassword.root.clicks { requireContext().startChangePasswordActivity() }
+            rowTaste.root.clicks(withAnim = false) { requireContext().startTastePreferencesActivity() }
+            rowDiet.root.clicks(withAnim = false) { requireContext().startDietPreferencesActivity() }
+            rowNeed.root.clicks(withAnim = false) { requireContext().startDailyNeedsActivity() }
+            rowScanHistory.root.clicks(withAnim = false) { requireContext().startScanHistoryActivity() }
+            rowReports.root.clicks(withAnim = false) { requireContext().startMyReportsActivity() }
+            rowLogout.root.clicks(withAnim = false) { LogoutDialog.show(childFragmentManager) }
+            rowLanguage.root.clicks(withAnim = false) { requireContext().startLanguageActivity() }
             guestLoginButton.clicks { requireActivity().startLoginActivity() }
         }
 
@@ -62,6 +76,8 @@ class ProfileFragment : LsFragment<FragmentProfileBinding>(FragmentProfileBindin
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                // Read on every return, since the language screen may have changed it.
+                binding.rowLanguage.rowSubtitle.setText(prefs.savedLanguage().titleRes)
                 viewModel.uiState.collect(::render)
             }
         }

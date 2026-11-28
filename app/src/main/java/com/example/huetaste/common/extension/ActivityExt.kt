@@ -7,8 +7,11 @@ import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import com.base.R as BaseR
+import com.example.huetaste.common.navigation.SuggestionArgs
 import com.example.huetaste.feature.ai_chat.AiChatActivity
 import com.example.huetaste.feature.ai_chat.ChatHistoryActivity
+import com.example.huetaste.feature.auth.ChangePasswordActivity
+import com.example.huetaste.feature.auth.ForgotPasswordActivity
 import com.example.huetaste.feature.auth.LoginActivity
 import com.example.huetaste.feature.auth.RegisterActivity
 import com.example.huetaste.feature.context_suggestion.ContextSuggestionActivity
@@ -17,12 +20,14 @@ import com.example.huetaste.feature.diet_preferences.DietPreferencesActivity
 import com.example.huetaste.feature.dish_detail.DishDetailActivity
 import com.example.huetaste.feature.favorites.FavoriteCollection
 import com.example.huetaste.feature.favorites.FavoriteCollectionActivity
+import com.example.huetaste.feature.language.LanguageActivity
 import com.example.huetaste.feature.main.MainActivity
 import com.example.huetaste.feature.main.MainTab
 import com.example.huetaste.feature.my_reports.MyReportsActivity
 import com.example.huetaste.feature.place_detail.PlaceDetailActivity
 import com.example.huetaste.feature.scan.ScanActivity
 import com.example.huetaste.feature.scan_history.ScanHistoryActivity
+import com.example.huetaste.feature.suggestion_review.SuggestionReviewActivity
 import com.example.huetaste.feature.taste_preferences.TastePreferencesActivity
 import com.example.huetaste.feature.taste_setup.TasteSetupActivity
 
@@ -41,9 +46,17 @@ fun Context.startLoginActivity() = startRootActivityRtl(LoginActivity.newRootInt
 
 fun Context.startRegisterActivity() = startActivityRtl(RegisterActivity.newIntent(this))
 
+fun Context.startForgotPasswordActivity(email: String) = startActivityRtl(ForgotPasswordActivity.newIntent(this, email))
+
 fun Context.startTasteSetupActivity() = startRootActivityRtl(TasteSetupActivity.newRootIntent(this))
 
-fun Context.startContextSuggestionActivity() = startActivityRtl(ContextSuggestionActivity.newIntent(this))
+fun Context.startSuggestionReviewActivity(args: SuggestionArgs) =
+    startActivityRtl(SuggestionReviewActivity.newIntent(this, args))
+
+fun Context.startContextSuggestionActivity(args: SuggestionArgs) =
+    startActivityRtl(ContextSuggestionActivity.newIntent(this, args))
+
+fun Context.startChangePasswordActivity() = startActivityRtl(ChangePasswordActivity.newIntent(this))
 
 fun Context.startScanActivity() = startActivityRtl(ScanActivity.newIntent(this))
 
@@ -70,6 +83,8 @@ fun Context.startDietPreferencesActivity() = startActivityRtl(DietPreferencesAct
 fun Context.startDailyNeedsActivity() = startActivityRtl(DailyNeedsActivity.newIntent(this))
 
 fun Context.startScanHistoryActivity() = startActivityRtl(ScanHistoryActivity.newIntent(this))
+
+fun Context.startLanguageActivity() = startActivityRtl(LanguageActivity.newIntent(this))
 
 fun Context.startFavoriteCollectionActivity(collection: FavoriteCollection) =
     startActivityRtl(FavoriteCollectionActivity.newIntent(this, collection))

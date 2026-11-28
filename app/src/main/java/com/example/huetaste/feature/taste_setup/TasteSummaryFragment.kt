@@ -14,8 +14,6 @@ import com.base.common.base.LsFragment
 import com.example.huetaste.R
 import com.example.huetaste.databinding.FragmentTasteSummaryBinding
 import com.example.huetaste.databinding.ItemTasteSummaryRowBinding
-import com.example.huetaste.domain.model.MealBudget
-import com.example.huetaste.domain.model.MealType
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -66,15 +64,7 @@ class TasteSummaryFragment : LsFragment<FragmentTasteSummaryBinding>(FragmentTas
             .joinToString(" · ") { getString(it.shortLabel) }
             .ifEmpty { none }
 
-        binding.rowBudget.rowValue.setText(
-            when (state.budget) {
-                null -> R.string.taste_summary_no_budget
-                MealBudget.UNDER_30K -> R.string.taste_budget_under_30
-                MealBudget.FROM_30K_TO_60K -> R.string.taste_budget_30_60
-                MealBudget.FROM_60K_TO_100K -> R.string.taste_budget_60_100
-                MealBudget.OVER_100K -> R.string.taste_budget_over_100
-            },
-        )
+        binding.rowBudget.rowValue.setText(state.budget?.label ?: R.string.taste_summary_no_budget)
 
         binding.rowAvoid.rowValue.text = state.avoidIngredients.joinToString(", ") { it.name }.ifEmpty { none }
     }
@@ -83,13 +73,4 @@ class TasteSummaryFragment : LsFragment<FragmentTasteSummaryBinding>(FragmentTas
         rowIcon.setImageResource(icon)
         rowLabel.setText(label)
     }
-
-    private val MealType.shortLabel: Int
-        @StringRes get() = when (this) {
-            MealType.BREAKFAST -> R.string.taste_meal_breakfast_short
-            MealType.LUNCH -> R.string.taste_meal_lunch_short
-            MealType.SNACK -> R.string.taste_meal_snack_short
-            MealType.DINNER -> R.string.taste_meal_dinner_short
-            MealType.LATE_NIGHT -> R.string.taste_meal_late_night_short
-        }
 }

@@ -5,6 +5,15 @@
     android:layout_height="match_parent"
     android:background="@color/hue_surface">
 
+    <include
+        android:id="@+id/header"
+        layout="@layout/view_main_header"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <!--
         The header, tabs and filters all scroll away with the list, so the list gets the whole screen and no card
         ends up hidden under a pinned bar. The 10dp side margin is applied once, here, as in the home screen.
@@ -17,7 +26,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/favoritesAppBar"
@@ -600,6 +609,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.base.common.widget.scroll.LsRecyclerView
+            android:overScrollMode="always"
             android:id="@+id/favoritesList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -697,7 +707,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
         <com.base.common.widget.LsTextView
             android:layout_width="match_parent"

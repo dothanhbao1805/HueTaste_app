@@ -17,6 +17,8 @@ import com.example.huetaste.common.extension.startDishDetailActivity
 import com.example.huetaste.common.extension.startLoginActivity
 import com.example.huetaste.common.extension.startPlaceDetailActivity
 import com.example.huetaste.common.extension.startScanActivity
+import com.example.huetaste.common.extension.startSuggestionReviewActivity
+import com.example.huetaste.common.extension.weatherText
 import com.example.huetaste.common.ui.LocationAccess
 import com.example.huetaste.common.ui.showArea
 import com.example.huetaste.common.ui.showAvatar
@@ -24,15 +26,11 @@ import com.example.huetaste.databinding.FragmentHomeBinding
 import com.example.huetaste.domain.model.AppError
 import com.example.huetaste.domain.model.DeviceArea
 import com.example.huetaste.domain.model.HomePlacesKind
-import com.example.huetaste.domain.model.MealType
 import com.example.huetaste.domain.model.SuggestionContext
 import com.example.huetaste.domain.model.UserProfile
-import com.google.android.material.slider.Slider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.text.NumberFormat
 import java.util.Calendar
-import java.util.Locale
 import kotlin.math.roundToInt
 
 /** The greeting, suggested dishes and places come from the backend; the places follow the device's location. */
@@ -49,22 +47,6 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         onPlaceClick = { item -> requireActivity().startPlaceDetailActivity(item.place.id) },
     )
 
-    private val budgetFormat = NumberFormat.getIntegerInstance(Locale("vi", "VN"))
-
-    private val mealChips get() = with(binding) {
-        listOf(
-            MealType.BREAKFAST to mealBreakfast,
-            MealType.LUNCH to mealLunch,
-            MealType.DINNER to mealDinner,
-            MealType.SNACK to mealSnacks,
-        )
-    }
-
-    private val budgetListener = Slider.OnChangeListener { _, value, _ -> showBudget(value) }
-
-    /** The next list to arrive answers the suggest button, so it starts from its first card. */
-    private var scrollDishesToStart = false
-
     private var shownUser: UserProfile? = null
 
     private val locationAccess = LocationAccess(
@@ -77,10 +59,6 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         binding.homeDishList.adapter = dishAdapter
         binding.homeCategoryList.adapter = categoryAdapter
         binding.homePlaceList.adapter = placeAdapter
-
-        mealChips.forEach { (meal, chip) -> chip.clicks { viewModel.selectMeal(meal) } }
-        showBudget(binding.budgetSlider.value)
-        binding.budgetSlider.addOnChangeListener(budgetListener)
 
         binding.suggestButton.clicks { suggest() }
         binding.homeDishesRetry.clicks { viewModel.retry() }
@@ -118,7 +96,6 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         showGreeting(state.user, dayPart)
         showContext(state.context, dayPart)
         showSubtitle(state)
-        mealChips.forEach { (meal, chip) -> chip.isSelected = meal == state.selectedMeal }
         showDishes(state)
         showPlaces(state)
 
@@ -172,11 +149,7 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
             is HomeDishesState.Error -> binding.homeDishesMessageText.setText(errorMessage(dishes.error))
             else -> Unit
         }
-        val toStart = scrollDishesToStart && dishes is HomeDishesState.Content
-        if (toStart) scrollDishesToStart = false
-        dishAdapter.submitList(state.dishItems) {
-            if (toStart) binding.homeDishList.scrollToPosition(0)
-        }
+        dishAdapter.submitList(state.dishItems)
     }
 
     private fun showPlaces(state: HomeUiState) {
@@ -216,29 +189,19 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
     private fun errorMessage(error: AppError, @StringRes otherwise: Int = R.string.home_suggestions_error): Int =
         if (error.code == AppError.NETWORK) R.string.ai_chat_error_network else otherwise
 
+    /** Opens the review screen with what was picked here; the backend only suggests to signed-in users. */
     private fun suggest() {
-        val asked = viewModel.suggest(
-            budget = binding.budgetSlider.value.toInt(),
-            note = binding.notesInput.text?.toString().orEmpty(),
-        )
-        if (!asked) {
+        val args = viewModel.suggestionArgs(note = binding.notesInput.text?.toString().orEmpty())
+        if (args == null) {
             requireContext().makeToast(R.string.home_suggest_sign_in)
             requireActivity().startLoginActivity()
             return
         }
         binding.notesInput.clearFocus()
-        scrollDishesToStart = true
-        binding.homeScroll.smoothScrollTo(0, binding.suggestedSection.top)
+        requireActivity().startSuggestionReviewActivity(args)
     }
 
-    /** The backend codes of `NguCanh.thoiTiet`; anything else shows no weather. */
-    private fun weatherText(code: String?): String? = when (code) {
-        "nong" -> getString(R.string.home_weather_hot)
-        "mat" -> getString(R.string.home_weather_cool)
-        "lanh" -> getString(R.string.home_weather_cold)
-        "mua" -> getString(R.string.home_weather_rain)
-        else -> null
-    }
+    private fun weatherText(code: String?): String? = requireContext().weatherText(code)
 
     private fun currentDayPart(): DayPart = when (Calendar.getInstance().get(Calendar.HOUR_OF_DAY)) {
         in 5..9 -> DayPart.MORNING
@@ -247,12 +210,7 @@ class HomeFragment : LsFragment<FragmentHomeBinding>(FragmentHomeBinding::inflat
         else -> DayPart.EVENING
     }
 
-    private fun showBudget(value: Float) {
-        binding.budgetValue.text = getString(R.string.home_budget_format, budgetFormat.format(value.toLong()))
-    }
-
     override fun onDestroyView() {
-        binding.budgetSlider.removeOnChangeListener(budgetListener)
         binding.homeDishList.adapter = null
         binding.homeCategoryList.adapter = null
         binding.homePlaceList.adapter = null

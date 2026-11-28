@@ -22,6 +22,7 @@ import com.base.common.extension.clicks
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
 import com.example.huetaste.common.ui.ListSpacingDecoration
+import com.example.huetaste.common.ui.MainHeader
 import com.example.huetaste.common.extension.openMap
 import com.example.huetaste.common.extension.startDialer
 import com.example.huetaste.common.extension.startFavoriteCollectionActivity
@@ -80,7 +81,10 @@ class FavoritesFragment : LsFragment<FragmentFavoritesBinding>(FragmentFavorites
 
     private var removedSnackbar: Snackbar? = null
 
+    private val mainHeader = MainHeader(this, R.string.favorites_title)
+
     override fun onViewCreated() {
+        mainHeader.bind(binding.header)
         with(binding) {
             tabDishes.clicks { viewModel.selectTab(FavoritesTab.DISHES) }
             tabPlaces.clicks { viewModel.selectTab(FavoritesTab.PLACES) }

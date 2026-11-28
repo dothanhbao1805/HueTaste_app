@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- "Vì sao gợi ý cho bạn?": the backend's reason under a suggested dish or place. -->
+<com.base.common.widget.LsLinearView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_12dp"
+    android:background="@drawable/bg_shape_round_8"
+    android:backgroundTint="@color/hue_surface_container_low"
+    android:gravity="top"
+    android:orientation="horizontal"
+    android:padding="@dimen/_12dp">
+
+    <com.base.common.widget.LsFrameView
+        android:layout_width="@dimen/_24dp"
+        android:layout_height="@dimen/_24dp"
+        android:layout_marginTop="@dimen/_2dp"
+        android:background="@drawable/bg_shape_circle"
+        android:backgroundTint="@color/hue_secondary_fixed">
+
+        <com.base.common.widget.LsImageView
+            android:layout_width="@dimen/_16dp"
+            android:layout_height="@dimen/_16dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_lightbulb"
+            android:tint="@color/hue_on_secondary_fixed" />
+
+    </com.base.common.widget.LsFrameView>
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/context_reason_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_11sp"
+            app:textFont="bold" />
+
+        <com.base.common.widget.LsTextView
+            android:id="@+id/reasonText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_2dp"
+            android:textColor="@color/hue_on_surface_variant"
+            android:textSize="@dimen/text_12sp"
+            app:textFont="regular"
+            tools:text="Hợp bữa trưa · Đúng khẩu vị cay bạn thích" />
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsLinearView>

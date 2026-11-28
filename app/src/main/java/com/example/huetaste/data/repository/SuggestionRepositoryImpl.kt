@@ -27,7 +27,9 @@ class SuggestionRepositoryImpl @Inject constructor(
                     nganSach = request.budget,
                     ghiChu = request.note,
                     soMon = DISH_COUNT,
-                    soDiaDiem = 0,
+                    soDiaDiem = request.placeCount,
+                    viDo = request.point?.latitude,
+                    kinhDo = request.point?.longitude,
                 ),
             ).toDomain()
         }

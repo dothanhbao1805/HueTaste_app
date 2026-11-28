@@ -5,14 +5,24 @@
     android:layout_height="match_parent"
     android:background="@color/hue_surface">
 
+    <include
+        android:id="@+id/header"
+        layout="@layout/view_main_header"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_64dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.core.widget.NestedScrollView
+        android:overScrollMode="always"
         android:id="@+id/profileScroll"
         android:layout_width="@dimen/_0dp"
         android:layout_height="@dimen/_0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
         <!-- The 10dp side margin is applied once, here, as in the other tabs. -->
         <com.base.common.widget.LsLinearView
@@ -335,6 +345,52 @@
                         layout="@layout/item_profile_row" />
 
                 </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+            <!-- Settings belong to the device, so a guest sees them too. -->
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_4dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_16dp"
+                    android:layout_height="@dimen/_16dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_tune"
+                    android:tint="@color/hue_tertiary" />
+
+                <com.base.common.widget.LsTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_6dp"
+                    android:accessibilityHeading="true"
+                    android:letterSpacing="0.05"
+                    android:text="@string/profile_section_settings"
+                    android:textAllCaps="true"
+                    android:textColor="@color/hue_tertiary"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="semi" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <!-- The outline clip keeps the row's ripple inside the rounded corners. -->
+            <com.base.common.widget.LsLinearView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                android:background="@drawable/bg_shape_round_16"
+                android:backgroundTint="@color/hue_surface_lowest"
+                android:clipToOutline="true"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/rowLanguage"
+                    layout="@layout/item_profile_row" />
 
             </com.base.common.widget.LsLinearView>
 

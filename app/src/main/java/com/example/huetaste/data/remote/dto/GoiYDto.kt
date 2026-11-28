@@ -7,6 +7,8 @@ data class GoiYBody(
     val ghiChu: String?,
     val soMon: Int,
     val soDiaDiem: Int,
+    val viDo: Double? = null,
+    val kinhDo: Double? = null,
 )
 
 data class NguCanhDto(
@@ -20,7 +22,15 @@ data class MonGoiYDto(
     val lyDoGiaiThich: String?,
 )
 
+data class DiaDiemGoiYDto(
+    val diaDiem: DiaDiemDto,
+    val diemSo: Double?,
+    val lyDoGiaiThich: String?,
+    val monLienQuan: List<MonAnDto>?,
+)
+
 data class KetQuaGoiYDto(
     val nguCanh: NguCanhDto?,
     val monAn: List<MonGoiYDto>?,
+    val diaDiem: List<DiaDiemGoiYDto>? = null,
 )

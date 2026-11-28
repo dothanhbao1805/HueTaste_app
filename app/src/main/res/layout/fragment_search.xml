@@ -319,6 +319,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <com.base.common.widget.scroll.LsRecyclerView
+            android:overScrollMode="always"
             android:id="@+id/resultList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -329,6 +330,7 @@
 
         <!-- The start page, the loading placeholders and the empty and error messages share this block. -->
         <androidx.core.widget.NestedScrollView
+            android:overScrollMode="always"
             android:id="@+id/stateScroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

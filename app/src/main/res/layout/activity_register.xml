@@ -85,6 +85,7 @@
     </com.base.common.widget.LsConstraintView>
 
     <androidx.core.widget.NestedScrollView
+        android:overScrollMode="always"
         android:id="@+id/registerScroll"
         android:layout_width="@dimen/_0dp"
         android:layout_height="@dimen/_0dp"

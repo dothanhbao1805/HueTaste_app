@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One suggested place on the results screen, in the same style as item_suggested_dish. -->
+<com.base.common.widget.LsCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_12dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:outlineAmbientShadowColor="@color/hue_card_shadow"
+    android:outlineSpotShadowColor="@color/hue_card_shadow"
+    app:cardBackgroundColor="@color/hue_surface_lowest"
+    app:cardCornerRadius="@dimen/_12dp"
+    app:cardElevation="@dimen/_2dp"
+    app:rippleColor="@color/navigation_item_ripple">
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_16dp">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/rankBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_shape_pill"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:paddingVertical="@dimen/_4dp"
+                android:textSize="@dimen/text_11sp"
+                app:textFont="bold"
+                tools:backgroundTint="@color/hue_primary"
+                tools:text="#1"
+                tools:textColor="@color/hue_on_primary" />
+
+            <com.base.common.widget.LsView
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="@dimen/_0dp"
+                android:layout_weight="1" />
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/matchBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_secondary_container"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:paddingVertical="@dimen/_4dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_16dp"
+                    android:layout_height="@dimen/_16dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_bolt"
+                    android:tint="@color/hue_on_secondary_container" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/matchText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:textColor="@color/hue_on_secondary_container"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="bold"
+                    tools:text="88% hợp vị" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/placeImage"
+                android:layout_width="@dimen/_80dp"
+                android:layout_height="@dimen/_80dp"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Rounded12" />
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/hue_on_surface"
+                    android:textSize="@dimen/text_16sp"
+                    app:textFont="bold"
+                    tools:text="Bún Bò Mụ Rơi" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/placeAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="regular"
+                    tools:text="Nguyễn Du, Huế" />
+
+                <com.base.common.widget.LsLinearView
+                    android:id="@+id/placeMetaRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsImageView
+                        android:id="@+id/placeRatingIcon"
+                        android:layout_width="@dimen/_14dp"
+                        android:layout_height="@dimen/_14dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_star"
+                        android:tint="@color/hue_secondary_container" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/placeRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_2dp"
+                        android:layout_marginEnd="@dimen/_8dp"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="semi"
+                        tools:text="4.8" />
+
+                    <com.base.common.widget.LsImageView
+                        android:id="@+id/placeDistanceIcon"
+                        android:layout_width="@dimen/_14dp"
+                        android:layout_height="@dimen/_14dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_near_me"
+                        android:tint="@color/hue_on_surface_variant" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/placeDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_2dp"
+                        android:layout_marginEnd="@dimen/_8dp"
+                        android:textColor="@color/hue_on_surface_variant"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="regular"
+                        tools:text="1,2 km" />
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/placeOpenText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textSize="@dimen/text_11sp"
+                        app:textFont="semi"
+                        tools:text="Đang mở cửa"
+                        tools:textColor="@color/hue_primary" />
+
+                </com.base.common.widget.LsLinearView>
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsLinearView
+            android:id="@+id/relatedRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsImageView
+                android:layout_width="@dimen/_16dp"
+                android:layout_height="@dimen/_16dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_ramen_dining"
+                android:tint="@color/hue_primary" />
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/relatedText"
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/hue_on_surface"
+                android:textSize="@dimen/text_12sp"
+                app:textFont="medium"
+                tools:text="Có: Bún bò, Bánh bèo" />
+
+        </com.base.common.widget.LsLinearView>
+
+        <include
+            android:id="@+id/reasonBox"
+            layout="@layout/view_suggestion_reason" />
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsCardView>

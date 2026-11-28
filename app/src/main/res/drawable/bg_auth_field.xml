@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Pill input container: the outline turns primary while it has focus (activated) and red on error (selected). -->
+<!-- Rounded-rectangle input container: the outline turns primary while it has focus (activated) and red on error (selected). -->
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_selected="true">
         <shape android:shape="rectangle">
@@ -7,7 +7,7 @@
             <stroke
                 android:width="@dimen/_2dp"
                 android:color="@color/hue_error" />
-            <corners android:radius="@dimen/_100dp" />
+            <corners android:radius="@dimen/_12dp" />
         </shape>
     </item>
     <item android:state_activated="true">
@@ -16,7 +16,7 @@
             <stroke
                 android:width="@dimen/_2dp"
                 android:color="@color/hue_primary" />
-            <corners android:radius="@dimen/_100dp" />
+            <corners android:radius="@dimen/_12dp" />
         </shape>
     </item>
     <item>
@@ -25,7 +25,7 @@
             <stroke
                 android:width="@dimen/_1dp"
                 android:color="@color/hue_outline_hairline" />
-            <corners android:radius="@dimen/_100dp" />
+            <corners android:radius="@dimen/_12dp" />
         </shape>
     </item>
 </selector>

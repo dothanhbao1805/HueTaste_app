@@ -41,6 +41,14 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".feature.auth.ChangePasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".feature.auth.ForgotPasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".feature.taste_setup.TasteSetupActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
@@ -48,6 +56,9 @@
             android:name=".feature.main.MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".feature.suggestion_review.SuggestionReviewActivity"
+            android:exported="false" />
         <activity
             android:name=".feature.context_suggestion.ContextSuggestionActivity"
             android:exported="false" />
@@ -81,9 +92,13 @@
             android:exported="false" />
         <activity
             android:name=".feature.daily_needs.DailyNeedsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".feature.scan_history.ScanHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".feature.language.LanguageActivity"
             android:exported="false" />
     </application>
 

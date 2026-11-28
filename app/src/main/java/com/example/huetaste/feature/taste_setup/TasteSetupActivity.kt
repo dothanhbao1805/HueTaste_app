@@ -16,6 +16,7 @@ import com.base.common.base.LsPageAdapter
 import com.base.common.extension.clicks
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.scrollFocusedIntoView
 import com.example.huetaste.common.extension.startMainActivity
 import com.example.huetaste.databinding.ActivityTasteSetupBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -120,6 +121,7 @@ class TasteSetupActivity : LsActivity<ActivityTasteSetupBinding>(ActivityTasteSe
             val covered = keyboardHeight - navigationBarHeight - binding.footer.height
             binding.viewPager.updatePadding(bottom = covered.coerceAtLeast(0))
         }
+        if (keyboardHeight > 0) binding.viewPager.scrollFocusedIntoView()
     }
 
     companion object {

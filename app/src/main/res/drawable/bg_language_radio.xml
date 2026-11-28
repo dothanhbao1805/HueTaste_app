@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The radio of a language row; it sits on the primary fill while selected, so it is drawn in white then. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <layer-list>
+            <item>
+                <shape android:shape="oval">
+                    <stroke
+                        android:width="@dimen/_2dp"
+                        android:color="@color/white" />
+                </shape>
+            </item>
+            <item
+                android:bottom="@dimen/_5dp"
+                android:left="@dimen/_5dp"
+                android:right="@dimen/_5dp"
+                android:top="@dimen/_5dp">
+                <shape android:shape="oval">
+                    <solid android:color="@color/white" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <stroke
+                android:width="@dimen/_1dp"
+                android:color="@color/hue_outline_variant" />
+        </shape>
+    </item>
+</selector>

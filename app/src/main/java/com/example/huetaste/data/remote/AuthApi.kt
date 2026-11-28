@@ -2,8 +2,11 @@ package com.example.huetaste.data.remote
 
 import com.example.huetaste.data.remote.dto.DangKyBody
 import com.example.huetaste.data.remote.dto.DangNhapBody
+import com.example.huetaste.data.remote.dto.DatLaiMatKhauBody
+import com.example.huetaste.data.remote.dto.QuenMatKhauBody
 import com.example.huetaste.data.remote.dto.RefreshBody
 import com.example.huetaste.data.remote.dto.TokenOutDto
+import com.example.huetaste.data.remote.dto.XacThucOtpBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -18,6 +21,17 @@ interface AuthApi {
 
     @POST("auth/register")
     suspend fun register(@Body body: DangKyBody): TokenOutDto
+
+    /** Always succeeds for a well-formed email, so it never tells whether an account exists. */
+    @POST("auth/forgot-password")
+    suspend fun forgotPassword(@Body body: QuenMatKhauBody)
+
+    /** Checks the emailed code without using it up, so a wrong code is reported before the new password. */
+    @POST("auth/verify-otp")
+    suspend fun verifyOtp(@Body body: XacThucOtpBody)
+
+    @POST("auth/reset-password")
+    suspend fun resetPassword(@Body body: DatLaiMatKhauBody)
 
     /** Blocking on purpose: it is called from OkHttp's authenticator, which already runs off the main thread. */
     @POST("auth/refresh")

@@ -39,15 +39,6 @@
     <!-- Home: dining matcher -->
     <string name="home_matcher_title">Hôm nay bạn muốn ăn gì?</string>
     <string name="home_matcher_badge">Tự động gợi ý</string>
-    <string name="home_meal_breakfast">Bữa sáng</string>
-    <string name="home_meal_lunch">Bữa trưa</string>
-    <string name="home_meal_dinner">Bữa tối</string>
-    <string name="home_meal_snacks">Ăn vặt</string>
-    <string name="home_budget_label">Ngân sách mong muốn:</string>
-    <string name="home_budget_min">20k</string>
-    <string name="home_budget_mid">50k</string>
-    <string name="home_budget_max">100k+</string>
-    <string name="home_budget_slider">Ngân sách</string>
     <string name="home_notes_hint">Ít cay, có nước dùng ấm nóng, nhiều rau...</string>
     <string name="home_suggest_button">Gợi ý món ăn ngay</string>
 
@@ -96,7 +87,6 @@
     <string name="home_scan_dish">Quét món</string>
     <string name="home_scan_dish_description">Quét nhận diện món ăn</string>
 
-    <string name="home_budget_format">%1$s ₫</string>
     <string name="home_food_photo">Hình ảnh món ăn</string>
 
     <!-- Context suggestion screen (Stitch: Gợi Ý Theo Ngữ Cảnh) -->
@@ -104,77 +94,29 @@
     <string name="context_screen_title">Gợi ý theo ngữ cảnh</string>
     <string name="context_header_title">Ngữ cảnh đề xuất</string>
     <string name="context_change">Đổi ngữ cảnh</string>
-    <string name="context_tag_breakfast">Bữa sáng</string>
-    <string name="context_tag_budget">&lt; 50.000đ</string>
-    <string name="context_tag_nearby">Gần bạn (&lt;2km)</string>
-    <string name="context_tag_weather">24°C se lạnh</string>
-    <string name="context_tab_dishes">Món ăn (12)</string>
-    <string name="context_tab_places">Quán ăn (8)</string>
-    <string name="context_filter_relevance">Độ phù hợp cao</string>
-    <string name="context_filter_distance">Khoảng cách &lt; 2km</string>
-    <string name="context_filter_open">Đang mở cửa</string>
-    <string name="context_filter_rating">Đánh giá 4.5+</string>
-
-    <string name="context_rank_top">#1 GỢI Ý HÀNG ĐẦU</string>
-    <string name="context_match_98">98% Phù hợp</string>
-    <string name="context_dish_bunbo_name">Bún bò gân giò Huế</string>
-    <string name="context_dish_bunbo_desc">Đặc sản truyền thống Cố đô</string>
-    <string name="context_dish_bunbo_price">40k - 55k</string>
+    <string name="context_tag_nearby">Gần bạn</string>
+    <string name="context_tab_dishes">Món ăn</string>
+    <string name="context_tab_places">Quán ăn</string>
+    <string name="context_tab_dishes_count">Món ăn (%1$d)</string>
+    <string name="context_tab_places_count">Quán ăn (%1$d)</string>
+    <string name="context_rank_format">#%1$d</string>
     <string name="context_reason_title">Vì sao gợi ý cho bạn?</string>
-    <string name="context_dish_bunbo_reason">Trời 24°C se lạnh rất hợp nước dùng cay ấm sả ớt; quán cách bạn chỉ 350m đang ninh nồi nước dùng nóng hổi thơm nức.</string>
-    <string name="context_top_spots">3 quán gần &amp; ngon nhất lúc này:</string>
-    <string name="context_view_map">Xem bản đồ</string>
-    <string name="context_rank_1">1</string>
-    <string name="context_rank_2">2</string>
-    <string name="context_rank_3">3</string>
-    <string name="context_spot_1_name">Bún Bò Mụ Rơi - Nguyễn Du</string>
-    <string name="context_spot_1_rating">★ 4.9</string>
-    <string name="context_spot_1_distance">•  Cách 350m  •</string>
-    <string name="context_spot_1_open">Mở từ 05:30</string>
-    <string name="context_spot_2_name">Bún Bò Bà Tuyết - 47 Nguyễn Công Trứ</string>
-    <string name="context_spot_2_rating">★ 4.8</string>
-    <string name="context_spot_2_distance">•  Cách 700m</string>
-    <string name="context_spot_3_name">Bún Bò O Cương Điệp - Trần Thúc Nhẫn</string>
-    <string name="context_spot_3_rating">★ 4.7</string>
-    <string name="context_spot_3_distance">•  Cách 1.2km</string>
-    <string name="context_go">Đi tới</string>
-    <string name="context_details">Chi tiết</string>
-    <string name="context_dish_details">Xem chi tiết món &amp; cách ăn</string>
+    <string name="context_related_dishes">Có: %1$s</string>
+    <string name="context_dishes_empty">Chưa có món phù hợp, bạn thử đổi ngân sách hoặc ghi chú nhé</string>
+    <string name="context_places_empty">Chưa tìm thấy quán phù hợp. Bật vị trí để được gợi ý quán gần bạn hơn.</string>
 
-    <string name="context_rank_light">#2 GỢI Ý THANH ĐẠM</string>
-    <string name="context_match_94">94% Phù hợp</string>
-    <string name="context_dish_banhbeo_name">Bánh bèo chén tôm cháy</string>
-    <string name="context_dish_banhbeo_desc">Bánh cung đình thanh nhẹ buổi sáng</string>
-    <string name="context_dish_banhbeo_price">25k - 40k</string>
-    <string name="context_dish_banhbeo_rating">4.8</string>
-    <string name="context_dish_banhbeo_reviews">(310)</string>
-    <string name="context_dish_banhbeo_reason">Tiết kiệm hoàn hảo với mức chi 35.000đ. Phù hợp nếu bạn muốn bữa sáng nhẹ bụng, tinh tế chuẩn vị Huế xưa.</string>
-    <string name="context_dish_banhbeo_place">Bánh Bèo Bà Đỏ - 08 Nguyễn Bỉnh Khiêm (Cách 850m)</string>
-
-    <string name="context_rank_rustic">#3 ĐẬM VỊ DÂN DÃ</string>
-    <string name="context_match_90">90% Phù hợp</string>
-    <string name="context_dish_comhen_name">Cơm hến &amp; Mì hến cay</string>
-    <string name="context_dish_comhen_desc">Đặc sản Cồn Hến cay tê kích thích vị giác</string>
-    <string name="context_dish_comhen_price">20k - 30k</string>
-    <string name="context_dish_comhen_rating">4.7</string>
-    <string name="context_dish_comhen_reviews">(580)</string>
-    <string name="context_dish_comhen_reason">Mức giá siêu tiết kiệm chỉ từ 20.000đ/tô; nước canh hến nghi ngút khói làm ấm người tức thì trong buổi sáng gió mát.</string>
-    <string name="context_dish_comhen_place">Cơm Hến Hoa Đông - Ưng Bình, Vỹ Dạ (Cách 1.4km)</string>
-
-    <string name="context_rank_warm">#4 MỀM MỊN NÓNG HỔI</string>
-    <string name="context_match_86">86% Phù hợp</string>
-    <string name="context_dish_nampho_name">Bánh canh Nam Phổ</string>
-    <string name="context_dish_nampho_desc">Hương vị làng cổ Nam Phổ trăm năm</string>
-    <string name="context_dish_nampho_price">25k - 35k</string>
-    <string name="context_dish_nampho_rating">4.6</string>
-    <string name="context_dish_nampho_reviews">(185)</string>
-    <string name="context_dish_nampho_place">Bánh canh Nam Phổ O Thu - Phạm Hồng Thái (Cách 1.8km)</string>
-    <string name="context_view_place">Xem quán</string>
-
-    <string name="context_refine_title">Chưa tìm thấy món ưng ý?</string>
-    <string name="context_refine_body">Bạn có thể tinh chỉnh lại ngân sách, khẩu vị cay hoặc đổi sang bữa trưa/bữa xế để AI quét lại.</string>
-    <string name="context_refine_button">Tinh chỉnh tiêu chí</string>
-    <string name="context_random_button">Chọn ngẫu nhiên</string>
+    <!-- Suggestion review screen: what the next suggestion is based on -->
+    <string name="review_title">Kiểm tra trước khi gợi ý</string>
+    <string name="review_subtitle">Món ăn sẽ được gợi ý dựa trên các thông tin dưới đây. Chạm vào từng mục để chỉnh lại nếu chưa đúng.</string>
+    <string name="review_this_time">Lần gợi ý này</string>
+    <string name="review_budget_max">Tối đa %1$s ₫</string>
+    <string name="review_note">Ghi chú: %1$s</string>
+    <string name="review_section_profile">Hồ sơ khẩu vị của bạn</string>
+    <string name="review_section_profile_hint">Đã lưu trong tài khoản, dùng cho mọi lần gợi ý</string>
+    <string name="review_more">%1$s +%2$d</string>
+    <string name="review_needs_none">Chưa đặt cho hôm nay</string>
+    <string name="review_needs_avoid">Tránh %1$d nguyên liệu</string>
+    <string name="review_start">Bắt đầu gợi ý món</string>
 
     <!-- Dish detail screen (Stitch: Chi Tiết Món Ăn - Bún Bò Huế) -->
     <string name="dish_screen_title">Chi tiết món ăn</string>
@@ -446,6 +388,39 @@
     <string name="auth_error_unknown">Có lỗi xảy ra. Hãy thử lại sau.</string>
     <string name="auth_error_terms">Bạn cần đồng ý với điều khoản để tiếp tục.</string>
     <string name="auth_coming_soon">Tính năng sắp ra mắt</string>
+
+    <string name="change_old_label">Mật khẩu hiện tại</string>
+    <string name="change_old_hint">Nhập mật khẩu đang dùng</string>
+    <string name="change_submitting">Đang đổi…</string>
+    <string name="change_error_old_empty">Hãy nhập mật khẩu hiện tại</string>
+    <string name="change_error_old_wrong">Mật khẩu hiện tại không đúng</string>
+    <string name="change_success">Đã đổi mật khẩu</string>
+
+    <string name="forgot_title">Quên mật khẩu</string>
+    <string name="forgot_email_heading">Đặt lại mật khẩu</string>
+    <string name="forgot_email_subtitle">Nhập email của tài khoản, chúng tôi sẽ gửi mã đặt lại mật khẩu tới hộp thư của bạn</string>
+    <string name="forgot_send">Gửi mã</string>
+    <string name="forgot_sending">Đang gửi…</string>
+    <string name="forgot_code_heading">Nhập mã xác nhận</string>
+    <string name="forgot_sent_to">Nếu %1$s đã đăng ký, mã gồm 6 chữ số sẽ được gửi tới email này và có hiệu lực trong 10 phút.</string>
+    <string name="forgot_code_label">Mã xác nhận 6 chữ số</string>
+    <string name="forgot_paste">Dán mã</string>
+    <string name="forgot_paste_empty">Chưa có mã 6 chữ số nào được sao chép</string>
+    <string name="forgot_verify">Xác nhận</string>
+    <string name="forgot_verifying">Đang kiểm tra…</string>
+    <string name="forgot_resend_in">Gửi lại mã sau %1$d giây</string>
+    <string name="forgot_password_heading">Tạo mật khẩu mới</string>
+    <string name="forgot_password_subtitle">Mã đã được xác nhận. Hãy đặt mật khẩu mới cho tài khoản của bạn.</string>
+    <string name="forgot_password_label">Mật khẩu mới</string>
+    <string name="forgot_reset">Đặt lại mật khẩu</string>
+    <string name="forgot_resetting">Đang đặt lại…</string>
+    <string name="forgot_resend">Gửi lại mã</string>
+    <string name="forgot_change_email">Đổi email</string>
+    <string name="forgot_code_sent">Đã gửi mã, hãy kiểm tra email của bạn</string>
+    <string name="forgot_error_code_incomplete">Hãy nhập đủ 6 chữ số</string>
+    <string name="forgot_error_code_wrong">Mã không đúng hoặc đã hết hạn</string>
+    <string name="forgot_error_code_too_many">Bạn đã nhập sai quá nhiều lần. Hãy gửi lại mã mới.</string>
+    <string name="forgot_success">Đã đặt lại mật khẩu. Hãy đăng nhập bằng mật khẩu mới.</string>
     <string name="coming_soon">Tính năng sắp ra mắt</string>
 
     <!-- Taste setup -->
@@ -662,6 +637,8 @@
     <string name="profile_reports_title">Báo cáo của tôi</string>
     <string name="profile_reports_subtitle">Theo dõi các báo cáo bạn đã gửi về quán</string>
     <string name="profile_section_account">Tài khoản</string>
+    <string name="profile_section_settings">Cài đặt</string>
+    <string name="profile_language_title">Ngôn ngữ</string>
     <string name="profile_password_title">Đổi mật khẩu</string>
     <string name="profile_logout_title">Đăng xuất</string>
     <string name="profile_guest_name">Bạn đang dùng chế độ khách</string>
@@ -835,4 +812,22 @@
     <string name="search_radius_value">%1$d km</string>
     <string name="search_radius_min">1 km</string>
     <string name="search_radius_max">50 km</string>
+
+    <!-- Language screen. Each name is written in its own language, so a reader finds theirs whatever the app shows. -->
+    <string name="language_title">Ngôn ngữ</string>
+    <string name="language_confirm">Áp dụng ngôn ngữ</string>
+    <string name="language_vietnamese" translatable="false">Tiếng Việt</string>
+    <string name="language_english" translatable="false">English</string>
+    <string name="language_french" translatable="false">Français</string>
+    <string name="language_japanese" translatable="false">日本語</string>
+    <string name="language_korean" translatable="false">한국어</string>
+    <string name="language_portuguese" translatable="false">Português</string>
+    <string name="language_russian" translatable="false">Русский</string>
+    <string name="language_chinese" translatable="false">中文</string>
+    <string name="language_spanish" translatable="false">Español</string>
+    <string name="language_thai" translatable="false">ไทย</string>
+    <string name="language_german" translatable="false">Deutsch</string>
+    <string name="language_italian" translatable="false">Italiano</string>
+    <string name="language_hindi" translatable="false">हिन्दी</string>
+    <string name="language_arabic" translatable="false">العربية</string>
 </resources>

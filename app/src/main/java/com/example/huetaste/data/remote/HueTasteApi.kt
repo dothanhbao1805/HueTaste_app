@@ -20,6 +20,7 @@ import com.example.huetaste.data.remote.dto.TrangMonAnDto
 import com.example.huetaste.data.remote.dto.YeuThichDto
 import com.example.huetaste.data.remote.dto.YeuThichMonAnBody
 import com.example.huetaste.data.remote.dto.DiaDiemChiTietDto
+import com.example.huetaste.data.remote.dto.DoiMatKhauBody
 import com.example.huetaste.data.remote.dto.MonAnChiTietDto
 import com.example.huetaste.data.remote.dto.NguyenLieuOutDto
 import com.example.huetaste.data.remote.dto.NhuCauBody
@@ -42,6 +43,9 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface HueTasteApi {
+    @POST("users/me/change-password")
+    suspend fun changePassword(@Body body: DoiMatKhauBody)
+
     @Multipart
     @POST("scan")
     suspend fun scan(@Part file: MultipartBody.Part): ScanOutDto

@@ -14,11 +14,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.base.common.base.LsActivity
 import com.base.common.extension.clicks
-import com.base.common.extension.makeToast
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.startForgotPasswordActivity
 import com.example.huetaste.common.extension.startMainActivity
 import com.example.huetaste.common.extension.startRegisterActivity
 import com.example.huetaste.common.extension.startTasteSetupActivity
+import com.example.huetaste.common.extension.scrollToFocused
 import com.example.huetaste.databinding.ActivityLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -48,7 +49,7 @@ class LoginActivity : LsActivity<ActivityLoginBinding>(ActivityLoginBinding::inf
         binding.submitButton.clicks { submit() }
         binding.guestButton.clicks { viewModel.skipLogin() }
         binding.registerLink.clicks { startRegisterActivity() }
-        binding.forgotButton.clicks { makeToast(R.string.auth_coming_soon) }
+        binding.forgotButton.clicks { startForgotPasswordActivity(binding.emailInput.text?.toString().orEmpty()) }
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {

@@ -9,6 +9,7 @@ import com.base.common.extension.clicks
 import com.example.huetaste.R
 import com.example.huetaste.databinding.ItemTasteOptionBinding
 import com.example.huetaste.databinding.ViewTasteStatusBinding
+import com.example.huetaste.domain.model.MealBudget
 import com.example.huetaste.domain.model.MealType
 
 /** One selectable card of the taste setup pages. */
@@ -69,6 +70,23 @@ internal val MealType.label: Int
         MealType.SNACK -> R.string.taste_meal_snack
         MealType.DINNER -> R.string.taste_meal_dinner
         MealType.LATE_NIGHT -> R.string.taste_meal_late_night
+    }
+
+internal val MealType.shortLabel: Int
+    @StringRes get() = when (this) {
+        MealType.BREAKFAST -> R.string.taste_meal_breakfast_short
+        MealType.LUNCH -> R.string.taste_meal_lunch_short
+        MealType.SNACK -> R.string.taste_meal_snack_short
+        MealType.DINNER -> R.string.taste_meal_dinner_short
+        MealType.LATE_NIGHT -> R.string.taste_meal_late_night_short
+    }
+
+internal val MealBudget.label: Int
+    @StringRes get() = when (this) {
+        MealBudget.UNDER_30K -> R.string.taste_budget_under_30
+        MealBudget.FROM_30K_TO_60K -> R.string.taste_budget_30_60
+        MealBudget.FROM_60K_TO_100K -> R.string.taste_budget_60_100
+        MealBudget.OVER_100K -> R.string.taste_budget_over_100
     }
 
 internal val MealType.icon: Int

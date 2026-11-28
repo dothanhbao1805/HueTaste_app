@@ -1,13 +1,11 @@
 package com.example.huetaste.feature.auth
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
-import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.isVisible
@@ -23,9 +21,8 @@ import com.base.common.extension.makeToast
 import com.example.huetaste.R
 import com.example.huetaste.common.extension.startMainActivity
 import com.example.huetaste.common.extension.startTasteSetupActivity
+import com.example.huetaste.common.extension.scrollToFocused
 import com.example.huetaste.databinding.ActivityRegisterBinding
-import com.example.huetaste.domain.model.AuthValidator
-import com.example.huetaste.domain.model.PasswordStrength
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -137,32 +134,8 @@ class RegisterActivity : LsActivity<ActivityRegisterBinding>(ActivityRegisterBin
         }
     }
 
-    private fun showStrength(password: String) {
-        binding.strengthBlock.isVisible = password.isNotEmpty()
-        if (password.isEmpty()) return
-        val strength = AuthValidator.strengthOf(password)
-        val level = when (strength) {
-            PasswordStrength.WEAK -> 1
-            PasswordStrength.MEDIUM -> 2
-            PasswordStrength.STRONG -> 3
-        }
-        val color = when (strength) {
-            PasswordStrength.WEAK -> R.color.hue_error
-            PasswordStrength.MEDIUM -> R.color.hue_secondary_container
-            PasswordStrength.STRONG -> R.color.hue_primary
-        }
-        strengthBars.forEachIndexed { index, bar ->
-            bar.backgroundTintList = colorList(if (index < level) color else R.color.hue_surface_container_high)
-        }
-        val label = when (strength) {
-            PasswordStrength.WEAK -> R.string.register_strength_weak
-            PasswordStrength.MEDIUM -> R.string.register_strength_medium
-            PasswordStrength.STRONG -> R.string.register_strength_strong
-        }
-        binding.strengthText.text = getString(R.string.register_strength, getString(label))
-    }
-
-    private fun colorList(@ColorRes color: Int) = ColorStateList.valueOf(ContextCompat.getColor(this, color))
+    private fun showStrength(password: String) =
+        showPasswordStrength(binding.strengthBlock, strengthBars, binding.strengthText, password)
 
     private fun showNameError(message: Int?) =
         showFieldError(binding.nameField, binding.nameErrorRow, binding.nameErrorText, message)

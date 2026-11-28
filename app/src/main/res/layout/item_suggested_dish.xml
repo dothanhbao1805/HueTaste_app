@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One suggested dish on the results screen, from the Stitch "Gợi ý theo ngữ cảnh" card. -->
+<com.base.common.widget.LsCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_12dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:outlineAmbientShadowColor="@color/hue_card_shadow"
+    android:outlineSpotShadowColor="@color/hue_card_shadow"
+    app:cardBackgroundColor="@color/hue_surface_lowest"
+    app:cardCornerRadius="@dimen/_12dp"
+    app:cardElevation="@dimen/_2dp"
+    app:rippleColor="@color/navigation_item_ripple">
+
+    <com.base.common.widget.LsLinearView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_16dp">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsTextView
+                android:id="@+id/rankBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_shape_pill"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:paddingVertical="@dimen/_4dp"
+                android:textSize="@dimen/text_11sp"
+                app:textFont="bold"
+                tools:backgroundTint="@color/hue_primary"
+                tools:text="#1"
+                tools:textColor="@color/hue_on_primary" />
+
+            <com.base.common.widget.LsView
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="@dimen/_0dp"
+                android:layout_weight="1" />
+
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/matchBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_shape_pill"
+                android:backgroundTint="@color/hue_secondary_container"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:paddingVertical="@dimen/_4dp">
+
+                <com.base.common.widget.LsImageView
+                    android:layout_width="@dimen/_16dp"
+                    android:layout_height="@dimen/_16dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_bolt"
+                    android:tint="@color/hue_on_secondary_container" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/matchText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4dp"
+                    android:textColor="@color/hue_on_secondary_container"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="bold"
+                    tools:text="92% hợp vị" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12dp"
+            android:orientation="horizontal">
+
+            <com.base.common.widget.LsImageView
+                android:id="@+id/dishImage"
+                android:layout_width="@dimen/_112dp"
+                android:layout_height="@dimen/_112dp"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.HueTaste.Rounded8" />
+
+            <com.base.common.widget.LsLinearView
+                android:layout_width="@dimen/_0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsTextView
+                        android:id="@+id/dishName"
+                        android:layout_width="@dimen/_0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:textColor="@color/hue_on_surface"
+                        android:textSize="@dimen/text_16sp"
+                        app:textFont="bold"
+                        tools:text="Bánh bèo chén" />
+
+                    <com.base.common.widget.LsImageView
+                        android:id="@+id/favoriteButton"
+                        android:layout_width="@dimen/_36dp"
+                        android:layout_height="@dimen/_36dp"
+                        android:layout_marginStart="@dimen/_4dp"
+                        android:contentDescription="@string/home_add_favorite"
+                        android:foreground="@drawable/fg_ripple_circle"
+                        android:padding="@dimen/_8dp"
+                        android:src="@drawable/ic_favorite"
+                        android:tint="@color/context_heart_tint" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/dishDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_11sp"
+                    app:textFont="regular"
+                    tools:text="Bánh cung đình thanh nhẹ" />
+
+                <com.base.common.widget.LsView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_0dp"
+                    android:layout_weight="1" />
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/dishPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textColor="@color/hue_primary"
+                    android:textSize="@dimen/text_16sp"
+                    app:textFont="bold"
+                    tools:text="25.000 – 40.000 ₫" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+        <include
+            android:id="@+id/reasonBox"
+            layout="@layout/view_suggestion_reason" />
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsCardView>

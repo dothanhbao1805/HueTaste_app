@@ -2,10 +2,12 @@ package com.example.huetaste.feature.main
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
+import androidx.core.view.updatePadding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -14,6 +16,7 @@ import com.base.common.base.LsActivity
 import com.base.common.base.LsPageAdapter
 import com.base.common.widget.scale.PushDownAnim
 import com.base.common.extension.clicks
+import com.example.huetaste.common.extension.scrollFocusedIntoView
 import com.example.huetaste.common.extension.startAiChatActivity
 import com.example.huetaste.common.extension.startLoginActivity
 import com.example.huetaste.databinding.ActivityMainBinding
@@ -61,6 +64,16 @@ class MainActivity : LsActivity<ActivityMainBinding>(ActivityMainBinding::inflat
         binding.centerAiButton.clicks { startAiChatActivity() }
         selectMenuItem(binding.viewPager.currentItem)
         returnToLoginWhenSessionEnds()
+    }
+
+    override fun onKeyboardHeightChanged(keyboardHeight: Int) {
+        // From Android 11 the window no longer resizes for the keyboard: the pages end above it, so a field in a
+        // page (such as Home's note) is never behind it.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val covered = keyboardHeight - navigationBarHeight - binding.bottomBar.height
+            binding.viewPager.updatePadding(bottom = covered.coerceAtLeast(0))
+        }
+        if (keyboardHeight > 0) binding.viewPager.scrollFocusedIntoView()
     }
 
     /**

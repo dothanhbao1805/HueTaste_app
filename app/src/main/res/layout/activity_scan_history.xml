@@ -116,6 +116,7 @@
 
     <!-- The bottom padding keeps the last card clear of the floating scan button. -->
     <com.base.common.widget.scroll.LsRecyclerView
+        android:overScrollMode="always"
         android:id="@+id/scanList"
         android:layout_width="@dimen/_0dp"
         android:layout_height="@dimen/_0dp"

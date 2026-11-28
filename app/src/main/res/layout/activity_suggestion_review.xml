@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Opened from Home's suggest button: what the suggestion is based on, each row opening its editor. -->
+<com.base.common.widget.LsConstraintView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hue_surface"
+    tools:context=".feature.suggestion_review.SuggestionReviewActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/statusBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/navigationBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/headerBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:paddingTop="@dimen/_6dp"
+        android:paddingBottom="@dimen/_12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/statusBar">
+
+        <com.base.common.widget.LsImageView
+            android:id="@+id/backButton"
+            android:layout_width="@dimen/_44dp"
+            android:layout_height="@dimen/_44dp"
+            android:background="@drawable/bg_shape_circle"
+            android:backgroundTint="@color/hue_surface_lowest"
+            android:contentDescription="@string/context_back"
+            android:foreground="@drawable/fg_ripple_circle"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@color/hue_on_surface" />
+
+        <com.base.common.widget.LsTextView
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/review_title"
+            android:textColor="@color/hue_on_surface"
+            android:textSize="@dimen/text_18sp"
+            app:textFont="bold" />
+
+    </com.base.common.widget.LsLinearView>
+
+    <com.base.common.widget.LsView
+        android:id="@+id/headerDivider"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_1dp"
+        android:background="@color/hue_outline_hairline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerBar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:overScrollMode="always"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="@dimen/_0dp"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerDivider">
+
+        <com.base.common.widget.LsLinearView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_10dp"
+            android:paddingTop="@dimen/_14dp"
+            android:paddingBottom="@dimen/_16dp">
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/review_subtitle"
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="regular" />
+
+            <!-- What was picked on Home for this suggestion. -->
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/thisTimeCard"
+                style="@style/DailyNeedsCard"
+                android:layout_marginTop="@dimen/_16dp">
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsImageView
+                        style="@style/DailyNeedsCardIcon"
+                        android:backgroundTint="@color/hue_primary_fixed"
+                        android:src="@drawable/ic_auto_awesome"
+                        android:tint="@color/hue_primary" />
+
+                    <com.base.common.widget.LsTextView
+                        style="@style/DailyNeedsCardTitle"
+                        android:text="@string/review_this_time" />
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsLinearView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12dp"
+                    android:orientation="horizontal">
+
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/mealChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_primary_fixed"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_10dp"
+                        android:paddingVertical="@dimen/_6dp">
+
+                        <com.base.common.widget.LsImageView
+                            android:id="@+id/mealIcon"
+                            android:layout_width="@dimen/_16dp"
+                            android:layout_height="@dimen/_16dp"
+                            android:importantForAccessibility="no"
+                            android:tint="@color/hue_on_primary_fixed"
+                            tools:src="@drawable/ic_wb_sunny" />
+
+                        <com.base.common.widget.LsTextView
+                            android:id="@+id/mealText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4dp"
+                            android:textColor="@color/hue_on_primary_fixed"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="medium"
+                            tools:text="Bữa trưa" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                    <com.base.common.widget.LsLinearView
+                        android:id="@+id/budgetChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_8dp"
+                        android:background="@drawable/bg_shape_pill"
+                        android:backgroundTint="@color/hue_secondary_fixed"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/_10dp"
+                        android:paddingVertical="@dimen/_6dp">
+
+                        <com.base.common.widget.LsImageView
+                            android:layout_width="@dimen/_16dp"
+                            android:layout_height="@dimen/_16dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_payments"
+                            android:tint="@color/hue_on_secondary_fixed" />
+
+                        <com.base.common.widget.LsTextView
+                            android:id="@+id/budgetText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_4dp"
+                            android:textColor="@color/hue_on_secondary_fixed"
+                            android:textSize="@dimen/text_12sp"
+                            app:textFont="medium"
+                            tools:text="≤ 60.000 ₫" />
+
+                    </com.base.common.widget.LsLinearView>
+
+                </com.base.common.widget.LsLinearView>
+
+                <com.base.common.widget.LsTextView
+                    android:id="@+id/noteText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="@color/hue_on_surface_variant"
+                    android:textSize="@dimen/text_12sp"
+                    app:textFont="regular"
+                    tools:text="Ghi chú: ít cay, nhiều rau" />
+
+            </com.base.common.widget.LsLinearView>
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20dp"
+                android:accessibilityHeading="true"
+                android:letterSpacing="0.05"
+                android:text="@string/review_section_profile"
+                android:textAllCaps="true"
+                android:textColor="@color/hue_tertiary"
+                android:textSize="@dimen/text_12sp"
+                app:textFont="semi" />
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2dp"
+                android:text="@string/review_section_profile_hint"
+                android:textColor="@color/hue_on_surface_variant"
+                android:textSize="@dimen/text_12sp"
+                app:textFont="regular" />
+
+            <include
+                android:id="@+id/status"
+                layout="@layout/view_taste_status" />
+
+            <!-- The outline clip keeps the rows' ripples inside the rounded corners. -->
+            <com.base.common.widget.LsLinearView
+                android:id="@+id/profileCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8dp"
+                android:background="@drawable/bg_shape_round_16"
+                android:backgroundTint="@color/hue_surface_lowest"
+                android:clipToOutline="true"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <include
+                    android:id="@+id/rowTaste"
+                    layout="@layout/item_profile_row" />
+
+                <com.base.common.widget.LsView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1dp"
+                    android:layout_marginHorizontal="@dimen/_16dp"
+                    android:background="@color/hue_outline_hairline" />
+
+                <include
+                    android:id="@+id/rowDiet"
+                    layout="@layout/item_profile_row" />
+
+                <com.base.common.widget.LsView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1dp"
+                    android:layout_marginHorizontal="@dimen/_16dp"
+                    android:background="@color/hue_outline_hairline" />
+
+                <include
+                    android:id="@+id/rowNeed"
+                    layout="@layout/item_profile_row" />
+
+            </com.base.common.widget.LsLinearView>
+
+        </com.base.common.widget.LsLinearView>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.base.common.widget.LsLinearView
+        android:id="@+id/bottomBar"
+        android:layout_width="@dimen/_0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/hue_surface"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:paddingTop="@dimen/_12dp"
+        android:paddingBottom="@dimen/_12dp"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.base.common.widget.LsLinearView
+            android:id="@+id/startButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_48dp"
+            android:background="@drawable/bg_shape_pill"
+            android:backgroundTint="@color/hue_primary"
+            android:foreground="@drawable/fg_ripple_pill"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_16dp">
+
+            <com.base.common.widget.LsImageView
+                android:layout_width="@dimen/_18dp"
+                android:layout_height="@dimen/_18dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_auto_awesome"
+                android:tint="@color/hue_on_primary" />
+
+            <com.base.common.widget.LsTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8dp"
+                android:text="@string/review_start"
+                android:textColor="@color/hue_on_primary"
+                android:textSize="@dimen/text_14sp"
+                app:textFont="semi" />
+
+        </com.base.common.widget.LsLinearView>
+
+    </com.base.common.widget.LsLinearView>
+
+</com.base.common.widget.LsConstraintView>

@@ -2,10 +2,12 @@ package com.example.huetaste.feature.daily_needs
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -14,6 +16,7 @@ import com.base.common.base.LsActivity
 import com.base.common.extension.clicks
 import com.base.common.extension.makeToast
 import com.example.huetaste.R
+import com.example.huetaste.common.extension.scrollToFocused
 import com.example.huetaste.common.ui.DiscardChangesDialog
 import com.example.huetaste.databinding.ActivityDailyNeedsBinding
 import com.example.huetaste.domain.model.MealBudget
@@ -77,6 +80,15 @@ class DailyNeedsActivity : LsActivity<ActivityDailyNeedsBinding>(ActivityDailyNe
         }
     }
 
+    override fun onKeyboardHeightChanged(keyboardHeight: Int) {
+        // From Android 11 the window no longer resizes for the keyboard; the save bar stays under it, the form above.
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            val covered = keyboardHeight - navigationBarHeight - binding.bottomBar.height
+            binding.needsScroll.updatePadding(bottom = covered.coerceAtLeast(0))
+        }
+        if (keyboardHeight > 0) binding.needsScroll.scrollToFocused(currentFocus)
+    }
+
     override fun handleBackPressed() {
         if (isDirty) DiscardChangesDialog.show(supportFragmentManager) else finish()
     }
@@ -119,14 +131,6 @@ class DailyNeedsActivity : LsActivity<ActivityDailyNeedsBinding>(ActivityDailyNe
             MealType.SNACK -> R.string.daily_needs_meal_snack_hint
             MealType.DINNER -> R.string.daily_needs_meal_dinner_hint
             MealType.LATE_NIGHT -> R.string.daily_needs_meal_late_night_hint
-        }
-
-    private val MealBudget.label: Int
-        @StringRes get() = when (this) {
-            MealBudget.UNDER_30K -> R.string.taste_budget_under_30
-            MealBudget.FROM_30K_TO_60K -> R.string.taste_budget_30_60
-            MealBudget.FROM_60K_TO_100K -> R.string.taste_budget_60_100
-            MealBudget.OVER_100K -> R.string.taste_budget_over_100
         }
 
     private val MealBudget.hint: Int
