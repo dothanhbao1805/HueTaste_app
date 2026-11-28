@@ -4,6 +4,7 @@ import com.example.huetaste.domain.model.AuthSession
 import com.example.huetaste.domain.model.AuthState
 import com.example.huetaste.domain.model.UserProfile
 import kotlinx.coroutines.flow.Flow
+import java.io.File
 
 interface AuthRepository {
     /** Signs in and remembers the session for later launches. */
@@ -29,8 +30,17 @@ interface AuthRepository {
 
     suspend fun currentState(): AuthState
 
-    /** The signed-in user as of the last sign-in, or null for a guest. */
+    /** The signed-in user as of the last sign-in or profile change, or null for a guest. */
     suspend fun currentUser(): UserProfile?
+
+    /** Emits the current user, then again whenever the signed-in user changes. */
+    fun observeUser(): Flow<UserProfile?>
+
+    /** Saves a new display name and remembers it in the session. */
+    suspend fun updateName(name: String)
+
+    /** Uploads a JPEG as the profile photo and remembers it in the session. */
+    suspend fun uploadAvatar(image: File)
 
     /** Emits the new state whenever the session changes, for example when the backend rejects the refresh token. */
     fun observeState(): Flow<AuthState>

@@ -13,11 +13,11 @@ import coil.load
 import com.base.common.base.LsFragment
 import com.base.common.extension.clicks
 import com.example.huetaste.R
-import com.example.huetaste.common.extension.clicksComingSoon
 import com.example.huetaste.common.extension.startChangePasswordActivity
 import com.base.data.Prefs
 import com.example.huetaste.common.extension.startDailyNeedsActivity
 import com.example.huetaste.common.extension.startDietPreferencesActivity
+import com.example.huetaste.common.extension.startEditProfileActivity
 import com.example.huetaste.common.extension.startLanguageActivity
 import com.example.huetaste.common.extension.startLoginActivity
 import com.example.huetaste.common.extension.startMyReportsActivity
@@ -56,8 +56,7 @@ class ProfileFragment : LsFragment<FragmentProfileBinding>(FragmentProfileBindin
             rowLogout.rowTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.hue_error))
             rowLogout.rowChevron.isVisible = false
 
-            // shortcut: profile editing is not built yet; open its screen here when it lands.
-            editButton.clicksComingSoon()
+            editButton.clicks { requireContext().startEditProfileActivity() }
             rowPassword.root.clicks { requireContext().startChangePasswordActivity() }
             rowTaste.root.clicks(withAnim = false) { requireContext().startTastePreferencesActivity() }
             rowDiet.root.clicks(withAnim = false) { requireContext().startDietPreferencesActivity() }

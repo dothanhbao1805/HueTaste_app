@@ -1,4 +1,4 @@
-package com.example.huetaste.feature.scan
+package com.example.huetaste.common.ui
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -17,10 +17,10 @@ import javax.inject.Inject
 import kotlin.math.max
 import kotlin.math.roundToInt
 
-/** Turns camera frames and gallery picks into small JPEG files the scan API accepts (at most 5 MB). */
-class ScanImageProcessor @Inject constructor(@ApplicationContext private val context: Context) {
+/** Turns camera frames and gallery picks into small JPEG files the upload APIs accept (at most 5 MB). */
+class ImageFileProcessor @Inject constructor(@ApplicationContext private val context: Context) {
 
-    private val outputDir get() = File(context.cacheDir, "scan").apply { mkdirs() }
+    private val outputDir get() = File(context.cacheDir, "uploads").apply { mkdirs() }
 
     /**
      * Rotates [frame] upright and keeps only what the user saw inside the scan frame.
@@ -63,7 +63,7 @@ class ScanImageProcessor @Inject constructor(@ApplicationContext private val con
         return withContext(Dispatchers.Default) { bitmap.limitSize().writeJpeg("gallery") }
     }
 
-    /** Removes files left by earlier scans; the backend keeps its own copy of each upload. */
+    /** Removes files left by earlier uploads; the backend keeps its own copy of each one. */
     suspend fun clearOldFiles() = withContext(Dispatchers.IO) {
         outputDir.listFiles()?.forEach { it.delete() }
     }

@@ -12,6 +12,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -42,8 +43,7 @@ class MainHeaderViewModel @Inject constructor(
     init {
         refreshLocation()
         viewModelScope.launch {
-            val user = runCatching { getCurrentUser() }.getOrNull()
-            _uiState.update { it.copy(user = user) }
+            getCurrentUser.observe().filterNotNull().collect { user -> _uiState.update { it.copy(user = user) } }
         }
     }
 

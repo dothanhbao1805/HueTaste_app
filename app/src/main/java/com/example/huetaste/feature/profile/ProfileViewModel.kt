@@ -27,9 +27,15 @@ class ProfileViewModel @Inject constructor(
     val uiState: StateFlow<ProfileUiState> = _uiState.asStateFlow()
 
     init {
-        // The user is read from the stored session, so it is loaded once; nothing on this screen changes it.
         viewModelScope.launch {
-            _uiState.value = getCurrentUser()?.let(ProfileUiState::SignedIn) ?: ProfileUiState.Guest
+            getCurrentUser.observe().collect { user ->
+                // Signing out keeps the account on show until the login opens, instead of flashing the guest view.
+                if (user != null) {
+                    _uiState.value = ProfileUiState.SignedIn(user)
+                } else if (_uiState.value !is ProfileUiState.SignedIn) {
+                    _uiState.value = ProfileUiState.Guest
+                }
+            }
         }
     }
 

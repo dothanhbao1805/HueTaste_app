@@ -37,6 +37,7 @@ import com.base.common.extension.gone
 import com.base.common.extension.invisible
 import com.base.common.extension.visible
 import com.example.huetaste.R
+import com.example.huetaste.common.ui.ImageFileProcessor
 import com.example.huetaste.common.extension.startAppSettings
 import com.example.huetaste.common.extension.startScanDishDetailActivity
 import com.example.huetaste.databinding.ActivityScanBinding
@@ -53,7 +54,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ScanActivity : LsActivity<ActivityScanBinding>(ActivityScanBinding::inflate) {
 
-    @Inject lateinit var imageProcessor: ScanImageProcessor
+    @Inject lateinit var imageProcessor: ImageFileProcessor
 
     private val viewModel: ScanViewModel by viewModels()
 

@@ -624,6 +624,14 @@
     <string name="profile_title">Cá Nhân</string>
     <string name="profile_edit">Chỉnh sửa</string>
     <string name="profile_avatar_description">Ảnh đại diện</string>
+    <string name="edit_profile_title">Chỉnh sửa hồ sơ</string>
+    <string name="edit_profile_change_photo">Đổi ảnh</string>
+    <string name="edit_profile_pick_photo">Chọn ảnh đại diện từ thư viện</string>
+    <string name="edit_profile_email_note">Email không thể thay đổi</string>
+    <string name="edit_profile_save">Lưu thay đổi</string>
+    <string name="edit_profile_saving">Đang lưu…</string>
+    <string name="edit_profile_saved">Đã cập nhật hồ sơ</string>
+    <string name="edit_profile_image_failed">Không đọc được ảnh này, hãy chọn ảnh khác</string>
     <string name="profile_section_taste">Khẩu vị của tôi</string>
     <string name="profile_taste_title">Sở thích ẩm thực</string>
     <string name="profile_taste_subtitle">Vị và kiểu món bạn thích</string>

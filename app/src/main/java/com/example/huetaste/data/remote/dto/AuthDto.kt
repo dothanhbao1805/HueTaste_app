@@ -22,6 +22,9 @@ data class XacThucOtpBody(
     val otp: String,
 )
 
+/** Mirrors the backend `CapNhatThongTin` schema; the avatar has its own upload call. */
+data class CapNhatThongTinBody(val hoTen: String)
+
 /** Mirrors the backend `DoiMatKhau` schema. */
 data class DoiMatKhauBody(
     val matKhauCu: String,

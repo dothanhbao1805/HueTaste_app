@@ -6,6 +6,7 @@ import android.security.keystore.KeyProperties
 import android.util.Base64
 import com.example.huetaste.domain.model.AuthSession
 import com.example.huetaste.domain.model.AuthState
+import com.example.huetaste.domain.model.UserProfile
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.channels.BufferOverflow
@@ -79,6 +80,14 @@ class SecureSessionStore @Inject constructor(
             }.commit()
         }
         _changes.tryEmit(AuthState.SIGNED_IN)
+    }
+
+    /** Replaces only who is signed in, under the lock, so tokens renewed meanwhile are kept. */
+    fun updateUser(user: UserProfile) {
+        synchronized(lock) {
+            val current = session() ?: return
+            save(current.copy(user = user))
+        }
     }
 
     fun markGuest() {

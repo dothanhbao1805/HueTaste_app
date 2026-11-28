@@ -33,6 +33,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -148,9 +149,11 @@ class HomeViewModel @Inject constructor(
     init {
         loadLocation(askPermissionIfFirstTime = true)
         viewModelScope.launch {
+            getCurrentUser.observe().filterNotNull().collect { user -> _uiState.update { it.copy(user = user) } }
+        }
+        viewModelScope.launch {
             val signedIn = getAuthState() == AuthState.SIGNED_IN
-            val user = if (signedIn) getCurrentUser() else null
-            _uiState.update { it.copy(isSignedIn = signedIn, user = user) }
+            _uiState.update { it.copy(isSignedIn = signedIn) }
             loadDishes()
             loadCategories()
             if (signedIn) loadFavorites()

@@ -36,6 +36,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -146,9 +147,9 @@ class SearchViewModel @Inject constructor(
         viewModelScope.launch {
             val signedIn = getAuthState() == AuthState.SIGNED_IN
             _uiState.update { it.copy(isSignedIn = signedIn) }
-            if (signedIn) {
-                runCatching { getCurrentUser() }.onSuccess { user -> _uiState.update { it.copy(user = user) } }
-            }
+        }
+        viewModelScope.launch {
+            getCurrentUser.observe().filterNotNull().collect { user -> _uiState.update { it.copy(user = user) } }
         }
         // A restored "Gần tôi" waits for the position; anything else can search right away.
         if (!wantsNearMe) search(debounce = false)

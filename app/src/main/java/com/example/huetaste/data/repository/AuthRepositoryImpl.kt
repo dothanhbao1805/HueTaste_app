@@ -6,6 +6,7 @@ import com.example.huetaste.data.mapper.toDomain
 import com.example.huetaste.data.remote.AuthApi
 import com.example.huetaste.data.remote.HueTasteApi
 import com.example.huetaste.data.remote.apiCall
+import com.example.huetaste.data.remote.dto.CapNhatThongTinBody
 import com.example.huetaste.data.remote.dto.DangKyBody
 import com.example.huetaste.data.remote.dto.DangNhapBody
 import com.example.huetaste.data.remote.dto.DatLaiMatKhauBody
@@ -20,8 +21,15 @@ import com.example.huetaste.domain.repository.AuthRepository
 import com.google.gson.Gson
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onSubscription
 import kotlinx.coroutines.withContext
 import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
@@ -74,6 +82,23 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override fun observeState(): Flow<AuthState> = store.changes
+
+    override fun observeUser(): Flow<UserProfile?> = store.changes
+        // The value is not used: it only triggers the first read, once changes are already being listened to.
+        .onSubscription { emit(AuthState.SIGNED_IN) }
+        .map { currentUser() }
+        .distinctUntilChanged()
+
+    override suspend fun updateName(name: String) = withContext(ioDispatcher) {
+        val user = apiCall(gson) { accountApi.updateProfile(CapNhatThongTinBody(name.trim())).toDomain() }
+        store.updateUser(user)
+    }
+
+    override suspend fun uploadAvatar(image: File) = withContext(ioDispatcher) {
+        val part = MultipartBody.Part.createFormData("file", image.name, image.asRequestBody("image/jpeg".toMediaType()))
+        val user = apiCall(gson) { accountApi.uploadAvatar(part).toDomain() }
+        store.updateUser(user)
+    }
 
     override suspend fun logout() {
         withContext(ioDispatcher) { store.clear() }

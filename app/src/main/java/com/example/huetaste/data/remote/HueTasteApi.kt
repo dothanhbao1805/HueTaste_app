@@ -1,6 +1,7 @@
 package com.example.huetaste.data.remote
 
 import com.example.huetaste.data.remote.dto.BaoCaoDto
+import com.example.huetaste.data.remote.dto.CapNhatThongTinBody
 import com.example.huetaste.data.remote.dto.CapNhatCheDoAnBody
 import com.example.huetaste.data.remote.dto.GuiBaoCaoBody
 import com.example.huetaste.data.remote.dto.TrangBaoCaoDto
@@ -22,6 +23,7 @@ import com.example.huetaste.data.remote.dto.YeuThichMonAnBody
 import com.example.huetaste.data.remote.dto.DiaDiemChiTietDto
 import com.example.huetaste.data.remote.dto.DoiMatKhauBody
 import com.example.huetaste.data.remote.dto.MonAnChiTietDto
+import com.example.huetaste.data.remote.dto.NguoiDungDto
 import com.example.huetaste.data.remote.dto.NguyenLieuOutDto
 import com.example.huetaste.data.remote.dto.NhuCauBody
 import com.example.huetaste.data.remote.dto.NhuCauOutDto
@@ -36,6 +38,7 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Multipart
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Part
@@ -43,6 +46,13 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface HueTasteApi {
+    @PATCH("users/me")
+    suspend fun updateProfile(@Body body: CapNhatThongTinBody): NguoiDungDto
+
+    @Multipart
+    @POST("users/me/avatar")
+    suspend fun uploadAvatar(@Part file: MultipartBody.Part): NguoiDungDto
+
     @POST("users/me/change-password")
     suspend fun changePassword(@Body body: DoiMatKhauBody)
 

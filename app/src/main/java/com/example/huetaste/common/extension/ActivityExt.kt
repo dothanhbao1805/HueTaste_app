@@ -25,6 +25,7 @@ import com.example.huetaste.feature.main.MainActivity
 import com.example.huetaste.feature.main.MainTab
 import com.example.huetaste.feature.my_reports.MyReportsActivity
 import com.example.huetaste.feature.place_detail.PlaceDetailActivity
+import com.example.huetaste.feature.profile.EditProfileActivity
 import com.example.huetaste.feature.scan.ScanActivity
 import com.example.huetaste.feature.scan_history.ScanHistoryActivity
 import com.example.huetaste.feature.suggestion_review.SuggestionReviewActivity
@@ -55,6 +56,8 @@ fun Context.startSuggestionReviewActivity(args: SuggestionArgs) =
 
 fun Context.startContextSuggestionActivity(args: SuggestionArgs) =
     startActivityRtl(ContextSuggestionActivity.newIntent(this, args))
+
+fun Context.startEditProfileActivity() = startActivityRtl(EditProfileActivity.newIntent(this))
 
 fun Context.startChangePasswordActivity() = startActivityRtl(ChangePasswordActivity.newIntent(this))
 
